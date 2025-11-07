@@ -498,6 +498,12 @@ def train_bespoke_punk_sdxl(
                 reduction="mean"
             )
 
+            # Check for NaN loss
+            if torch.isnan(loss) or torch.isinf(loss):
+                logger.warning(f"⚠️  NaN/Inf loss detected at step {global_step}, skipping batch")
+                optimizer.zero_grad()
+                continue
+
             # Gradient accumulation
             loss = loss / gradient_accumulation_steps
             loss.backward()
@@ -505,8 +511,8 @@ def train_bespoke_punk_sdxl(
             losses.append(loss.item() * gradient_accumulation_steps)
 
             if (step + 1) % gradient_accumulation_steps == 0:
-                # Gradient clipping
-                torch.nn.utils.clip_grad_norm_(unet.parameters(), 1.0)
+                # Gradient clipping (more aggressive for stability)
+                torch.nn.utils.clip_grad_norm_(unet.parameters(), 0.5)
 
                 optimizer.step()
                 lr_scheduler.step()
@@ -634,7 +640,7 @@ if __name__ == "__main__":
                         help="Training batch size")
     parser.add_argument("--num_train_epochs", type=int, default=120,
                         help="Number of training epochs")
-    parser.add_argument("--learning_rate", type=float, default=8e-5,
+    parser.add_argument("--learning_rate", type=float, default=1e-5,
                         help="Learning rate")
     parser.add_argument("--lora_rank", type=int, default=16,
                         help="LoRA rank")
