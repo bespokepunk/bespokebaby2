@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 
 
 def generate_wandb_samples(unet, vae, text_encoder, text_encoder_2, tokenizer, tokenizer_2,
-                           prompts, device, dtype, step, wandb_run):
+                           prompts, device, dtype, step, wandb_run, add_time_ids):
     """Generate sample images for W&B monitoring"""
     if not WANDB_AVAILABLE or not wandb_run:
         return
@@ -107,7 +107,7 @@ def generate_wandb_samples(unet, vae, text_encoder, text_encoder_2, tokenizer, t
                         encoder_hidden_states=encoder_hidden_states,
                         added_cond_kwargs={
                             "text_embeds": pooled_enc_2,
-                            "time_ids": torch.zeros(1, 6).to(device)
+                            "time_ids": add_time_ids.to(device)
                         }
                     ).sample
 
@@ -303,6 +303,9 @@ def train_bespoke_punk_sdxl(
     for key, value in config.items():
         logger.info(f"   {key}: {value}")
 
+    # SDXL requires specific time_ids: [original_height, original_width, crop_top, crop_left, target_height, target_width]
+    add_time_ids = torch.tensor([[resolution, resolution, 0, 0, resolution, resolution]], dtype=torch.float32)
+
     # Setup W&B if API key provided
     wb = None
     if wandb_api_key and WANDB_AVAILABLE:
@@ -484,11 +487,14 @@ def train_bespoke_punk_sdxl(
                 encoder_hidden_states = torch.cat([enc_1, enc_2], dim=-1)  # [batch, seq_len, 2048]
 
             # Predict noise
+            # Expand time_ids to match batch size
+            batch_time_ids = add_time_ids.repeat(latents.shape[0], 1).to(device)
+
             model_pred = unet(
                 noisy_latents,
                 timesteps,
                 encoder_hidden_states=encoder_hidden_states,
-                added_cond_kwargs={"text_embeds": pooled_prompt_embeds, "time_ids": torch.zeros(latents.shape[0], 6).to(device)}
+                added_cond_kwargs={"text_embeds": pooled_prompt_embeds, "time_ids": batch_time_ids}
             ).sample
 
             # Calculate loss
@@ -573,7 +579,8 @@ def train_bespoke_punk_sdxl(
                             device=device,
                             dtype=dtype,
                             step=global_step,
-                            wandb_run=wb
+                            wandb_run=wb,
+                            add_time_ids=add_time_ids
                         )
                     except Exception as e:
                         logger.warning(f"⚠️  Sample generation failed: {e}")
