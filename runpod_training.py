@@ -113,8 +113,8 @@ def generate_wandb_samples(unet, vae, text_encoder, text_encoder_2, tokenizer, t
 
                     latents = scheduler.step(noise_pred, t, latents).prev_sample
 
-                # Decode latents to image
-                latents = latents / vae.config.scaling_factor
+                # Decode latents to image (convert to fp32 for VAE)
+                latents = latents.to(torch.float32) / vae.config.scaling_factor
                 image = vae.decode(latents).sample
 
                 # Convert to PIL
@@ -359,7 +359,7 @@ def train_bespoke_punk_sdxl(
 
     # Extract components
     unet = pipe.unet.to(device)
-    vae = pipe.vae.to(device)
+    vae = pipe.vae.to(device, dtype=torch.float32)  # VAE must be fp32 for stability!
     text_encoder = pipe.text_encoder.to(device)
     text_encoder_2 = pipe.text_encoder_2.to(device)
     tokenizer = pipe.tokenizer
@@ -442,10 +442,11 @@ def train_bespoke_punk_sdxl(
             pixel_values = batch["pixel_values"].to(device, dtype=dtype)
             captions = batch["caption"]
 
-            # Encode images with VAE
+            # Encode images with VAE (VAE must use fp32 for stability)
             with torch.no_grad():
-                latents = vae.encode(pixel_values).latent_dist.sample()
+                latents = vae.encode(pixel_values.to(torch.float32)).latent_dist.sample()
                 latents = latents * vae.config.scaling_factor
+                latents = latents.to(dtype)  # Convert back to training dtype (fp16) for UNet
 
             # Add noise
             noise = torch.randn_like(latents)
