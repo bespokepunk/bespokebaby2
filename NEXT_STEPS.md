@@ -49,25 +49,18 @@ Use research model specifically designed for low-res pixel art.
 2. **Start fresh on same RunPod instance:**
    ```bash
    cd /workspace/bespokebaby2
-   git pull  # Get the fixed config file
+   git pull  # Get the fixes
 
    # Create the complete config and palette files
    python setup_sdpixl_files.py
 
-   # Clone SD-piXL if you haven't already
-   cd /workspace/bespokebaby2
-   git clone https://github.com/AlexandreBinninger/SD-piXL.git
-   cd SD-piXL
-
-   # Install dependencies
-   pip install torch torchvision torchaudio
-   pip install matplotlib accelerate omegaconf einops transformers scipy tensorboard openai-clip xformers opencv-python
-   pip install git+https://github.com/huggingface/diffusers
-   pip install -U scikit-learn peft
+   # Fix diffusers version (CRITICAL!)
+   bash fix_sdpixl_dependencies.sh
 
    # Generate your first 24x24 pixel art!
+   cd SD-piXL
    accelerate launch main.py \
-     --config config/bespoke_punk_24x24.yaml \
+     --config bespoke_punk_24x24.yaml \
      --size 24,24 \
      --palette assets/palettes/bespoke_punk.hex \
      -pt "TOK bespoke, 24x24 pixel grid portrait, female, purple solid background, brown hair, blue eyes, light skin tone, right-facing" \
