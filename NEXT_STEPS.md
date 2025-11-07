@@ -48,9 +48,16 @@ Use research model specifically designed for low-res pixel art.
 
 2. **Start fresh on same RunPod instance:**
    ```bash
-   cd /workspace
-   git clone https://github.com/bespokepunk/bespokebaby2.git
-   cd bespokebaby2/SD-piXL
+   cd /workspace/bespokebaby2
+   git pull  # Get the fixed config file
+
+   # Create the complete config and palette files
+   python setup_sdpixl_files.py
+
+   # Clone SD-piXL if you haven't already
+   cd /workspace/bespokebaby2
+   git clone https://github.com/AlexandreBinninger/SD-piXL.git
+   cd SD-piXL
 
    # Install dependencies
    pip install torch torchvision torchaudio
