@@ -64,8 +64,14 @@ training:
   fft_scale: 10.0
   tv_scale: 0.0
   laplacian_scale: 0.0
+  laplacian_kernel: 5
+  laplacian_sigma: 0.75
+  laplacian_mode: "l1"
   gradient_loss_scale: 0.0
   bilateral_scale: 0.0
+  bilateral_sigma_color: 1.0
+  bilateral_sigma_space: 1.0
+  bilateral_max_distance: 3
   augmentation:
     grayscale_prob: 0.1
     hflip_prob: 0.5
