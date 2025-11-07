@@ -57,6 +57,9 @@ Use research model specifically designed for low-res pixel art.
    # Fix diffusers version (CRITICAL!)
    bash fix_sdpixl_dependencies.sh
 
+   # Patch SD-piXL for compatibility (CRITICAL!)
+   python patch_sdpixl_device.py
+
    # Generate your first 24x24 pixel art!
    cd SD-piXL
    accelerate launch main.py \
