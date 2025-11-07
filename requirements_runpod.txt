@@ -1,0 +1,28 @@
+# Bespoke Punk SDXL Training - RunPod Requirements
+
+# Core ML/DL frameworks
+torch>=2.1.0
+torchvision>=0.16.0
+numpy>=1.24.0
+pillow>=10.0.0
+
+# Diffusers and related
+diffusers>=0.25.0
+transformers>=4.36.0
+accelerate>=0.25.0
+peft>=0.7.0
+safetensors>=0.4.1
+
+# Optimization and utilities
+bitsandbytes>=0.41.0
+xformers>=0.0.23  # Optional but recommended for memory efficiency
+
+# Monitoring and logging
+wandb>=0.16.0
+tqdm>=4.66.0
+
+# Data handling
+datasets>=2.15.0
+
+# Misc
+omegaconf>=2.3.0

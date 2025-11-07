@@ -1,0 +1,142 @@
+# Replicate FLUX.1-dev Training Configuration
+# Complete settings for Bespoke Punk pixel art training
+
+# ========================================
+# REQUIRED SETTINGS
+# ========================================
+
+# Training dataset (you'll upload this as a zip)
+input_images: "bespoke_punk_193.zip"  # Upload via Replicate
+
+# Trigger word - used in prompts to activate your LoRA
+trigger_word: "TOK"
+
+# ========================================
+# CORE TRAINING SETTINGS
+# ========================================
+
+# Number of training steps (500-4000 recommended)
+# For 193 images:
+# - 1000 steps = good baseline
+# - 2000 steps = better quality (RECOMMENDED)
+# - 3000 steps = maximum quality
+steps: 2000
+
+# LoRA rank (1-128)
+# Higher ranks = more complex features but slower training
+# 16 = good balance (RECOMMENDED)
+# 32 = higher quality, longer training
+lora_rank: 16
+
+# Learning rate (0.0001-0.001)
+# 0.0004 = stable default
+# Don't change unless you know what you're doing
+learning_rate: 0.0004
+
+# Batch size (usually 1)
+# Keep at 1 unless you have specific needs
+batch_size: 1
+
+# Image resolutions for training
+# FLUX handles multiple resolutions well
+resolution: "512,768,1024"
+
+# Caption dropout rate (0-1)
+# 0.05 = use caption 95% of time (RECOMMENDED)
+# Higher values (0.1-0.2) for style training
+# Lower values (0.01) for specific subjects
+caption_dropout_rate: 0.05
+
+# Optimizer (adamw8bit recommended)
+# Options: adamw8bit, adam8bit, lion8bit, prodigy, adam, adamw, lion, adagrad, adafactor
+optimizer: "adamw8bit"
+
+# ========================================
+# HUGGING FACE UPLOAD (OPTIONAL)
+# ========================================
+
+# Upload trained LoRA to Hugging Face
+# Format: "username/model-name"
+# Leave blank to skip upload
+hf_repo_id: "codelace/bespoke-punk-flux-v2"
+
+# Hugging Face token (get from https://huggingface.co/settings/tokens)
+hf_token: "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"
+
+# ========================================
+# WEIGHTS & BIASES MONITORING (RECOMMENDED)
+# ========================================
+
+# W&B API key for monitoring
+wandb_api_key: "495752e0ee6cde7b8d27088c713f941780d902a1"
+
+# W&B project name
+wandb_project: "bespoke-punk-flux-training"
+
+# W&B run name (optional, auto-generated if blank)
+wandb_run: "flux-bespoke-punk-193images-2000steps"
+
+# W&B entity/team name (optional)
+wandb_entity: ""
+
+# Generate sample images every N steps
+wandb_sample_interval: 100
+
+# Save LoRA checkpoints to W&B every N steps
+wandb_save_interval: 100
+
+# Sample prompts for W&B visualization (newline-separated)
+wandb_sample_prompts: |
+  TOK bespoke, 24x24 pixel grid portrait, female, purple solid background, brown hair, blue eyes, light skin tone, right-facing
+  TOK bespoke punk, 24x24 pixel art, male, orange solid background, black hair, brown eyes, tan skin, right-facing
+  TOK bespoke, 24x24 pixel grid, female, pink background, blonde hair with red bandana at y=3-6, green eyes, light skin, right-facing
+  TOK bespoke punk style, 24x24 pixel art portrait, male, teal background, red hair, blue eyes with glasses at x=7-16 y=11-13, light skin, right-facing
+  TOK bespoke, 24x24 pixel grid portrait, female, yellow background, black hair, hazel eyes, gold earrings, tan skin, right-facing
+  TOK bespoke punk, 24x24 pixel art, male, deep blue background, silver hair, brown eyes, white collar at y=20-22, light skin, right-facing
+  TOK bespoke, 24x24 pixel grid, female, green background, purple hair, blue eyes, pink lips, light skin, right-facing
+  TOK bespoke punk style, 24x24 pixel art, male, red background, black hair with cap featuring logo, brown eyes, medium skin, right-facing
+
+# ========================================
+# ADVANCED SETTINGS
+# ========================================
+
+# Cache latents to disk (use if hitting OOM with many images)
+cache_latents_to_disk: false
+
+# Gradient checkpointing (saves memory, slower training)
+# Auto-enabled for batch_size > 1
+gradient_checkpointing: false
+
+# Layer optimization regex (advanced users only)
+# Example: "transformer.single_transformer_blocks.(7|12|16|20).proj_out"
+# Leave blank to train all layers (RECOMMENDED)
+layers_to_optimize_regex: ""
+
+# Skip training and use existing HF LoRA (advanced)
+# Example: "https://huggingface.co/username/model/resolve/main/lora.safetensors"
+skip_training_and_use_pretrained_hf_lora_url: ""
+
+# ========================================
+# RECOMMENDED CONFIGURATIONS
+# ========================================
+
+# QUICK TEST (20-30 minutes, ~$1)
+# steps: 500
+# lora_rank: 16
+# resolution: "512"
+
+# STANDARD TRAINING (40-60 minutes, ~$2-3) - RECOMMENDED
+# steps: 2000
+# lora_rank: 16
+# resolution: "512,768,1024"
+
+# HIGH QUALITY (80-120 minutes, ~$5-7)
+# steps: 3000
+# lora_rank: 32
+# resolution: "512,768,1024"
+
+# MAXIMUM QUALITY (2-3 hours, ~$10-12)
+# steps: 4000
+# lora_rank: 32
+# resolution: "512,768,1024"
+# caption_dropout_rate: 0.02

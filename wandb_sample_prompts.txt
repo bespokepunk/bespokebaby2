@@ -1,0 +1,12 @@
+TOK bespoke, 24x24 pixel grid portrait, female, purple solid background, brown hair, blue eyes, light skin tone, right-facing
+TOK bespoke punk, 24x24 pixel art, male, orange solid background, black hair, brown eyes, tan skin, right-facing
+TOK bespoke, 24x24 pixel grid, female, pink background, blonde hair with red bandana at y=3-6, green eyes, light skin, right-facing
+TOK bespoke punk style, 24x24 pixel art portrait, male, teal background, red hair, blue eyes with glasses at x=7-16 y=11-13, light skin, right-facing
+TOK bespoke, 24x24 pixel grid portrait, female, yellow background, black hair, hazel eyes, gold earrings, tan skin, right-facing
+TOK bespoke punk, 24x24 pixel art, male, deep blue background, silver hair, brown eyes, white collar at y=20-22, light skin, right-facing
+TOK bespoke, 24x24 pixel grid, female, green background, purple hair, blue eyes, pink lips, light skin, right-facing
+TOK bespoke punk style, 24x24 pixel art, male, red background, black hair with cap featuring logo, brown eyes, medium skin, right-facing
+TOK bespoke, 24x24 pixel grid portrait, female, magenta background, brown wavy hair, green eyes, light tan skin, right-facing
+TOK bespoke punk, 24x24 pixel art, male, forest green background, blonde hair, hazel eyes, gray collar, tan skin, right-facing
+TOK bespoke, 24x24 pixel grid, female, turquoise background, black hair with blue highlights, blue eyes, pink lips, light skin, right-facing
+TOK bespoke punk style, 24x24 pixel art portrait, male, burgundy background, dark hair with crown at y=3-6, brown eyes, medium skin, right-facing

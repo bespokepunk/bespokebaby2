@@ -6,36 +6,51 @@
 \margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 There are many ways to approach the workflow, but generally it is this approach: 1) create .txt caption files for all of the bespoke punks 2) train model on the bespoke punks and captions 3) upload real image/avatar, generate/quantize color palette and captions 4) feed this + pre-image to model 5) generate new bespoke punk\
+\f0\fs24 \cf0 There are many ways to approach the workflow, but generally it is this approach:\
+1) create .txt caption files for all of the bespoke punks\
+2) train model on the bespoke punks and caption\
+3) upload real image/avatar, generate/quantize color palette and captions\
+4) feed this + pre-image to model\
+5) generate new bespoke punk\
 \
-I have ~200 bespoke punks with their before images and captions for training\'85 I have models on replicate, hugging face and now RunPod. I have also tried for months before Cursor/Claude code to use just Replit, Vercel, Lovable, etc\'85. \
+I have ~200 bespoke punks with their before images and captions for training\'85 I have models on Replicate, Hugging face and now RunPod. I have also tried for months before Cursor/Claude code to use just Replit, Vercel, Lovable, etc\'85. This has been a 10+ month project. \
 \
-Part of the challenge is: 1) generating more training images from the 200 I have already to make the model even more robust and accurate 2) getting the captions just right (not too long, not too short, just the right amount of detail) to train the model for robust image transformations w all traits 3) finding the right models and settings to actually train the models on my data. \
+Challenges/Areas for improvement: \
+1) generating more training images from the 200 I have already to make the model even more robust and accurate (200 may not be enough, so we have to alter and generate new images and captions to add onto the training data).\
+2) getting the captions just right (not too long, not too short, just the right amount of detail) to train the model along with the matching images for robust image transformations w all traits\
+3) finding the right models and settings to actually train the models on my data (replicate, hugging face, run node, etc). \
+4) overall workflow: do we need intermediate prompt generation before feeding into models? More workflow steps? \
 \
-In this folder/repo: \
-\
+
+\f1\b In this folder/repo: 
+\f0\b0 https://github.com/bespokepunk/bespokebaby2 (I invited you to the Org, check email/GitHub)\
 1. Content 1106: general context/prompting, the same info as here\
-2. FORTRAINING6: Training Data\
-	all: Final Bespoke Punk Outputs\
-	oldtext: .txt feels related to Final Bespoke Punk Outputs\
-	originals: original images the Final Bespoke Outputs are based on \
-\
+2. FORTRAINING6 = Training Data. See file descriptions below. \
+	bespokepunks: Final Bespoke Punk Images\
+	bespokepunkstext: .txt feels related to Final Bespoke Punk Images\
+	bespokepunkOG: original images the Final Bespoke Images are based on \
+	bespokepunktextimages: Final Bespoke Punk Images\
+	bespokepunkstextimages.zip: compressed version of file about (used for Trainings)\
+	other files: related to training for Replicate, RunPod, etc. \
 \'97\
 \
 
 \f1\b Links/.env credentials/variables needed
 \f0\b0 \
 \
-1. WandBAI API Key: 
+Replicate\
+1. Replicate API Key: r8_bkX5IVUJk9IqmmXZ35XvCjkqsWy1hcM24kTye: used to acces replicate models made based on the training data (.txt files and final bespoke punk images). \
+2. Replicate Model Info: \
+3. Replicate Model Link: \
+\
+RunPod: \
+1. RunPod API Key \
+\
+WandBAI\
+1. WandB API Key: 
 \f2\fs32 \AppleTypeServices\AppleTypeServicesF65539 \cf2 \cb3 \expnd0\expndtw0\kerning0
 495752e0ee6cde7b8d27088c713f941780d902a1 : this allows external monitoring and image generation as training is occurring - you may need to setup an account but you can try this API key to connect and see if it works. \
 \
-2. Hugging Face Api Key: 
-\fs24 \AppleTypeServices \cf0 \cb1 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: used to access/save models to Hugging Face
-\f0 \kerning1\expnd0\expndtw0 \
-\
-Replicate API Key: r8_bkX5IVUJk9IqmmXZ35XvCjkqsWy1hcM24kTye: used to acces replicate models made based on the training data (.txt files and final bespoke punk images). \
-Replicate Model Info: \
-Replicate Model Link: \
-\
-RunPod: }
+Hugging Face\
+1. HF API Key: 
+\fs24 \AppleTypeServices \cf0 \cb1 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: used to access/save models to Hugging Face}
