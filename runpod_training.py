@@ -79,11 +79,15 @@ def generate_wandb_samples(unet, vae, text_encoder, text_encoder_2, tokenizer, t
                     return_tensors="pt"
                 ).input_ids.to(device)
 
-                enc_1 = text_encoder(tokens_1)[0]
-                enc_2 = text_encoder_2(tokens_2)[0]
-                pooled_enc_2 = text_encoder_2(tokens_2, output_hidden_states=True)[0]
+                # Get text encoder outputs properly
+                enc_1_output = text_encoder(tokens_1)
+                enc_1 = enc_1_output.last_hidden_state  # [batch, seq_len, 768]
 
-                encoder_hidden_states = torch.cat([enc_1, enc_2], dim=-1)
+                enc_2_output = text_encoder_2(tokens_2)
+                enc_2 = enc_2_output.last_hidden_state  # [batch, seq_len, 1280]
+                pooled_enc_2 = enc_2_output.pooler_output  # [batch, 1280]
+
+                encoder_hidden_states = torch.cat([enc_1, enc_2], dim=-1)  # [batch, seq_len, 2048]
 
                 # Start with random noise
                 latents = torch.randn(
@@ -468,15 +472,16 @@ def train_bespoke_punk_sdxl(
             ).input_ids.to(device)
 
             with torch.no_grad():
-                enc_1 = text_encoder(tokens_1)[0]
-                enc_2 = text_encoder_2(tokens_2)[0]
+                # Get text encoder outputs properly
+                enc_1_output = text_encoder(tokens_1)
+                enc_1 = enc_1_output.last_hidden_state  # [batch, seq_len, 768]
 
-                # Pooled embeddings for SDXL
-                pooled_enc_2 = text_encoder_2(tokens_2, output_hidden_states=True)
-                pooled_prompt_embeds = pooled_enc_2[0]
+                enc_2_output = text_encoder_2(tokens_2)
+                enc_2 = enc_2_output.last_hidden_state  # [batch, seq_len, 1280]
+                pooled_prompt_embeds = enc_2_output.pooler_output  # [batch, 1280]
 
-                # Combine encodings
-                encoder_hidden_states = torch.cat([enc_1, enc_2], dim=-1)
+                # Combine encodings (concatenate along feature dimension)
+                encoder_hidden_states = torch.cat([enc_1, enc_2], dim=-1)  # [batch, seq_len, 2048]
 
             # Predict noise
             model_pred = unet(
