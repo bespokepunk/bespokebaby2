@@ -11,8 +11,9 @@ echo "Installing specific diffusers version required by SD-piXL..."
 # Uninstall current diffusers
 pip uninstall -y diffusers
 
-# Install the specific dev version from git (closest to 0.31.0.dev0)
-pip install git+https://github.com/huggingface/diffusers@v0.31.0
+# Install the development version from main branch (0.31.0.dev0)
+# This is the version SD-piXL was developed with
+pip install git+https://github.com/huggingface/diffusers
 
 echo ""
 echo "✅ Dependencies fixed!"
