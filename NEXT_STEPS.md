@@ -59,7 +59,7 @@ Use research model specifically designed for low-res pixel art.
 
    # Patch SD-piXL for compatibility (CRITICAL!)
    python patch_sdpixl_device.py
-   python patch_sdpixl_all_device_calls.py
+   python fix_sdpixl_simple.py
 
    # Generate your first 24x24 pixel art!
    cd SD-piXL
