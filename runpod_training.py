@@ -490,12 +490,32 @@ def train_bespoke_punk_sdxl(
             # Expand time_ids to match batch size
             batch_time_ids = add_time_ids.repeat(latents.shape[0], 1).to(device)
 
+            # Debug: Check for NaN in inputs
+            if torch.isnan(encoder_hidden_states).any():
+                logger.error("❌ NaN in encoder_hidden_states")
+                optimizer.zero_grad()
+                continue
+            if torch.isnan(pooled_prompt_embeds).any():
+                logger.error("❌ NaN in pooled_prompt_embeds")
+                optimizer.zero_grad()
+                continue
+            if torch.isnan(noisy_latents).any():
+                logger.error("❌ NaN in noisy_latents")
+                optimizer.zero_grad()
+                continue
+
             model_pred = unet(
                 noisy_latents,
                 timesteps,
                 encoder_hidden_states=encoder_hidden_states,
                 added_cond_kwargs={"text_embeds": pooled_prompt_embeds, "time_ids": batch_time_ids}
             ).sample
+
+            # Check for NaN in model output
+            if torch.isnan(model_pred).any():
+                logger.error("❌ NaN in model_pred output")
+                optimizer.zero_grad()
+                continue
 
             # Calculate loss
             loss = torch.nn.functional.mse_loss(
