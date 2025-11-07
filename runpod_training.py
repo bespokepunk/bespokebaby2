@@ -85,7 +85,7 @@ def generate_wandb_samples(unet, vae, text_encoder, text_encoder_2, tokenizer, t
 
                 enc_2_output = text_encoder_2(tokens_2)
                 enc_2 = enc_2_output.last_hidden_state  # [batch, seq_len, 1280]
-                pooled_enc_2 = enc_2_output.pooler_output  # [batch, 1280]
+                pooled_enc_2 = enc_2_output.text_embeds  # [batch, 1280] - for CLIPTextModelWithProjection
 
                 encoder_hidden_states = torch.cat([enc_1, enc_2], dim=-1)  # [batch, seq_len, 2048]
 
@@ -478,7 +478,7 @@ def train_bespoke_punk_sdxl(
 
                 enc_2_output = text_encoder_2(tokens_2)
                 enc_2 = enc_2_output.last_hidden_state  # [batch, seq_len, 1280]
-                pooled_prompt_embeds = enc_2_output.pooler_output  # [batch, 1280]
+                pooled_prompt_embeds = enc_2_output.text_embeds  # [batch, 1280] - for CLIPTextModelWithProjection
 
                 # Combine encodings (concatenate along feature dimension)
                 encoder_hidden_states = torch.cat([enc_1, enc_2], dim=-1)  # [batch, seq_len, 2048]
