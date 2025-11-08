@@ -1,0 +1,573 @@
+Duplicate?,Name,Description,Type,Status,Character,Background,Hair,Eyes,,,,Props,Owner Name,Owner Wallet,Description 1,Desciption 2
+,lady_000_lemon,Portrait of a Picture. Rosie the Riveter,Female,Legend,Rosie the Riveter,Yellow,Brown,Purple,,,,Headband,,,"Bespoke: 24x24 grid, Yellow (#F8E701) background, Red/white bandana (190,103,98/245,198,136), Black pupils (8,12)/(13,12), Blue eyes, Black nose (11,13), Orange-red lips (246,155,150), Dark hair (42,50,73), Light skin (232,175,130), 14px width","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_000_lemon.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_001_hazelnut,Self portrait.,Female,Legend,,Green,Brown,Green,,,,"Earrings, Necklace, Bow",,,"Bespoke: 24x24 grid, Dark green background, Brown hair with pink accessory (255,20,147), Green eyes, Light skin tone, Standard features, Pink hair accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_001_hazelnut.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_002_vanilla,Portrait of a Picture.,Female,Legend,,Blue,Blonde,Blue,,,,"Earrings, Necklace",Johanna,,"Bespoke: 24x24 grid, Light blue background, Blonde wavy hair (210,180,140), Gray-green eyes, Light skin tone, 16px width, Side-swept hairstyle","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_002_vanilla.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_003_cashew,Portrait of a Picture.,Female,Legend,,Grey,Black,Brown,,,,"Earrings, Necklace",Christine,,"Bespoke: 24x24 grid, Gray background, Black hair with gold checkerboard accent, Brown eyes, Light skin, Red lips, White collar","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_003_cashew.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_004_nutmeg,Portrait of a Picture. Issa Rae,Female,Legend,Issa Rae,Orange,Black,Brown,,,,Earrings,,,"Bespoke: 24x24 grid, Peach background, Black hair with gold accent, Dark skin (139,69,19), Red-brown eyes, Natural lips, Yellow detailing","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_004_nutmeg.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_005_cinnamon,Portrait of a Picture. Beth Dutton,Female,Legend,Beth Dutton,Brown,Red,Green,,,,Necklace,,,"Bespoke: 24x24 grid, Brown background, Light brown wavy hair, Green eyes, Light skin tone, Gold accent, Natural makeup","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_005_cinnamon.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_006_pepper,Portrait of a Picture. Cruella de Vil,Female,Legend,Cruella de Vil,Multi,Black/White,Green,,,,Earrings,,,"Bespoke: 24x24 grid, Black background, Black/white split hair, Green eyes, Pale skin (255,255,255), Red lips, Dramatic contrast","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_006_pepper.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_007_alloy,Portrait of a Picture. 7 of 9,Female,Legend,7 of 9,Purple,Blonde,Blue,,,,Ocular Implant,,,"Bespoke: 24x24 grid, Purple background, Light brown hair, Blue eyes, Light skin tone, Pink lips, Short styled cut","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_007_alloy.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_008_pinksilk,Portrait of a Picture. Holly Go Lightly,Female,Legend,Holly Go Lightly,Pink,Brown,Brown,,,,"Earrings, Necklace, Crown, Cig Holder",,,"Bespoke: 24x24 grid, Pink background, Brown hair with white tiara, Amber eyes, Light skin tone, White dress details","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_008_pinksilk.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_009_bluesilk,Portrait of a Picture. Holly Go Lightly,Female,Legend,Holly Go Lightly,Blue,Brown,Sunglasses,,,,"Earrings, Necklace, Crown",,,"Bespoke: 24x24 grid, Mint background, Same as #9 with black sunglasses overlay, White tiara, White dress","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_009_bluesilk.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_010_saffron,Self portrait.,Female,Legend,,Green,Blonde,Green,,,,,,,"Dark green background, Blonde wavy hair, Light skin tone, Green eyes, Burgundy accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_010_saffron.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_011_sage,Portrait of a Picture.,Female,Legend,,Blue,Brown,Green,,,,Earrings,,,"Bespoke: 24x24 grid, Blue background, Wavy brown hair, Green eyes, Light skin tone, Red top accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_011_sage.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_012_parasite,Portrait of a Picture.,Female,Legend,,Multi,Black,Blue,,,,Mask,,,"Bespoke: 24x24 grid, Cyan background, Black hair, Pale blue complexion, Blue eyes, White features, Neon styled","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_012_parasite.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_013_rosemary,Portrait of a Picture.,Female,Legend,,Multi,Brown,Green,,,,Earrings,,,"Bespoke: 24x24 grid, Purple /Pink gradient background for a sunset, Brown wavy hair, Green eyes, Light skin tone, Natural style","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_013_rosemary.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_014_olive,Self portrait.,Female,Legend,,Purple,Blonde,Sunglasses,,,,,,,"Bespoke: 24x24 grid, Purple background, Blonde wavy hair with brown sunglasses bar, Light skin tone, Pink accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_014_olive.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_015_lime,Portrait of a Picture.,Female,Legend,,Green,Black/Grey,Brown,,,,Glasses,,,"Bespoke: 24x24 grid, Lime background, Black short hair, Light skin tone, White collar, Basic style","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_015_lime.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_016_honey,Portrait of a Picture.,Female,Legend,,Multi,Grey,Green,,,,Glasses,,,"Bespoke: 24x24 grid, Orange gradient background, Gray/silver hair, Brown glasses frames, Green eyes, Blue accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_016_honey.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_017_pine,Portrait of a Picture.,Female,Legend,,Green,Brown/Red,Brown,,,,,,,"Bespoke: 24x24 grid, Green background, Dark brown wavy hair, Light skin tone, Yellow/blue clothing accents","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_017_pine.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_018_strawberry,Portrait of a Picture.,Female,Legend,,Green,Red,Green,,,,Necklace,,,"Bespoke: 24x24 grid, Dark green background, Red curly hair, Olive/green eyes, Light skin tone, Yellow accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_018_strawberry.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_019_banana,Portrait of a Picture.,Female,Legend,,Purple,Red,Sunglasses,,,,"Necklace,  Beanie",,,"Bespoke: 24x24 grid, Blue background, Same as #17 with mint green beanie/hat addition, Red curls","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_019_banana.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_020_blood,Portrait of a Picture.,Female,Legend,,Multi,Black,Brown,,,,Necklace,,,"Bespoke: 24x24 grid, Pink/magenta gradient background, Black hair with blue highlights, Dark brown skin, Small pink lips, White accent piece","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_020_blood.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_021_diamond,Portrait of a Picture.,Female,Legend,,Blue,Brown/Red,Hazel,,,,"Earrings, Necklace",,,"Bespoke: 24x24 grid, Mint/aqua background, Dark brown wavy hair, Light skin tone, Teal collar accent, Natural makeup","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_021_diamond.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_022_gold,Self portrait. $BTC,Female,Legend,$BTC,Grey,Brown,Green,,,,"Earrings, Necklace, Bow",,,"Bespoke: 24x24 grid, Gray background, Brown wavy hair with orange/white hair clip, Light skin tone, Green eyes, White accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_022_gold.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_023_silver,Self portrait. $ETH,Female,Legend,$ETH,Multi,Brown,Green,,,,"Earrings, Necklace, Bow",,,"Bespoke: 24x24 grid, Gray/blue gradient background, Brown wavy hair with pastel stripe accent, Green eyes, Light skin tone, Blue details","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_023_silver.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_024_linen,Self portrait.,Female,Legend,,Blue,Brown,Green,,,,Bow,,,"Bespoke: 24x24 grid, Mint background, Brown wavy hair with gold checkerboard accent, Light skin tone, Green eyes, Purple accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_024_linen.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_025_mistletoe,Self portrait.,Female,Legend,,Blue,Brown,Green,,,,Bow,,,"Bespoke: 24x24 grid, Navy blue background, Brown wavy hair with red/white bow, Light skin tone, Green eyes, Green accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_025_mistletoe.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_026_fur,Portrait of a Picture. $MIGGLES,Female,Legend,$MIGGLES,Blue,Black,Green,,,,Cat ears,,,"Bespoke: 24x24 grid, Royal blue background, Black hair with brown ear buns, Light skin tone, Green eyes, Olive accent piece","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_026_fur.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_027_nitrogen,Portrait of a Picture. $BASE,Female,Legend,$BASE,Multi,Black,Green,,,,"Glasses, Hat",,,"Bespoke: 24x24 grid, Blue gradient background, Black hair, Light skin tone, Green eyes, Black cap with brim","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_027_nitrogen.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_028_marshmallow,Portrait of a Picture.,Female,Legend,,Pink,Black,Brown,,,,Earrings,,,"Bespoke: 24x24 grid, Pink background, Black straight hair, Brown skin tone, Natural makeup, Cream accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_028_marshmallow.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_029_basil,Portrait of a Picture.,Female,Legend,,Multi,Brown,Brown,,,,Glasses,,,"Bespoke: 24x24 grid, Lime/forest gradient background, Dark brown hair, Light skin tone, Brown sunglasses, Purple accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_029_basil.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_030_grass,Portrait of a Picture.,Female,Legend,,Multi,Brown,Hazel,,,,,,,"Bespoke: 24x24 grid, Peach gradient background, Dark textured hair, Light skin tone, Blue eyes, White/red accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_030_grass.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_031_paprika,Portrait of a Picture. Wifejak,Female,Legend,Wifejak,White,Red,Black,,,,Necklace,,,"Bespoke: 24x24 grid, White background, Dark red hair, Pale skin tone, Gray accent piece","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_031_paprika.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_032_salt,Portrait of a Picture.,Female,Legend,,Red,Brown/Grey,Brown,,,,"Earrings, Glasses",,,"Bespoke: 24x24 grid, Red background, White/gray styled hair, Light skin tone, Dark glasses, Red lips","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_032_salt.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_033_staranise,Portrait of a Picture.,Female,Legend,,Pink,Brown,Eyes,,,,Necklace,,,"Bespoke: 24x24 grid, Pink background, Brown wavy hair, Light skin tone, Green eyes, Burgundy accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_033_staranise.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_034_lavender,Portrait of a Picture.,Female,Legend,,Multi,Brown,Brown/Purple/Red,,,,Earrings,,,"Bespoke: 24x24 grid, Gradient beige background, Brown wavy hair, Light skin tone, Red eyes, Black accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_034_lavender.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_035_turmeric,Portrait of a Picture.,Female,Legend,,Pink,Brown/Blonde,Brown/Purple/Red,,,,"Earrings, Hat",,,"Bespoke: 24x24 grid, Pink/salmon background, Blue plaid hat, Brown wavy hair, Light skin tone, Brown eyes","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_035_turmeric.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_036_boisenberry,Portrait of a Picture.,Female,Legend,,Purple,Red,Green,,,,,,,"Bespoke: 24x24 grid, Light blue background, Brown wavy hair, Light skin tone, Pink/yellow accents","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_036_boisenberry.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_037_rose,Portrait of a Picture.,Female,Legend,,Pink,Brown,Brown,,,,"Earrings, Necklace",,,"Bespoke: 24x24 grid, Purple background, Red wavy hair, Light skin tone, Purple sunglasses, Green accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_037_rose.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_038_peanut,Portrait of a Picture.,Female,Legend,,Blue,Black/Red,Black/Purple,,,,Necklace,Olivia Meng,0x2Cd07843eF29F8ef85e1878b9fcDBEa920B7a70a,"Bespoke: 24x24 grid, Pink background, Dark hair with buns, Light skin tone, Yellow/gray accents","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_038_peanut.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_039_sandalwood,Portrait of a Picture.,Female,Legend,,Lavender,Red,Sunglasses,,,,,,,"Bespoke: 24x24 grid, Light blue background, Brown wavy hair, Light skin tone, Pink/yellow highlights","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_039_sandalwood.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_040_fivespice,Portrait of a Picture.,Female,Legend,,Yellow,Black/Brown,Red/Brown,,,,Necklace,,,"Bespoke: 24x24 grid, Purple background, Red wavy hair, Light skin tone, Purple sunglasses, Mint accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_040_fivespice.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_041_bayleaf,Portrait of a Picture.,Female,Legend,,Blue,Red,Green,,,,"Scarf, Cig",,,"Bespoke: 24x24 grid, Yellow background, Dark brown hair, Light skin tone, Brown eyes, Purple/orange accents","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_041_bayleaf.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_042_almond,Portrait of a Picture.,Female,Legend,,Pink,Brown,Brown,,,,,,,"Bespoke: 24x24 grid, Blue background, Red curly hair, Light skin tone, Green eyes, Brown cigarette, Green accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_042_almond.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_043_orange,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Pink background, Dark brown hair, Light skin tone, Yellow accent piece","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_043_orange.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_044_x,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Purple background with green accent, Black hair, Light skin tone, Crown (yellow/blue), Black sunglasses","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_044_x.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_045_x,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green striped background, Black hair, Light skin tone, Yellow top accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_045_x.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_046_x,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green striped background, Brown/white gradient hair, Light skin tone, Amber eyes, Orange pendant","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_046_x.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_047_x,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green striped background, Black hair, Light skin tone, Gold visor/glasses, Pink accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_047_x.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_048_pink,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green background, Blonde wavy hair, Light skin tone, Blue eyes, Yellow accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_048_pink.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_049_abstractangels,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Magenta background, Black/purple split hair, Light skin tone, Blue accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_049_abstractangels.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_050_x-6,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green background with cross, Black hair, Light skin tone, Purple eyes, Angel wings","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_050_x-6.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_051_rosieabstract,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Purple/green gradient, Black hair, Light skin tone, Gold visor, White accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_051_rosieabstract.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_052_holly1abstract,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green checkered background, Black hair, Orange/white checkerboard headband, Blue eyes","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_052_pinksilkabstract.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_053_cruellaabstract,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Rainbow gradient background, Brown hair with white tiara, Light skin tone, Gold accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_053_pepperabstract.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_054_meabstract,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green/black background, Black/white split hair, Pale skin tone, Red lips, Red accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_054_hazelnutabstract-3.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_055_nikolabstract,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green striped background, Dark hair, Brown skin tone, Yellow crown, Purple accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_055_bloodabstract.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_056_7of9abstract,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Rainbow gradient background, Light brown hair, Light skin tone, Blue eyes, Gold accents","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_056_alloyabstract.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_057_holly2abstract,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Multi-color gradient background, Brown hair with black sunglasses, White tiara","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_057_bluesilkabstract.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_058_x,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Mint background, Black hair, Light skin tone, Pink accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_058_x.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_059_paula-6,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green striped background, Brown wavy hair, Light skin tone, Silver glasses, Yellow accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_059_paula-5.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_060_winehouse,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Purple background, Black hair with red accessory, Light skin tone, Natural makeup","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_059_paula-6.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_061_nikkkk-2,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Green background with star, Brown wavy hair, Light skin tone, Blue eyes, Gray accent, Pink details","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_060_winehouse.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_062_Dalia-2,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Pink background, Black hair with brown bear ears, Light skin tone, Red bow accents","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_061_nikkkk-2.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_062_Dalia-BD,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Blue background, Black hair with red bows, Light skin tone, White chef hat","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_062_Dalia-2.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_063_PVR-3,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Orange background, Black hair, Light skin tone, Gold visor/band, Burgundy accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_062_Dalia-BD.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_063_PVR,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Pink background, Black hair with dots, Dark skin tone, Yellow/red checkerboard accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_063_PVR-3.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_064_aubree-2,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Magenta background, Brown wavy hair, Light skin tone, Green eyes, Purple/white accents","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_064_aubree-2.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_065_miggs-4,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Purple background, Blonde checkerboard hair pattern, Light skin tone, Blue eyes, Pink accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_065_miggs-4.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+x,lady_065_miggs,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Purple/pink gradient, Green gradient hair, Light skin tone, Blue eyes, Yellow accent","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_066_monalisa-3.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_066_monalisa-3,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Forest green background, Dark brown hair, Light skin tone, Brown eyes, Muted tones","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_067_salamander-2.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_067_salamander-2,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Gray background, White/gray styled hair, Light skin tone, Natural makeup","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_068_nikkisf-4.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_068_nikkisf-4,,,,,,,,,,,,,,"Bespoke: 24x24 grid, Terracotta background, Black hair, Light skin tone, Checkerboard collar pattern","Bespoke: Pixel art portrait matching this style exactly:
+- 24x24 grid, right-facing, unique background and accessories specific to 'lady_069_giulia.png'
+- Fixed features: Black pupils at (8,12) and (13,12), eyes at (9,12) and (14,12)
+- Black nose dot at (11,13)
+- Skin tone, hair, and props unique to the image
+- High contrast, clean edges, no anti-aliasing"
+,lady_069_giulia,,,,,,,,,,,,,,,
+,lady_070_mango,,,,,,,,,,,,,,,
+,lady_071_papaya,,,,,,,,,,,,,,,
+,lady_072_tangerine,,,,,,,,,,,,,,,
+,lady_073_mango_punk,,,,,,,,,,,,,,,
+,lady_074_melon,,,,,,,,,,,,,,,
+,lady_075_clementine,,,,,,,,,,,,,,,
+,lady_076_orange_blossom,,,,,,,,,,,,,,,
+,lady_077_pink_grapefruit,,,,,,,,,,,,,,,
+,lady_078_orange_zest,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,
+,lad_001_carbon,Portrait of a Picture.,Male,Legend,,Brick,Brown,Brown,,,,Hat,,,,
+,lad_002_cash,Portrait of a Picture. $CASH,Male,Legend,George Washington $CASH,Green,White/Grey/Green,Sunglasses,,,,,,,,
+,lad_003_chai,Portrait of a Picture.,Male,Legend,,Brown,Brown,Brown,,,,Hat,,,,
+,lad_004_silicon,Portrait of a Picture. @thinkingUSD,Male,Legend,thinkingUSD,Grey,Grey,Grey,,,,Tie,,,,
+,lad_005_copper,Portrait of a Picture. Nikola Tesla,Male,Legend,Nikola Tesla,Multi,Brown,Brown,,,,Mustache,,,,
+,lad_006_redshift,Portrait of a Picture.,Male,Legend,,Brown,Blonde,Blue,,,,,,,,
+,lad_007_titanium,Portrait of a Picture.,Male,Legend,,Grey,Black,Brown,,,,5'oclock shadow,,,,
+,lad_008_platinum,Portrait of a Picture.,Male,Legend,,Multi,Black,Multi,,,,"Face crack, Scruff",,,,
+,lad_009_steel,Portrait of a Picture.,Male,Legend,,Blue,Black/Grey/White,Brown,,,,"Scruff, Glasses, Tie",,,,
+,lad_010_aluminum,Portrait of a Picture.,Male,Legend,,Blue,Black/Grey/White,Brown,,,,"Hat, Scruff, Glasses",,,,
+,lad_011_chocolate,Portrait of a Picture.,Male,Legend,,Multi,Black/Grey,Light Brown,,,,Beard,,,,
+,lad_012_chromium,Portrait of a Picture.,Male,Legend,Sam Altman,Eggshell,Ash Brown,Blue,,,,Scruff,,,,
+,lad_013_caramel,Portrait of a Picture.,Male,Legend,Roon,Multi,Black,Black,,,,,,,,
+,lad_014_sugar,Portrait of a Picture.,Male,Legend,,Blue,Brown/Red,Blue,,,,,Alex Burkhardt,0xcaFdf598e5dd635173356DC5306F07A99760029E,,
+,lad_015_jackson,,,,,,,,,,,,,,,
+,lad_016_tungsten,,,,,,,,,,,,,,,
+,lad_017_ink,,,,,,,,,,,,,,,
+,lad_018_mandarin,,,,,,,,,,,,,,,
+,lad_019_diamond,,,,,,,,,,,,,,,
+,lad_020_gpu,,,,,,,,,,,,,,,
+,lad_021_luka,,,,,,,,,,,,,,,
+,lad_022_mellow,,,,,,,,,,,,,,,
+,lad_023_michaelabstract,,,,,,,,,,,,,,,
+,lad_024_fax1,,,,,,,,,,,,,,,
+x,lad_025_fax2,,,,,,,,,,,,,,,
+x,lad_026_sama1,,,,,,,,,,,,,,,
+x,lad_027_sama2,,,,,,,,,,,,,,,
+x,lad_028_sama3,,,,,,,,,,,,,,,
+,lad_029_famous,,,,,,,,,,,,,,,
+NEW,lad_021_x,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_022_x,,Male,,,Green,Multi,Multi,,,,,,,,
+NEW,lad_023_x-2,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_023_x-3,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_023_x-4,,Male,,,Multi,Green,Pink,,,,,,,,
+NEW,lad_023_x,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_024_x,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_025_x,,Male,,,Pink,Pink,Multi,,,,,,,,
+NEW,lad_026_chromiumabstractsalmon,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_027_chromiumabstractyellow,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_028_chromiumabstractgreen,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_029_famous-9,,Male,,,Blue,Blue,Orange,,,,,,,,
+NEW,lad_029_famous4,,Male,,,Lavender,Lavender,Pink,,,,,,,,
+NEW,lad_030_ink,,Male,,,Grey,Grey,Multi,,,,,,,,
+NEW,lad_031_fin,,Male,,,Multi,Multi,Grey,,,,,,,,
+NEW,lad_032_shaman-4,,Male,,,Pink,Pink,Pink,,,,,,,,
+NEW,lad_033_molecule-2,,Male,,,Pink,Pink,Lavender,,,,,,,,
+NEW,lad_035_JUAN,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_036_x,,Male,,,Multi,Pink,Lavender,,,,,,,,
+NEW,lad_037_aressprout,,Male,,,Pink,Pink,Pink,,,,,,,,
+NEW,lad_038_cashking-6,,Male,,,Multi,Multi,Black,,,,,,,,
+NEW,lad_039_davinci-2,,Male,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lad_040_melzarmagic,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_041_Maradona,,Male,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lad_043_jeremey,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_045_homewithkids3,,Male,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lad_046_NATE,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_050_nate-2,,Male,,,Grey,Grey,Lavender,,,,,,,,
+NEW,lad_050_nate,,Male,,,Grey,Grey,Lavender,,,,,,,,
+NEW,lad_051_DEVON-2,,Male,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lad_051_DEVON-4,,Male,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lad_054_sterling,,Male,,,Pink,Pink,Pink,,,,,,,,
+NEW,lad_054_sterlingglasses,,Male,,,Pink,Pink,Multi,,,,,,,,
+NEW,lad_054_sterlingglasses3withcrown5,,Male,,,Multi,Orange,Multi,,,,,,,,
+NEW,lad_055_Luke,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_055_Luke10,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_055_Luke3,,Male,,,Pink,Multi,Pink,,,,,,,,
+NEW,lad_055_Luke6,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_055_Luke8,,Male,,,Multi,Red,Pink,,,,,,,,
+NEW,lad_057_Hugh,,Male,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lad_057_Hugh5,,Male,,,Multi,White,Black,,,,,,,,
+NEW,lad_058_SAVVA,,Male,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lad_059_SamAScientist,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_060_bhaitradingbot2,,Male,,,Grey,Grey,Multi,,,,,,,,
+NEW,lad_061_DOPE7,,Male,,,Multi,Multi,Black,,,,,,,,
+NEW,lad_062_devox2,,Male,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lad_063_kenichi,,Male,,,Red,Multi,Multi,,,,,,,,
+NEW,lad_064_Scott,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_064_sensei,,Male,,,White,White,Lavender,,,,,,,,
+NEW,lad_066_napoli2,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_068_mayor,,Male,,,Multi,Black,Grey,,,,,,,,
+NEW,lad_070_IRAsBF2,,Male,,,Pink,Pink,Lavender,,,,,,,,
+NEW,lad_075_mmhm,,Male,,,Pink,Pink,Pink,,,,,,,,
+NEW,lad_078_btoshi,,Male,,,Pink,Black,Multi,,,,,,,,
+NEW,lad_079_ravish,,Male,,,Pink,Pink,Multi,,,,,,,,
+NEW,lad_080_fcpo,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_081_iggy2,,Male,,,Pink,Pink,Multi,,,,,,,,
+NEW,lad_086_Scooby,,Male,,,Pink,Pink,Pink,,,,,,,,
+NEW,lad_087_HEEM,,Male,,,Pink,Multi,Multi,,,,,,,,
+NEW,lad_088_Kareem,,Male,,,Multi,Multi,Grey,,,,,,,,
+NEW,lad_089_aguda,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_090_drscott,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_091_amit,,Male,,,White,Multi,Grey,,,,,,,,
+NEW,lad_092_derrick,,Male,,,Pink,Pink,Pink,,,,,,,,
+NEW,lad_093_photogee,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_094_storm,,Male,,,Multi,Multi,Brown,,,,,,,,
+NEW,lad_095_godfather,,Male,,,Multi,Multi,Multi,,,,,,,,
+NEW,lad_096_apollo,,Male,,,Multi,Black,Multi,,,,,,,,
+NEW,lad_097_drralph,,Male,,,White,White,Lavender,,,,,,,,
+NEW,lad_098_Murtaza,,Male,,,Grey,Grey,Multi,,,,,,,,
+NEW,lad_099_amenshiller,,Male,,,Pink,Pink,Multi,,,,,,,,
+NEW,lad_102_bunya,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_102_bunya2,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_102_bunya3,,Male,,,Multi,Multi,Pink,,,,,,,,
+NEW,lad_103_merheb,,Male,,,White,White,Lavender,,,,,,,,
+NEW,lad_103_merheb2,,Male,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lad_74_lc,,Male,,,Pink,Multi,Multi,,,,,,,,
+NEW,lady_052_pinksilkabstract,,Female,,,Pink,Multi,Pink,,,,,,,,
+NEW,lady_053_pepperabstract,,Female,,,Multi,Black,White,,,,,,,,
+NEW,lady_054_hazelnutabstract-3,,Female,,,Multi,Multi,Pink,,,,,,,,
+NEW,lady_055_bloodabstract,,Female,,,Multi,Multi,Multi,,,,,,,,
+NEW,lady_056_alloyabstract,,Female,,,Multi,Brown,Pink,,,,,,,,
+NEW,lady_057_bluesilkabstract,,Female,,,Multi,Multi,Multi,,,,,,,,
+NEW,lady_059_paula-5,,Female,,,Multi,Multi,Multi,,,,,,,,
+NEW,lady_079_lime_breeze,,Female,,,Orange,Brown,Multi,,,,,,,,
+NEW,lady_080_zesty_lime,,Female,,,Pink,Pink,Pink,,,,,,,,
+NEW,lady_085_IRA2,,Female,,,Multi,Multi,Lavender,,,,,,,,
+NEW,lady_086_ELENI9,,Female,,,Pink,Pink,Pink,,,,,,,,
+NEW,lady_087_feybirthday5,,Female,,,Pink,Pink,Lavender,,,,,,,,
+NEW,lady_088_r,,Female,,,Orange,Orange,Multi,,,,,,,,
+NEW,lady_090_missthang,,Female,,,Pink,Pink,Lavender,,,,,,,,
+NEW,lady_094_violetta,,Female,,,Pink,Black,Lavender,,,,,,,,
+NEW,lady_095_royalty,,Female,,,Grey,Multi,Lavender,,,,,,,,
+NEW,lady_096_yuri,,Female,,,Multi,Multi,Pink,,,,,,,,
+NEW,lady_097_dani,,Female,,,Pink,Pink,Multi,,,,,,,,
+NEW,lady_097_dani2,,Female,,,Pink,Pink,Multi,,,,,,,,
+NEW,lady_098_heyeah,,Female,,,Blue,Blue,Multi,,,,,,,,
+NEW,lady_099_VQ,,Female,,,Multi,Multi,Multi,,,,,,,,
