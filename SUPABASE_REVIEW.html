@@ -186,30 +186,53 @@
         // Initialize
         async function init() {
             try {
+                console.log('🚀 Starting initialization...');
                 setStatus('syncing', 'Loading from database...');
 
+                // Test Supabase connection first
+                console.log('Testing Supabase connection...');
+                const { data: testData, error: testError } = await supabase
+                    .from('caption_reviews')
+                    .select('count', { count: 'exact', head: true });
+
+                if (testError) {
+                    console.error('❌ Supabase connection test failed:', testError);
+                    throw new Error('Cannot connect to Supabase: ' + testError.message);
+                }
+
+                console.log('✓ Supabase connected');
+
                 // Load comprehensive data from JSON
+                console.log('Loading JSON data...');
                 const response = await fetch('comprehensive_captions_for_review.json');
                 const jsonData = await response.json();
 
                 // Reverse the order to start from the end
                 data = jsonData.reverse();
+                console.log('✓ Loaded', data.length, 'punks from JSON');
 
                 // Initialize database with all punks
+                console.log('Initializing database...');
                 await initializeDatabase();
 
                 // Load progress from database
+                console.log('Loading progress...');
                 await loadProgress();
 
-                setStatus('connected', 'Connected to cloud');
+                setStatus('connected', 'Connected to cloud ☁️');
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('main-content').style.display = 'block';
 
+                console.log('✓ Initialization complete!');
                 loadPunk(currentIndex);
             } catch (error) {
-                console.error('Init error:', error);
+                console.error('❌ Init error:', error);
                 setStatus('disconnected', 'Connection failed: ' + error.message);
-                alert('Failed to connect to database: ' + error.message);
+                document.getElementById('loading').innerHTML = `
+                    <h1 style="color: #ff6b6b;">Connection Failed</h1>
+                    <p style="margin-top: 20px; color: #e0e0e0;">${error.message}</p>
+                    <p style="margin-top: 10px; font-size: 12px; color: #888;">Check the browser console for details</p>
+                `;
             }
         }
 
@@ -266,6 +289,8 @@
         }
 
         async function loadProgress() {
+            console.log('📥 Loading progress from Supabase...');
+
             // Get all reviews from database
             const { data: reviews, error } = await supabase
                 .from('caption_reviews')
@@ -273,19 +298,34 @@
                 .order('updated_at', { ascending: false });
 
             if (error) {
-                console.error('Error loading progress:', error);
+                console.error('❌ Error loading progress:', error);
                 return;
             }
 
+            console.log('  Found', reviews.length, 'records in database');
+
             // Merge database data with local data
+            let mergedCount = 0;
             reviews.forEach(review => {
                 const punk = data.find(p => p.filename === review.filename);
                 if (punk) {
+                    // Restore ALL saved data from database
                     punk.userInput = review.user_input || '';
+                    punk.userCorrections = review.user_corrections || '';
                     punk.status = review.status || 'pending';
+                    punk.finalCaption = review.final_caption || '';
                     punk.userApproved = review.status === 'approved' || review.status === 'edited';
+
+                    // Restore color data if it was modified
+                    if (review.full_palette_15) punk.fullPalette15 = review.full_palette_15;
+                    if (review.region_analysis) punk.regionAnalysis = review.region_analysis;
+                    if (review.detected_traits) punk.detectedTraits = review.detected_traits;
+
+                    mergedCount++;
                 }
             });
+
+            console.log('  Merged', mergedCount, 'database records with local data');
 
             // Calculate stats
             stats = {
@@ -295,13 +335,19 @@
                 pending: reviews.filter(r => r.status === 'pending').length
             };
 
+            console.log('  Stats:', stats);
+
             // Find first pending punk
             const firstPending = data.findIndex(p => p.status === 'pending' || !p.status);
             if (firstPending >= 0) {
                 currentIndex = firstPending;
+                console.log('  Starting at first pending punk:', currentIndex, data[currentIndex].filename);
+            } else {
+                console.log('  No pending punks found, starting at beginning');
+                currentIndex = 0;
             }
 
-            console.log('✓ Progress loaded:', stats);
+            console.log('✅ Progress loaded successfully');
         }
 
         function setStatus(status, text) {
@@ -371,6 +417,9 @@
             const punk = data[currentIndex];
             const userCorrections = document.getElementById('user-input').value.trim();
 
+            console.log('💾 Saving edit for:', punk.filename);
+            console.log('  User corrections:', userCorrections);
+
             if (!userCorrections) {
                 alert('Type a correction first, or press A to approve!');
                 return;
@@ -379,29 +428,36 @@
             setStatus('syncing', 'Saving to cloud...');
 
             // Merge AI caption with user corrections to create final caption
-            // User corrections are appended or override specific traits
             const finalCaption = mergeCaptions(punk.aiComprehensiveCaption, userCorrections, punk);
+            console.log('  Final caption:', finalCaption);
 
-            const { error } = await supabase
+            const updateData = {
+                status: 'edited',
+                user_input: userCorrections,
+                user_corrections: userCorrections,
+                final_caption: finalCaption,
+                full_palette_15: punk.fullPalette15 || [],
+                region_analysis: punk.regionAnalysis || {},
+                detected_traits: punk.detectedTraits || {},
+                updated_at: new Date().toISOString()
+            };
+
+            console.log('  Sending to Supabase:', updateData);
+
+            const { data: result, error } = await supabase
                 .from('caption_reviews')
-                .update({
-                    status: 'edited',
-                    user_input: userCorrections,
-                    user_corrections: userCorrections,
-                    final_caption: finalCaption,
-                    full_palette_15: punk.fullPalette15,
-                    region_analysis: punk.regionAnalysis,
-                    detected_traits: punk.detectedTraits,
-                    updated_at: new Date().toISOString()
-                })
-                .eq('filename', punk.filename);
+                .update(updateData)
+                .eq('filename', punk.filename)
+                .select();
 
             if (error) {
-                console.error('Save error:', error);
+                console.error('❌ Save error:', error);
                 alert('Failed to save: ' + error.message);
                 setStatus('disconnected', 'Save failed');
                 return;
             }
+
+            console.log('✅ Saved successfully to Supabase:', result);
 
             punk.status = 'edited';
             punk.userInput = userCorrections;
@@ -411,7 +467,7 @@
             stats.edited++;
             stats.pending--;
 
-            setStatus('connected', 'Connected to cloud');
+            setStatus('connected', 'Connected to cloud ☁️');
             showSaveIndicator('☁️ Edited & synced');
             next();
         }

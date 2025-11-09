@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Supabase</title></head>
+<body style="background: #0a0a0a; color: #00ff88; font-family: monospace; padding: 50px;">
+<h1>Testing Supabase Connection</h1>
+<div id="output"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const output = document.getElementById('output');
+
+const SUPABASE_URL = 'https://qwvncbcphuyobijakdsr.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3dm5jYmNwaHV5b2JpamFrZHNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI3MTA4NDgsImV4cCI6MjA3ODI4Njg0OH0.cE00n2favc7IK7fOwzCyDfTJK0tMntftb9gi_xfjpQ4';
+
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+async function runTests() {
+    output.innerHTML += '<h2>Test 1: Can we connect?</h2>';
+
+    try {
+        const { count, error } = await supabase
+            .from('caption_reviews')
+            .select('*', { count: 'exact', head: true });
+
+        if (error) {
+            output.innerHTML += `<p style="color: red;">❌ Error: ${error.message}</p>`;
+            console.error('Connection error:', error);
+        } else {
+            output.innerHTML += `<p>✅ Connected! Found ${count} records</p>`;
+        }
+    } catch (e) {
+        output.innerHTML += `<p style="color: red;">❌ Exception: ${e.message}</p>`;
+        console.error('Exception:', e);
+    }
+
+    output.innerHTML += '<h2>Test 2: Can we read a record?</h2>';
+
+    try {
+        const { data, error } = await supabase
+            .from('caption_reviews')
+            .select('*')
+            .limit(1);
+
+        if (error) {
+            output.innerHTML += `<p style="color: red;">❌ Error: ${error.message}</p>`;
+            console.error('Read error:', error);
+        } else {
+            output.innerHTML += `<p>✅ Read successful!</p>`;
+            output.innerHTML += `<pre>${JSON.stringify(data[0], null, 2)}</pre>`;
+        }
+    } catch (e) {
+        output.innerHTML += `<p style="color: red;">❌ Exception: ${e.message}</p>`;
+        console.error('Exception:', e);
+    }
+
+    output.innerHTML += '<h2>Test 3: Can we update a record?</h2>';
+
+    try {
+        const { data: firstRecord } = await supabase
+            .from('caption_reviews')
+            .select('filename')
+            .limit(1)
+            .single();
+
+        output.innerHTML += `<p>Testing update on: ${firstRecord.filename}</p>`;
+
+        const { data, error } = await supabase
+            .from('caption_reviews')
+            .update({
+                user_input: 'TEST UPDATE',
+                user_corrections: 'TEST CORRECTION',
+                status: 'edited'
+            })
+            .eq('filename', firstRecord.filename)
+            .select();
+
+        if (error) {
+            output.innerHTML += `<p style="color: red;">❌ Update error: ${error.message}</p>`;
+            console.error('Update error:', error);
+        } else {
+            output.innerHTML += `<p>✅ Update successful!</p>`;
+            output.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        }
+    } catch (e) {
+        output.innerHTML += `<p style="color: red;">❌ Exception: ${e.message}</p>`;
+        console.error('Exception:', e);
+    }
+}
+
+runTests();
+</script>
+</body>
+</html>
