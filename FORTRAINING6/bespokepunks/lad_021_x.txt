@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, bright green striped/gradient background (#94eb9d, #14c833), dark grey/black hair, brown eyes, light/pink skin, wearing dark helmet with white X logo, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, bright green striped/pixelated gradient background with stepped color transitions (#94eb9d, #14c833), dark grey/black hair, brown eyes, light/pink skin, wearing dark helmet with white X logo, sharp pixel edges, hard color borders

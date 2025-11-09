@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, red solid background (#a61114), white/grey wavy with red and white checkered bow hair, brown eyes, light/pink skin, red and white checkered bow, tan/beige checkered collar, red lips, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, red solid background (#a61114), white/grey wavy with red and white checkered bow hair, brown eyes, light/pink skin, red and white checkered bow, tan/beige checkered collar, red lips, sharp pixel edges, hard color borders

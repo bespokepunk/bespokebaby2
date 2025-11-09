@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, blue solid background (#6072ff), black/grey with blue tones hair, brown eyes, light/grey skin, scruff, glasses, tie, suit with tie, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, blue solid background (#6072ff), black/grey with blue tones hair, brown eyes, light/grey skin, scruff, glasses, tie, suit with tie, sharp pixel edges, hard color borders

@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, tan/peach to orange/yellow split background (#ffe7cd, #ff8c61, #ffcf72), brown checkered/pixelated long hair, cyan/teal eyes, light skin, red and white checkered collar, pink lips, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, tan/peach to orange/yellow split background (#ffe7cd, #ff8c61, #ffcf72), brown checkered/pixelated long hair, cyan/teal eyes, light skin, red and white checkered collar, pink lips, sharp pixel edges, hard color borders

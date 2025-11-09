@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, cyan to pink gradient with pink splatter effects gradient background (#37dff9, #040f61), black hair, light grey/blue (zombie-like) eyes, pale white/blue (zombie-like) skin, white top, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, cyan to pink gradient with pink splatter effects pixelated gradient background with stepped color transitions (#37dff9, #040f61), black hair, light grey/blue (zombie-like) eyes, pale white/blue (zombie-like) skin, white top, sharp pixel edges, hard color borders

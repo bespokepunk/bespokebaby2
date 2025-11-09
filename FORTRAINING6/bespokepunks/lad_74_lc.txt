@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, grey solid background (#b3b3b3), black/grey hair, grey eyes, grey/dark skin, white top, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, grey solid background (#b3b3b3), black/grey hair, grey eyes, grey/dark skin, white top, sharp pixel edges, hard color borders

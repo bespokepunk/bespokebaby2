@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, tan/beige solid background (#dacdbc), grey/blue pixelated with visor hair, covered by visor, tan/brown skin, grey pixelated visor/headband, colorful checkered collar (green, cyan, yellow, red, magenta), pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, tan/beige solid background (#dacdbc), grey/blue pixelated with visor hair, covered by visor, tan/brown skin, grey pixelated visor/headband, colorful checkered collar (green, cyan, yellow, red, magenta), sharp pixel edges, hard color borders

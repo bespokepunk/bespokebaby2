@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, cyan/turquoise solid background (#72c2cb), dark grey/black spiky pixelated hair, covered by blue visor, pale grey/white skin, blue visor/glasses, white top, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, cyan/turquoise solid background (#72c2cb), dark grey/black spiky pixelated hair, covered by blue visor, pale grey/white skin, blue visor/glasses, white top, sharp pixel edges, hard color borders

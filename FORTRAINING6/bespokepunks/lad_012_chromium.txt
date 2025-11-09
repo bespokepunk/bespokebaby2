@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, light grey/eggshell gradient background (#ebe6ea), ash grey/brown hair, blue eyes, pale/pink skin, scruff, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, light grey/eggshell pixelated gradient background with stepped color transitions (#ebe6ea), ash grey/brown hair, blue eyes, pale/pink skin, scruff, sharp pixel edges, hard color borders

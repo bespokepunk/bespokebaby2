@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, blue gradient gradient background (#0033cc, #00ccff), dark brown hair, covered by black sunglasses, brown/dark skin, beard, white collar, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, blue gradient pixelated gradient background with stepped color transitions (#0033cc, #00ccff), dark brown hair, covered by black sunglasses, brown/dark skin, beard, white collar, sharp pixel edges, hard color borders

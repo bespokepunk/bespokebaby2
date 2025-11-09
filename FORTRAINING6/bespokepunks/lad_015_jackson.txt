@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, bright green solid background (#6ae745), white/grey fluffy (zombie-like) hair, covered by black sunglasses, pale grey/white skin, grey/black suit, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, bright green solid background (#6ae745), white/grey fluffy (zombie-like) hair, covered by black sunglasses, pale grey/white skin, grey/black suit, sharp pixel edges, hard color borders

@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, light grey/beige solid background (#ebe6ea), brown/black hair, brown eyes, dark/brown skin, black beard, yellow/gold visor/headband, tan/brown checkered collar, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, light grey/beige solid background (#ebe6ea), brown/black hair, brown eyes, dark/brown skin, black beard, yellow/gold visor/headband, tan/brown checkered collar, sharp pixel edges, hard color borders

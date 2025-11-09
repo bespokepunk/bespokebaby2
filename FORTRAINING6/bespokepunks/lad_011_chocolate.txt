@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, cream to coral gradient gradient background (#f2f1d4, #ff7162), black/grey hair, brown eyes, tan/brown skin, beard, brown checkered collar, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, cream to coral gradient pixelated gradient background with stepped color transitions (#f2f1d4, #ff7162), black/grey hair, brown eyes, tan/brown skin, beard, brown checkered collar, sharp pixel edges, hard color borders

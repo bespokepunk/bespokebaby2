@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, dark grey solid background (#52505c), brown/black hair, blue eyes, brown/tan skin, white collar, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, dark grey solid background (#52505c), brown/black hair, blue eyes, brown/tan skin, white collar, sharp pixel edges, hard color borders

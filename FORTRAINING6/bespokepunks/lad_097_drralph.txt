@@ -1,1 +1,1 @@
-bespoke, 24x24 pixel art portrait, light beige/white solid background (#ffffff), brown curly hair, cyan/teal eyes, light skin, brown top, pure pixel art with no gradients or anti-aliasing
+pixel art, 24x24, portrait of bespoke punk, light beige/white solid background (#ffffff), brown curly hair, cyan/teal eyes, light skin, brown top, sharp pixel edges, hard color borders
