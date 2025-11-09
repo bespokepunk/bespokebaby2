@@ -67,7 +67,7 @@ def format_color_palette_html(palette):
     return html
 
 
-def generate_bespoke_punk(input_image, num_steps, guidance_scale):
+def generate_bespoke_punk(input_image):
     """Main generation function"""
 
     if input_image is None:
@@ -109,8 +109,8 @@ def generate_bespoke_punk(input_image, num_steps, guidance_scale):
 - Top 5 Colors: {', '.join(metadata['color_palette'])}
         """
 
-        # Step 3: Generate Bespoke Punk (safety checker disabled by default)
-        image_512 = gen.generate(prompt, num_steps, guidance_scale)
+        # Step 3: Generate Bespoke Punk with optimal settings (30 steps, 7.5 guidance)
+        image_512 = gen.generate(prompt, num_inference_steps=30, guidance_scale=7.5)
         image_24 = gen.downscale_to_24x24(image_512)
 
         # Clean up
@@ -142,25 +142,6 @@ def create_ui():
                     label="Upload Your Image",
                     type="pil",
                     height=300
-                )
-
-                gr.Markdown("### ⚙️ Settings")
-                num_steps = gr.Slider(
-                    minimum=20,
-                    maximum=50,
-                    value=30,
-                    step=1,
-                    label="Inference Steps",
-                    info="More steps = higher quality (slower)"
-                )
-
-                guidance_scale = gr.Slider(
-                    minimum=5.0,
-                    maximum=15.0,
-                    value=7.5,
-                    step=0.5,
-                    label="Guidance Scale",
-                    info="How closely to follow the prompt"
                 )
 
                 generate_btn = gr.Button(
@@ -212,7 +193,7 @@ def create_ui():
         # Connect the button
         generate_btn.click(
             fn=generate_bespoke_punk,
-            inputs=[input_image, num_steps, guidance_scale],
+            inputs=[input_image],
             outputs=[output_512, output_24, metadata_display, palette_display]
         )
 
@@ -220,10 +201,10 @@ def create_ui():
         gr.Markdown("### 📸 Try these examples:")
         gr.Examples(
             examples=[
-                ["FORTRAINING6/bespokepunks/lad_001_carbon.png", 30, 7.5],
-                ["FORTRAINING6/bespokepunks/lady_001_hazelnut.png", 30, 7.5],
+                ["FORTRAINING6/bespokepunks/lad_001_carbon.png"],
+                ["FORTRAINING6/bespokepunks/lady_001_hazelnut.png"],
             ],
-            inputs=[input_image, num_steps, guidance_scale],
+            inputs=[input_image],
             outputs=[output_512, output_24, metadata_display, palette_display],
             fn=generate_bespoke_punk,
             cache_examples=False
