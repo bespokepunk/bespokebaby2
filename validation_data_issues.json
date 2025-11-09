@@ -1,0 +1,2162 @@
+[
+  {
+    "filename": "lad_001_carbon.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_001_carbon.png",
+    "palette": [
+      {
+        "hex": "#a76857",
+        "rgb": [
+          167,
+          104,
+          87
+        ],
+        "percentage": 33.2
+      },
+      {
+        "hex": "#c06148",
+        "rgb": [
+          192,
+          97,
+          72
+        ],
+        "percentage": 32.8
+      },
+      {
+        "hex": "#b27f60",
+        "rgb": [
+          178,
+          127,
+          96
+        ],
+        "percentage": 11.6
+      },
+      {
+        "hex": "#434b4e",
+        "rgb": [
+          67,
+          75,
+          78
+        ],
+        "percentage": 7.6
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 5.7
+      },
+      {
+        "hex": "#353b3d",
+        "rgb": [
+          53,
+          59,
+          61
+        ],
+        "percentage": 4.2
+      },
+      {
+        "hex": "#421901",
+        "rgb": [
+          66,
+          25,
+          1
+        ],
+        "percentage": 1.0
+      },
+      {
+        "hex": "#66665a",
+        "rgb": [
+          102,
+          102,
+          90
+        ],
+        "percentage": 1.0
+      },
+      {
+        "hex": "#281002",
+        "rgb": [
+          40,
+          16,
+          2
+        ],
+        "percentage": 0.7
+      },
+      {
+        "hex": "#a17d33",
+        "rgb": [
+          161,
+          125,
+          51
+        ],
+        "percentage": 0.5
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, dark gray fluffy voluminous hair, wearing dark gray sunglasses, light skin, brown solid background (#a76857), red clothing with black accents, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "dark",
+      "hairStyle": "gray fluffy voluminous",
+      "eyeColor": "",
+      "skinTone": "light",
+      "backgroundColor": "brown",
+      "backgroundHex": "#a76857",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_013_caramel.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_013_caramel.png",
+    "palette": [
+      {
+        "hex": "#030500",
+        "rgb": [
+          3,
+          5,
+          0
+        ],
+        "percentage": 24.5
+      },
+      {
+        "hex": "#f3f3f3",
+        "rgb": [
+          243,
+          243,
+          243
+        ],
+        "percentage": 24.1
+      },
+      {
+        "hex": "#ce4b26",
+        "rgb": [
+          206,
+          75,
+          38
+        ],
+        "percentage": 15.6
+      },
+      {
+        "hex": "#1c467e",
+        "rgb": [
+          28,
+          70,
+          126
+        ],
+        "percentage": 14.2
+      },
+      {
+        "hex": "#a5905b",
+        "rgb": [
+          165,
+          144,
+          91
+        ],
+        "percentage": 10.8
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 4.3
+      },
+      {
+        "hex": "#1e3bb3",
+        "rgb": [
+          30,
+          59,
+          179
+        ],
+        "percentage": 2.3
+      },
+      {
+        "hex": "#22397d",
+        "rgb": [
+          34,
+          57,
+          125
+        ],
+        "percentage": 2.1
+      },
+      {
+        "hex": "#3a3527",
+        "rgb": [
+          58,
+          53,
+          39
+        ],
+        "percentage": 1.0
+      },
+      {
+        "hex": "#c5c16c",
+        "rgb": [
+          197,
+          193,
+          108
+        ],
+        "percentage": 1.0
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long ponytail black hair, wearing black sunglasses, white earrings, dark skin, white solid background (#f3f3f3), red clothing with dark blue accents, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "ponytail black",
+      "eyeColor": "",
+      "skinTone": "dark",
+      "backgroundColor": "white",
+      "backgroundHex": "#f3f3f3",
+      "accessories": "sunglasses, earrings"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_021_x.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_021_x.png",
+    "palette": [
+      {
+        "hex": "#1f3040",
+        "rgb": [
+          31,
+          48,
+          64
+        ],
+        "percentage": 8.7
+      },
+      {
+        "hex": "#f4d0c2",
+        "rgb": [
+          244,
+          208,
+          194
+        ],
+        "percentage": 8.7
+      },
+      {
+        "hex": "#94eb9d",
+        "rgb": [
+          148,
+          235,
+          157
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#84e88e",
+        "rgb": [
+          132,
+          232,
+          142
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#14c833",
+        "rgb": [
+          20,
+          200,
+          51
+        ],
+        "percentage": 8.2
+      },
+      {
+        "hex": "#2ee152",
+        "rgb": [
+          46,
+          225,
+          82
+        ],
+        "percentage": 8.0
+      },
+      {
+        "hex": "#66e979",
+        "rgb": [
+          102,
+          233,
+          121
+        ],
+        "percentage": 7.6
+      },
+      {
+        "hex": "#49e963",
+        "rgb": [
+          73,
+          233,
+          99
+        ],
+        "percentage": 6.9
+      },
+      {
+        "hex": "#59ea85",
+        "rgb": [
+          89,
+          234,
+          133
+        ],
+        "percentage": 4.5
+      },
+      {
+        "hex": "#50e96a",
+        "rgb": [
+          80,
+          233,
+          106
+        ],
+        "percentage": 4.5
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long afro dark blue hair, wearing dark gray sunglasses, green hat, light skin, green solid background (#14c833), cyan clothing with cyan accents, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro dark blue",
+      "eyeColor": "",
+      "skinTone": "light",
+      "backgroundColor": "green",
+      "backgroundHex": "#14c833",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_030_ink.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_030_ink.png",
+    "palette": [
+      {
+        "hex": "#5e5c5f",
+        "rgb": [
+          94,
+          92,
+          95
+        ],
+        "percentage": 54.7
+      },
+      {
+        "hex": "#8e543c",
+        "rgb": [
+          142,
+          84,
+          60
+        ],
+        "percentage": 13.0
+      },
+      {
+        "hex": "#2b2b2b",
+        "rgb": [
+          43,
+          43,
+          43
+        ],
+        "percentage": 7.8
+      },
+      {
+        "hex": "#171717",
+        "rgb": [
+          23,
+          23,
+          23
+        ],
+        "percentage": 5.0
+      },
+      {
+        "hex": "#252525",
+        "rgb": [
+          37,
+          37,
+          37
+        ],
+        "percentage": 4.3
+      },
+      {
+        "hex": "#36312b",
+        "rgb": [
+          54,
+          49,
+          43
+        ],
+        "percentage": 4.0
+      },
+      {
+        "hex": "#272727",
+        "rgb": [
+          39,
+          39,
+          39
+        ],
+        "percentage": 3.6
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 1.6
+      },
+      {
+        "hex": "#c3a59a",
+        "rgb": [
+          195,
+          165,
+          154
+        ],
+        "percentage": 1.4
+      },
+      {
+        "hex": "#1c1c1c",
+        "rgb": [
+          28,
+          28,
+          28
+        ],
+        "percentage": 0.9
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, black fluffy medium hair, wearing red sunglasses, dark skin, dark gray solid background (#5e5c5f), red clothing, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "black",
+      "hairStyle": "fluffy medium",
+      "eyeColor": "",
+      "skinTone": "dark",
+      "backgroundColor": "dark gray",
+      "backgroundHex": "#5e5c5f",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_031_fin.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_031_fin.png",
+    "palette": [
+      {
+        "hex": "#051e09",
+        "rgb": [
+          5,
+          30,
+          9
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#09250c",
+        "rgb": [
+          9,
+          37,
+          12
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#18d53d",
+        "rgb": [
+          24,
+          213,
+          61
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#35e151",
+        "rgb": [
+          53,
+          225,
+          81
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#dcbeb6",
+        "rgb": [
+          220,
+          190,
+          182
+        ],
+        "percentage": 8.0
+      },
+      {
+        "hex": "#12c62f",
+        "rgb": [
+          18,
+          198,
+          47
+        ],
+        "percentage": 6.9
+      },
+      {
+        "hex": "#062b0c",
+        "rgb": [
+          6,
+          43,
+          12
+        ],
+        "percentage": 6.2
+      },
+      {
+        "hex": "#12b21e",
+        "rgb": [
+          18,
+          178,
+          30
+        ],
+        "percentage": 4.2
+      },
+      {
+        "hex": "#08350c",
+        "rgb": [
+          8,
+          53,
+          12
+        ],
+        "percentage": 3.8
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 3.5
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long ponytail black hair, wearing black sunglasses, green hat, light/tan skin, green solid background (#35e151), dark gray clothing with orange accents, white highlights, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "ponytail black",
+      "eyeColor": "",
+      "skinTone": "light/tan",
+      "backgroundColor": "green",
+      "backgroundHex": "#35e151",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_055_Luke3.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_055_Luke3.png",
+    "palette": [
+      {
+        "hex": "#9b6cde",
+        "rgb": [
+          155,
+          108,
+          222
+        ],
+        "percentage": 26.6
+      },
+      {
+        "hex": "#7f4dca",
+        "rgb": [
+          127,
+          77,
+          202
+        ],
+        "percentage": 22.9
+      },
+      {
+        "hex": "#2d2d2d",
+        "rgb": [
+          45,
+          45,
+          45
+        ],
+        "percentage": 10.2
+      },
+      {
+        "hex": "#d8b5a2",
+        "rgb": [
+          216,
+          181,
+          162
+        ],
+        "percentage": 8.7
+      },
+      {
+        "hex": "#343434",
+        "rgb": [
+          52,
+          52,
+          52
+        ],
+        "percentage": 4.7
+      },
+      {
+        "hex": "#bc9b8b",
+        "rgb": [
+          188,
+          155,
+          139
+        ],
+        "percentage": 3.3
+      },
+      {
+        "hex": "#797b87",
+        "rgb": [
+          121,
+          123,
+          135
+        ],
+        "percentage": 3.1
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 2.4
+      },
+      {
+        "hex": "#44413e",
+        "rgb": [
+          68,
+          65,
+          62
+        ],
+        "percentage": 2.3
+      },
+      {
+        "hex": "#bfab8c",
+        "rgb": [
+          191,
+          171,
+          140
+        ],
+        "percentage": 1.9
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long afro black hair, wearing black sunglasses, brown earrings, light/tan skin, purple gradient background (#7f4dca), orange clothing with brown accents, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro black",
+      "eyeColor": "",
+      "skinTone": "light/tan",
+      "backgroundColor": "purple gradient",
+      "backgroundHex": "#7f4dca",
+      "accessories": "sunglasses, earrings"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_068_mayor.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_068_mayor.png",
+    "palette": [
+      {
+        "hex": "#5678a9",
+        "rgb": [
+          86,
+          120,
+          169
+        ],
+        "percentage": 34.7
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 25.7
+      },
+      {
+        "hex": "#e0ac97",
+        "rgb": [
+          224,
+          172,
+          151
+        ],
+        "percentage": 4.5
+      },
+      {
+        "hex": "#e77a4d",
+        "rgb": [
+          231,
+          122,
+          77
+        ],
+        "percentage": 4.3
+      },
+      {
+        "hex": "#c69986",
+        "rgb": [
+          198,
+          153,
+          134
+        ],
+        "percentage": 4.2
+      },
+      {
+        "hex": "#e36f42",
+        "rgb": [
+          227,
+          111,
+          66
+        ],
+        "percentage": 4.0
+      },
+      {
+        "hex": "#e26e3a",
+        "rgb": [
+          226,
+          110,
+          58
+        ],
+        "percentage": 3.3
+      },
+      {
+        "hex": "#ec7a50",
+        "rgb": [
+          236,
+          122,
+          80
+        ],
+        "percentage": 3.0
+      },
+      {
+        "hex": "#e67143",
+        "rgb": [
+          230,
+          113,
+          67
+        ],
+        "percentage": 1.7
+      },
+      {
+        "hex": "#4a2811",
+        "rgb": [
+          74,
+          40,
+          17
+        ],
+        "percentage": 1.7
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long afro black hair, wearing red sunglasses, brown skin, blue gradient background (#5678a9), orange clothing with orange accents, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro black",
+      "eyeColor": "",
+      "skinTone": "brown",
+      "backgroundColor": "blue gradient",
+      "backgroundHex": "#5678a9",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_078_btoshi.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_078_btoshi.png",
+    "palette": [
+      {
+        "hex": "#a5a5a7",
+        "rgb": [
+          165,
+          165,
+          167
+        ],
+        "percentage": 51.9
+      },
+      {
+        "hex": "#171516",
+        "rgb": [
+          23,
+          21,
+          22
+        ],
+        "percentage": 15.8
+      },
+      {
+        "hex": "#8f6046",
+        "rgb": [
+          143,
+          96,
+          70
+        ],
+        "percentage": 8.5
+      },
+      {
+        "hex": "#393335",
+        "rgb": [
+          57,
+          51,
+          53
+        ],
+        "percentage": 2.8
+      },
+      {
+        "hex": "#724d3a",
+        "rgb": [
+          114,
+          77,
+          58
+        ],
+        "percentage": 2.1
+      },
+      {
+        "hex": "#2a2927",
+        "rgb": [
+          42,
+          41,
+          39
+        ],
+        "percentage": 1.9
+      },
+      {
+        "hex": "#302221",
+        "rgb": [
+          48,
+          34,
+          33
+        ],
+        "percentage": 1.6
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 1.4
+      },
+      {
+        "hex": "#272324",
+        "rgb": [
+          39,
+          35,
+          36
+        ],
+        "percentage": 1.4
+      },
+      {
+        "hex": "#332a2b",
+        "rgb": [
+          51,
+          42,
+          43
+        ],
+        "percentage": 1.4
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long afro black hair, wearing black sunglasses, dark skin, light gray solid background (#a5a5a7), red clothing, white highlights, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro black",
+      "eyeColor": "",
+      "skinTone": "dark",
+      "backgroundColor": "light gray",
+      "backgroundHex": "#a5a5a7",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_087_HEEM.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_087_HEEM.png",
+    "palette": [
+      {
+        "hex": "#e4dcc7",
+        "rgb": [
+          228,
+          220,
+          199
+        ],
+        "percentage": 58.7
+      },
+      {
+        "hex": "#774d37",
+        "rgb": [
+          119,
+          77,
+          55
+        ],
+        "percentage": 12.8
+      },
+      {
+        "hex": "#524d49",
+        "rgb": [
+          82,
+          77,
+          73
+        ],
+        "percentage": 6.9
+      },
+      {
+        "hex": "#40362a",
+        "rgb": [
+          64,
+          54,
+          42
+        ],
+        "percentage": 4.9
+      },
+      {
+        "hex": "#392816",
+        "rgb": [
+          57,
+          40,
+          22
+        ],
+        "percentage": 4.0
+      },
+      {
+        "hex": "#252628",
+        "rgb": [
+          37,
+          38,
+          40
+        ],
+        "percentage": 3.1
+      },
+      {
+        "hex": "#42332c",
+        "rgb": [
+          66,
+          51,
+          44
+        ],
+        "percentage": 1.6
+      },
+      {
+        "hex": "#679885",
+        "rgb": [
+          103,
+          152,
+          133
+        ],
+        "percentage": 1.2
+      },
+      {
+        "hex": "#5b6cb2",
+        "rgb": [
+          91,
+          108,
+          178
+        ],
+        "percentage": 1.0
+      },
+      {
+        "hex": "#7aada6",
+        "rgb": [
+          122,
+          173,
+          166
+        ],
+        "percentage": 1.0
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long afro brown hair, wearing red sunglasses, white earrings, brown skin, white solid background (#e4dcc7), red clothing with dark gray accents, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro brown",
+      "eyeColor": "",
+      "skinTone": "brown",
+      "backgroundColor": "white",
+      "backgroundHex": "#e4dcc7",
+      "accessories": "sunglasses, earrings"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_089_aguda.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_089_aguda.png",
+    "palette": [
+      {
+        "hex": "#1f1f1f",
+        "rgb": [
+          31,
+          31,
+          31
+        ],
+        "percentage": 65.6
+      },
+      {
+        "hex": "#353535",
+        "rgb": [
+          53,
+          53,
+          53
+        ],
+        "percentage": 13.9
+      },
+      {
+        "hex": "#0e0e0e",
+        "rgb": [
+          14,
+          14,
+          14
+        ],
+        "percentage": 11.5
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 4.9
+      },
+      {
+        "hex": "#2b2b2b",
+        "rgb": [
+          43,
+          43,
+          43
+        ],
+        "percentage": 1.2
+      },
+      {
+        "hex": "#a3a3a3",
+        "rgb": [
+          163,
+          163,
+          163
+        ],
+        "percentage": 1.2
+      },
+      {
+        "hex": "#1b1b1b",
+        "rgb": [
+          27,
+          27,
+          27
+        ],
+        "percentage": 0.5
+      },
+      {
+        "hex": "#1a1a1a",
+        "rgb": [
+          26,
+          26,
+          26
+        ],
+        "percentage": 0.5
+      },
+      {
+        "hex": "#515151",
+        "rgb": [
+          81,
+          81,
+          81
+        ],
+        "percentage": 0.3
+      },
+      {
+        "hex": "#e4e4e4",
+        "rgb": [
+          228,
+          228,
+          228
+        ],
+        "percentage": 0.3
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long slicked_back black hair, wearing dark gray sunglasses, brown skin, black solid background (#1f1f1f), dark gray clothing, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "slicked_back black",
+      "eyeColor": "",
+      "skinTone": "brown",
+      "backgroundColor": "black",
+      "backgroundHex": "#1f1f1f",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_095_godfather.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_095_godfather.png",
+    "palette": [
+      {
+        "hex": "#52505c",
+        "rgb": [
+          82,
+          80,
+          92
+        ],
+        "percentage": 66.3
+      },
+      {
+        "hex": "#6c4943",
+        "rgb": [
+          108,
+          73,
+          67
+        ],
+        "percentage": 11.6
+      },
+      {
+        "hex": "#291714",
+        "rgb": [
+          41,
+          23,
+          20
+        ],
+        "percentage": 4.3
+      },
+      {
+        "hex": "#2b181c",
+        "rgb": [
+          43,
+          24,
+          28
+        ],
+        "percentage": 4.3
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 3.6
+      },
+      {
+        "hex": "#231d23",
+        "rgb": [
+          35,
+          29,
+          35
+        ],
+        "percentage": 2.1
+      },
+      {
+        "hex": "#251a19",
+        "rgb": [
+          37,
+          26,
+          25
+        ],
+        "percentage": 1.0
+      },
+      {
+        "hex": "#2e1e1f",
+        "rgb": [
+          46,
+          30,
+          31
+        ],
+        "percentage": 1.0
+      },
+      {
+        "hex": "#3a2322",
+        "rgb": [
+          58,
+          35,
+          34
+        ],
+        "percentage": 1.0
+      },
+      {
+        "hex": "#dde3f3",
+        "rgb": [
+          221,
+          227,
+          243
+        ],
+        "percentage": 1.0
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, black pixelated medium hair, wearing red sunglasses, brown skin, dark gray solid background (#52505c), red clothing, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "black",
+      "hairStyle": "pixelated medium",
+      "eyeColor": "",
+      "skinTone": "brown",
+      "backgroundColor": "dark gray",
+      "backgroundHex": "#52505c",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_099_amenshiller.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_099_amenshiller.png",
+    "palette": [
+      {
+        "hex": "#b3b0b0",
+        "rgb": [
+          179,
+          176,
+          176
+        ],
+        "percentage": 64.1
+      },
+      {
+        "hex": "#8d573d",
+        "rgb": [
+          141,
+          87,
+          61
+        ],
+        "percentage": 13.9
+      },
+      {
+        "hex": "#eae8e9",
+        "rgb": [
+          234,
+          232,
+          233
+        ],
+        "percentage": 3.8
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 3.0
+      },
+      {
+        "hex": "#281e1f",
+        "rgb": [
+          40,
+          30,
+          31
+        ],
+        "percentage": 2.6
+      },
+      {
+        "hex": "#342a2b",
+        "rgb": [
+          52,
+          42,
+          43
+        ],
+        "percentage": 1.9
+      },
+      {
+        "hex": "#3a2f2b",
+        "rgb": [
+          58,
+          47,
+          43
+        ],
+        "percentage": 1.7
+      },
+      {
+        "hex": "#29201b",
+        "rgb": [
+          41,
+          32,
+          27
+        ],
+        "percentage": 1.4
+      },
+      {
+        "hex": "#463d38",
+        "rgb": [
+          70,
+          61,
+          56
+        ],
+        "percentage": 0.9
+      },
+      {
+        "hex": "#190f10",
+        "rgb": [
+          25,
+          15,
+          16
+        ],
+        "percentage": 0.7
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long afro black hair, wearing red sunglasses, dark skin, light gray solid background (#b3b0b0), red clothing, white highlights, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro black",
+      "eyeColor": "",
+      "skinTone": "dark",
+      "backgroundColor": "light gray",
+      "backgroundHex": "#b3b0b0",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_105_inkspired.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_105_inkspired.png",
+    "palette": [
+      {
+        "hex": "#815c41",
+        "rgb": [
+          129,
+          92,
+          65
+        ],
+        "percentage": 10.6
+      },
+      {
+        "hex": "#1637a0",
+        "rgb": [
+          22,
+          55,
+          160
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#3ac3f1",
+        "rgb": [
+          58,
+          195,
+          241
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#42ccfa",
+        "rgb": [
+          66,
+          204,
+          250
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#64d3f8",
+        "rgb": [
+          100,
+          211,
+          248
+        ],
+        "percentage": 8.3
+      },
+      {
+        "hex": "#1739a5",
+        "rgb": [
+          23,
+          57,
+          165
+        ],
+        "percentage": 8.2
+      },
+      {
+        "hex": "#154fb3",
+        "rgb": [
+          21,
+          79,
+          179
+        ],
+        "percentage": 7.8
+      },
+      {
+        "hex": "#333333",
+        "rgb": [
+          51,
+          51,
+          51
+        ],
+        "percentage": 5.2
+      },
+      {
+        "hex": "#125cbb",
+        "rgb": [
+          18,
+          92,
+          187
+        ],
+        "percentage": 4.5
+      },
+      {
+        "hex": "#423e3d",
+        "rgb": [
+          66,
+          62,
+          61
+        ],
+        "percentage": 4.0
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long afro dark gray hair, wearing red sunglasses, blue earrings, brown skin, purple solid background (#64d3f8), blue clothing with red accents, white highlights, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro dark gray",
+      "eyeColor": "",
+      "skinTone": "brown",
+      "backgroundColor": "purple",
+      "backgroundHex": "#64d3f8",
+      "accessories": "sunglasses, earrings"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_106_sultan.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_106_sultan.png",
+    "palette": [
+      {
+        "hex": "#0dd57f",
+        "rgb": [
+          13,
+          213,
+          127
+        ],
+        "percentage": 58.2
+      },
+      {
+        "hex": "#071019",
+        "rgb": [
+          7,
+          16,
+          25
+        ],
+        "percentage": 15.8
+      },
+      {
+        "hex": "#212a31",
+        "rgb": [
+          33,
+          42,
+          49
+        ],
+        "percentage": 6.6
+      },
+      {
+        "hex": "#907b76",
+        "rgb": [
+          144,
+          123,
+          118
+        ],
+        "percentage": 4.7
+      },
+      {
+        "hex": "#304153",
+        "rgb": [
+          48,
+          65,
+          83
+        ],
+        "percentage": 4.2
+      },
+      {
+        "hex": "#536370",
+        "rgb": [
+          83,
+          99,
+          112
+        ],
+        "percentage": 3.0
+      },
+      {
+        "hex": "#58697b",
+        "rgb": [
+          88,
+          105,
+          123
+        ],
+        "percentage": 1.7
+      },
+      {
+        "hex": "#1e272e",
+        "rgb": [
+          30,
+          39,
+          46
+        ],
+        "percentage": 1.7
+      },
+      {
+        "hex": "#556c7c",
+        "rgb": [
+          85,
+          108,
+          124
+        ],
+        "percentage": 1.2
+      },
+      {
+        "hex": "#374d64",
+        "rgb": [
+          55,
+          77,
+          100
+        ],
+        "percentage": 0.9
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, black pixelated voluminous hair, wearing black sunglasses, tan skin, cyan solid background (#0dd57f), dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "black",
+      "hairStyle": "pixelated voluminous",
+      "eyeColor": "",
+      "skinTone": "tan",
+      "backgroundColor": "cyan",
+      "backgroundHex": "#0dd57f",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lad_74_lc.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lad_74_lc.png",
+    "palette": [
+      {
+        "hex": "#b3b3b3",
+        "rgb": [
+          179,
+          179,
+          179
+        ],
+        "percentage": 59.9
+      },
+      {
+        "hex": "#232323",
+        "rgb": [
+          35,
+          35,
+          35
+        ],
+        "percentage": 16.7
+      },
+      {
+        "hex": "#606060",
+        "rgb": [
+          96,
+          96,
+          96
+        ],
+        "percentage": 6.1
+      },
+      {
+        "hex": "#474747",
+        "rgb": [
+          71,
+          71,
+          71
+        ],
+        "percentage": 4.3
+      },
+      {
+        "hex": "#4f4f4f",
+        "rgb": [
+          79,
+          79,
+          79
+        ],
+        "percentage": 4.2
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 3.3
+      },
+      {
+        "hex": "#0c0c0c",
+        "rgb": [
+          12,
+          12,
+          12
+        ],
+        "percentage": 2.1
+      },
+      {
+        "hex": "#e8e8e8",
+        "rgb": [
+          232,
+          232,
+          232
+        ],
+        "percentage": 0.9
+      },
+      {
+        "hex": "#e2e2e2",
+        "rgb": [
+          226,
+          226,
+          226
+        ],
+        "percentage": 0.7
+      },
+      {
+        "hex": "#323232",
+        "rgb": [
+          50,
+          50,
+          50
+        ],
+        "percentage": 0.5
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lad, long afro black hair, wearing dark gray sunglasses, brown skin, light gray solid background (#b3b3b3), dark gray clothing, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro black",
+      "eyeColor": "",
+      "skinTone": "brown",
+      "backgroundColor": "light gray",
+      "backgroundHex": "#b3b3b3",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lady_004_nutmeg.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lady_004_nutmeg.png",
+    "palette": [
+      {
+        "hex": "#ffc8a0",
+        "rgb": [
+          255,
+          200,
+          160
+        ],
+        "percentage": 64.2
+      },
+      {
+        "hex": "#7a574e",
+        "rgb": [
+          122,
+          87,
+          78
+        ],
+        "percentage": 14.6
+      },
+      {
+        "hex": "#29161c",
+        "rgb": [
+          41,
+          22,
+          28
+        ],
+        "percentage": 6.1
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 4.0
+      },
+      {
+        "hex": "#2c2129",
+        "rgb": [
+          44,
+          33,
+          41
+        ],
+        "percentage": 3.8
+      },
+      {
+        "hex": "#311926",
+        "rgb": [
+          49,
+          25,
+          38
+        ],
+        "percentage": 3.1
+      },
+      {
+        "hex": "#d69f66",
+        "rgb": [
+          214,
+          159,
+          102
+        ],
+        "percentage": 0.9
+      },
+      {
+        "hex": "#c68b3d",
+        "rgb": [
+          198,
+          139,
+          61
+        ],
+        "percentage": 0.7
+      },
+      {
+        "hex": "#a55151",
+        "rgb": [
+          165,
+          81,
+          81
+        ],
+        "percentage": 0.5
+      },
+      {
+        "hex": "#e8b43e",
+        "rgb": [
+          232,
+          180,
+          62
+        ],
+        "percentage": 0.5
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lady, long afro black hair, wearing red sunglasses, orange earrings, brown skin, orange solid background (#ffc8a0), red clothing, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro black",
+      "eyeColor": "",
+      "skinTone": "brown",
+      "backgroundColor": "orange",
+      "backgroundHex": "#ffc8a0",
+      "accessories": "sunglasses, earrings"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lady_033_staranise.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lady_033_staranise.png",
+    "palette": [
+      {
+        "hex": "#ffd7d7",
+        "rgb": [
+          255,
+          215,
+          215
+        ],
+        "percentage": 41.8
+      },
+      {
+        "hex": "#f3ccaf",
+        "rgb": [
+          243,
+          204,
+          175
+        ],
+        "percentage": 10.2
+      },
+      {
+        "hex": "#3a2626",
+        "rgb": [
+          58,
+          38,
+          38
+        ],
+        "percentage": 7.5
+      },
+      {
+        "hex": "#8d6058",
+        "rgb": [
+          141,
+          96,
+          88
+        ],
+        "percentage": 7.1
+      },
+      {
+        "hex": "#543534",
+        "rgb": [
+          84,
+          53,
+          52
+        ],
+        "percentage": 5.6
+      },
+      {
+        "hex": "#734b47",
+        "rgb": [
+          115,
+          75,
+          71
+        ],
+        "percentage": 4.9
+      },
+      {
+        "hex": "#a7806f",
+        "rgb": [
+          167,
+          128,
+          111
+        ],
+        "percentage": 4.9
+      },
+      {
+        "hex": "#b79483",
+        "rgb": [
+          183,
+          148,
+          131
+        ],
+        "percentage": 4.5
+      },
+      {
+        "hex": "#cfb5a1",
+        "rgb": [
+          207,
+          181,
+          161
+        ],
+        "percentage": 2.6
+      },
+      {
+        "hex": "#261312",
+        "rgb": [
+          38,
+          19,
+          18
+        ],
+        "percentage": 2.6
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lady, long afro brown hair, wearing red sunglasses, orange earrings, light skin, orange gradient background (#ffd7d7), black clothing with red accents, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro brown",
+      "eyeColor": "",
+      "skinTone": "light",
+      "backgroundColor": "orange gradient",
+      "backgroundHex": "#ffd7d7",
+      "accessories": "sunglasses, earrings"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lady_044_x.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lady_044_x.png",
+    "palette": [
+      {
+        "hex": "#35dd88",
+        "rgb": [
+          53,
+          221,
+          136
+        ],
+        "percentage": 32.3
+      },
+      {
+        "hex": "#3ffe9e",
+        "rgb": [
+          63,
+          254,
+          158
+        ],
+        "percentage": 30.0
+      },
+      {
+        "hex": "#ebbd9a",
+        "rgb": [
+          235,
+          189,
+          154
+        ],
+        "percentage": 11.3
+      },
+      {
+        "hex": "#1c2d39",
+        "rgb": [
+          28,
+          45,
+          57
+        ],
+        "percentage": 3.5
+      },
+      {
+        "hex": "#0f1b30",
+        "rgb": [
+          15,
+          27,
+          48
+        ],
+        "percentage": 3.5
+      },
+      {
+        "hex": "#0c1e2f",
+        "rgb": [
+          12,
+          30,
+          47
+        ],
+        "percentage": 2.4
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 2.4
+      },
+      {
+        "hex": "#484e57",
+        "rgb": [
+          72,
+          78,
+          87
+        ],
+        "percentage": 1.9
+      },
+      {
+        "hex": "#ffeb74",
+        "rgb": [
+          255,
+          235,
+          116
+        ],
+        "percentage": 1.6
+      },
+      {
+        "hex": "#32374a",
+        "rgb": [
+          50,
+          55,
+          74
+        ],
+        "percentage": 1.4
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lady, long afro dark blue hair, wearing dark blue sunglasses, brown skin, cyan solid background (#35dd88), orange clothing with black accents, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "long",
+      "hairStyle": "afro dark blue",
+      "eyeColor": "",
+      "skinTone": "brown",
+      "backgroundColor": "cyan",
+      "backgroundHex": "#35dd88",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lady_096_yuri.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lady_096_yuri.png",
+    "palette": [
+      {
+        "hex": "#968687",
+        "rgb": [
+          150,
+          134,
+          135
+        ],
+        "percentage": 47.4
+      },
+      {
+        "hex": "#6c477b",
+        "rgb": [
+          108,
+          71,
+          123
+        ],
+        "percentage": 13.4
+      },
+      {
+        "hex": "#5c3b6a",
+        "rgb": [
+          92,
+          59,
+          106
+        ],
+        "percentage": 11.3
+      },
+      {
+        "hex": "#ffe0b8",
+        "rgb": [
+          255,
+          224,
+          184
+        ],
+        "percentage": 9.9
+      },
+      {
+        "hex": "#442648",
+        "rgb": [
+          68,
+          38,
+          72
+        ],
+        "percentage": 3.5
+      },
+      {
+        "hex": "#000000",
+        "rgb": [
+          0,
+          0,
+          0
+        ],
+        "percentage": 2.1
+      },
+      {
+        "hex": "#8a5e6b",
+        "rgb": [
+          138,
+          94,
+          107
+        ],
+        "percentage": 2.1
+      },
+      {
+        "hex": "#472351",
+        "rgb": [
+          71,
+          35,
+          81
+        ],
+        "percentage": 1.7
+      },
+      {
+        "hex": "#502c5a",
+        "rgb": [
+          80,
+          44,
+          90
+        ],
+        "percentage": 1.4
+      },
+      {
+        "hex": "#502c5c",
+        "rgb": [
+          80,
+          44,
+          92
+        ],
+        "percentage": 1.4
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lady, dark blue fluffy medium hair, wearing dark blue sunglasses, light skin, gray gradient background (#968687), dark purple clothing with orange accents, dark shadows, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "dark",
+      "hairStyle": "blue fluffy medium",
+      "eyeColor": "",
+      "skinTone": "light",
+      "backgroundColor": "gray gradient",
+      "backgroundHex": "#968687",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  },
+  {
+    "filename": "lady_099_domino.png",
+    "imagePath": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/civitai_v2_7_training/lady_099_domino.png",
+    "palette": [
+      {
+        "hex": "#1e1e1e",
+        "rgb": [
+          30,
+          30,
+          30
+        ],
+        "percentage": 47.4
+      },
+      {
+        "hex": "#ab876d",
+        "rgb": [
+          171,
+          135,
+          109
+        ],
+        "percentage": 8.5
+      },
+      {
+        "hex": "#440a08",
+        "rgb": [
+          68,
+          10,
+          8
+        ],
+        "percentage": 7.8
+      },
+      {
+        "hex": "#400d0a",
+        "rgb": [
+          64,
+          13,
+          10
+        ],
+        "percentage": 7.1
+      },
+      {
+        "hex": "#3f0a06",
+        "rgb": [
+          63,
+          10,
+          6
+        ],
+        "percentage": 6.8
+      },
+      {
+        "hex": "#4d0d0b",
+        "rgb": [
+          77,
+          13,
+          11
+        ],
+        "percentage": 5.4
+      },
+      {
+        "hex": "#4f0e0a",
+        "rgb": [
+          79,
+          14,
+          10
+        ],
+        "percentage": 4.5
+      },
+      {
+        "hex": "#55100b",
+        "rgb": [
+          85,
+          16,
+          11
+        ],
+        "percentage": 3.5
+      },
+      {
+        "hex": "#58110d",
+        "rgb": [
+          88,
+          17,
+          13
+        ],
+        "percentage": 2.8
+      },
+      {
+        "hex": "#480d09",
+        "rgb": [
+          72,
+          13,
+          9
+        ],
+        "percentage": 2.3
+      }
+    ],
+    "currentCaption": "pixel art, 24x24, portrait of bespoke punk lady, red fluffy short hair, wearing red sunglasses, tan skin, black solid background (#1e1e1e), brown clothing, sharp pixel edges, hard color borders, retro pixel art style",
+    "prefilled": {
+      "hairColor": "red",
+      "hairStyle": "fluffy short",
+      "eyeColor": "",
+      "skinTone": "tan",
+      "backgroundColor": "black",
+      "backgroundHex": "#1e1e1e",
+      "accessories": "sunglasses"
+    },
+    "needsReview": true,
+    "notes": ""
+  }
+]

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Caption Review</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Monaco', monospace; background: #0a0a0a; color: #e0e0e0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+
+        .header { text-align: center; margin-bottom: 20px; padding: 20px; background: #1a1a1a; border-radius: 8px; }
+        h1 { color: #00ff88; font-size: 28px; }
+        .subtitle { color: #888; font-size: 14px; margin-top: 5px; }
+
+        .progress { background: #1a1a1a; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .progress-text { font-size: 16px; margin-bottom: 10px; }
+        .progress-bar { width: 100%; height: 25px; background: #0a0a0a; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #00ff88, #00cc66); transition: width 0.3s; }
+
+        .main { display: grid; grid-template-columns: 500px 1fr; gap: 20px; }
+
+        .image-section { background: #1a1a1a; padding: 20px; border-radius: 8px; }
+        .punk-img { width: 460px; height: 460px; image-rendering: pixelated; border: 3px solid #333; }
+        .filename { margin-top: 15px; color: #00ff88; font-weight: bold; font-size: 16px; text-align: center; }
+
+        .input-section { background: #1a1a1a; padding: 20px; border-radius: 8px; }
+
+        .instructions { background: #0a0a0a; padding: 15px; border-radius: 4px; margin-bottom: 20px; }
+        .instructions h3 { color: #00ff88; margin-bottom: 10px; font-size: 14px; }
+        .instructions ul { list-style: none; padding: 0; }
+        .instructions li { padding: 5px 0; font-size: 12px; color: #888; }
+        .instructions li:before { content: "→ "; color: #00ff88; }
+
+        .input-box { width: 100%; min-height: 150px; background: #0a0a0a; border: 3px solid #2a2a2a; color: #e0e0e0; padding: 15px; font-size: 16px; border-radius: 4px; font-family: inherit; resize: vertical; }
+        .input-box:focus { border-color: #00ff88; outline: none; }
+        .input-box::placeholder { color: #444; }
+
+        .label { color: #00ff88; font-weight: bold; font-size: 14px; margin: 20px 0 10px 0; display: block; }
+
+        .current-caption-box { background: #1a1a1a; padding: 15px; border-radius: 4px; border: 2px solid #2a2a2a; margin-bottom: 20px; }
+        .current-caption-box .label { margin: 0 0 10px 0; }
+        .current-caption { color: #888; font-size: 13px; line-height: 1.6; }
+
+        .buttons { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 10px; margin-top: 20px; }
+        button { padding: 15px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px; font-family: inherit; transition: all 0.2s; }
+        .btn-prev { background: #2a2a2a; color: #e0e0e0; }
+        .btn-prev:hover { background: #3a3a3a; }
+        .btn-skip { background: #444; color: #e0e0e0; }
+        .btn-skip:hover { background: #555; }
+        .btn-save { background: #00ff88; color: #000; }
+        .btn-save:hover { background: #00cc66; }
+
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
+        .stat { background: #0a0a0a; padding: 10px; border-radius: 4px; text-align: center; }
+        .stat-num { font-size: 24px; color: #00ff88; font-weight: bold; }
+        .stat-label { font-size: 11px; color: #666; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✏️ Simple Caption Review</h1>
+            <p class="subtitle">Just describe what you see - I'll build the perfect caption</p>
+        </div>
+
+        <div class="progress">
+            <div class="progress-text"><strong id="current">1</strong> / <strong id="total">203</strong></div>
+            <div class="progress-bar"><div class="progress-fill" id="progress" style="width: 0%"></div></div>
+            <div class="stats">
+                <div class="stat"><div class="stat-num" id="completed">0</div><div class="stat-label">Completed</div></div>
+                <div class="stat"><div class="stat-num" id="skipped">0</div><div class="stat-label">Skipped</div></div>
+                <div class="stat"><div class="stat-num" id="remaining">203</div><div class="stat-label">Remaining</div></div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="image-section">
+                <img id="punk-img" class="punk-img" src="" alt="Punk">
+                <div class="filename" id="filename"></div>
+            </div>
+
+            <div class="input-section">
+                <div class="instructions">
+                    <h3>How to Use</h3>
+                    <ul>
+                        <li>Look at the punk</li>
+                        <li>Type what you see in simple terms</li>
+                        <li>Example: "brown curly hair, blue eyes, light skin, wearing sunglasses"</li>
+                        <li>I'll construct the full technical caption</li>
+                        <li>Click Save & Next when done</li>
+                    </ul>
+                </div>
+
+                <div class="current-caption-box">
+                    <span class="label">Current Caption:</span>
+                    <div class="current-caption" id="current-caption"></div>
+                </div>
+
+                <label class="label">What do you see? (Just jot down the key details)</label>
+                <textarea
+                    id="user-input"
+                    class="input-box"
+                    placeholder="Example: red afro hair, green eyes, tan skin, orange background, wearing gold earrings
+
+Or just note corrections: brown eyes not blue, actually has short hair
+
+I'll handle the rest!"
+                    autofocus
+                ></textarea>
+
+                <div class="buttons">
+                    <button class="btn-prev" onclick="prev()">← Back</button>
+                    <button class="btn-skip" onclick="skip()">Skip</button>
+                    <button class="btn-save" onclick="save()">Save & Next →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let data = [];
+        let currentIndex = 0;
+        let results = { completed: [], skipped: [] };
+
+        fetch('comprehensive_captions_for_review.json')
+            .then(r => r.json())
+            .then(d => {
+                data = d;
+                loadPunk(0);
+            });
+
+        function loadPunk(index) {
+            if (index < 0 || index >= data.length) return;
+
+            currentIndex = index;
+            const punk = data[index];
+
+            document.getElementById('punk-img').src = \`civitai_v2_7_training/\${punk.filename}\`;
+            document.getElementById('filename').textContent = punk.filename;
+            document.getElementById('current-caption').textContent = punk.currentCaption;
+            document.getElementById('user-input').value = '';
+            document.getElementById('user-input').focus();
+
+            updateProgress();
+        }
+
+        function save() {
+            const punk = data[currentIndex];
+            const userInput = document.getElementById('user-input').value.trim();
+
+            if (!userInput) {
+                alert('Please describe what you see first!');
+                return;
+            }
+
+            punk.userInput = userInput;
+            punk.timestamp = new Date().toISOString();
+            results.completed.push(punk);
+
+            next();
+        }
+
+        function skip() {
+            results.skipped.push(data[currentIndex]);
+            next();
+        }
+
+        function prev() {
+            if (currentIndex > 0) {
+                loadPunk(currentIndex - 1);
+            }
+        }
+
+        function next() {
+            if (currentIndex < data.length - 1) {
+                loadPunk(currentIndex + 1);
+            } else {
+                alert('🎉 All done! Downloading your descriptions...');
+                download();
+            }
+        }
+
+        function updateProgress() {
+            const percent = ((currentIndex + 1) / data.length) * 100;
+            document.getElementById('progress').style.width = percent + '%';
+            document.getElementById('current').textContent = currentIndex + 1;
+            document.getElementById('total').textContent = data.length;
+            document.getElementById('completed').textContent = results.completed.length;
+            document.getElementById('skipped').textContent = results.skipped.length;
+            document.getElementById('remaining').textContent = data.length - currentIndex - 1;
+        }
+
+        function download() {
+            const output = {
+                completed: results.completed,
+                skipped: results.skipped,
+                summary: {
+                    total: data.length,
+                    completed: results.completed.length,
+                    skipped: results.skipped.length,
+                    timestamp: new Date().toISOString()
+                }
+            };
+
+            const blob = new Blob([JSON.stringify(output, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'USER_DESCRIPTIONS.json';
+            a.click();
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.target.id === 'user-input') {
+                if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) {
+                    save();
+                }
+                return;
+            }
+
+            if (e.key === 'ArrowLeft') prev();
+            if (e.key === 's' || e.key === 'S') skip();
+        });
+    </script>
+</body>
+</html>

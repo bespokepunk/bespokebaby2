@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comprehensive Caption Review - All Details</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Monaco', monospace; background: #0a0a0a; color: #e0e0e0; padding: 15px; line-height: 1.5; }
+        .container { max-width: 1600px; margin: 0 auto; }
+        .header { text-align: center; margin-bottom: 20px; background: #1a1a1a; padding: 20px; border-radius: 8px; border: 2px solid #2a2a2a; }
+        h1 { color: #00ff88; font-size: 24px; margin-bottom: 5px; }
+        .subtitle { color: #888; font-size: 12px; }
+
+        .progress-section { background: #1a1a1a; padding: 15px; border-radius: 8px; margin-bottom: 15px; border: 2px solid #2a2a2a; }
+        .progress-bar { width: 100%; height: 20px; background: #0a0a0a; border-radius: 4px; overflow: hidden; margin-top: 8px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #00ff88, #00cc66); transition: width 0.3s; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+        .stat { background: #0a0a0a; padding: 10px; border-radius: 4px; text-align: center; }
+        .stat-num { font-size: 20px; color: #00ff88; font-weight: bold; }
+        .stat-label { font-size: 10px; color: #666; margin-top: 3px; }
+
+        .main-grid { display: grid; grid-template-columns: 450px 1fr; gap: 15px; }
+
+        .image-panel { background: #1a1a1a; padding: 15px; border-radius: 8px; border: 2px solid #2a2a2a; }
+        .punk-img { width: 380px; height: 380px; image-rendering: pixelated; border: 3px solid #333; margin: 0 auto; display: block; }
+        .filename { margin: 10px 0; color: #00ff88; font-weight: bold; text-align: center; }
+
+        .palette-section { margin-top: 15px; }
+        .palette-title { color: #00ff88; font-size: 12px; font-weight: bold; margin-bottom: 8px; }
+        .palette-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
+        .color-swatch { height: 40px; border-radius: 4px; border: 2px solid #333; cursor: pointer; position: relative; }
+        .color-swatch:hover { border-color: #00ff88; transform: scale(1.05); }
+        .color-hex { position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); font-size: 8px; background: rgba(0,0,0,0.7); padding: 2px 4px; border-radius: 2px; }
+        .color-pct { position: absolute; top: 2px; left: 50%; transform: translateX(-50%); font-size: 8px; background: rgba(0,0,0,0.7); padding: 2px 4px; border-radius: 2px; }
+
+        .traits-detected { margin-top: 15px; background: #0a0a0a; padding: 10px; border-radius: 4px; }
+        .trait-row { display: grid; grid-template-columns: 80px 1fr; gap: 8px; margin: 5px 0; font-size: 11px; }
+        .trait-label { color: #666; }
+        .trait-value { color: #00ff88; }
+
+        .caption-panel { background: #1a1a1a; padding: 15px; border-radius: 8px; border: 2px solid #2a2a2a; }
+        .caption-section { margin-bottom: 15px; }
+        .caption-label { color: #00ff88; font-size: 12px; font-weight: bold; margin-bottom: 5px; display: block; }
+        .caption-box { width: 100%; min-height: 80px; background: #0a0a0a; border: 2px solid #2a2a2a; color: #e0e0e0; padding: 10px; font-size: 11px; border-radius: 4px; font-family: inherit; resize: vertical; }
+        .caption-box:focus { border-color: #00ff88; outline: none; }
+        .current-caption { color: #ff6b6b; }
+        .ai-caption { color: #51cf66; }
+
+        .diff-box { background: #0a0a0a; padding: 10px; border-radius: 4px; margin: 10px 0; font-size: 10px; }
+        .diff-added { color: #51cf66; }
+        .diff-removed { color: #ff6b6b; text-decoration: line-through; }
+
+        .buttons { display: grid; grid-template-columns: 1fr 1fr 2fr; gap: 8px; margin-top: 15px; }
+        button { padding: 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; font-family: inherit; transition: all 0.2s; }
+        .btn-prev { background: #2a2a2a; color: #e0e0e0; }
+        .btn-prev:hover { background: #3a3a3a; }
+        .btn-skip { background: #444; color: #e0e0e0; }
+        .btn-skip:hover { background: #555; }
+        .btn-approve { background: #00ff88; color: #000; }
+        .btn-approve:hover { background: #00cc66; }
+        .btn-edit { background: #4a9eff; color: #fff; }
+        .btn-edit:hover { background: #3a8eef; }
+
+        .help-text { font-size: 10px; color: #666; margin-top: 8px; }
+        .keyboard-shortcuts { background: #0a0a0a; padding: 8px; border-radius: 4px; margin-top: 10px; font-size: 10px; }
+        .shortcut { color: #00ff88; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 Comprehensive Caption Review</h1>
+            <p class="subtitle">Deep analysis with 15-color palettes, region detection, and detailed traits</p>
+        </div>
+
+        <div class="progress-section">
+            <div><strong id="current">1</strong> / <strong id="total">203</strong> · Progress: <span id="percent">0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+            <div class="stats">
+                <div class="stat"><div class="stat-num" id="approved">0</div><div class="stat-label">Approved</div></div>
+                <div class="stat"><div class="stat-num" id="edited">0</div><div class="stat-label">Edited</div></div>
+                <div class="stat"><div class="stat-num" id="skipped">0</div><div class="stat-label">Skipped</div></div>
+            </div>
+        </div>
+
+        <div class="main-grid">
+            <div class="image-panel">
+                <img id="punk-img" class="punk-img" src="" alt="Punk">
+                <div class="filename" id="filename"></div>
+
+                <div class="palette-section">
+                    <div class="palette-title">15-Color Palette</div>
+                    <div class="palette-grid" id="palette"></div>
+                </div>
+
+                <div class="traits-detected">
+                    <div class="palette-title">Detected Traits</div>
+                    <div id="traits"></div>
+                </div>
+
+                <div class="keyboard-shortcuts">
+                    <div><span class="shortcut">→</span> Approve AI | <span class="shortcut">←</span> Previous | <span class="shortcut">E</span> Edit & Save | <span class="shortcut">S</span> Skip</div>
+                </div>
+            </div>
+
+            <div class="caption-panel">
+                <div class="caption-section">
+                    <label class="caption-label current-caption">Current Caption</label>
+                    <div class="caption-box current-caption" id="current-caption"></div>
+                </div>
+
+                <div class="diff-box" id="diff"></div>
+
+                <div class="caption-section">
+                    <label class="caption-label ai-caption">AI Comprehensive Caption (Edit Below)</label>
+                    <textarea class="caption-box ai-caption" id="ai-caption"></textarea>
+                    <div class="help-text">Edit this caption to perfect it, then save</div>
+                </div>
+
+                <div class="buttons">
+                    <button class="btn-prev" onclick="prev()">← Previous</button>
+                    <button class="btn-skip" onclick="skip()">Skip (S)</button>
+                    <button class="btn-approve" onclick="approve()">✓ Approve AI (→)</button>
+                </div>
+                <div class="buttons" style="grid-template-columns: 1fr;">
+                    <button class="btn-edit" onclick="saveEdit()">✓ Save My Edit (E)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let data = [];
+        let currentIndex = 0;
+        let results = { approved: [], edited: [], skipped: [] };
+
+        fetch('comprehensive_captions_for_review.json')
+            .then(r => r.json())
+            .then(d => {
+                data = d;
+                loadPunk(0);
+            });
+
+        function loadPunk(index) {
+            if (index < 0 || index >= data.length) return;
+
+            currentIndex = index;
+            const punk = data[index];
+
+            document.getElementById('punk-img').src = `civitai_v2_7_training/${punk.filename}`;
+            document.getElementById('filename').textContent = punk.filename;
+            document.getElementById('current-caption').textContent = punk.currentCaption;
+            document.getElementById('ai-caption').value = punk.aiComprehensiveCaption;
+
+            // Load palette
+            const palette = document.getElementById('palette');
+            palette.innerHTML = '';
+            punk.fullPalette15.forEach(color => {
+                const swatch = document.createElement('div');
+                swatch.className = 'color-swatch';
+                swatch.style.backgroundColor = color.hex;
+                swatch.innerHTML = `
+                    <div class="color-pct">${color.percentage}%</div>
+                    <div class="color-hex">${color.hex}</div>
+                `;
+                swatch.onclick = () => {
+                    navigator.clipboard.writeText(color.hex);
+                    swatch.style.borderColor = '#00ff88';
+                    setTimeout(() => swatch.style.borderColor = '#333', 500);
+                };
+                palette.appendChild(swatch);
+            });
+
+            // Load detected traits
+            const traits = document.getElementById('traits');
+            traits.innerHTML = '';
+            if (punk.detectedTraits) {
+                for (const [key, value] of Object.entries(punk.detectedTraits)) {
+                    if (value) {
+                        const row = document.createElement('div');
+                        row.className = 'trait-row';
+                        row.innerHTML = `<div class="trait-label">${key}:</div><div class="trait-value">${value}</div>`;
+                        traits.appendChild(row);
+                    }
+                }
+            }
+
+            // Show diff
+            showDiff(punk.currentCaption, punk.aiComprehensiveCaption);
+            updateProgress();
+        }
+
+        function showDiff(current, ai) {
+            const diff = document.getElementById('diff');
+            if (current === ai) {
+                diff.innerHTML = '<div class="diff-added">✓ AI matches current exactly</div>';
+            } else {
+                diff.innerHTML = '<strong>Changes detected:</strong><br>AI generated new comprehensive caption with full palette and trait analysis';
+            }
+        }
+
+        function approve() {
+            const punk = data[currentIndex];
+            punk.userApproved = true;
+            punk.finalCaption = punk.aiComprehensiveCaption;
+            results.approved.push(punk);
+            next();
+        }
+
+        function saveEdit() {
+            const punk = data[currentIndex];
+            const edited = document.getElementById('ai-caption').value;
+            punk.userApproved = true;
+            punk.finalCaption = edited;
+            punk.userEdits = edited;
+            results.edited.push(punk);
+            next();
+        }
+
+        function skip() {
+            results.skipped.push(data[currentIndex]);
+            next();
+        }
+
+        function prev() {
+            if (currentIndex > 0) loadPunk(currentIndex - 1);
+        }
+
+        function next() {
+            if (currentIndex < data.length - 1) {
+                loadPunk(currentIndex + 1);
+            } else {
+                alert('🎉 Complete! Downloading your reviewed captions...');
+                download();
+            }
+        }
+
+        function updateProgress() {
+            const percent = ((currentIndex + 1) / data.length) * 100;
+            document.getElementById('progress').style.width = percent + '%';
+            document.getElementById('current').textContent = currentIndex + 1;
+            document.getElementById('total').textContent = data.length;
+            document.getElementById('percent').textContent = Math.round(percent) + '%';
+            document.getElementById('approved').textContent = results.approved.length;
+            document.getElementById('edited').textContent = results.edited.length;
+            document.getElementById('skipped').textContent = results.skipped.length;
+        }
+
+        function download() {
+            const output = {
+                approved: results.approved,
+                edited: results.edited,
+                skipped: results.skipped,
+                summary: {
+                    total: data.length,
+                    approved: results.approved.length,
+                    edited: results.edited.length,
+                    skipped: results.skipped.length
+                }
+            };
+
+            const blob = new Blob([JSON.stringify(output, null, 2)], {type: 'application/json'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'FINAL_REVIEWED_CAPTIONS.json';
+            a.click();
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'TEXTAREA') return; // Don't interfere while editing
+            if (e.key === 'ArrowRight') approve();
+            if (e.key === 'ArrowLeft') prev();
+            if (e.key === 's' || e.key === 'S') skip();
+            if (e.key === 'e' || e.key === 'E') saveEdit();
+        });
+    </script>
+</body>
+</html>
