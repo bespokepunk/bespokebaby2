@@ -1,0 +1,98 @@
+# Kohya Training Config for Bespoke Punks
+# SDXL Base Model @ 24x24 Native Resolution
+
+[general]
+pretrained_model_name_or_path = "stabilityai/stable-diffusion-xl-base-1.0"
+v2 = false
+v_parameterization = false
+sdxl = true
+
+[model_arguments]
+# SDXL specific
+pretrained_model_name_or_path = "stabilityai/stable-diffusion-xl-base-1.0"
+
+[dataset_arguments]
+# Training data
+in_json = ""
+train_data_dir = "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/FORTRAINING6/bespokepunks"
+resolution = "24,24"  # CRITICAL: Native 24x24 pixel art!
+batch_size = 4
+max_token_length = 225
+caption_extension = ".txt"
+shuffle_caption = false
+keep_tokens = 0
+
+# NO augmentation for pixel art
+color_aug = false
+flip_aug = false
+random_crop = false
+
+# Bucketing - DISABLED for strict 24x24
+enable_bucket = false
+min_bucket_reso = 24
+max_bucket_reso = 24
+bucket_reso_steps = 8
+bucket_no_upscale = true
+
+[training_arguments]
+# Output
+output_dir = "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/kohya_output_sdxl"
+output_name = "bespoke_punks_sdxl_24x24"
+save_model_as = "safetensors"
+
+# Training duration
+max_train_epochs = 3
+save_every_n_epochs = 1
+
+# Learning rates
+learning_rate = 0.0001
+unet_lr = 0.0001
+text_encoder_lr = 0.00005
+lr_scheduler = "cosine_with_restarts"
+lr_scheduler_num_cycles = 3
+lr_warmup_steps = 0
+
+# Optimizer
+optimizer_type = "AdamW8bit"
+optimizer_args = []
+
+# Precision & Memory
+mixed_precision = "fp16"
+save_precision = "fp16"
+gradient_checkpointing = true
+gradient_accumulation_steps = 1
+cache_latents = true
+cache_latents_to_disk = false
+
+# Network (LoRA)
+network_module = "networks.lora"
+network_dim = 32
+network_alpha = 16
+network_train_unet_only = false
+network_train_text_encoder_only = false
+
+# Advanced
+max_data_loader_n_workers = 1
+persistent_data_loader_workers = false
+max_train_steps = 0
+clip_skip = 2
+min_snr_gamma = 5
+noise_offset = 0.1
+
+# Logging
+logging_dir = "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/kohya_logs_sdxl"
+log_with = "tensorboard"
+log_prefix = "bespoke_punks_sdxl"
+
+[sample_prompt_arguments]
+# Generate samples during training
+sample_every_n_epochs = 1
+sample_sampler = "euler_a"
+
+[[sample_prompt_arguments.sample_prompts]]
+prompt = "pixel art, 24x24, portrait of bespoke punk, green solid background, black hair, blue eyes, light skin, sharp pixel edges"
+negative_prompt = "full body, body, legs, character sprite, game sprite"
+
+[[sample_prompt_arguments.sample_prompts]]
+prompt = "pixel art, 24x24, portrait of bespoke punk, checkered pattern background, brown hair, brown eyes, tan skin, sharp pixel edges"
+negative_prompt = "full body, body, legs, character sprite, game sprite"
