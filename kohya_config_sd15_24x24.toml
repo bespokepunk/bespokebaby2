@@ -14,7 +14,7 @@ pretrained_model_name_or_path = "runwayml/stable-diffusion-v1-5"
 [dataset_arguments]
 # Training data
 in_json = ""
-train_data_dir = "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/FORTRAINING6/bespokepunks"
+train_data_dir = "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/kohya_training_data"
 resolution = "24,24"  # CRITICAL: Native 24x24 pixel art!
 batch_size = 4
 max_token_length = 75
