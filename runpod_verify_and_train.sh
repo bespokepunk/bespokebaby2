@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "=== Verifying Installation ==="
-cd /workspace/kohya_ss
-source venv/bin/activate
+cd /kohya_ss
+source /workspace/venvs/a1111/bin/activate
 
 echo "Checking critical packages:"
 pip list | grep -E "torch|diffusers|transformers|accelerate|safetensors"
@@ -15,7 +15,7 @@ echo ""
 
 python sd-scripts/train_network.py \
   --pretrained_model_name_or_path="runwayml/stable-diffusion-v1-5" \
-  --train_data_dir="/workspace/FORTRAINING6/bespokepunks" \
+  --train_data_dir="/workspace/FORTRAINING6" \
   --resolution="24,24" \
   --output_dir="/workspace/output" \
   --output_name="bespoke_punks_v2_7" \
