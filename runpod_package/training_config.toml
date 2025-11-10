@@ -42,7 +42,7 @@ lr_scheduler_num_cycles = 3
 
 # Dataset settings
 train_data_dir = "/workspace/training_data"
-resolution = 512
+resolution = "512,512"
 shuffle_caption = true
 keep_tokens = 2
 max_token_length = 225

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smile Classifier - Bespoke Punks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #1a1a1a;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        .instructions {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 8px;
+        }
+        .stats {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px;
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .image-card {
+            background: #2a2a2a;
+            border: 3px solid #444;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .image-card:hover {
+            transform: scale(1.05);
+            border-color: #666;
+        }
+        .image-card.smile {
+            border-color: #4CAF50;
+            background: #1a3a1a;
+        }
+        .image-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+        .image-card .label {
+            text-align: center;
+            margin-top: 8px;
+            font-size: 12px;
+            word-break: break-all;
+        }
+        .image-card .status {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #4CAF50;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 11px;
+            display: none;
+        }
+        .image-card.smile .status {
+            display: block;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px;
+            background: #2a2a2a;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .controls button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        .controls button:hover {
+            background: #45a049;
+        }
+        .controls button.secondary {
+            background: #666;
+        }
+        .controls button.secondary:hover {
+            background: #555;
+        }
+        #output {
+            background: #000;
+            color: #0f0;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 8px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎨 Bespoke Punks - Smile Classifier</h1>
+
+    <div class="instructions">
+        <h3>📋 Instructions:</h3>
+        <ol>
+            <li><strong>Click on images that are SMILING</strong> - they'll turn green</li>
+            <li>Click again to mark as neutral (remove green border)</li>
+            <li>When done, click "Generate Classification" to get the results</li>
+            <li>Copy the output and paste it to Claude</li>
+        </ol>
+        <p><strong>Tip:</strong> Use keyboard shortcuts - Mark All Neutral (N) or Mark All Smile (S) for quick bulk changes</p>
+    </div>
+
+    <div class="stats">
+        <span id="stats">Loading images...</span>
+    </div>
+
+    <div class="controls">
+        <button onclick="markAllNeutral()" class="secondary">Mark All Neutral</button>
+        <button onclick="markAllSmile()" class="secondary">Mark All Smile</button>
+        <button onclick="generateOutput()">Generate Classification ✅</button>
+    </div>
+
+    <div class="image-grid" id="imageGrid">
+        <!-- Images will be loaded here -->
+    </div>
+
+    <div id="output"></div>
+
+    <script>
+        const baseDir = 'runpod_package/training_data/';
+        const images = [
+            'lad_001_carbon.png', 'lad_002_cash.png', 'lad_003_chai.png', 'lad_004_silicon.png',
+            'lad_005_copper.png', 'lad_006_redshift.png', 'lad_007_titanium.png', 'lad_008_platinum.png',
+            'lad_009_steel.png', 'lad_010_aluminum.png', 'lad_011_chocolate.png', 'lad_012_chromium.png',
+            'lad_013_caramel.png', 'lad_014_sugar.png', 'lad_015_jackson.png', 'lad_016_tungsten.png',
+            'lad_017_ink.png', 'lad_018_mandarin.png', 'lad_019_diamond.png', 'lad_020_gpu.png',
+            'lad_021_x.png', 'lad_022_x.png', 'lad_023_x-2.png', 'lad_023_x-3.png',
+            'lad_023_x-4.png', 'lad_023_x.png', 'lad_024_x.png', 'lad_025_x.png',
+            'lad_026_chromiumabstractsalmon.png', 'lad_027_chromiumabstractyellow.png', 'lad_028_chromiumabstractgreen.png',
+            'lad_029_famous-9.png', 'lad_029_famous4.png', 'lad_030_ink.png', 'lad_031_fin.png',
+            'lad_032_shaman-4.png', 'lad_033_molecule-2.png', 'lad_035_JUAN.png', 'lad_036_x.png',
+            'lad_037_aressprout.png', 'lad_038_cashking-6.png', 'lad_039_davinci-2.png', 'lad_040_melzarmagic.png',
+            'lad_041_Maradona.png', 'lad_043_jeremey.png', 'lad_045_homewithkids3.png', 'lad_046_NATE.png',
+            'lad_047_CYGAAR1.png', 'lad_049_gainzyyyy12.png', 'lad_049_gainzyyyy18.png', 'lad_050_nate-2.png',
+            'lad_050_nate.png', 'lad_051_DEVON-2.png', 'lad_051_DEVON-4.png', 'lad_054_sterling.png',
+            'lad_054_sterlingglasses.png', 'lad_054_sterlingglasses3withcrown5.png', 'lad_055_Luke.png', 'lad_055_Luke10.png',
+            'lad_055_Luke3.png', 'lad_055_Luke6.png', 'lad_055_Luke8.png', 'lad_057_Hugh.png',
+            'lad_057_Hugh5.png', 'lad_058_SAVVA.png', 'lad_059_SamAScientist.png', 'lad_060_bhaitradingbot2.png',
+            'lad_061_DOPE10.png', 'lad_061_DOPE7.png', 'lad_061_DOPE9.png', 'lad_062_devox2.png',
+            'lad_063_kenichi.png', 'lad_064_Scott.png', 'lad_064_sensei.png', 'lad_066_napoli2.png',
+            'lad_068_mayor.png', 'lad_070_IRAsBF2.png', 'lad_074_lc.png', 'lad_075_mmhm.png',
+            'lad_078_btoshi.png', 'lad_079_ravish.png', 'lad_080_fcpo.png', 'lad_081_iggy2.png',
+            'lad_086_Scooby.png', 'lad_087_HEEM.png', 'lad_088_Kareem.png', 'lad_089_aguda.png',
+            'lad_090_drscott.png', 'lad_091_amit.png', 'lad_092_derrick.png', 'lad_093_photogee.png',
+            'lad_094_storm.png', 'lad_095_godfather.png', 'lad_096_apollo.png', 'lad_097_drralph.png',
+            'lad_098_Murtaza.png', 'lad_099_amenshiller.png', 'lad_102_bunya.png', 'lad_102_bunya2.png',
+            'lad_102_bunya3.png', 'lad_103_merheb.png', 'lad_103_merheb2.png', 'lad_103_merheb3.png',
+            'lad_105_inkspired.png', 'lad_106_sultan.png',
+            'lady_000_lemon.png', 'lady_001_hazelnut.png', 'lady_002_vanilla.png', 'lady_003_cashew.png',
+            'lady_004_nutmeg.png', 'lady_005_cinnamon.png', 'lady_006_pepper.png', 'lady_007_alloy.png',
+            'lady_008_pinksilk.png', 'lady_009_bluesilk.png', 'lady_010_saffron.png', 'lady_011_sage.png',
+            'lady_012_parasite.png', 'lady_013_rosemary.png', 'lady_014_olive.png', 'lady_015_lime.png',
+            'lady_016_honey.png', 'lady_017_pine.png', 'lady_018_strawberry.png', 'lady_019_banana.png',
+            'lady_020_blood.png', 'lady_021_diamond.png', 'lady_022_gold.png', 'lady_023_silver.png',
+            'lady_024_linen.png', 'lady_025_mistletoe.png', 'lady_026_fur.png', 'lady_027_nitrogen.png',
+            'lady_028_marshmallow.png', 'lady_029_basil.png', 'lady_030_grass.png', 'lady_031_paprika.png',
+            'lady_032_salt.png', 'lady_033_staranise.png', 'lady_034_lavender.png', 'lady_035_turmeric.png',
+            'lady_036_boisenberry.png', 'lady_037_rose.png', 'lady_038_peanut.png', 'lady_039_sandalwood.png',
+            'lady_040_fivespice.png', 'lady_041_bayleaf.png', 'lady_042_almond.png', 'lady_043_orange.png',
+            'lady_044_x.png', 'lady_045_x.png', 'lady_046_x.png', 'lady_047_x.png',
+            'lady_048_pink.png', 'lady_049_abstractangels.png', 'lady_050_x-6.png', 'lady_051_rosieabstract.png',
+            'lady_052_pinksilkabstract.png', 'lady_053_pepperabstract.png', 'lady_054_hazelnutabstract-3.png', 'lady_055_bloodabstract.png',
+            'lady_056_alloyabstract.png', 'lady_057_bluesilkabstract.png', 'lady_058_x.png', 'lady_059_paula-5.png',
+            'lady_059_paula-6.png', 'lady_060_winehouse.png', 'lady_061_nikkkk-2.png', 'lady_062_Dalia-2.png',
+            'lady_062_Dalia-BD.png', 'lady_063_PVR-3.png', 'lady_064_aubree-2.png', 'lady_065_miggs-4.png',
+            'lady_065_miggs.png', 'lady_066_monalisa-3.png', 'lady_067_salamander-2.png', 'lady_068_nikkisf-4.png',
+            'lady_069_giulia.png', 'lady_070_mango.png', 'lady_071_papaya.png', 'lady_072_tangerine.png',
+            'lady_073_mango_punk.png', 'lady_074_melon.png', 'lady_075_clementine.png', 'lady_076_orange_blossom.png',
+            'lady_077_pink_grapefruit.png', 'lady_078_orange_zest.png', 'lady_079_lime_breeze.png', 'lady_080_zesty_lime.png',
+            'lady_083_Marianne3.png', 'lady_085_IRA2.png', 'lady_086_ELENI9.png', 'lady_087_feybirthday5.png',
+            'lady_088_r.png', 'lady_090_missthang.png', 'lady_094_violetta.png', 'lady_095_royalty.png',
+            'lady_096_yuri.png', 'lady_097_dani.png', 'lady_097_dani2.png', 'lady_098_heyeah.png',
+            'lady_099_VQ.png', 'lady_099_domino.png'
+        ];
+
+        const classifications = {};
+
+        function loadImages() {
+            const grid = document.getElementById('imageGrid');
+            images.forEach((img, idx) => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                card.id = `card-${idx}`;
+                card.onclick = () => toggleSmile(idx, img);
+
+                card.innerHTML = `
+                    <div class="status">SMILE</div>
+                    <img src="${baseDir}${img}" alt="${img}">
+                    <div class="label">${img.replace('.png', '')}</div>
+                `;
+
+                grid.appendChild(card);
+                classifications[img.replace('.png', '.txt')] = 'neutral';
+            });
+            updateStats();
+        }
+
+        function toggleSmile(idx, img) {
+            const card = document.getElementById(`card-${idx}`);
+            const txtFile = img.replace('.png', '.txt');
+
+            if (card.classList.contains('smile')) {
+                card.classList.remove('smile');
+                classifications[txtFile] = 'neutral';
+            } else {
+                card.classList.add('smile');
+                classifications[txtFile] = 'smile';
+            }
+            updateStats();
+        }
+
+        function markAllNeutral() {
+            images.forEach((img, idx) => {
+                const card = document.getElementById(`card-${idx}`);
+                card.classList.remove('smile');
+                classifications[img.replace('.png', '.txt')] = 'neutral';
+            });
+            updateStats();
+        }
+
+        function markAllSmile() {
+            images.forEach((img, idx) => {
+                const card = document.getElementById(`card-${idx}`);
+                card.classList.add('smile');
+                classifications[img.replace('.png', '.txt')] = 'smile';
+            });
+            updateStats();
+        }
+
+        function updateStats() {
+            const smileCount = Object.values(classifications).filter(c => c === 'smile').length;
+            const neutralCount = Object.values(classifications).filter(c => c === 'neutral').length;
+            document.getElementById('stats').innerHTML = `
+                Total: ${images.length} |
+                😊 Smiling: <strong style="color: #4CAF50">${smileCount}</strong> |
+                😐 Neutral: <strong style="color: #999">${neutralCount}</strong>
+            `;
+        }
+
+        function generateOutput() {
+            const smileFiles = [];
+            for (const [file, classification] of Object.entries(classifications)) {
+                if (classification === 'smile') {
+                    smileFiles.push(file);
+                }
+            }
+
+            const output = document.getElementById('output');
+            output.style.display = 'block';
+            output.textContent = `
+SMILE CLASSIFICATION COMPLETE!
+==============================
+
+Files to mark as "slight smile": ${smileFiles.length}
+
+${smileFiles.join('\n')}
+
+==============================
+Copy the list above and paste it to Claude to apply the classifications!
+`;
+
+            // Scroll to output
+            output.scrollIntoView({ behavior: 'smooth' });
+
+            // Also copy to clipboard
+            navigator.clipboard.writeText(smileFiles.join('\n')).then(() => {
+                alert(`✅ Copied ${smileFiles.length} smiling files to clipboard!`);
+            });
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'n' || e.key === 'N') {
+                markAllNeutral();
+            } else if (e.key === 's' || e.key === 'S') {
+                markAllSmile();
+            }
+        });
+
+        // Load images on page load
+        loadImages();
+    </script>
+</body>
+</html>

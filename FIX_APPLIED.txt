@@ -1,0 +1,46 @@
+═══════════════════════════════════════════════════════════════════════════════
+  🔧 CONFIG FIX APPLIED - RE-UPLOAD REQUIRED
+═══════════════════════════════════════════════════════════════════════════════
+
+❌ ISSUE FOUND:
+   The training config had `resolution = 512` (integer)
+   But it needs to be `resolution = "512,512"` (string with comma)
+
+✅ FIX APPLIED:
+   Updated training_config.toml:
+   - Changed: resolution = 512
+   - To:      resolution = "512,512"
+
+📦 NEW ZIP CREATED:
+   runpod_FINAL_CORRECTED_CAPTIONS.zip
+   Location: /Users/ilyssaevans/Documents/GitHub/bespokebaby2/
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 UPDATED RUNPOD COMMANDS:
+
+On your RunPod terminal:
+
+# 1. Remove old files (if you extracted them already)
+rm -rf /workspace/runpod_package
+
+# 2. Upload the NEW runpod_FINAL_CORRECTED_CAPTIONS.zip to /workspace/
+
+# 3. Extract NEW package
+cd /workspace
+unzip -o runpod_FINAL_CORRECTED_CAPTIONS.zip
+cd runpod_package
+
+# 4. Verify fix
+grep "resolution" training_config.toml
+# Should show: resolution = "512,512"
+
+# 5. Start training
+chmod +x start_training.sh
+./start_training.sh
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ This should fix the AttributeError and training will start!
+
+═══════════════════════════════════════════════════════════════════════════════

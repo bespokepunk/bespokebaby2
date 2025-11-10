@@ -1,0 +1,53 @@
+═══════════════════════════════════════════════════════════════════════════════
+  RUNPOD TRAINING - QUICK START COMMANDS
+═══════════════════════════════════════════════════════════════════════════════
+
+📦 UPDATED ZIP FILE:
+   runpod_FINAL_CORRECTED_CAPTIONS.zip (911KB)
+   Location: /Users/ilyssaevans/Documents/GitHub/bespokebaby2/
+
+✅ WHAT'S INCLUDED:
+   • 203 images (512x512)
+   • 203 corrected captions (lips + smile/neutral)
+   • 113 smiling, 90 neutral
+   • All typos fixed, all data verified
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 LOCAL COMMANDS (Run on your Mac):
+
+cd /Users/ilyssaevans/Documents/GitHub/bespokebaby2
+ls -lh runpod_FINAL_CORRECTED_CAPTIONS.zip
+
+# Upload this file to RunPod (via web UI or SCP)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🖥️  RUNPOD COMMANDS (Run on RunPod after upload):
+
+# 1. Extract
+cd /workspace
+unzip runpod_FINAL_CORRECTED_CAPTIONS.zip
+cd runpod_package
+
+# 2. Verify
+echo "PNG: $(ls training_data/*.png | wc -l), TXT: $(ls training_data/*.txt | wc -l)"
+cat training_data/lad_087_HEEM.txt
+
+# 3. Start Training
+chmod +x start_training.sh
+./start_training.sh
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 MONITOR TRAINING:
+
+watch -n 1 nvidia-smi
+ls -lht output/checkpoint-* | head -5
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ YOU'RE READY! All captions corrected and verified.
+   Upload the zip and start training!
+
+═══════════════════════════════════════════════════════════════════════════════
