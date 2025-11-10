@@ -140,22 +140,34 @@
                     <div class="shortcut"><span class="key">S</span> - Skip</div>
                     <div class="shortcut"><span class="key">←</span> - Go back</div>
                 </div>
+
+                <div class="shortcuts" style="margin-top: 15px; background: #2a2a2a;">
+                    <div class="shortcuts-title">🎨 Related Tools</div>
+                    <div style="margin-top: 8px;">
+                        <a href="http://127.0.0.1:7861" target="_blank" style="color: #00ff88; text-decoration: none; font-size: 11px; display: block; padding: 8px; background: #1a1a1a; border-radius: 4px; text-align: center; transition: all 0.2s;">
+                            → Open Bespoke Punk Generator
+                        </a>
+                        <p style="font-size: 9px; color: #666; margin-top: 8px; text-align: center;">
+                            Generate new punks using these reviewed captions
+                        </p>
+                    </div>
+                </div>
             </div>
 
             <div class="review-panel">
                 <div class="caption-row">
-                    <div class="caption-label">CURRENT:</div>
+                    <div class="caption-label">ORIGINAL:</div>
                     <div class="caption-text" id="current-caption"></div>
                 </div>
 
                 <div class="caption-row">
-                    <div class="caption-label ai-caption">AI NEW:</div>
-                    <div class="caption-text ai-caption" id="ai-caption"></div>
+                    <div class="caption-label ai-caption">FINAL:</div>
+                    <div class="caption-text ai-caption" id="final-caption" style="color: #ffd93d; font-weight: bold;"></div>
                 </div>
 
                 <div style="margin-top: 15px;">
-                    <label style="color: #00ff88; font-size: 12px; font-weight: bold; display: block; margin-bottom: 8px;">Your Corrections:</label>
-                    <textarea id="user-input" class="input-box" placeholder="Type corrections, or press A to approve, or S to skip..."></textarea>
+                    <label style="color: #00ff88; font-size: 12px; font-weight: bold; display: block; margin-bottom: 8px;">Edits / Feedback:</label>
+                    <textarea id="user-input" class="input-box" placeholder="Type edits to final caption, or press A to approve, or S to skip..."></textarea>
                 </div>
 
                 <div class="action-buttons">
@@ -211,6 +223,11 @@
                 data = jsonData.reverse();
                 console.log('✓ Loaded', data.length, 'punks from JSON');
 
+                // Load final captions from .txt files
+                console.log('Loading final captions from .txt files...');
+                await loadFinalCaptions();
+                console.log('✓ Loaded final captions');
+
                 // Initialize database with all punks
                 console.log('Initializing database...');
                 await initializeDatabase();
@@ -233,6 +250,26 @@
                     <p style="margin-top: 20px; color: #e0e0e0;">${error.message}</p>
                     <p style="margin-top: 10px; font-size: 12px; color: #888;">Check the browser console for details</p>
                 `;
+            }
+        }
+
+        async function loadFinalCaptions() {
+            // Load final captions from .txt files in civitai_v2_7_training folder
+            for (const punk of data) {
+                try {
+                    const txtFilename = punk.filename.replace('.png', '.txt');
+                    const response = await fetch(`civitai_v2_7_training/${txtFilename}`);
+                    if (response.ok) {
+                        const captionText = await response.text();
+                        punk.finalCaptionFromTxt = captionText.trim();
+                    } else {
+                        console.warn(`No .txt file found for ${punk.filename}`);
+                        punk.finalCaptionFromTxt = '';
+                    }
+                } catch (error) {
+                    console.warn(`Error loading .txt for ${punk.filename}:`, error);
+                    punk.finalCaptionFromTxt = '';
+                }
             }
         }
 
@@ -259,10 +296,11 @@
                 filename: punk.filename,
                 current_caption: punk.currentCaption || '',
                 ai_comprehensive_caption: punk.aiComprehensiveCaption || '',
+                final_caption_txt: punk.finalCaptionFromTxt || '',
                 user_input: '',
                 user_corrections: '',
                 status: 'pending',
-                final_caption: '',
+                final_caption: punk.finalCaptionFromTxt || '',
                 full_palette_15: punk.fullPalette15 || [],
                 region_analysis: punk.regionAnalysis || {},
                 detected_traits: punk.detectedTraits || {},
@@ -313,8 +351,13 @@
                     punk.userInput = review.user_input || '';
                     punk.userCorrections = review.user_corrections || '';
                     punk.status = review.status || 'pending';
-                    punk.finalCaption = review.final_caption || '';
+                    punk.finalCaption = review.final_caption || punk.finalCaptionFromTxt || '';
                     punk.userApproved = review.status === 'approved' || review.status === 'edited';
+
+                    // Restore final caption from txt if available
+                    if (review.final_caption_txt) {
+                        punk.finalCaptionFromTxt = review.final_caption_txt;
+                    }
 
                     // Restore color data if it was modified
                     if (review.full_palette_15) punk.fullPalette15 = review.full_palette_15;
@@ -367,7 +410,7 @@
             document.getElementById('punk-img').src = 'civitai_v2_7_training/' + punk.filename;
             document.getElementById('filename').textContent = punk.filename;
             document.getElementById('current-caption').textContent = punk.currentCaption || 'None';
-            document.getElementById('ai-caption').textContent = punk.aiComprehensiveCaption || 'None';
+            document.getElementById('final-caption').textContent = punk.finalCaptionFromTxt || punk.finalCaption || 'None';
             document.getElementById('user-input').value = punk.userInput || '';
 
             updateProgress();
@@ -378,8 +421,8 @@
 
             setStatus('syncing', 'Saving to cloud...');
 
-            // Final caption is the AI comprehensive caption (approved as-is)
-            const finalCaption = punk.aiComprehensiveCaption;
+            // Final caption is the caption from the .txt file (approved as-is)
+            const finalCaption = punk.finalCaptionFromTxt || punk.finalCaption || punk.aiComprehensiveCaption;
 
             const { error } = await supabase
                 .from('caption_reviews')
@@ -388,6 +431,7 @@
                     user_input: '',
                     user_corrections: '',
                     final_caption: finalCaption,
+                    final_caption_txt: punk.finalCaptionFromTxt,
                     full_palette_15: punk.fullPalette15,
                     region_analysis: punk.regionAnalysis,
                     detected_traits: punk.detectedTraits,
@@ -427,8 +471,9 @@
 
             setStatus('syncing', 'Saving to cloud...');
 
-            // Merge AI caption with user corrections to create final caption
-            const finalCaption = mergeCaptions(punk.aiComprehensiveCaption, userCorrections, punk);
+            // User corrections are applied to the FINAL caption (from .txt), not the AI comprehensive one
+            const baseFinalCaption = punk.finalCaptionFromTxt || punk.finalCaption || punk.aiComprehensiveCaption;
+            const finalCaption = mergeCaptions(baseFinalCaption, userCorrections, punk);
             console.log('  Final caption:', finalCaption);
 
             const updateData = {
@@ -436,6 +481,7 @@
                 user_input: userCorrections,
                 user_corrections: userCorrections,
                 final_caption: finalCaption,
+                final_caption_txt: baseFinalCaption, // Keep original for reference
                 full_palette_15: punk.fullPalette15 || [],
                 region_analysis: punk.regionAnalysis || {},
                 detected_traits: punk.detectedTraits || {},

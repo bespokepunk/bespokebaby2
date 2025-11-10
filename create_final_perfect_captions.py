@@ -110,6 +110,43 @@ def create_perfect_caption(record):
         else:
             accessories.append("wearing glasses")
 
+    # Earrings - check user corrections AND sampled data
+    earring_hex = None
+    if 'earring_left' in sampled and sampled['earring_left']:
+        earring_hex = sampled['earring_left'][0]['hex']
+    elif 'earring_right' in sampled and sampled['earring_right']:
+        earring_hex = sampled['earring_right'][0]['hex']
+
+    if 'earring' in user_lower or earring_hex:
+        # Extract earring description from user text
+        earring_match = re.search(r'([^.,]*earring[^.,]*)', user_corr, re.IGNORECASE)
+        if earring_match:
+            earring_desc = earring_match.group(1).strip()
+            if earring_hex and '(' not in earring_desc:
+                accessories.append(f"wearing {earring_desc} ({earring_hex})")
+            else:
+                accessories.append(f"wearing {earring_desc}")
+        elif earring_hex:
+            accessories.append(f"wearing earrings ({earring_hex})")
+
+    # Necklace / chain / pendant
+    if 'necklace' in user_lower or 'chain' in user_lower or 'pendant' in user_lower:
+        necklace_match = re.search(r'([^.,]*(?:necklace|chain|pendant)[^.,]*)', user_corr, re.IGNORECASE)
+        if necklace_match:
+            accessories.append(f"wearing {necklace_match.group(1).strip()}")
+
+    # Headband / bandana
+    if 'headband' in user_lower or 'bandana' in user_lower:
+        headband_match = re.search(r'([^.,]*(?:headband|bandana)[^.,]*)', user_corr, re.IGNORECASE)
+        if headband_match:
+            accessories.append(f"wearing {headband_match.group(1).strip()}")
+
+    # Bow / ribbon
+    if 'bow in hair' in user_lower or 'ribbon in hair' in user_lower:
+        bow_match = re.search(r'([^.,]*(?:bow|ribbon)[^.,]*)', user_corr, re.IGNORECASE)
+        if bow_match:
+            accessories.append(f"wearing {bow_match.group(1).strip()}")
+
     # Flower - preserve detail
     if 'red flower' in user_lower:
         accessories.append("wearing red flower in hair")
@@ -251,7 +288,7 @@ def create_perfect_caption(record):
 
     # === TEMPLATE SECTION 9: PALETTE (always 5) ===
     palette_hexes = []
-    for region_name in ['hair_top', 'eyes_left', 'face_center', 'bg_top_left', 'clothing_top']:
+    for region_name in ['hair_top', 'eyes_left', 'face_center', 'bg_top_left', 'clothing_top', 'earring_left', 'earring_right']:
         region = sampled.get(region_name, [])
         if region:
             hex_val = region[0]['hex']

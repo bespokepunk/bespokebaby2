@@ -1,0 +1,31 @@
+# Captions Needing Research and Detailed Descriptions
+
+## Sam Altman (4+ files)
+Files: lad_012_chromium, lad_026_chromiumabstractsalmon, lad_027_chromiumabstractyellow, lad_028_chromiumabstractgreen, lad_059_SamAScientist
+Needed: Describe his actual hair style (longer on top, well-cut, styled, sexy messy)
+
+## Historical Figures Hair Styles
+- George Washington: lad_002_cash
+- Thomas Jefferson: lad_015_jackson
+- Benjamin Franklin: lad_016_tungsten
+- John Adams: lad_017_ink
+
+## Leonardo da Vinci
+File: lad_039_davinci-2
+Needed: White/golden blonde huge voluminous beard, olive skin, black beret
+
+## Celebrities
+- Farah Fawcett: lady_033_staranise - 70s feathered layered hair
+- Amy Winehouse: lady_060_winehouse - big black voluptuous beehive half-up style
+- Jessica Rabbit: lady_072_tangerine - voluptuous long blown out red hair
+
+## Character Styles
+- Rosie the Riveter: lady_000_lemon, lady_051_rosieabstract
+- Cruella DeVille: lady_006_pepper, lady_053_pepperabstract - split black/white hair
+- Audrey Hepburn (Breakfast at Tiffany's): lady_008_pinksilk, lady_009_bluesilk, lady_052_pinksilkabstract, lady_057_bluesilkabstract
+- 7 of 9 (Star Trek): lady_007_alloy, lady_056_alloyabstract
+- Mona Lisa: lady_066_monalisa-3
+- WifeJak: lady_031_paprika
+
+## Surfer Hair
+Files: lad_055_Luke variants - "golden blonde dirty blonde ombre with natural highlights, long wavy curly surfer hair"
