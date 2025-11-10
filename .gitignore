@@ -1,0 +1,31 @@
+# Model files (too large for git)
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+models/
+
+# Test outputs
+test_outputs*/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+
+# macOS
+.DS_Store
+._*
+
+# Training outputs
+output/
+outputs/
+
+# Large zip files
+*.zip
+
+# Logs
+*.log
