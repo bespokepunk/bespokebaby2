@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Punk - Admin Panel</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .user-info {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .setting-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .setting-row:last-child {
+            border-bottom: none;
+        }
+
+        .setting-label {
+            flex: 1;
+        }
+
+        .setting-label h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .setting-label p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #667eea;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(30px);
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #5568d3;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .user-list {
+            list-style: none;
+        }
+
+        .user-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .user-email {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .user-role {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .role-admin {
+            background: #667eea;
+            color: white;
+        }
+
+        .role-viewer {
+            background: #6c757d;
+            color: white;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        #login-section {
+            max-width: 400px;
+            margin: 100px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Section -->
+    <div id="login-section" style="display: none;">
+        <h1 style="margin-bottom: 20px; text-align: center;">Admin Login</h1>
+        <div id="login-error" class="error" style="display: none;"></div>
+        <form id="login-form">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="login-email" required placeholder="ilyssaevans@gmail.com">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Login</button>
+        </form>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="admin-panel" style="display: none;">
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <h1>🎨 Bespoke Punk Admin Panel</h1>
+                <div class="user-info">
+                    Logged in as: <strong id="user-email"></strong> |
+                    <a href="#" id="logout-btn" style="color: #667eea;">Logout</a>
+                </div>
+            </div>
+
+            <!-- Message Area -->
+            <div id="message-area"></div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-captions">0</div>
+                    <div class="stat-label">Caption Reviews</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-training-runs">0</div>
+                    <div class="stat-label">Training Runs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-epochs">0</div>
+                    <div class="stat-label">Epoch Results</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat-users">0</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="section">
+                <h2>⚙️ Application Settings</h2>
+
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <h3>Public Viewing</h3>
+                        <p>Allow unauthenticated users to view data (read-only mode)</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="toggle-public-viewing">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-row">
+                    <div class="setting-label">
+                        <h3>Public Editing</h3>
+                        <p style="color: #dc3545;">⚠️ NOT RECOMMENDED - Allow unauthenticated users to edit data</p>
+                    </div>
+                    <label class="toggle">
+                        <input type="checkbox" id="toggle-public-editing">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- User Management -->
+            <div class="section">
+                <h2>👥 User Management</h2>
+                <div id="users-loading" class="loading">Loading users...</div>
+                <ul id="user-list" class="user-list"></ul>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="section">
+                <h2>🚀 Quick Actions</h2>
+                <button class="btn" onclick="window.location.href='SUPABASE_REVIEW.html'" style="margin-right: 10px;">
+                    Open Caption Reviewer
+                </button>
+                <button class="btn" onclick="window.location.href='TRAINING_REVIEW_UI.html'">
+                    Open Training Tracker
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Supabase configuration
+        const SUPABASE_URL = 'https://qwvncbcphuyobijakdsr.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF3dm5jYmNwaHV5b2JpamFrZHNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI3MTA4NDgsImV4cCI6MjA3ODI4Njg0OH0.cE00n2favc7IK7fOwzCyDfTJK0tMntftb9gi_xfjpQ4';
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        let currentUser = null;
+        let userRole = null;
+
+        // Initialize
+        (async function init() {
+            // Check if user is logged in
+            const { data: { session } } = await supabase.auth.getSession();
+
+            if (session) {
+                currentUser = session.user;
+                await checkAdminStatus();
+            } else {
+                showLogin();
+            }
+        })();
+
+        async function checkAdminStatus() {
+            // Check if user is admin
+            const { data, error } = await supabase
+                .from('user_roles')
+                .select('role')
+                .eq('user_id', currentUser.id)
+                .single();
+
+            if (error || !data || data.role !== 'admin') {
+                showMessage('Access denied. You must be an admin to access this panel.', 'error');
+                await supabase.auth.signOut();
+                showLogin();
+                return;
+            }
+
+            userRole = data.role;
+            showAdminPanel();
+        }
+
+        function showLogin() {
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('admin-panel').style.display = 'none';
+        }
+
+        async function showAdminPanel() {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('admin-panel').style.display = 'block';
+            document.getElementById('user-email').textContent = currentUser.email;
+
+            await loadStats();
+            await loadSettings();
+            await loadUsers();
+        }
+
+        // Login form
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password
+            });
+
+            if (error) {
+                document.getElementById('login-error').textContent = error.message;
+                document.getElementById('login-error').style.display = 'block';
+            } else {
+                currentUser = data.user;
+                await checkAdminStatus();
+            }
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', async (e) => {
+            e.preventDefault();
+            await supabase.auth.signOut();
+            currentUser = null;
+            userRole = null;
+            showLogin();
+        });
+
+        // Load stats
+        async function loadStats() {
+            const { count: captionCount } = await supabase.from('caption_reviews').select('*', { count: 'exact', head: true });
+            const { count: trainingCount } = await supabase.from('training_runs').select('*', { count: 'exact', head: true });
+            const { count: epochCount } = await supabase.from('epoch_results').select('*', { count: 'exact', head: true });
+            const { count: userCount } = await supabase.from('user_roles').select('*', { count: 'exact', head: true });
+
+            document.getElementById('stat-captions').textContent = captionCount || 0;
+            document.getElementById('stat-training-runs').textContent = trainingCount || 0;
+            document.getElementById('stat-epochs').textContent = epochCount || 0;
+            document.getElementById('stat-users').textContent = userCount || 0;
+        }
+
+        // Load settings
+        async function loadSettings() {
+            const { data, error } = await supabase.from('app_settings').select('*');
+
+            if (!error && data) {
+                data.forEach(setting => {
+                    if (setting.setting_key === 'public_viewing_enabled') {
+                        document.getElementById('toggle-public-viewing').checked = setting.setting_value === 'true';
+                    } else if (setting.setting_key === 'public_editing_enabled') {
+                        document.getElementById('toggle-public-editing').checked = setting.setting_value === 'true';
+                    }
+                });
+            }
+
+            // Add event listeners
+            document.getElementById('toggle-public-viewing').addEventListener('change', async (e) => {
+                await updateSetting('public_viewing_enabled', e.target.checked.toString());
+            });
+
+            document.getElementById('toggle-public-editing').addEventListener('change', async (e) => {
+                await updateSetting('public_editing_enabled', e.target.checked.toString());
+            });
+        }
+
+        async function updateSetting(key, value) {
+            const { error } = await supabase
+                .from('app_settings')
+                .update({ setting_value: value, updated_by: currentUser.id })
+                .eq('setting_key', key);
+
+            if (error) {
+                showMessage('Failed to update setting: ' + error.message, 'error');
+            } else {
+                showMessage('Setting updated successfully!', 'success');
+            }
+        }
+
+        // Load users
+        async function loadUsers() {
+            document.getElementById('users-loading').style.display = 'block';
+
+            const { data, error } = await supabase.from('user_roles').select('*').order('created_at', { ascending: false });
+
+            document.getElementById('users-loading').style.display = 'none';
+
+            if (error) {
+                showMessage('Failed to load users: ' + error.message, 'error');
+                return;
+            }
+
+            const userList = document.getElementById('user-list');
+            userList.innerHTML = '';
+
+            data.forEach(user => {
+                const li = document.createElement('li');
+                li.className = 'user-item';
+                li.innerHTML = `
+                    <div>
+                        <div class="user-email">${user.email}</div>
+                        <small style="color: #666;">Joined: ${new Date(user.created_at).toLocaleDateString()}</small>
+                    </div>
+                    <span class="user-role role-${user.role}">${user.role.toUpperCase()}</span>
+                `;
+                userList.appendChild(li);
+            });
+        }
+
+        function showMessage(message, type) {
+            const messageArea = document.getElementById('message-area');
+            messageArea.innerHTML = `<div class="${type}">${message}</div>`;
+            setTimeout(() => {
+                messageArea.innerHTML = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
