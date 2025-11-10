@@ -1,88 +1,99 @@
-# RunPod Training Instructions - V2.7 (COMPLETE)
+# RunPod SD 1.5 Training - Complete Instructions
 
-## What Was Wrong Before
+## STEP 1: CLEANUP DISK (OPTIONAL)
 
-1. **Wrong zip structure** - Old zip had `FORTRAINING6/bespokepunks/` folders, scripts expected `/workspace/training_data/`
-2. **Missing dependencies** - Scripts were missing critical packages causing random failures
-3. **Incomplete setup** - Multiple steps needed, easy to miss one
-
-## What's Fixed Now
-
-✅ **Complete dependency installation** - ALL packages in one script
-✅ **Correct zip structure** - Files extract directly, no nested folders
-✅ **Automatic data handling** - Script handles extraction and moving files
-✅ **Full error checking** - Verifies everything before training starts
-
-## How to Use (3 Simple Steps)
-
-### Step 1: Upload Files to RunPod
-
-Upload these 2 files to `/workspace/`:
-- `RUNPOD_COMPLETE_V2_7.sh` (the training script)
-- `bespoke_punks_v2_7_CORRECT.zip` (the training data)
-
-### Step 2: Make Script Executable
+To free up space before uploading, run:
 
 ```bash
-cd /workspace
-chmod +x RUNPOD_COMPLETE_V2_7.sh
+cd /Users/ilyssaevans/Documents/GitHub/bespokebaby2
+bash CLEANUP_COMMANDS.sh
 ```
 
-### Step 3: Run Training
+This will remove old RunPod files, scripts, and model files. If you need more space, edit the script and uncomment the lines to remove large folders (output/, models/, kohya_ss/).
+
+---
+
+## STEP 2: UPLOAD TO RUNPOD
+
+### File to Upload:
+`/Users/ilyssaevans/Documents/GitHub/bespokebaby2/bespoke_baby_runpod_training.zip`
+
+### Upload Methods:
+
+**Option A - Via RunPod Web Interface:**
+1. Go to your RunPod pod
+2. Use the file manager to upload `bespoke_baby_runpod_training.zip`
+3. Upload to `/workspace/`
+
+**Option B - Via SCP (if SSH enabled):**
+```bash
+scp /Users/ilyssaevans/Documents/GitHub/bespokebaby2/bespoke_baby_runpod_training.zip root@YOUR_POD_IP:/workspace/
+```
+
+**Option C - Via wget (upload to a temporary host first):**
+```bash
+# On RunPod terminal:
+cd /workspace
+wget YOUR_DOWNLOAD_URL/bespoke_baby_runpod_training.zip
+```
+
+---
+
+## STEP 3: START TRAINING (SINGLE COMMAND)
+
+Once the zip file is uploaded, connect to your RunPod terminal and run:
 
 ```bash
-bash RUNPOD_COMPLETE_V2_7.sh
+cd /workspace && unzip -q bespoke_baby_runpod_training.zip && cd bespoke_baby_training && bash start_training.sh
 ```
 
 That's it! The script will:
-1. Install Kohya SS
-2. Install ALL dependencies (no more missing packages!)
-3. Extract and organize training data properly
-4. Verify everything is correct
-5. Start training
+1. Setup all directories
+2. Install all dependencies (Kohya SS, PyTorch, xformers, etc.)
+3. Clone Kohya SS sd-scripts
+4. Configure training parameters
+5. Start the training automatically
 
-## Expected Output
+---
 
-```
-Training started at: [timestamp]
-Expected Duration: 2-3 hours on RTX 4090
+## TRAINING DETAILS
 
-[Training progress will show here]
+- **Model:** Stable Diffusion 1.5
+- **LoRA Rank:** 32
+- **Learning Rate:** 1e-4
+- **Epochs:** 10
+- **Dataset:** 203 images with world-class captions
+- **Batch Size:** 1 (with gradient accumulation 4)
+- **Optimizer:** AdamW8bit
+- **Output:** `/workspace/output/bespoke_baby_sd15_lora-NNNNNN.safetensors`
 
-✓ TRAINING COMPLETE!
-Output models:
-  /workspace/output/bespoke_punks_v2_7-000001.safetensors
-  /workspace/output/bespoke_punks_v2_7-000002.safetensors
-  ...
-  /workspace/output/bespoke_punks_v2_7-000010.safetensors
-```
+---
 
-## Files You Need
+## MONITORING
 
-Use these NEW files (NOT the old ones):
-- ✅ `RUNPOD_COMPLETE_V2_7.sh` - Complete training script with ALL dependencies
-- ✅ `bespoke_punks_v2_7_CORRECT.zip` - Correctly structured training data (881KB)
+Training logs will be displayed in real-time. Models are saved every epoch to:
+`/workspace/output/`
 
-## Troubleshooting
+Download your trained LoRA models from this directory when training completes.
+
+---
+
+## TROUBLESHOOTING
 
 If training fails:
-1. Check `/workspace/training_data/` exists and has 200+ images
-2. Check `/workspace/kohya_ss/sd-scripts/train_network.py` exists
-3. Run `nvidia-smi` to verify GPU is available
-4. Check disk space: `df -h /workspace`
+1. Check `/workspace/logs/` for detailed logs
+2. Ensure GPU has 24GB+ VRAM
+3. Verify CUDA 11.8+ is installed
+4. Check disk space with `df -h`
 
-## Training Parameters
+---
 
-- **Resolution**: 24x24 (native pixel art size)
-- **Base Model**: SDXL (stable-diffusion-xl-base-1.0)
-- **Epochs**: 10
-- **Batch Size**: 4
-- **Learning Rate**: 0.0001
-- **Network Dim**: 32
-- **Network Alpha**: 16
+## PACKAGE CONTENTS
 
-## After Training
-
-Download all `.safetensors` files from `/workspace/output/`
-
-Test different epochs to find the best one (usually epoch 3-5 is optimal).
+```
+bespoke_baby_runpod_training.zip
+├── training_data/          # 203 PNG + TXT pairs (world-class captions)
+├── training_config.toml    # Pre-configured training parameters
+├── start_training.sh       # Executable training script
+└── README.md              # Quick reference
+```
