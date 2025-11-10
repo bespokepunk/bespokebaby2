@@ -14,8 +14,16 @@ mkdir -p /workspace/logs
 
 # Copy training data to workspace
 echo "[2/6] Copying training data to workspace..."
-cp -r training_data/* /workspace/training_data/
-echo "Training data copied: $(ls /workspace/training_data/*.png | wc -l) images"
+mkdir -p /workspace/training_data/10_bespoke_baby
+cp -v training_data/*.png /workspace/training_data/10_bespoke_baby/ 2>&1 | grep -c ".png" || echo "0"
+cp -v training_data/*.txt /workspace/training_data/10_bespoke_baby/ 2>&1 | grep -c ".txt" || echo "0"
+IMAGE_COUNT=$(ls /workspace/training_data/10_bespoke_baby/*.png 2>/dev/null | wc -l)
+CAPTION_COUNT=$(ls /workspace/training_data/10_bespoke_baby/*.txt 2>/dev/null | wc -l)
+echo "Training data copied: $IMAGE_COUNT images, $CAPTION_COUNT captions"
+if [ "$IMAGE_COUNT" != "203" ] || [ "$CAPTION_COUNT" != "203" ]; then
+    echo "ERROR: Expected 203 images and 203 captions, got $IMAGE_COUNT images and $CAPTION_COUNT captions"
+    exit 1
+fi
 
 # Install system dependencies
 echo "[3/6] Installing system dependencies..."
@@ -35,18 +43,47 @@ else
 fi
 
 # Install Python dependencies
-echo "[5/6] Installing Python dependencies..."
+echo "[5/6] Installing Python dependencies and downloading model..."
 pip install --quiet --upgrade pip
-pip install --quiet torch==2.1.0 torchvision==0.16.0 --index-url https://download.pytorch.org/whl/cu118
+
+# Uninstall ALL conflicting packages first
+pip uninstall -y torch torchvision torchaudio xformers triton 2>/dev/null || true
+
+# Install latest compatible versions from cu118
+pip install --quiet torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
 pip install --quiet -r requirements.txt
-pip install --quiet xformers==0.0.22.post7
-pip install --quiet bitsandbytes==0.41.1
-pip install --quiet transformers==4.35.2
-pip install --quiet diffusers[torch]==0.24.0
-pip install --quiet accelerate==0.25.0
+pip install --quiet xformers --index-url https://download.pytorch.org/whl/cu118
+pip install --quiet bitsandbytes
+pip install --quiet transformers
+pip install --quiet diffusers[torch]
+pip install --quiet accelerate
+pip install --quiet huggingface-hub
+
+# Create accelerate config to avoid warnings
+mkdir -p ~/.cache/huggingface/accelerate
+cat > ~/.cache/huggingface/accelerate/default_config.yaml << 'ACCEL_EOF'
+compute_environment: LOCAL_MACHINE
+distributed_type: 'NO'
+downcast_bf16: 'no'
+machine_rank: 0
+main_training_function: main
+mixed_precision: fp16
+num_machines: 1
+num_processes: 1
+rdzv_backend: static
+same_network: true
+tpu_env: []
+tpu_use_cluster: false
+tpu_use_sudo: false
+use_cpu: false
+ACCEL_EOF
+
+# Pre-download SD 1.5 model to avoid timeout during training
+echo "Downloading Stable Diffusion 1.5 model..."
+python3 -c "from huggingface_hub import snapshot_download; snapshot_download('runwayml/stable-diffusion-v1-5', allow_patterns=['*.json', '*.txt', '*.safetensors', '*.bin', '*.model'])" || echo "Model download had issues, will retry during training"
 
 # Copy config file
-cp /workspace/bespoke_baby_training/training_config.toml /workspace/kohya_ss/
+cp /workspace/runpod_package/training_config.toml /workspace/kohya_ss/sd-scripts/
 
 # Start training
 echo "[6/6] Starting LoRA training..."
@@ -64,7 +101,7 @@ echo "Training started at: $(date)"
 echo "============================================"
 echo ""
 
-cd /workspace/kohya_ss
+cd /workspace/kohya_ss/sd-scripts
 
 accelerate launch --num_cpu_threads_per_process=2 \
   train_network.py \
