@@ -1,0 +1,53 @@
+{
+  "overall_color_accuracy": 0.0,
+  "background": {
+    "expected_color": "#00FF00",
+    "actual_dominant_color": "#faa19f",
+    "accuracy_percent": 0.0,
+    "matching_pixels": 0,
+    "total_pixels": 320,
+    "is_correct": false
+  },
+  "hair": {
+    "expected_color": "#FF1493",
+    "actual_dominant_color": "#faa09f",
+    "accuracy_percent": 0.0,
+    "is_two_toned": false,
+    "two_tone_confidence": 0,
+    "dominant_colors": [
+      {
+        "color": "#faa09f",
+        "count": 13,
+        "percent": 7.74
+      },
+      {
+        "color": "#faa19f",
+        "count": 12,
+        "percent": 7.14
+      },
+      {
+        "color": "#f9a19f",
+        "count": 7,
+        "percent": 4.17
+      }
+    ]
+  },
+  "accessories": {
+    "crown": {
+      "expected_color": "#FFD700",
+      "detection_confidence": 0.0,
+      "is_present": false
+    },
+    "necklace": {
+      "expected_color": "#00FF00",
+      "detection_confidence": 0.0,
+      "is_present": false
+    }
+  },
+  "color_purity": {
+    "unique_colors": 342,
+    "color_purity_score": 0,
+    "top_10_coverage_percent": 19.79,
+    "is_clean_pixel_art": false
+  }
+}
