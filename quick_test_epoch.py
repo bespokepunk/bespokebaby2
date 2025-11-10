@@ -81,8 +81,14 @@ def main():
         generator=torch.Generator().manual_seed(42),
     ).images[0]
 
-    # Save outputs
-    output_dir = "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/quick_tests"
+    # Save outputs - create epoch-specific subdirectory
+    # Extract epoch number from filename (e.g., "000002" -> "epoch_2")
+    import re
+    epoch_match = re.search(r'-(\d+)', filename)
+    epoch_num = epoch_match.group(1).lstrip('0') if epoch_match else "unknown"
+
+    epoch_subdir = f"epoch_{epoch_num}"
+    output_dir = f"/Users/ilyssaevans/Documents/GitHub/bespokebaby2/quick_tests/{epoch_subdir}"
     os.makedirs(output_dir, exist_ok=True)
 
     # Save 512x512
