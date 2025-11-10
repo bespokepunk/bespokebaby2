@@ -38,5 +38,126 @@ lad_025_x.txt:neutral
 lad_026_chromiumabstractsalmon.txt:neutral
 lad_027_chromiumabstractyellow.txt:neutral
 
-# Continuing with remaining 173...
+# Batch 31-39: Reviewed
+lad_028_chromiumabstractgreen.txt:neutral
+lad_029_famous-9.txt:neutral
+lad_029_famous4.txt:neutral
+lad_030_ink.txt:neutral
+lad_031_fin.txt:neutral
+lad_032_shaman-4.txt:neutral
+lad_033_molecule-2.txt:neutral
+lad_035_JUAN.txt:smile
+lad_036_x.txt:neutral
+
+# Batch 40-48: Reviewed
+lad_037_aressprout.txt:neutral
+lad_038_cashking-6.txt:neutral
+lad_039_davinci-2.txt:neutral
+lad_040_melzarmagic.txt:neutral
+lad_041_Maradona.txt:smile
+lad_043_jeremey.txt:neutral
+lad_045_homewithkids3.txt:neutral
+lad_046_NATE.txt:neutral
+lad_047_CYGAAR1.txt:neutral
+
+# Batch 49-57: Reviewed
+lad_049_gainzyyyy12.txt:neutral
+lad_049_gainzyyyy18.txt:neutral
+lad_050_nate-2.txt:neutral
+lad_050_nate.txt:neutral
+lad_051_DEVON-2.txt:smile
+lad_051_DEVON-4.txt:smile
+lad_054_sterling.txt:neutral
+lad_054_sterlingglasses.txt:neutral
+lad_054_sterlingglasses3withcrown5.txt:neutral
+
+# Batch 58-66: Reviewed
+lad_055_Luke.txt:neutral
+lad_055_Luke10.txt:neutral
+lad_055_Luke3.txt:neutral
+lad_055_Luke6.txt:neutral
+lad_055_Luke8.txt:neutral
+lad_057_Hugh.txt:neutral
+lad_057_Hugh5.txt:neutral
+lad_058_SAVVA.txt:neutral
+lad_059_SamAScientist.txt:neutral
+
+# Batch 67-75: Reviewed
+lad_060_bhaitradingbot2.txt:neutral
+lad_061_DOPE10.txt:neutral
+lad_061_DOPE7.txt:neutral
+lad_061_DOPE9.txt:neutral
+lad_062_devox2.txt:smile
+lad_063_kenichi.txt:neutral
+lad_064_Scott.txt:neutral
+lad_064_sensei.txt:neutral
+lad_066_napoli2.txt:neutral
+
+# Batch 76-84: Reviewed
+lad_068_mayor.txt:neutral
+lad_070_IRAsBF2.txt:neutral
+lad_075_mmhm.txt:neutral
+lad_078_btoshi.txt:neutral
+lad_079_ravish.txt:neutral
+lad_080_fcpo.txt:neutral
+lad_081_iggy2.txt:neutral
+lad_086_Scooby.txt:neutral
+lad_087_HEEM.txt:neutral
+
+# Batch 85-93: Reviewed
+lad_088_Kareem.txt:neutral
+lad_089_aguda.txt:neutral
+lad_090_drscott.txt:neutral
+lad_091_amit.txt:neutral
+lad_092_derrick.txt:neutral
+lad_093_photogee.txt:neutral
+lad_094_storm.txt:neutral
+lad_095_godfather.txt:neutral
+lad_096_apollo.txt:smile
+
+# Batch 94-102: Reviewed
+lad_097_drralph.txt:neutral
+lad_098_Murtaza.txt:neutral
+lad_099_amenshiller.txt:neutral
+lad_102_bunya.txt:neutral
+lad_102_bunya2.txt:neutral
+lad_102_bunya3.txt:neutral
+lad_103_merheb.txt:neutral
+lad_103_merheb2.txt:neutral
+lad_103_merheb3.txt:neutral
+
+# Batch 103-111: Reviewed
+lad_105_inkspired.txt:neutral
+lad_106_sultan.txt:neutral
+lad_74_lc.txt:neutral
+lady_000_lemon.txt:neutral
+lady_001_hazelnut.txt:neutral
+lady_002_vanilla.txt:neutral
+lady_003_cashew.txt:neutral
+lady_004_nutmeg.txt:neutral
+lady_005_cinnamon.txt:neutral
+
+# Batch 112-120: Reviewed
+lady_006_pepper.txt:neutral
+lady_007_alloy.txt:neutral
+lady_008_pinksilk.txt:neutral
+lady_009_bluesilk.txt:neutral
+lady_010_saffron.txt:neutral
+lady_011_sage.txt:neutral
+lady_012_parasite.txt:neutral
+lady_013_rosemary.txt:neutral
+lady_014_olive.txt:neutral
+
+# Batch 121-129: Reviewed
+lady_015_lime.txt:neutral
+lady_016_honey.txt:neutral
+lady_017_pine.txt:neutral
+lady_018_strawberry.txt:neutral
+lady_019_banana.txt:neutral
+lady_020_blood.txt:neutral
+lady_021_diamond.txt:neutral
+lady_022_gold.txt:neutral
+lady_023_silver.txt:neutral
+
+# Continuing with remaining 74...
 # Will complete this file systematically
