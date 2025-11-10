@@ -1,6 +1,0 @@
-{
-  "model": "V1_Epoch2",
-  "cfg": 7.5,
-  "steps": 30,
-  "quant_colors": 15
-}

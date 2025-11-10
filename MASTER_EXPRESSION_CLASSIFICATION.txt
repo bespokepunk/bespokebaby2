@@ -1,0 +1,42 @@
+# Master Expression Classification for All 203 Images
+# Based on visual review of 24x24 pixel art
+# Format: filename:expression (smile or neutral)
+
+# Batch 1-10: Reviewed
+lad_001_carbon.txt:neutral
+lad_002_cash.txt:neutral
+lad_003_chai.txt:neutral
+lad_004_silicon.txt:neutral
+lad_005_copper.txt:neutral
+lad_006_redshift.txt:neutral
+lad_007_titanium.txt:neutral
+lad_008_platinum.txt:neutral
+lad_009_steel.txt:neutral
+lad_010_aluminum.txt:neutral
+
+# Batch 11-20: Reviewed
+lad_011_chocolate.txt:neutral
+lad_012_chromium.txt:neutral
+lad_013_caramel.txt:smile
+lad_014_sugar.txt:neutral
+lad_015_jackson.txt:neutral
+lad_016_tungsten.txt:neutral
+lad_017_ink.txt:neutral
+lad_018_mandarin.txt:neutral
+lad_019_diamond.txt:neutral
+lad_020_gpu.txt:neutral
+
+# Batch 21-30: Reviewed
+lad_021_x.txt:neutral
+lad_022_x.txt:neutral
+lad_023_x-2.txt:neutral
+lad_023_x-3.txt:neutral
+lad_023_x-4.txt:neutral
+lad_023_x.txt:neutral
+lad_024_x.txt:neutral
+lad_025_x.txt:neutral
+lad_026_chromiumabstractsalmon.txt:neutral
+lad_027_chromiumabstractyellow.txt:neutral
+
+# Continuing with remaining 173...
+# Will complete this file systematically
