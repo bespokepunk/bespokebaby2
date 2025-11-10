@@ -1,0 +1,313 @@
+{
+  "summary": {
+    "total": 203,
+    "missing_hex_eyes": 182,
+    "missing_hex_shirt": 46,
+    "hex_not_in_sample": 203,
+    "missing_expression": 203,
+    "has_instruction_text": 14,
+    "missing_hex_hair": 52,
+    "missing_hex_background": 86,
+    "has_typos": 12,
+    "missing_hex_jacket": 10,
+    "missing_hex_skin": 12,
+    "has_todo_text": 3
+  },
+  "trait_coverage": {
+    "hair_color": 203,
+    "hair_style": 141,
+    "eye_color": 185,
+    "skin_tone": 203,
+    "accessories": 107,
+    "lips": 137,
+    "clothing": 154,
+    "background": 203,
+    "facial_hair": 61
+  },
+  "issues": [
+    {
+      "filename": "lad_002_cash.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "describe.*better",
+        "explain.*if you",
+        "\\(.*describe.*\\)",
+        "\\(.*better.*\\)"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Explain George Washingtons hair and style if you had to, light/medium pale green tone sfor skin and ha..."
+    },
+    {
+      "filename": "lad_005_copper.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "do that here",
+        "yo u"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, his hair is dark brown mostly but yo ucan obviously see the sheen and reflection for the light on it b..."
+    },
+    {
+      "filename": "lad_006_redshift.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "adjust for"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Sandy / dirty blonde small mohawk to go with buzzed hair (short mohawk), blue colors are due to editin..."
+    },
+    {
+      "filename": "lad_007_titanium.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "describe.*better",
+        "\\(.*describe.*\\)",
+        "\\(.*better.*\\)"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, dark dark brown blaksi hcolor with some medium brown and higlights shining off as refelction and sheen..."
+    },
+    {
+      "filename": "lad_012_chromium.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "\\(.*describe.*\\)",
+        "yo u"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Imagine Sam Altman  describe him as yo uwould here especially his hair style, -  hiis classic light gr..."
+    },
+    {
+      "filename": "lad_014_sugar.png",
+      "type": "TODO_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains TODO instruction \"get lip color\""
+    },
+    {
+      "filename": "lad_015_jackson.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "describe.*better",
+        "explain.*if you",
+        "\\(.*describe.*\\)",
+        "\\(.*better.*\\)"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Explain Thomas Jeffersons hair if you had to, light/medium pale green tone sfor skin and hair, all the..."
+    },
+    {
+      "filename": "lad_016_tungsten.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "describe.*better",
+        "explain.*if you",
+        "\\(.*describe.*\\)",
+        "\\(.*better.*\\)"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Explain Benjamin Frankjlins hair if you had to, light/medium pale green tone sfor skin and hair, all t..."
+    },
+    {
+      "filename": "lad_017_ink.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "describe.*better",
+        "explain.*if you",
+        "\\(.*describe.*\\)",
+        "\\(.*better.*\\)"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Explain John adams hair if you had to, light pale green tone sfor skin and hair, all the way up to the..."
+    },
+    {
+      "filename": "lad_026_chromiumabstractsalmon.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "\\(.*describe.*\\)",
+        "yo u"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Imagine Sam Altman  describe him as yo uwould here especially his hair style, -  hiis classic light gr..."
+    },
+    {
+      "filename": "lad_027_chromiumabstractyellow.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "\\(.*describe.*\\)",
+        "yo u"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Imagine Sam Altman  describe him as yo uwould here especially his hair style, -  hiis classic light gr..."
+    },
+    {
+      "filename": "lad_028_chromiumabstractgreen.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "\\(.*describe.*\\)",
+        "yo u"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Imagine Sam Altman  describe him as yo uwould here especially his hair style, -  hiis classic light gr..."
+    },
+    {
+      "filename": "lad_037_aressprout.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "\\(.*describe.*\\)",
+        "liek"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, ashy sandy rbown hair with natural blonde higlights from the sun, shorter on the sides but a litte lon..."
+    },
+    {
+      "filename": "lad_059_SamAScientist.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "\\(.*describe.*\\)"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, hiis classic light grey stubble and even light grey skin, and his hair should be described as his hari..."
+    },
+    {
+      "filename": "lady_028_marshmallow.png",
+      "type": "TODO_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains TODO instruction \"get lip color\""
+    },
+    {
+      "filename": "lady_031_paprika.png",
+      "type": "TODO_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains TODO instruction \"get lip color\""
+    },
+    {
+      "filename": "lady_099_domino.png",
+      "type": "INSTRUCTION_TEXT",
+      "severity": "HIGH",
+      "description": "Caption contains meta-instructions that should be replaced with actual descriptions",
+      "patterns": [
+        "\\(.*describe.*\\)"
+      ],
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lady, Red Hooded Cape (describe in the style od Little Red Ridhing Hood), partialyl covering face (one eye)..."
+    },
+    {
+      "filename": "lad_004_silicon.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"haoirc\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, hair not as short today on sides but shorter and again logner on top to create his look, haoirc ut cla..."
+    },
+    {
+      "filename": "lad_005_copper.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"yo u(?!r)\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, his hair is dark brown mostly but yo ucan obviously see the sheen and reflection for the light on it b..."
+    },
+    {
+      "filename": "lad_012_chromium.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"yo u(?!r)\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Imagine Sam Altman  describe him as yo uwould here especially his hair style, -  hiis classic light gr..."
+    },
+    {
+      "filename": "lad_026_chromiumabstractsalmon.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"yo u(?!r)\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Imagine Sam Altman  describe him as yo uwould here especially his hair style, -  hiis classic light gr..."
+    },
+    {
+      "filename": "lad_027_chromiumabstractyellow.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"yo u(?!r)\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Imagine Sam Altman  describe him as yo uwould here especially his hair style, -  hiis classic light gr..."
+    },
+    {
+      "filename": "lad_028_chromiumabstractgreen.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"yo u(?!r)\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, Imagine Sam Altman  describe him as yo uwould here especially his hair style, -  hiis classic light gr..."
+    },
+    {
+      "filename": "lad_037_aressprout.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"liek\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, ashy sandy rbown hair with natural blonde higlights from the sun, shorter on the sides but a litte lon..."
+    },
+    {
+      "filename": "lad_038_cashking-6.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"adn\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, dark black curly super stylized hair similar to martin shrkeli or another star, hair longer on top but..."
+    },
+    {
+      "filename": "lad_054_sterling.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"adn\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, ashy brown colored hair light sandy brown color hair, hair style is stylized and well ldone, sexy and ..."
+    },
+    {
+      "filename": "lad_054_sterlingglasses.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"adn\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lad, ashy brown colored hair light sandy brown color hair, hair style is stylized and well ldone, sexy and ..."
+    },
+    {
+      "filename": "lady_044_x.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"adn\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lady, short china bangs bobb hair , shiny silky nblakc with some dark browns and higlights, bright green ey..."
+    },
+    {
+      "filename": "lady_045_x.png",
+      "type": "TYPO",
+      "severity": "MEDIUM",
+      "description": "Caption contains typo: \"adn\"",
+      "caption_snippet": "pixel art, 24x24, portrait of bespoke punk lady, ombre hair withat is medium/short length but goes from medium/barely dsark brwon to light brown quick..."
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "issue": "14 captions contain instruction text",
+      "action": "Parse user descriptions and replace meta-instructions with actual trait descriptions"
+    },
+    {
+      "priority": "MEDIUM",
+      "issue": "12 captions contain typos from user input",
+      "action": "Auto-correct common typos while preserving user intent"
+    },
+    {
+      "priority": "HIGH",
+      "issue": "3 captions contain TODO markers like 'get lip color'",
+      "action": "Sample actual lip colors from images and replace TODO text"
+    },
+    {
+      "priority": "MEDIUM",
+      "issue": "203 captions missing expression/emotion",
+      "action": "Analyze facial features to detect smiling, serious, neutral expressions"
+    }
+  ]
+}
