@@ -1,1 +1,1 @@
-pixel art, 24x24, portrait of bespoke punk lad, long afro black hair, purple earrings, purple hat, dark cyan eyes, light skin, purple gradient background (#86bddb), dark gray clothing with brown accents, sharp pixel edges, hard color borders, retro pixel art style
+pixel art, 24x24, portrait of bespoke punk lad, hair (#86bddb), wearing stubble, eyes (#a76449), skin (#a76449), solid background (#86bddb), clothing (#a76449), palette: #86bddb, #a76449, #000000, #000000, #000000, sharp pixel edges, hard color borders, retro pixel art style
