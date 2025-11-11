@@ -1,0 +1,34 @@
+{
+  "overall_style_quality": 18.0,
+  "is_pixel_art": false,
+  "edge_sharpness": {
+    "mean_gradient": 7.33,
+    "max_gradient": 15.91,
+    "high_gradient_ratio": 0.0,
+    "sharpness_score": 0,
+    "is_sharp": false
+  },
+  "photorealism_detection": {
+    "unique_colors": 502,
+    "total_pixels": 576,
+    "color_to_pixel_ratio": 0.8715,
+    "mean_local_variance": 5082.35,
+    "photorealism_score": 70,
+    "pixel_art_purity": 30,
+    "is_photorealistic": false
+  },
+  "color_palette": {
+    "unique_colors": 502,
+    "total_pixels": 576,
+    "top_5_coverage": 0.0382,
+    "top_10_coverage": 0.066,
+    "top_20_coverage": 0.1076,
+    "palette_quality_score": 0,
+    "is_limited_palette": false
+  },
+  "dithering": {
+    "horizontal_alternation_ratio": 0.4861,
+    "dithering_detected": true,
+    "dithering_quality_score": 50
+  }
+}
