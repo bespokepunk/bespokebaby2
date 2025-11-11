@@ -314,6 +314,10 @@ class EnhancedFeatureExtractor:
         """
         Detect facial expression
         Returns: 'neutral' or 'slight_smile'
+
+        NOTE: OpenCV approach (edge detection, contours) tested and performed WORSE
+        (47.3% vs 50.2%). Pixel art is too small/blocky for traditional CV.
+        Keeping original simple brightness heuristic.
         """
         # Sample mouth region (lower face)
         mouth_region = self.arr[int(self.height*0.55):int(self.height*0.70),

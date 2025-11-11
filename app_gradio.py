@@ -16,6 +16,19 @@ import os
 
 LORA_PATH = "lora_checkpoints/caption_fix/caption_fix_epoch8.safetensors"
 
+# Feature visibility config - only show features with ≥70% accuracy
+SHOW_FEATURES = {
+    'hair_color': True,       # High accuracy
+    'eye_color': True,        # High accuracy
+    'skin_tone': True,        # High accuracy
+    'background_color': True, # High accuracy
+    'eyewear': True,          # 80.6% accuracy ✅
+    'earrings': True,         # 100% accuracy ✅
+    'expression': False,      # 50.2% accuracy ❌ UNRELIABLE
+    'hairstyle': False,       # 28.9% accuracy ❌ UNRELIABLE
+    'facial_hair': True,      # Decent accuracy
+}
+
 # Check if LoRA exists
 if not Path(LORA_PATH).exists():
     print(f"⚠️  WARNING: LoRA not found at {LORA_PATH}")
@@ -78,18 +91,31 @@ def generate_punk(image, gender, seed, use_seed):
         # Clean up temp file
         os.unlink(temp_path)
 
-        # Format features for display
+        # Format features for display (only show reliable features ≥70%)
         features = result['features']
-        features_text = f"""**✨ Auto-Detected Features:**
-- 💇 Hair: {features['hair_color']}
-- 👁️ Eyes: {features['eye_color']}
-- 🎨 Skin: {features['skin_tone']}
-- 🖼️ Background: {features['background_color']}
-- 👓 Eyewear: {features.get('eyewear', 'none')}
-- 💍 Earrings: {features.get('earring_type', 'none')}
-- 😊 Expression: {features.get('expression', 'neutral')}
-- 🧔 Facial Hair: {features.get('facial_hair', 'none')}
-"""
+        feature_lines = []
+
+        if SHOW_FEATURES['hair_color']:
+            feature_lines.append(f"- 💇 Hair: {features['hair_color']}")
+        if SHOW_FEATURES['eye_color']:
+            feature_lines.append(f"- 👁️ Eyes: {features['eye_color']}")
+        if SHOW_FEATURES['skin_tone']:
+            feature_lines.append(f"- 🎨 Skin: {features['skin_tone']}")
+        if SHOW_FEATURES['background_color']:
+            feature_lines.append(f"- 🖼️ Background: {features['background_color']}")
+        if SHOW_FEATURES['eyewear']:
+            feature_lines.append(f"- 👓 Eyewear: {features.get('eyewear', 'none')}")
+        if SHOW_FEATURES['earrings']:
+            feature_lines.append(f"- 💍 Earrings: {features.get('earring_type', 'none')}")
+        if SHOW_FEATURES['expression']:
+            feature_lines.append(f"- 😊 Expression: {features.get('expression', 'neutral')}")
+        if SHOW_FEATURES['hairstyle'] and 'hairstyle' in features:
+            feature_lines.append(f"- 💈 Hairstyle: {features.get('hairstyle', 'unknown')}")
+        if SHOW_FEATURES['facial_hair']:
+            feature_lines.append(f"- 🧔 Facial Hair: {features.get('facial_hair', 'none')}")
+
+        features_text = "**✨ Auto-Detected Features** (≥70% accuracy):\n" + "\n".join(feature_lines)
+        features_text += "\n\n*Note: We only show features with validated accuracy ≥70%*"
 
         # Return results
         return (
