@@ -58,6 +58,7 @@ pip install --quiet transformers
 pip install --quiet diffusers[torch]
 pip install --quiet accelerate
 pip install --quiet huggingface-hub
+pip install --quiet hf_transfer  # For fast HuggingFace downloads
 
 # Create accelerate config to avoid warnings
 mkdir -p ~/.cache/huggingface/accelerate
