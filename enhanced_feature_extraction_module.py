@@ -80,43 +80,28 @@ class EnhancedFeatureExtractor:
         # Calculate average brightness
         avg_brightness = eye_region.mean(axis=(0, 1)).mean()
 
-        # Detect edges in eye region (for frame detection)
-        from scipy import ndimage
-        gray = eye_region.mean(axis=2)
-        edges = ndimage.sobel(gray)
-        edge_strength = edges.std()
+        # Calculate color variance (frames have edges/structure)
+        color_variance = eye_region.std(axis=(0,1)).mean()
 
-        # SUNGLASSES: Very dark + strong edges + high dark pixel percentage
-        # More strict criteria to avoid false positives
-        if avg_brightness < 70:  # Dark threshold
-            # Check darkness consistency
-            dark_pixels = eye_region[eye_region.mean(axis=2) < 85]  # Dark pixels
-            dark_percentage = len(dark_pixels) / len(eye_region.reshape(-1, 3))
+        # Check darkness consistency
+        dark_pixels = eye_region[eye_region.mean(axis=2) < 85]
+        dark_percentage = len(dark_pixels) / len(eye_region.reshape(-1, 3))
 
-            # Sunglasses need high dark percentage
-            if dark_percentage > 0.35:  # Relaxed edge requirement
-                # If very dark, likely sunglasses even without strong edges
-                if dark_percentage > 0.45 or edge_strength > 6:
-                    return 'sunglasses'
+        # SUNGLASSES: Very dark lenses
+        if avg_brightness < 70 and dark_percentage > 0.40:
+            return 'sunglasses'
 
-        # GLASSES: Moderate brightness with frame edges
-        # Look for frames but NOT too dark
-        if 60 <= avg_brightness < 180:  # Broader range for regular glasses
-            # Check for edges (frames)
-            if edge_strength > 8:  # Lowered threshold to catch more glasses
-                # Make sure it's not too dark (would be sunglasses)
-                very_dark_pixels = eye_region[eye_region.mean(axis=2) < 70]
-                very_dark_pct = len(very_dark_pixels) / len(eye_region.reshape(-1, 3))
-
-                if very_dark_pct < 0.25:  # Not too dark = regular glasses
-                    return 'glasses'
-
-        # Fallback: very strong edges = some eyewear
-        if edge_strength > 11:  # Very strong edges = eyewear present
-            if avg_brightness > 75:
+        # GLASSES: Moderate brightness with some structure (frames)
+        if 60 <= avg_brightness < 180 and color_variance > 15:
+            # Make sure it's not too dark (would be sunglasses)
+            very_dark_pixels = eye_region[eye_region.mean(axis=2) < 70]
+            very_dark_pct = len(very_dark_pixels) / len(eye_region.reshape(-1, 3))
+            if very_dark_pct < 0.30:
                 return 'glasses'
-            else:
-                return 'sunglasses'
+
+        # SUNGLASSES FALLBACK: Somewhat dark with high dark percentage
+        if avg_brightness < 90 and dark_percentage > 0.45:
+            return 'sunglasses'
 
         return 'none'
 
