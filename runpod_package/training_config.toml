@@ -41,12 +41,12 @@ network_train_text_encoder_only = false
 
 [training_arguments]
 output_dir = "/workspace/output"
-output_name = "bespoke_baby_sd15_lora_caption_fix"
+output_name = "bespoke_baby_sd15_lora_phase1b"
 save_precision = "fp16"
 save_model_as = "safetensors"
 
 # Training settings
-max_train_epochs = 9              # CHANGED: 10 → 9 (Epoch 10 regressed)
+max_train_epochs = 8              # OPTIMAL - stop before degradation
 train_batch_size = 4              # KEEP - A100 optimization
 gradient_accumulation_steps = 1   # KEEP - effective batch = 4
 mixed_precision = "bf16"          # KEEP - A100 native precision
@@ -54,7 +54,7 @@ xformers = true
 sdpa = false
 
 # Optimizer settings
-optimizer_type = "AdamW8bit"
+optimizer_type = "AdamW"
 learning_rate = 1e-4          # KEEP - stable, proven value
 unet_lr = 1e-4
 text_encoder_lr = 5e-5

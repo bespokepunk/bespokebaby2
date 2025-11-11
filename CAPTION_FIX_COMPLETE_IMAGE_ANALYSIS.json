@@ -1,0 +1,3514 @@
+{
+  "Epoch 1": {
+    "avg_unique_colors": 323.9,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 314,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 28
+          },
+          {
+            "color": [
+              180,
+              58,
+              75
+            ],
+            "count": 19
+          },
+          {
+            "color": [
+              180,
+              58,
+              76
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              180,
+              57,
+              75
+            ],
+            "count": 12
+          },
+          {
+            "color": [
+              181,
+              58,
+              76
+            ],
+            "count": 12
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 378,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 24
+          },
+          {
+            "color": [
+              190,
+              108,
+              47
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              191,
+              108,
+              47
+            ],
+            "count": 12
+          },
+          {
+            "color": [
+              191,
+              108,
+              46
+            ],
+            "count": 10
+          },
+          {
+            "color": [
+              190,
+              108,
+              46
+            ],
+            "count": 10
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 216,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 56
+          },
+          {
+            "color": [
+              151,
+              116,
+              86
+            ],
+            "count": 39
+          },
+          {
+            "color": [
+              151,
+              116,
+              87
+            ],
+            "count": 27
+          },
+          {
+            "color": [
+              152,
+              117,
+              87
+            ],
+            "count": 19
+          },
+          {
+            "color": [
+              150,
+              116,
+              86
+            ],
+            "count": 19
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 498,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 39
+          },
+          {
+            "color": [
+              234,
+              246,
+              253
+            ],
+            "count": 5
+          },
+          {
+            "color": [
+              234,
+              245,
+              253
+            ],
+            "count": 3
+          },
+          {
+            "color": [
+              234,
+              247,
+              254
+            ],
+            "count": 3
+          },
+          {
+            "color": [
+              236,
+              248,
+              254
+            ],
+            "count": 3
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 352,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 41
+          },
+          {
+            "color": [
+              242,
+              26,
+              42
+            ],
+            "count": 10
+          },
+          {
+            "color": [
+              242,
+              26,
+              41
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              242,
+              27,
+              42
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              241,
+              27,
+              42
+            ],
+            "count": 9
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 290,
+        "top_colors": [
+          {
+            "color": [
+              94,
+              35,
+              52
+            ],
+            "count": 37
+          },
+          {
+            "color": [
+              1,
+              0,
+              1
+            ],
+            "count": 33
+          },
+          {
+            "color": [
+              93,
+              34,
+              51
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              94,
+              34,
+              51
+            ],
+            "count": 17
+          },
+          {
+            "color": [
+              93,
+              35,
+              52
+            ],
+            "count": 15
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 219,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 54
+          },
+          {
+            "color": [
+              170,
+              81,
+              93
+            ],
+            "count": 23
+          },
+          {
+            "color": [
+              170,
+              82,
+              94
+            ],
+            "count": 22
+          },
+          {
+            "color": [
+              170,
+              81,
+              94
+            ],
+            "count": 21
+          },
+          {
+            "color": [
+              171,
+              82,
+              94
+            ],
+            "count": 17
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch1/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Epoch 2": {
+    "avg_unique_colors": 335.7,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 296,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 18
+          },
+          {
+            "color": [
+              162,
+              83,
+              54
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              162,
+              83,
+              55
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              162,
+              82,
+              54
+            ],
+            "count": 12
+          },
+          {
+            "color": [
+              162,
+              82,
+              53
+            ],
+            "count": 12
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 529,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              223,
+              175,
+              135
+            ],
+            "count": 4
+          },
+          {
+            "color": [
+              222,
+              178,
+              140
+            ],
+            "count": 4
+          },
+          {
+            "color": [
+              222,
+              177,
+              137
+            ],
+            "count": 4
+          },
+          {
+            "color": [
+              222,
+              176,
+              138
+            ],
+            "count": 3
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 286,
+        "top_colors": [
+          {
+            "color": [
+              208,
+              151,
+              55
+            ],
+            "count": 28
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              208,
+              150,
+              54
+            ],
+            "count": 22
+          },
+          {
+            "color": [
+              208,
+              151,
+              54
+            ],
+            "count": 14
+          },
+          {
+            "color": [
+              9,
+              9,
+              13
+            ],
+            "count": 14
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 409,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 23
+          },
+          {
+            "color": [
+              57,
+              171,
+              207
+            ],
+            "count": 11
+          },
+          {
+            "color": [
+              58,
+              171,
+              208
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              57,
+              171,
+              208
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              57,
+              172,
+              209
+            ],
+            "count": 8
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 298,
+        "top_colors": [
+          {
+            "color": [
+              86,
+              170,
+              241
+            ],
+            "count": 48
+          },
+          {
+            "color": [
+              86,
+              170,
+              240
+            ],
+            "count": 23
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 16
+          },
+          {
+            "color": [
+              86,
+              171,
+              241
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              87,
+              171,
+              241
+            ],
+            "count": 15
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 183,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 77
+          },
+          {
+            "color": [
+              163,
+              157,
+              163
+            ],
+            "count": 52
+          },
+          {
+            "color": [
+              164,
+              158,
+              163
+            ],
+            "count": 38
+          },
+          {
+            "color": [
+              163,
+              157,
+              162
+            ],
+            "count": 37
+          },
+          {
+            "color": [
+              163,
+              158,
+              163
+            ],
+            "count": 31
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 349,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 19
+          },
+          {
+            "color": [
+              159,
+              148,
+              150
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              169,
+              159,
+              160
+            ],
+            "count": 7
+          },
+          {
+            "color": [
+              159,
+              148,
+              149
+            ],
+            "count": 7
+          },
+          {
+            "color": [
+              158,
+              146,
+              149
+            ],
+            "count": 7
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch2/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Epoch 3": {
+    "avg_unique_colors": 272.6,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 208,
+        "top_colors": [
+          {
+            "color": [
+              157,
+              113,
+              75
+            ],
+            "count": 66
+          },
+          {
+            "color": [
+              156,
+              112,
+              74
+            ],
+            "count": 51
+          },
+          {
+            "color": [
+              157,
+              112,
+              74
+            ],
+            "count": 28
+          },
+          {
+            "color": [
+              156,
+              113,
+              75
+            ],
+            "count": 24
+          },
+          {
+            "color": [
+              156,
+              112,
+              75
+            ],
+            "count": 24
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 363,
+        "top_colors": [
+          {
+            "color": [
+              200,
+              151,
+              111
+            ],
+            "count": 20
+          },
+          {
+            "color": [
+              200,
+              151,
+              110
+            ],
+            "count": 18
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              201,
+              151,
+              110
+            ],
+            "count": 14
+          },
+          {
+            "color": [
+              199,
+              150,
+              110
+            ],
+            "count": 12
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 244,
+        "top_colors": [
+          {
+            "color": [
+              179,
+              130,
+              79
+            ],
+            "count": 31
+          },
+          {
+            "color": [
+              178,
+              129,
+              79
+            ],
+            "count": 27
+          },
+          {
+            "color": [
+              179,
+              130,
+              80
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              178,
+              129,
+              78
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 25
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 324,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 66
+          },
+          {
+            "color": [
+              138,
+              176,
+              249
+            ],
+            "count": 14
+          },
+          {
+            "color": [
+              139,
+              176,
+              249
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              138,
+              176,
+              248
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              138,
+              177,
+              249
+            ],
+            "count": 11
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 254,
+        "top_colors": [
+          {
+            "color": [
+              125,
+              208,
+              255
+            ],
+            "count": 36
+          },
+          {
+            "color": [
+              126,
+              208,
+              255
+            ],
+            "count": 27
+          },
+          {
+            "color": [
+              253,
+              255,
+              255
+            ],
+            "count": 24
+          },
+          {
+            "color": [
+              125,
+              207,
+              255
+            ],
+            "count": 23
+          },
+          {
+            "color": [
+              126,
+              207,
+              255
+            ],
+            "count": 16
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 303,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 60
+          },
+          {
+            "color": [
+              127,
+              127,
+              144
+            ],
+            "count": 26
+          },
+          {
+            "color": [
+              127,
+              127,
+              143
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              128,
+              128,
+              144
+            ],
+            "count": 18
+          },
+          {
+            "color": [
+              128,
+              127,
+              144
+            ],
+            "count": 14
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 212,
+        "top_colors": [
+          {
+            "color": [
+              154,
+              101,
+              94
+            ],
+            "count": 87
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 29
+          },
+          {
+            "color": [
+              154,
+              101,
+              93
+            ],
+            "count": 23
+          },
+          {
+            "color": [
+              153,
+              100,
+              93
+            ],
+            "count": 22
+          },
+          {
+            "color": [
+              153,
+              101,
+              93
+            ],
+            "count": 19
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_1_2_3/epoch3/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Epoch 4": {
+    "avg_unique_colors": 314.4,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 237,
+        "top_colors": [
+          {
+            "color": [
+              140,
+              108,
+              76
+            ],
+            "count": 43
+          },
+          {
+            "color": [
+              141,
+              108,
+              77
+            ],
+            "count": 36
+          },
+          {
+            "color": [
+              141,
+              108,
+              76
+            ],
+            "count": 35
+          },
+          {
+            "color": [
+              141,
+              109,
+              77
+            ],
+            "count": 27
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 21
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 373,
+        "top_colors": [
+          {
+            "color": [
+              135,
+              177,
+              229
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              135,
+              178,
+              230
+            ],
+            "count": 19
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 16
+          },
+          {
+            "color": [
+              136,
+              178,
+              230
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              135,
+              177,
+              230
+            ],
+            "count": 10
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 350,
+        "top_colors": [
+          {
+            "color": [
+              162,
+              166,
+              176
+            ],
+            "count": 21
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 18
+          },
+          {
+            "color": [
+              163,
+              167,
+              177
+            ],
+            "count": 17
+          },
+          {
+            "color": [
+              163,
+              166,
+              176
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              162,
+              165,
+              175
+            ],
+            "count": 13
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 330,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 77
+          },
+          {
+            "color": [
+              108,
+              157,
+              249
+            ],
+            "count": 17
+          },
+          {
+            "color": [
+              107,
+              156,
+              250
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              107,
+              156,
+              249
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              107,
+              157,
+              250
+            ],
+            "count": 9
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 320,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 34
+          },
+          {
+            "color": [
+              44,
+              76,
+              171
+            ],
+            "count": 22
+          },
+          {
+            "color": [
+              44,
+              76,
+              172
+            ],
+            "count": 21
+          },
+          {
+            "color": [
+              44,
+              75,
+              171
+            ],
+            "count": 14
+          },
+          {
+            "color": [
+              44,
+              75,
+              170
+            ],
+            "count": 13
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 283,
+        "top_colors": [
+          {
+            "color": [
+              79,
+              78,
+              80
+            ],
+            "count": 53
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 45
+          },
+          {
+            "color": [
+              79,
+              77,
+              80
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              78,
+              77,
+              80
+            ],
+            "count": 23
+          },
+          {
+            "color": [
+              79,
+              78,
+              81
+            ],
+            "count": 22
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 308,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 42
+          },
+          {
+            "color": [
+              136,
+              129,
+              131
+            ],
+            "count": 14
+          },
+          {
+            "color": [
+              137,
+              129,
+              131
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              137,
+              130,
+              132
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              136,
+              128,
+              130
+            ],
+            "count": 8
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch4/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Epoch 5": {
+    "avg_unique_colors": 238.9,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 156,
+        "top_colors": [
+          {
+            "color": [
+              143,
+              93,
+              61
+            ],
+            "count": 57
+          },
+          {
+            "color": [
+              143,
+              94,
+              61
+            ],
+            "count": 54
+          },
+          {
+            "color": [
+              142,
+              93,
+              61
+            ],
+            "count": 51
+          },
+          {
+            "color": [
+              143,
+              94,
+              62
+            ],
+            "count": 41
+          },
+          {
+            "color": [
+              142,
+              94,
+              61
+            ],
+            "count": 26
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 360,
+        "top_colors": [
+          {
+            "color": [
+              96,
+              135,
+              245
+            ],
+            "count": 21
+          },
+          {
+            "color": [
+              97,
+              135,
+              246
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              242,
+              205,
+              186
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              96,
+              135,
+              246
+            ],
+            "count": 12
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 223,
+        "top_colors": [
+          {
+            "color": [
+              153,
+              109,
+              74
+            ],
+            "count": 46
+          },
+          {
+            "color": [
+              154,
+              109,
+              74
+            ],
+            "count": 28
+          },
+          {
+            "color": [
+              154,
+              110,
+              75
+            ],
+            "count": 28
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 23
+          },
+          {
+            "color": [
+              153,
+              109,
+              75
+            ],
+            "count": 19
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 223,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 42
+          },
+          {
+            "color": [
+              62,
+              99,
+              220
+            ],
+            "count": 36
+          },
+          {
+            "color": [
+              63,
+              100,
+              220
+            ],
+            "count": 36
+          },
+          {
+            "color": [
+              63,
+              99,
+              219
+            ],
+            "count": 27
+          },
+          {
+            "color": [
+              62,
+              99,
+              219
+            ],
+            "count": 25
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 345,
+        "top_colors": [
+          {
+            "color": [
+              254,
+              255,
+              253
+            ],
+            "count": 12
+          },
+          {
+            "color": [
+              192,
+              50,
+              211
+            ],
+            "count": 10
+          },
+          {
+            "color": [
+              193,
+              51,
+              212
+            ],
+            "count": 10
+          },
+          {
+            "color": [
+              192,
+              50,
+              212
+            ],
+            "count": 10
+          },
+          {
+            "color": [
+              253,
+              255,
+              253
+            ],
+            "count": 9
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 178,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 68
+          },
+          {
+            "color": [
+              101,
+              99,
+              99
+            ],
+            "count": 63
+          },
+          {
+            "color": [
+              100,
+              99,
+              99
+            ],
+            "count": 49
+          },
+          {
+            "color": [
+              100,
+              98,
+              98
+            ],
+            "count": 35
+          },
+          {
+            "color": [
+              101,
+              99,
+              100
+            ],
+            "count": 21
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 187,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 57
+          },
+          {
+            "color": [
+              170,
+              60,
+              59
+            ],
+            "count": 44
+          },
+          {
+            "color": [
+              170,
+              60,
+              60
+            ],
+            "count": 34
+          },
+          {
+            "color": [
+              169,
+              59,
+              59
+            ],
+            "count": 26
+          },
+          {
+            "color": [
+              171,
+              60,
+              60
+            ],
+            "count": 21
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_4_5/epoch5/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Epoch 6": {
+    "avg_unique_colors": 313.6,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 291,
+        "top_colors": [
+          {
+            "color": [
+              74,
+              210,
+              86
+            ],
+            "count": 27
+          },
+          {
+            "color": [
+              74,
+              209,
+              86
+            ],
+            "count": 20
+          },
+          {
+            "color": [
+              74,
+              210,
+              87
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              73,
+              209,
+              85
+            ],
+            "count": 14
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 13
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 289,
+        "top_colors": [
+          {
+            "color": [
+              140,
+              175,
+              188
+            ],
+            "count": 35
+          },
+          {
+            "color": [
+              139,
+              175,
+              188
+            ],
+            "count": 31
+          },
+          {
+            "color": [
+              139,
+              174,
+              187
+            ],
+            "count": 26
+          },
+          {
+            "color": [
+              140,
+              175,
+              187
+            ],
+            "count": 20
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 19
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 205,
+        "top_colors": [
+          {
+            "color": [
+              136,
+              93,
+              60
+            ],
+            "count": 37
+          },
+          {
+            "color": [
+              0,
+              0,
+              1
+            ],
+            "count": 33
+          },
+          {
+            "color": [
+              137,
+              93,
+              60
+            ],
+            "count": 26
+          },
+          {
+            "color": [
+              136,
+              93,
+              61
+            ],
+            "count": 26
+          },
+          {
+            "color": [
+              136,
+              92,
+              60
+            ],
+            "count": 23
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 226,
+        "top_colors": [
+          {
+            "color": [
+              132,
+              181,
+              236
+            ],
+            "count": 70
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 45
+          },
+          {
+            "color": [
+              131,
+              181,
+              236
+            ],
+            "count": 39
+          },
+          {
+            "color": [
+              132,
+              181,
+              237
+            ],
+            "count": 21
+          },
+          {
+            "color": [
+              132,
+              181,
+              235
+            ],
+            "count": 19
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 418,
+        "top_colors": [
+          {
+            "color": [
+              246,
+              255,
+              255
+            ],
+            "count": 14
+          },
+          {
+            "color": [
+              246,
+              254,
+              255
+            ],
+            "count": 10
+          },
+          {
+            "color": [
+              6,
+              255,
+              175
+            ],
+            "count": 8
+          },
+          {
+            "color": [
+              7,
+              255,
+              176
+            ],
+            "count": 8
+          },
+          {
+            "color": [
+              1,
+              0,
+              0
+            ],
+            "count": 8
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 319,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 41
+          },
+          {
+            "color": [
+              100,
+              253,
+              82
+            ],
+            "count": 18
+          },
+          {
+            "color": [
+              100,
+              253,
+              83
+            ],
+            "count": 12
+          },
+          {
+            "color": [
+              0,
+              0,
+              1
+            ],
+            "count": 12
+          },
+          {
+            "color": [
+              99,
+              253,
+              82
+            ],
+            "count": 11
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 447,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 59
+          },
+          {
+            "color": [
+              112,
+              83,
+              72
+            ],
+            "count": 10
+          },
+          {
+            "color": [
+              41,
+              37,
+              44
+            ],
+            "count": 5
+          },
+          {
+            "color": [
+              40,
+              36,
+              43
+            ],
+            "count": 4
+          },
+          {
+            "color": [
+              114,
+              84,
+              72
+            ],
+            "count": 4
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch6/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Epoch 7": {
+    "avg_unique_colors": 296.0,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 475,
+        "top_colors": [
+          {
+            "color": [
+              1,
+              0,
+              0
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 6
+          },
+          {
+            "color": [
+              34,
+              247,
+              117
+            ],
+            "count": 4
+          },
+          {
+            "color": [
+              16,
+              234,
+              94
+            ],
+            "count": 4
+          },
+          {
+            "color": [
+              235,
+              177,
+              132
+            ],
+            "count": 4
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 256,
+        "top_colors": [
+          {
+            "color": [
+              134,
+              162,
+              255
+            ],
+            "count": 56
+          },
+          {
+            "color": [
+              133,
+              161,
+              255
+            ],
+            "count": 46
+          },
+          {
+            "color": [
+              133,
+              162,
+              255
+            ],
+            "count": 43
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 28
+          },
+          {
+            "color": [
+              134,
+              161,
+              255
+            ],
+            "count": 19
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 241,
+        "top_colors": [
+          {
+            "color": [
+              140,
+              123,
+              99
+            ],
+            "count": 44
+          },
+          {
+            "color": [
+              141,
+              124,
+              100
+            ],
+            "count": 40
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 28
+          },
+          {
+            "color": [
+              140,
+              124,
+              100
+            ],
+            "count": 26
+          },
+          {
+            "color": [
+              141,
+              124,
+              99
+            ],
+            "count": 14
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 229,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 69
+          },
+          {
+            "color": [
+              177,
+              203,
+              249
+            ],
+            "count": 45
+          },
+          {
+            "color": [
+              176,
+              203,
+              249
+            ],
+            "count": 32
+          },
+          {
+            "color": [
+              176,
+              202,
+              248
+            ],
+            "count": 29
+          },
+          {
+            "color": [
+              176,
+              202,
+              249
+            ],
+            "count": 23
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 291,
+        "top_colors": [
+          {
+            "color": [
+              51,
+              161,
+              252
+            ],
+            "count": 19
+          },
+          {
+            "color": [
+              51,
+              162,
+              253
+            ],
+            "count": 19
+          },
+          {
+            "color": [
+              243,
+              252,
+              254
+            ],
+            "count": 18
+          },
+          {
+            "color": [
+              51,
+              161,
+              253
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              50,
+              161,
+              253
+            ],
+            "count": 14
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 153,
+        "top_colors": [
+          {
+            "color": [
+              92,
+              152,
+              112
+            ],
+            "count": 85
+          },
+          {
+            "color": [
+              92,
+              152,
+              113
+            ],
+            "count": 54
+          },
+          {
+            "color": [
+              91,
+              151,
+              112
+            ],
+            "count": 42
+          },
+          {
+            "color": [
+              92,
+              151,
+              112
+            ],
+            "count": 30
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 23
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 427,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 56
+          },
+          {
+            "color": [
+              0,
+              0,
+              1
+            ],
+            "count": 37
+          },
+          {
+            "color": [
+              0,
+              0,
+              2
+            ],
+            "count": 8
+          },
+          {
+            "color": [
+              135,
+              93,
+              72
+            ],
+            "count": 8
+          },
+          {
+            "color": [
+              134,
+              93,
+              72
+            ],
+            "count": 6
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch7/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Epoch 8": {
+    "avg_unique_colors": 216.6,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 222,
+        "top_colors": [
+          {
+            "color": [
+              149,
+              162,
+              89
+            ],
+            "count": 41
+          },
+          {
+            "color": [
+              149,
+              163,
+              90
+            ],
+            "count": 40
+          },
+          {
+            "color": [
+              149,
+              162,
+              90
+            ],
+            "count": 31
+          },
+          {
+            "color": [
+              148,
+              162,
+              89
+            ],
+            "count": 30
+          },
+          {
+            "color": [
+              149,
+              163,
+              89
+            ],
+            "count": 27
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 261,
+        "top_colors": [
+          {
+            "color": [
+              132,
+              162,
+              228
+            ],
+            "count": 74
+          },
+          {
+            "color": [
+              132,
+              162,
+              227
+            ],
+            "count": 38
+          },
+          {
+            "color": [
+              132,
+              163,
+              228
+            ],
+            "count": 19
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 16
+          },
+          {
+            "color": [
+              131,
+              161,
+              227
+            ],
+            "count": 13
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 146,
+        "top_colors": [
+          {
+            "color": [
+              145,
+              126,
+              106
+            ],
+            "count": 63
+          },
+          {
+            "color": [
+              145,
+              126,
+              107
+            ],
+            "count": 41
+          },
+          {
+            "color": [
+              146,
+              126,
+              106
+            ],
+            "count": 38
+          },
+          {
+            "color": [
+              146,
+              126,
+              107
+            ],
+            "count": 33
+          },
+          {
+            "color": [
+              146,
+              127,
+              107
+            ],
+            "count": 31
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 202,
+        "top_colors": [
+          {
+            "color": [
+              105,
+              140,
+              206
+            ],
+            "count": 58
+          },
+          {
+            "color": [
+              105,
+              140,
+              205
+            ],
+            "count": 40
+          },
+          {
+            "color": [
+              104,
+              139,
+              205
+            ],
+            "count": 32
+          },
+          {
+            "color": [
+              104,
+              140,
+              206
+            ],
+            "count": 26
+          },
+          {
+            "color": [
+              105,
+              141,
+              207
+            ],
+            "count": 20
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 301,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 23
+          },
+          {
+            "color": [
+              191,
+              92,
+              234
+            ],
+            "count": 21
+          },
+          {
+            "color": [
+              191,
+              93,
+              234
+            ],
+            "count": 14
+          },
+          {
+            "color": [
+              254,
+              254,
+              255
+            ],
+            "count": 12
+          },
+          {
+            "color": [
+              254,
+              255,
+              255
+            ],
+            "count": 12
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 167,
+        "top_colors": [
+          {
+            "color": [
+              149,
+              157,
+              157
+            ],
+            "count": 89
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 43
+          },
+          {
+            "color": [
+              150,
+              158,
+              158
+            ],
+            "count": 39
+          },
+          {
+            "color": [
+              150,
+              157,
+              157
+            ],
+            "count": 30
+          },
+          {
+            "color": [
+              149,
+              157,
+              158
+            ],
+            "count": 27
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 217,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 82
+          },
+          {
+            "color": [
+              192,
+              97,
+              103
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              191,
+              97,
+              102
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              191,
+              96,
+              102
+            ],
+            "count": 23
+          },
+          {
+            "color": [
+              191,
+              97,
+              103
+            ],
+            "count": 18
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_6_7_8/epoch8/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Epoch 9": {
+    "avg_unique_colors": 277.9,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 321,
+        "top_colors": [
+          {
+            "color": [
+              25,
+              190,
+              64
+            ],
+            "count": 21
+          },
+          {
+            "color": [
+              26,
+              189,
+              64
+            ],
+            "count": 19
+          },
+          {
+            "color": [
+              26,
+              190,
+              65
+            ],
+            "count": 18
+          },
+          {
+            "color": [
+              25,
+              189,
+              64
+            ],
+            "count": 16
+          },
+          {
+            "color": [
+              26,
+              190,
+              64
+            ],
+            "count": 16
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 266,
+        "top_colors": [
+          {
+            "color": [
+              169,
+              154,
+              158
+            ],
+            "count": 55
+          },
+          {
+            "color": [
+              169,
+              154,
+              159
+            ],
+            "count": 48
+          },
+          {
+            "color": [
+              168,
+              154,
+              158
+            ],
+            "count": 27
+          },
+          {
+            "color": [
+              168,
+              153,
+              158
+            ],
+            "count": 22
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 21
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 212,
+        "top_colors": [
+          {
+            "color": [
+              113,
+              92,
+              74
+            ],
+            "count": 50
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 47
+          },
+          {
+            "color": [
+              112,
+              91,
+              73
+            ],
+            "count": 33
+          },
+          {
+            "color": [
+              113,
+              91,
+              73
+            ],
+            "count": 31
+          },
+          {
+            "color": [
+              113,
+              92,
+              73
+            ],
+            "count": 27
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 171,
+        "top_colors": [
+          {
+            "color": [
+              113,
+              123,
+              131
+            ],
+            "count": 85
+          },
+          {
+            "color": [
+              112,
+              122,
+              130
+            ],
+            "count": 64
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 37
+          },
+          {
+            "color": [
+              112,
+              123,
+              131
+            ],
+            "count": 34
+          },
+          {
+            "color": [
+              112,
+              122,
+              131
+            ],
+            "count": 23
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 404,
+        "top_colors": [
+          {
+            "color": [
+              6,
+              226,
+              159
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              6,
+              227,
+              159
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              6,
+              227,
+              160
+            ],
+            "count": 8
+          },
+          {
+            "color": [
+              252,
+              255,
+              254
+            ],
+            "count": 7
+          },
+          {
+            "color": [
+              6,
+              227,
+              158
+            ],
+            "count": 7
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 109,
+        "top_colors": [
+          {
+            "color": [
+              122,
+              150,
+              125
+            ],
+            "count": 81
+          },
+          {
+            "color": [
+              121,
+              149,
+              125
+            ],
+            "count": 60
+          },
+          {
+            "color": [
+              122,
+              150,
+              126
+            ],
+            "count": 59
+          },
+          {
+            "color": [
+              122,
+              149,
+              125
+            ],
+            "count": 40
+          },
+          {
+            "color": [
+              121,
+              150,
+              125
+            ],
+            "count": 31
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 462,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 33
+          },
+          {
+            "color": [
+              115,
+              81,
+              69
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              39,
+              38,
+              43
+            ],
+            "count": 7
+          },
+          {
+            "color": [
+              40,
+              38,
+              43
+            ],
+            "count": 6
+          },
+          {
+            "color": [
+              117,
+              82,
+              70
+            ],
+            "count": 6
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/epoch9/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Final": {
+    "avg_unique_colors": 315.9,
+    "images": [
+      {
+        "prompt": "green_bg_lad",
+        "unique_colors": 293,
+        "top_colors": [
+          {
+            "color": [
+              46,
+              214,
+              77
+            ],
+            "count": 25
+          },
+          {
+            "color": [
+              46,
+              215,
+              78
+            ],
+            "count": 20
+          },
+          {
+            "color": [
+              45,
+              214,
+              77
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              46,
+              214,
+              78
+            ],
+            "count": 15
+          },
+          {
+            "color": [
+              45,
+              215,
+              77
+            ],
+            "count": 13
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/green_bg_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/green_bg_lad_512.png"
+      },
+      {
+        "prompt": "brown_eyes_lady",
+        "unique_colors": 380,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 14
+          },
+          {
+            "color": [
+              187,
+              161,
+              127
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              187,
+              162,
+              127
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              186,
+              160,
+              125
+            ],
+            "count": 7
+          },
+          {
+            "color": [
+              188,
+              162,
+              127
+            ],
+            "count": 7
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/brown_eyes_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/brown_eyes_lady_512.png"
+      },
+      {
+        "prompt": "golden_earrings",
+        "unique_colors": 154,
+        "top_colors": [
+          {
+            "color": [
+              154,
+              130,
+              105
+            ],
+            "count": 47
+          },
+          {
+            "color": [
+              2,
+              0,
+              10
+            ],
+            "count": 34
+          },
+          {
+            "color": [
+              1,
+              0,
+              9
+            ],
+            "count": 33
+          },
+          {
+            "color": [
+              153,
+              129,
+              104
+            ],
+            "count": 32
+          },
+          {
+            "color": [
+              154,
+              130,
+              106
+            ],
+            "count": 28
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/golden_earrings_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/golden_earrings_512.png"
+      },
+      {
+        "prompt": "sunglasses_lad",
+        "unique_colors": 328,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 43
+          },
+          {
+            "color": [
+              112,
+              178,
+              248
+            ],
+            "count": 20
+          },
+          {
+            "color": [
+              111,
+              177,
+              248
+            ],
+            "count": 16
+          },
+          {
+            "color": [
+              111,
+              178,
+              248
+            ],
+            "count": 16
+          },
+          {
+            "color": [
+              111,
+              177,
+              247
+            ],
+            "count": 12
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/sunglasses_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/sunglasses_lad_512.png"
+      },
+      {
+        "prompt": "melon_lady",
+        "unique_colors": 329,
+        "top_colors": [
+          {
+            "color": [
+              239,
+              57,
+              66
+            ],
+            "count": 24
+          },
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 17
+          },
+          {
+            "color": [
+              238,
+              56,
+              65
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              239,
+              57,
+              67
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              239,
+              56,
+              65
+            ],
+            "count": 12
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/melon_lady_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/melon_lady_512.png"
+      },
+      {
+        "prompt": "cash_lad",
+        "unique_colors": 329,
+        "top_colors": [
+          {
+            "color": [
+              108,
+              247,
+              56
+            ],
+            "count": 17
+          },
+          {
+            "color": [
+              108,
+              247,
+              55
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              1,
+              0,
+              0
+            ],
+            "count": 13
+          },
+          {
+            "color": [
+              108,
+              247,
+              57
+            ],
+            "count": 10
+          },
+          {
+            "color": [
+              107,
+              247,
+              55
+            ],
+            "count": 10
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/cash_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/cash_lad_512.png"
+      },
+      {
+        "prompt": "carbon_lad",
+        "unique_colors": 398,
+        "top_colors": [
+          {
+            "color": [
+              0,
+              0,
+              0
+            ],
+            "count": 44
+          },
+          {
+            "color": [
+              32,
+              39,
+              40
+            ],
+            "count": 9
+          },
+          {
+            "color": [
+              175,
+              109,
+              62
+            ],
+            "count": 6
+          },
+          {
+            "color": [
+              178,
+              133,
+              116
+            ],
+            "count": 4
+          },
+          {
+            "color": [
+              33,
+              40,
+              41
+            ],
+            "count": 4
+          }
+        ],
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/carbon_lad_24.png",
+        "path_512": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/test_outputs_CAPTION_FIX_epochs_9_final/final/carbon_lad_512.png"
+      }
+    ],
+    "image_count": 7
+  },
+  "Epoch 5 (Best BG)": {
+    "avg_unique_colors": 254.8,
+    "images": [
+      {
+        "prompt": "green_bg_verification",
+        "unique_colors": 276,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch5_best_bg/green_bg_verification_24.png"
+      },
+      {
+        "prompt": "lad_afro",
+        "unique_colors": 282,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch5_best_bg/lad_afro_24.png"
+      },
+      {
+        "prompt": "lady_blonde_bow",
+        "unique_colors": 297,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch5_best_bg/lady_blonde_bow_24.png"
+      },
+      {
+        "prompt": "lad_sunglasses",
+        "unique_colors": 189,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch5_best_bg/lad_sunglasses_24.png"
+      },
+      {
+        "prompt": "lady_red_hair",
+        "unique_colors": 331,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch5_best_bg/lady_red_hair_24.png"
+      },
+      {
+        "prompt": "lady_brown_eyes",
+        "unique_colors": 273,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch5_best_bg/lady_brown_eyes_24.png"
+      },
+      {
+        "prompt": "lady_gold_earrings",
+        "unique_colors": 222,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch5_best_bg/lady_gold_earrings_24.png"
+      },
+      {
+        "prompt": "lad_green_hair",
+        "unique_colors": 168,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch5_best_bg/lad_green_hair_24.png"
+      }
+    ],
+    "image_count": 8
+  },
+  "Epoch 8 (Best Avg)": {
+    "avg_unique_colors": 241.8,
+    "images": [
+      {
+        "prompt": "green_bg_verification",
+        "unique_colors": 228,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch8_best_avg/green_bg_verification_24.png"
+      },
+      {
+        "prompt": "lad_afro",
+        "unique_colors": 235,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch8_best_avg/lad_afro_24.png"
+      },
+      {
+        "prompt": "lady_blonde_bow",
+        "unique_colors": 231,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch8_best_avg/lady_blonde_bow_24.png"
+      },
+      {
+        "prompt": "lad_sunglasses",
+        "unique_colors": 275,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch8_best_avg/lad_sunglasses_24.png"
+      },
+      {
+        "prompt": "lady_red_hair",
+        "unique_colors": 295,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch8_best_avg/lady_red_hair_24.png"
+      },
+      {
+        "prompt": "lady_brown_eyes",
+        "unique_colors": 256,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch8_best_avg/lady_brown_eyes_24.png"
+      },
+      {
+        "prompt": "lady_gold_earrings",
+        "unique_colors": 114,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch8_best_avg/lady_gold_earrings_24.png"
+      },
+      {
+        "prompt": "lad_green_hair",
+        "unique_colors": 300,
+        "path_24": "/Users/ilyssaevans/Documents/GitHub/bespokebaby2/production_samples_CAPTION_FIX/epoch8_best_avg/lad_green_hair_24.png"
+      }
+    ],
+    "image_count": 8
+  }
+}

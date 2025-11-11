@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
 PRODUCTION PIPELINE: User Photo → Bespoke Punk NFT
-Uses SD 1.5 Epoch 7 LoRA (best results with accurate brown eyes)
+Uses SD 1.5 CAPTION_FIX Epoch 8 LoRA (216.6 avg colors - cleanest)
 
 Complete workflow:
 1. User uploads photo
 2. Analyze photo: extract colors, features, traits
 3. Map to training vocabulary
 4. Generate training-format prompt
-5. Generate 512x512 bespoke punk with epoch 7
+5. Generate 512x512 bespoke punk with CAPTION_FIX Epoch 8
 6. Downscale to 24x24 for final NFT
 
 Usage:
@@ -125,19 +125,22 @@ class ImprovedFeatureExtractor:
                 continue
 
             # Skip if it's white/very bright (likely glasses frame or highlights)
+            # RAISED THRESHOLD: Don't skip blonde hair!
             brightness = (r + g + b) / 3
-            if brightness > 240:
+            if brightness > 250:  # Was 240, now 250 to catch blonde
                 continue
 
             hair_color_candidates.append((color, count, pct))
 
         if not hair_color_candidates:
-            # Fallback to most common non-white color
-            for color, count in color_counts.most_common(10):
+            # Fallback: include brighter colors (blonde hair!)
+            for color, count in color_counts.most_common(15):
                 r, g, b = color
-                if (r + g + b) / 3 < 240:
+                brightness = (r + g + b) / 3
+                # Accept brighter colors now (blonde = 180-250 range)
+                if brightness < 253 and not self._is_skin_tone(r, g, b):
                     return self._color_name_from_rgb(color, is_hair=True)
-            return "brown"
+            return "blonde"  # Better default than brown
 
         # Get the most common hair color
         dominant_hair_color = hair_color_candidates[0][0]
@@ -283,8 +286,8 @@ class ImprovedFeatureExtractor:
             if brightness < 60:
                 return "black"
 
-            # Blonde/Yellow hair
-            if (r > 180 and g > 150 and b < 150) or (r > 200 and g > 180):
+            # Blonde/Yellow hair (EXPANDED RANGE)
+            if (r > 160 and g > 130) or (brightness > 180 and r > g and g > b):
                 return "blonde"
 
             # Red/Orange hair
@@ -430,15 +433,15 @@ class BespokePunkPromptGenerator:
 
 class BespokePunkGenerator:
     """
-    Generate bespoke punks using SD 1.5 + Epoch 7 LoRA
+    Generate bespoke punks using SD 1.5 + CAPTION_FIX Epoch 8 LoRA
     """
 
     def __init__(self, lora_path, device=None):
         """
-        Initialize generator with epoch 7 LoRA.
+        Initialize generator with CAPTION_FIX Epoch 8 LoRA.
 
         Args:
-            lora_path: Path to epoch 7 .safetensors file
+            lora_path: Path to CAPTION_FIX Epoch 8 .safetensors file
             device: 'mps', 'cuda', or 'cpu' (auto-detected if None)
         """
         self.lora_path = lora_path
@@ -454,7 +457,7 @@ class BespokePunkGenerator:
         else:
             self.device = device
 
-        print(f"🎨 Loading SD 1.5 with Epoch 7 LoRA...")
+        print(f"🎨 Loading SD 1.5 with CAPTION_FIX Epoch 8 LoRA...")
         print(f"   Device: {self.device}")
 
         # Load SD 1.5
@@ -464,7 +467,7 @@ class BespokePunkGenerator:
             safety_checker=None,
         )
 
-        # Load epoch 7 LoRA
+        # Load CAPTION_FIX Epoch 8 LoRA
         self.pipe.load_lora_weights(lora_path)
 
         # Move to device
@@ -525,7 +528,7 @@ class UserToBespokePunkPipeline:
     """
 
     def __init__(self, lora_path):
-        """Initialize pipeline with epoch 7 LoRA"""
+        """Initialize pipeline with CAPTION_FIX Epoch 8 LoRA"""
         self.generator = BespokePunkGenerator(lora_path)
         self.prompt_builder = BespokePunkPromptGenerator()
 
@@ -575,8 +578,8 @@ class UserToBespokePunkPipeline:
         print(f"   Prompt: {prompt}")
         print()
 
-        # Step 3: Generate with epoch 7
-        print("Step 3: Generating with Epoch 7 LoRA...")
+        # Step 3: Generate with CAPTION_FIX Epoch 8
+        print("Step 3: Generating with CAPTION_FIX Epoch 8 LoRA...")
         image_512 = self.generator.generate(prompt, seed=seed)
         print()
 
@@ -614,8 +617,8 @@ if __name__ == "__main__":
     parser.add_argument("--gender", type=str, choices=["lady", "lad"],
                        default="lady", help="Punk gender (default: lady)")
     parser.add_argument("--lora", type=str,
-                       default="/Users/ilyssaevans/Downloads/bespoke_punks_SD15_PERFECT-000007.safetensors",
-                       help="Path to epoch 7 LoRA")
+                       default="lora_checkpoints/caption_fix/caption_fix_epoch8.safetensors",
+                       help="Path to CAPTION_FIX Epoch 8 LoRA")
     parser.add_argument("--output", type=str, default="output",
                        help="Output filename prefix (default: output)")
     parser.add_argument("--seed", type=int, default=None,
@@ -632,7 +635,7 @@ if __name__ == "__main__":
     if not Path(args.lora).exists():
         print(f"❌ Error: LoRA not found: {args.lora}")
         print(f"   Expected: {args.lora}")
-        print(f"   Make sure you have downloaded epoch 7 LoRA!")
+        print(f"   Make sure you have CAPTION_FIX Epoch 8 LoRA!")
         sys.exit(1)
 
     # Run pipeline

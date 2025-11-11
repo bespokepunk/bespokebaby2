@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Gradio Web Interface for Bespoke Punk Generator
-Powered by SD 1.5 Epoch 7 LoRA
+Powered by SD 1.5 CAPTION_FIX Epoch 8 LoRA (216.6 avg colors - cleanest)
 """
 
 import gradio as gr
@@ -14,12 +14,12 @@ import os
 # CONFIGURATION
 # ============================================================================
 
-LORA_PATH = "/Users/ilyssaevans/Downloads/bespoke_punks_SD15_PERFECT-000007.safetensors"
+LORA_PATH = "lora_checkpoints/caption_fix/caption_fix_epoch8.safetensors"
 
 # Check if LoRA exists
 if not Path(LORA_PATH).exists():
     print(f"⚠️  WARNING: LoRA not found at {LORA_PATH}")
-    print("    Please update LORA_PATH in this file or download epoch 7!")
+    print("    Please update LORA_PATH in this file or download CAPTION_FIX Epoch 8!")
 
 # Initialize pipeline (loads model once)
 print("🎨 Initializing Bespoke Punk Generator...")
@@ -140,7 +140,7 @@ with gr.Blocks(css=custom_css, title="Bespoke Punk Generator") as demo:
             <h1>🎨 Bespoke Punk NFT Generator</h1>
             <p>Upload your photo → Get your unique Bespoke Punk!</p>
             <p style="font-size: 0.9em; opacity: 0.9;">
-                Powered by Stable Diffusion 1.5 + Epoch 7 LoRA
+                Powered by CAPTION_FIX Epoch 8 LoRA (Cleanest: 216.6 colors)
             </p>
         </div>
     """)
