@@ -441,20 +441,46 @@ with gr.Blocks(css=custom_css, title="Bespoke Punk Generator") as demo:
 # ============================================================================
 
 if __name__ == "__main__":
+    import os
+
     print("\n" + "="*70)
     print("🚀 LAUNCHING BESPOKE PUNK GENERATOR WEB INTERFACE")
     print("="*70)
     print()
-    print("📌 The app will open in your browser automatically")
-    print("📌 URL: http://127.0.0.1:7861")
+
+    # Check for authentication credentials from environment
+    auth_user = os.getenv("GRADIO_USERNAME")
+    auth_pass = os.getenv("GRADIO_PASSWORD")
+
+    if auth_user and auth_pass:
+        print("🔒 Authentication: ENABLED")
+        auth = (auth_user, auth_pass)
+    else:
+        print("⚠️  Authentication: DISABLED (set GRADIO_USERNAME and GRADIO_PASSWORD)")
+        auth = None
+
+    # Determine server settings based on environment
+    is_production = os.getenv("RENDER") == "true"
+
+    if is_production:
+        print("🌐 Running in PRODUCTION mode (Render)")
+        server_name = "0.0.0.0"
+        server_port = int(os.getenv("PORT", 7860))
+    else:
+        print("💻 Running in LOCAL mode")
+        print("📌 URL: http://127.0.0.1:7860")
+        server_name = "127.0.0.1"
+        server_port = 7860
+
     print()
     print("To stop the server: Press Ctrl+C")
     print("="*70)
     print()
 
     demo.launch(
-        share=False,  # Set to True to get a public URL
-        server_name="127.0.0.1",
-        server_port=7860,  # Using 7860 (default)
+        auth=auth,
+        share=False,
+        server_name=server_name,
+        server_port=server_port,
         show_error=True
     )

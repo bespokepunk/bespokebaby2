@@ -447,24 +447,20 @@ class BespokePunkPromptGenerator:
         # Expression (use detected)
         expression = features.get('expression', 'neutral')
         if expression == 'slight_smile':
-            prompt_parts.append("lips, slight smile")
+            prompt_parts.append("slight smile")
         else:
-            prompt_parts.append("lips, neutral expression")
+            prompt_parts.append("neutral expression")
 
         # Skin
         skin = f"{features['skin_tone']} skin"
         prompt_parts.append(skin)
 
-        # Background
+        # Background (simplified - model struggles with color control)
         bg_color = features.get('background_color', 'blue')
-        prompt_parts.append(f"{bg_color} solid background")
+        prompt_parts.append(f"{bg_color} background")
 
-        # Style markers (CRITICAL for pixel art quality)
-        prompt_parts.extend([
-            "sharp pixel edges",
-            "hard color borders",
-            "retro pixel art style"
-        ])
+        # Style markers (simplified to core descriptor)
+        prompt_parts.append("pixel art style")
 
         return ", ".join(prompt_parts)
 

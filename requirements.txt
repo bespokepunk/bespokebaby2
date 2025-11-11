@@ -1,0 +1,16 @@
+# Bespoke Punk Generator - Dependencies
+# For Render deployment
+
+# Core ML/Image
+torch==2.1.0
+diffusers==0.24.0
+transformers==4.35.0
+accelerate==0.24.0
+safetensors==0.4.0
+Pillow==10.1.0
+
+# Gradio interface
+gradio==4.7.1
+
+# Additional utilities
+numpy==1.24.3

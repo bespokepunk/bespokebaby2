@@ -1,0 +1,452 @@
+[
+  {
+    "filename": "synthetic_00001.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, blonde sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00002.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, brown sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00003.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, black sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00004.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, red sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00005.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, gray sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00006.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, blonde sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00007.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, brown sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00008.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, black sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00009.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, red sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00010.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, gray sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00011.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "purple",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, blonde sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00012.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "purple",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, brown sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00013.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "purple",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, black sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00014.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "purple",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, red sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00015.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "purple",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, gray sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00016.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "yellow",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, blonde sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00017.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "yellow",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, brown sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00018.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "yellow",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, black sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00019.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "yellow",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, red sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00020.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lady",
+    "background_color": "yellow",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, gray sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00021.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "green",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, blonde sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00022.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "green",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, brown sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00023.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "green",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, black sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00024.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "green",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, red sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00025.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "green",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, gray sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00026.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "blue",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, blonde sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00027.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "blue",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, brown sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00028.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "blue",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, black sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00029.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "blue",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, red sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00030.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "blue",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, gray sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00031.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "purple",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, blonde sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00032.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "purple",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, brown sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00033.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "purple",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, black sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00034.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "purple",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, red sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00035.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "purple",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, gray sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, purple background"
+  },
+  {
+    "filename": "synthetic_00036.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "yellow",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, blonde sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00037.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "yellow",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, brown sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00038.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "yellow",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, black sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00039.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "yellow",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, red sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00040.png",
+    "expression": "neutral",
+    "hairstyle": "straight",
+    "gender": "lad",
+    "background_color": "yellow",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lad, gray sleek straight hair hanging smoothly down, mouth in straight neutral line with relaxed expression, yellow background"
+  },
+  {
+    "filename": "synthetic_00041.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, blonde tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00042.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, brown tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00043.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, black tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00044.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, red tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00045.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "green",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, gray tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, green background"
+  },
+  {
+    "filename": "synthetic_00046.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "blonde",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, blonde tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00047.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "brown",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, brown tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00048.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "black",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, black tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00049.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "red",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, red tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, blue background"
+  },
+  {
+    "filename": "synthetic_00050.png",
+    "expression": "neutral",
+    "hairstyle": "curly",
+    "gender": "lady",
+    "background_color": "blue",
+    "hair_color": "gray",
+    "prompt": "pixel art, 24x24, portrait of bespoke punk lady, gray tightly coiled curly textured hair with high volume, mouth in straight neutral line with relaxed expression, blue background"
+  }
+]

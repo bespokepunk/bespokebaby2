@@ -147,7 +147,7 @@ class EnhancedFeatureExtractor:
 
             # Check for distinct colored regions (VERY RELAXED thresholds)
             for color, count in color_counts.most_common(40):  # Check even more colors
-                r, g, b = color
+                r, g, b = int(color[0]), int(color[1]), int(color[2])  # Convert to int to avoid overflow
                 brightness = (r + g + b) / 3
                 percentage = count / len(ear_pixels)
 
@@ -207,7 +207,7 @@ class EnhancedFeatureExtractor:
 
         for color, count in color_counts.most_common(20):
             pct = count / total_pixels
-            r, g, b = color
+            r, g, b = int(color[0]), int(color[1]), int(color[2])  # Convert to int
 
             # Skip background (too dominant)
             if pct > 0.35:
@@ -227,7 +227,7 @@ class EnhancedFeatureExtractor:
         if not hair_color_candidates:
             # Fallback for blonde hair
             for color, count in color_counts.most_common(15):
-                r, g, b = color
+                r, g, b = int(color[0]), int(color[1]), int(color[2])  # Convert to int
                 brightness = (r + g + b) / 3
                 if brightness < 253 and not self._is_skin_tone(r, g, b):
                     return self._color_name_from_rgb(color, is_hair=True)
@@ -260,7 +260,7 @@ class EnhancedFeatureExtractor:
         eye_candidates = []
 
         for pixel in face_pixels:
-            r, g, b = pixel
+            r, g, b = int(pixel[0]), int(pixel[1]), int(pixel[2])  # Convert to int
             brightness = (r + g + b) / 3
 
             # Eyes: 30-120 brightness range
@@ -493,7 +493,7 @@ class EnhancedFeatureExtractor:
             return False
 
         # Brightness in skin range
-        brightness = (r + g + b) / 3
+        brightness = (int(r) + int(g) + int(b)) / 3
         if brightness < 60 or brightness > 250:
             return False
 
@@ -501,7 +501,7 @@ class EnhancedFeatureExtractor:
 
     def _color_name_from_rgb(self, rgb, is_hair=False, is_eyes=False, is_background=False):
         """Convert RGB to color name"""
-        r, g, b = rgb
+        r, g, b = int(rgb[0]), int(rgb[1]), int(rgb[2])  # Convert to int
         brightness = (r + g + b) / 3
 
         if is_background:
