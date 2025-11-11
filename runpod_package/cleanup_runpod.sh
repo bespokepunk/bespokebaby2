@@ -1,61 +1,53 @@
 #!/bin/bash
-# RunPod GPU Disk Cleanup Script
-# Run this on RunPod BEFORE starting training to free up space
+# RunPod Complete Disk Cleanup - Run BEFORE new training
+# Single script to clear ALL old data and free maximum space
 
-echo "============================================"
-echo "RunPod Disk Cleanup"
-echo "============================================"
+echo "=========================================="
+echo "RunPod Complete Disk Cleanup"
+echo "=========================================="
+df -h /workspace | tail -1
 echo ""
 
-echo "Current disk usage:"
-df -h /workspace
-echo ""
+# Kill any stuck processes first
+echo "[1/6] Killing stuck training processes..."
+pkill -9 -f "train_network" 2>/dev/null || true
+pkill -9 -f "accelerate" 2>/dev/null || true
 
-# Remove old training outputs
-echo "[1/7] Removing old training outputs..."
-rm -rf /workspace/output/*
-rm -rf /workspace/output_*
-echo "Cleared output directories"
+# Remove ALL old training outputs and checkpoints
+echo "[2/6] Removing old checkpoints and outputs..."
+rm -rf /workspace/output/* 2>/dev/null
+rm -rf /workspace/output_* 2>/dev/null
+rm -rf /workspace/*.safetensors 2>/dev/null
+rm -rf /workspace/*.ckpt 2>/dev/null
+rm -rf /workspace/logs/* 2>/dev/null
 
-# Remove old models
-echo "[2/7] Removing old model files..."
-rm -rf /workspace/models/*
-rm -f /workspace/*.safetensors
-rm -f /workspace/*.ckpt
-rm -f /workspace/*.pt
-echo "Cleared old models"
+# Clean model caches (HuggingFace can get huge)
+echo "[3/6] Cleaning model caches..."
+rm -rf ~/.cache/huggingface/hub/* 2>/dev/null
+rm -rf /workspace/.cache/* 2>/dev/null
 
-# Remove old logs
-echo "[3/7] Removing old logs..."
-rm -rf /workspace/logs/*
-rm -rf /workspace/log_*
-echo "Cleared logs"
+# Remove old training data (will be replaced)
+echo "[4/6] Removing old training data..."
+rm -rf /workspace/training_data/* 2>/dev/null
+rm -rf /workspace/training_data_old 2>/dev/null
 
-# Clean pip cache
-echo "[4/7] Cleaning pip cache..."
-pip cache purge
-echo "Cleared pip cache"
+# Clean pip and system caches
+echo "[5/6] Cleaning pip/apt caches..."
+pip cache purge 2>/dev/null || true
+apt-get clean 2>/dev/null || true
+rm -rf /var/lib/apt/lists/* 2>/dev/null
+rm -rf /tmp/* 2>/dev/null
 
-# Clean conda cache if it exists
-echo "[5/7] Cleaning conda cache (if exists)..."
-conda clean --all -y 2>/dev/null || echo "Conda not found, skipping"
-
-# Remove old training data from previous runs
-echo "[6/7] Removing old training data..."
-rm -rf /workspace/training_data_old
-rm -rf /workspace/training_images_old
-rm -rf /workspace/reg_data
-echo "Cleared old training data"
-
-# Clean apt cache
-echo "[7/7] Cleaning apt cache..."
-apt-get clean
-rm -rf /var/lib/apt/lists/*
-echo "Cleared apt cache"
+# Clean Kohya SS old files
+echo "[6/6] Cleaning Kohya SS..."
+rm -rf /workspace/kohya_ss/sd-scripts/*.safetensors 2>/dev/null
 
 echo ""
-echo "============================================"
-echo "Cleanup complete!"
-echo "New disk usage:"
-df -h /workspace
-echo "============================================"
+echo "=========================================="
+echo "Cleanup Complete!"
+echo "=========================================="
+df -h /workspace | tail -1
+echo ""
+echo "✅ Ready for new training run"
+echo "Next: bash start_training.sh"
+echo "=========================================="
