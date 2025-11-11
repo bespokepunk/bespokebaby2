@@ -102,9 +102,8 @@ def main():
     image_24.save(output_24)
     print(f"✓ Saved 24x24: {output_24}")
 
-    # Open the output folder
-    print(f"\n✅ DONE! Opening output folder...")
-    os.system(f'open "{output_dir}"')
+    # Output complete
+    print(f"\n✅ DONE!")
 
     print("\n" + "="*80)
     print("🎯 Quick visual check:")

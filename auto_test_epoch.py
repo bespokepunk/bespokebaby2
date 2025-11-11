@@ -275,12 +275,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>"""
     subprocess.run(['git', 'commit', '-m', commit_msg], check=True)
 
     print(f"✅ Committed Epoch {epoch_num} results")
-
-    # Optionally push
-    push = input("Push to remote? (y/n): ").strip().lower()
-    if push == 'y':
-        subprocess.run(['git', 'push'], check=True)
-        print("✅ Pushed to remote")
+    return True  # Success - skip push prompt when auto-committing
 
 def main():
     if len(sys.argv) < 2:
