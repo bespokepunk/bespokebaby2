@@ -23,6 +23,7 @@ from pathlib import Path
 from collections import Counter
 import argparse
 import sys
+from enhanced_feature_extraction_module import EnhancedFeatureExtractor
 
 # ============================================================================
 # COLOR PALETTE EXTRACTION (Simple version - no sklearn needed)
@@ -61,7 +62,7 @@ class ColorPaletteExtractor:
 # SIMPLE FEATURE EXTRACTION
 # ============================================================================
 
-class ImprovedFeatureExtractor:
+class ImprovedFeatureExtractor_OLD:
     """
     Improved feature extraction that works with stylized art and cartoons.
     Uses dominant color analysis instead of region sampling.
@@ -383,13 +384,14 @@ class BespokePunkPromptGenerator:
             "pink", "gray", "brown", "teal", "cyan"
         ]
 
-    def generate(self, features, gender="lady"):
+    def generate(self, features, gender="lady", alacarte_traits=None):
         """
-        Generate training-format prompt from extracted features.
+        Generate training-format prompt from extracted features + à la carte.
 
         Args:
-            features: Dict with keys: hair_color, eye_color, skin_tone, background_color
+            features: Dict with ALL detected features
             gender: "lady" or "lad"
+            alacarte_traits: List of selected trait IDs (e.g. ['crown', 'bow_pink_red'])
 
         Returns:
             Complete prompt string
@@ -406,9 +408,48 @@ class BespokePunkPromptGenerator:
         hair = f"{features['hair_color']} hair"
         prompt_parts.append(hair)
 
+        # AUTO-DETECTED ACCESSORIES
+
+        # Eyewear
+        if features.get('eyewear') == 'sunglasses':
+            prompt_parts.append("wearing black rectangular sunglasses covering eyes")
+        elif features.get('eyewear') == 'glasses':
+            prompt_parts.append("wearing glasses")
+
+        # Earrings
+        if features.get('earrings'):
+            if features.get('earring_type') == 'hoop':
+                prompt_parts.append("wearing golden hoop earring visible on side of head")
+            elif features.get('earring_type') == 'stud':
+                prompt_parts.append("wearing golden stud earring visible on side of head")
+
+        # Facial hair (lads)
+        facial_hair = features.get('facial_hair', 'none')
+        if facial_hair != 'none' and gender == 'lad':
+            if facial_hair == 'beard':
+                prompt_parts.append("wearing full beard")
+            elif facial_hair == 'stubble':
+                prompt_parts.append("wearing stubble")
+            elif facial_hair == 'mustache':
+                prompt_parts.append("wearing mustache")
+
+        # À LA CARTE TRAITS
+        if alacarte_traits:
+            for trait_id in alacarte_traits:
+                trait_prompt = self._get_trait_prompt(trait_id)
+                if trait_prompt:
+                    prompt_parts.append(trait_prompt)
+
         # Eyes
         eyes = f"{features['eye_color']} eyes"
         prompt_parts.append(eyes)
+
+        # Expression (use detected)
+        expression = features.get('expression', 'neutral')
+        if expression == 'slight_smile':
+            prompt_parts.append("lips, slight smile")
+        else:
+            prompt_parts.append("lips, neutral expression")
 
         # Skin
         skin = f"{features['skin_tone']} skin"
@@ -426,6 +467,49 @@ class BespokePunkPromptGenerator:
         ])
 
         return ", ".join(prompt_parts)
+
+    def _get_trait_prompt(self, trait_id):
+        """Map trait ID to training vocabulary"""
+        trait_map = {
+            # Bows
+            'bow_pink_red': 'wearing pink & red bow in hair with white center',
+            'bow_bitcoin': 'wearing bitcoin orange and white colored bow in hair',
+            'bow_ethereum': 'wearing ethereum foundations colored bow in hair',
+            'bow_blue': 'wearing large blue ribbon bow on top of head',
+
+            # Crowns
+            'crown': 'wearing golden crown with purple gems and diamonds',
+            'tiara': 'wearing pearl diamond tiara crown',
+            'flower_crown': 'wearing golden flower crown',
+
+            # Special eyewear (overrides auto-detect)
+            'party_glasses': 'wearing dual colored purple party glasses',
+            'mog_goggles': 'wearing translucent cyan mog style goggle glasses',
+
+            # Special hats
+            'top_hat': 'wearing dark pale purple top hat with red raspberry ribbon',
+            'wizard_hat': 'wearing light purple gradient wizard hat with cyan ribbon',
+            'fedora': 'wearing fedora hat',
+
+            # Headbands
+            'bandana_orange': 'wearing orange polka dot bandana headband',
+            'bandana_red': 'wearing red polka dot bandana headband',
+            'cat_ears': 'wearing brown cat ears headband',
+
+            # Smoking
+            'joint': 'smoking a brown joint with orange tip and smoke',
+
+            # Wings
+            'angel_wings': 'wearing dark teal colored wings',
+
+            # Necklaces
+            'gold_chain': 'wearing golden yellow necklace',
+            'diamond_pendant': 'wearing silver diamond pendant necklace',
+
+            # Decorative
+            'flower_in_hair': 'wearing flower in hair',
+        }
+        return trait_map.get(trait_id, '')
 
 # ============================================================================
 # BESPOKE PUNK GENERATOR
@@ -532,7 +616,7 @@ class UserToBespokePunkPipeline:
         self.generator = BespokePunkGenerator(lora_path)
         self.prompt_builder = BespokePunkPromptGenerator()
 
-    def process(self, user_image_path, gender="lady", seed=None):
+    def process(self, user_image_path, gender="lady", seed=None, alacarte_traits=None):
         """
         Process user photo into bespoke punk.
 
@@ -540,6 +624,7 @@ class UserToBespokePunkPipeline:
             user_image_path: Path to user's photo
             gender: "lady" or "lad"
             seed: Random seed (optional)
+            alacarte_traits: List of selected trait IDs (optional, e.g. ['crown', 'bow_pink_red'])
 
         Returns:
             Dict with:
@@ -554,27 +639,44 @@ class UserToBespokePunkPipeline:
         print("="*70)
         print()
 
-        # Step 1: Extract features
+        # Step 1: Extract features (ENHANCED)
         print("Step 1: Analyzing user photo...")
-        extractor = ImprovedFeatureExtractor(user_image_path)
+        extractor = EnhancedFeatureExtractor(user_image_path)
         color_extractor = ColorPaletteExtractor(user_image_path)
 
+        # Extract ALL features with enhanced detection
+        all_features = extractor.extract_all_features()
+
         features = {
-            'hair_color': extractor.detect_hair_color(),
-            'eye_color': extractor.detect_eye_color(),
-            'skin_tone': extractor.detect_skin_tone(),
-            'background_color': 'blue',  # Default, can be customized
+            'hair_color': all_features['hair_color'],
+            'eye_color': all_features['eye_color'],
+            'skin_tone': all_features['skin_tone'],
+            'background_color': all_features['background_color'],
+
+            # Auto-detected accessories
+            'eyewear': all_features['eyewear'],
+            'earrings': all_features['earrings'],
+            'earring_type': all_features['earring_type'],
+            'expression': all_features['expression'],
+            'facial_hair': all_features['facial_hair'],
         }
 
         print(f"   Detected:")
         print(f"     Hair: {features['hair_color']}")
         print(f"     Eyes: {features['eye_color']}")
         print(f"     Skin: {features['skin_tone']}")
+        print(f"     Background: {features['background_color']}")
+        print(f"     Eyewear: {features['eyewear']}")
+        print(f"     Earrings: {features['earring_type'] if features['earrings'] else 'none'}")
+        print(f"     Expression: {features['expression']}")
+        print(f"     Facial Hair: {features['facial_hair']}")
         print()
 
-        # Step 2: Generate prompt
+        # Step 2: Generate prompt (with à la carte if selected)
         print("Step 2: Generating training-format prompt...")
-        prompt = self.prompt_builder.generate(features, gender=gender)
+        prompt = self.prompt_builder.generate(features, gender=gender, alacarte_traits=alacarte_traits)
+        if alacarte_traits:
+            print(f"   À la carte traits: {', '.join(alacarte_traits)}")
         print(f"   Prompt: {prompt}")
         print()
 

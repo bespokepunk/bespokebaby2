@@ -38,7 +38,7 @@ except Exception as e:
 
 def generate_punk(image, gender, seed, use_seed):
     """
-    Generate bespoke punk from uploaded image
+    Generate initial bespoke punk from uploaded image (auto-detect only)
 
     Args:
         image: PIL Image from Gradio
@@ -68,7 +68,7 @@ def generate_punk(image, gender, seed, use_seed):
         # Use seed if checkbox is checked
         actual_seed = int(seed) if use_seed else None
 
-        # Generate!
+        # Generate with auto-detection only
         result = pipeline.process(
             user_image_path=temp_path,
             gender=gender_lower,
@@ -80,11 +80,121 @@ def generate_punk(image, gender, seed, use_seed):
 
         # Format features for display
         features = result['features']
-        features_text = f"""**Detected Features:**
-- Hair: {features['hair_color']}
-- Eyes: {features['eye_color']}
-- Skin: {features['skin_tone']}
-- Background: {features['background_color']}
+        features_text = f"""**✨ Auto-Detected Features:**
+- 💇 Hair: {features['hair_color']}
+- 👁️ Eyes: {features['eye_color']}
+- 🎨 Skin: {features['skin_tone']}
+- 🖼️ Background: {features['background_color']}
+- 👓 Eyewear: {features.get('eyewear', 'none')}
+- 💍 Earrings: {features.get('earring_type', 'none')}
+- 😊 Expression: {features.get('expression', 'neutral')}
+- 🧔 Facial Hair: {features.get('facial_hair', 'none')}
+"""
+
+        # Return results
+        return (
+            result['image_512'],
+            result['image_24'],
+            result['prompt'],
+            features_text
+        )
+
+    except Exception as e:
+        error_msg = f"❌ Error generating punk: {str(e)}"
+        print(error_msg)
+        import traceback
+        traceback.print_exc()
+        return None, None, error_msg, ""
+
+
+def regenerate_with_traits(image, gender, seed, use_seed,
+                           crown, tiara, flower_crown, angel_wings,
+                           bow_pink, bow_bitcoin, bow_ethereum, bow_blue, flower_hair,
+                           top_hat, wizard_hat, fedora, cat_ears, bandana_orange,
+                           gold_chain, diamond_pendant, joint):
+    """
+    Regenerate punk with selected à la carte traits
+
+    Args:
+        image: PIL Image from Gradio
+        gender: "Lady" or "Lad"
+        seed: Random seed (integer)
+        use_seed: Whether to use the seed
+        crown...joint: Boolean checkboxes for à la carte traits
+
+    Returns:
+        tuple: (image_512, image_24, prompt, features_text)
+    """
+
+    if pipeline is None:
+        return None, None, "❌ Pipeline not initialized. Check LoRA path!", ""
+
+    if image is None:
+        return None, None, "❌ Please upload an image first!", ""
+
+    try:
+        # Save uploaded image to temp file
+        with tempfile.NamedTemporaryFile(delete=False, suffix='.png') as tmp:
+            image.save(tmp.name)
+            temp_path = tmp.name
+
+        # Convert gender
+        gender_lower = gender.lower()
+
+        # Use seed if checkbox is checked
+        actual_seed = int(seed) if use_seed else None
+
+        # Collect selected à la carte traits
+        trait_mapping = {
+            'crown': crown,
+            'tiara': tiara,
+            'flower_crown': flower_crown,
+            'angel_wings': angel_wings,
+            'bow_pink_red': bow_pink,
+            'bow_bitcoin': bow_bitcoin,
+            'bow_ethereum': bow_ethereum,
+            'bow_blue': bow_blue,
+            'flower_in_hair': flower_hair,
+            'top_hat': top_hat,
+            'wizard_hat': wizard_hat,
+            'fedora': fedora,
+            'cat_ears': cat_ears,
+            'bandana_orange': bandana_orange,
+            'gold_chain': gold_chain,
+            'diamond_pendant': diamond_pendant,
+            'joint': joint,
+        }
+
+        selected_traits = [trait_id for trait_id, is_selected in trait_mapping.items() if is_selected]
+
+        if not selected_traits:
+            return None, None, "⚠️ Please select at least one à la carte trait to add!", ""
+
+        # Generate with à la carte!
+        result = pipeline.process(
+            user_image_path=temp_path,
+            gender=gender_lower,
+            seed=actual_seed,
+            alacarte_traits=selected_traits
+        )
+
+        # Clean up temp file
+        os.unlink(temp_path)
+
+        # Format features for display
+        features = result['features']
+        features_text = f"""**✨ Auto-Detected Features:**
+- 💇 Hair: {features['hair_color']}
+- 👁️ Eyes: {features['eye_color']}
+- 🎨 Skin: {features['skin_tone']}
+- 🖼️ Background: {features['background_color']}
+- 👓 Eyewear: {features.get('eyewear', 'none')}
+- 💍 Earrings: {features.get('earring_type', 'none')}
+- 😊 Expression: {features.get('expression', 'neutral')}
+- 🧔 Facial Hair: {features.get('facial_hair', 'none')}
+
+**✨ À La Carte Added:**
+- {', '.join(selected_traits)}
 """
 
         # Return results
@@ -215,6 +325,45 @@ with gr.Blocks(css=custom_css, title="Bespoke Punk Generator") as demo:
                 max_lines=6
             )
 
+    # À La Carte Section (appears after initial generation)
+    gr.Markdown("---")
+    gr.Markdown("## ✨ Add À La Carte Accessories")
+    gr.Markdown("*After seeing your initial punk, select exclusive traits below to regenerate with custom accessories!*")
+
+    with gr.Row():
+        with gr.Column(scale=1):
+            with gr.Accordion("👑 Royal & Fantasy", open=False):
+                crown = gr.Checkbox(label="Golden Crown", value=False)
+                tiara = gr.Checkbox(label="Pearl Tiara", value=False)
+                flower_crown = gr.Checkbox(label="Flower Crown", value=False)
+                angel_wings = gr.Checkbox(label="Angel Wings", value=False)
+
+            with gr.Accordion("🎀 Hair Accessories", open=False):
+                bow_pink = gr.Checkbox(label="Pink & Red Bow", value=False)
+                bow_bitcoin = gr.Checkbox(label="Bitcoin Bow", value=False)
+                bow_ethereum = gr.Checkbox(label="Ethereum Bow", value=False)
+                bow_blue = gr.Checkbox(label="Blue Ribbon", value=False)
+                flower_hair = gr.Checkbox(label="Flower in Hair", value=False)
+
+        with gr.Column(scale=1):
+            with gr.Accordion("🎩 Special Hats & Headwear", open=False):
+                top_hat = gr.Checkbox(label="Fancy Top Hat", value=False)
+                wizard_hat = gr.Checkbox(label="Wizard Hat", value=False)
+                fedora = gr.Checkbox(label="Fedora", value=False)
+                cat_ears = gr.Checkbox(label="Cat Ears", value=False)
+                bandana_orange = gr.Checkbox(label="Orange Bandana", value=False)
+
+            with gr.Accordion("💎 Jewelry & More", open=False):
+                gold_chain = gr.Checkbox(label="Gold Chain", value=False)
+                diamond_pendant = gr.Checkbox(label="Diamond Pendant", value=False)
+                joint = gr.Checkbox(label="Joint with Smoke", value=False)
+
+    regenerate_btn = gr.Button(
+        "🎨 Regenerate with Selected Traits",
+        variant="secondary",
+        size="lg"
+    )
+
     # Examples section
     gr.Markdown("---")
     gr.Markdown("### 💡 Example Results")
@@ -241,10 +390,23 @@ with gr.Blocks(css=custom_css, title="Bespoke Punk Generator") as demo:
     </div>
     """)
 
-    # Connect the button
+    # Connect initial generation button (auto-detect only)
     generate_btn.click(
         fn=generate_punk,
         inputs=[input_image, gender, seed, use_seed],
+        outputs=[output_512, output_24, prompt_display, features_display]
+    )
+
+    # Connect regenerate button (with à la carte traits)
+    regenerate_btn.click(
+        fn=regenerate_with_traits,
+        inputs=[
+            input_image, gender, seed, use_seed,
+            crown, tiara, flower_crown, angel_wings,
+            bow_pink, bow_bitcoin, bow_ethereum, bow_blue, flower_hair,
+            top_hat, wizard_hat, fedora, cat_ears, bandana_orange,
+            gold_chain, diamond_pendant, joint
+        ],
         outputs=[output_512, output_24, prompt_display, features_display]
     )
 
@@ -267,6 +429,6 @@ if __name__ == "__main__":
     demo.launch(
         share=False,  # Set to True to get a public URL
         server_name="127.0.0.1",
-        server_port=7861,  # Using 7861 since 7860 is in use
+        server_port=7860,  # Using 7860 (default)
         show_error=True
     )
