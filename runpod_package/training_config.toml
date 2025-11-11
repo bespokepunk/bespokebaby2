@@ -1,3 +1,26 @@
+# ============================================================================
+# SD15 LoRA Training Config - keep_tokens=3 Experiment
+# ============================================================================
+#
+# HYPOTHESIS: Increasing keep_tokens from 1 to 3 will improve background
+# color accuracy for captions with 12+ hex codes
+#
+# Expected Impact: +30-40% background color accuracy (0% → 95%+) by Epoch 3
+# Confidence: 85%
+# Priority: HIGH
+#
+# Changes from SD15_FINAL_CORRECTED_CAPTIONS:
+#   - keep_tokens: 1 → 3 (PRIMARY CHANGE - addresses root cause)
+#   - caption_dropout_rate: 0.0 → 0.05 (secondary improvement for variety)
+#   - network_dim: 32 (KEEP - proven optimal for pixel art)
+#   - learning_rate: 1e-4 (KEEP - stable)
+#
+# Success Criteria:
+#   - Background color correct by Epoch 3-4 (vs Epoch 7 previously)
+#   - Quality score 8+/10 by Epoch 7
+#   - No training oscillation
+# ============================================================================
+
 [general]
 enable_bucket = true
 bucket_resolution = 512
@@ -12,14 +35,16 @@ v_parameterization = false
 
 [network_arguments]
 network_module = "networks.lora"
-network_dim = 32
+network_dim = 32              # Proven optimal for pixel art (32 = perfect, >32 = photorealism)
 network_alpha = 16
 network_train_unet_only = false
 network_train_text_encoder_only = false
+# conv_dim = 0                # Future experiment: test conv_dim=8 for accessory detail
+# conv_alpha = 0
 
 [training_arguments]
 output_dir = "/workspace/output"
-output_name = "bespoke_baby_sd15_lora"
+output_name = "bespoke_baby_sd15_lora_keep_tokens_3"
 save_precision = "fp16"
 save_model_as = "safetensors"
 
@@ -33,7 +58,7 @@ sdpa = false
 
 # Optimizer settings
 optimizer_type = "AdamW8bit"
-learning_rate = 1e-4
+learning_rate = 1e-4          # Stable, proven value
 unet_lr = 1e-4
 text_encoder_lr = 5e-5
 lr_scheduler = "cosine_with_restarts"
@@ -44,7 +69,9 @@ lr_scheduler_num_cycles = 3
 train_data_dir = "/workspace/training_data"
 resolution = "512,512"
 shuffle_caption = true
-keep_tokens = 2
+keep_tokens = 3               # ★ PRIMARY CHANGE: 1 → 3 (prevents dropping critical color keywords)
+caption_dropout_rate = 0.05   # ★ NEW: Slight dropout for variety (vs 0.0 previously)
+caption_dropout_every_n_epochs = 0
 max_token_length = 225
 caption_extension = ".txt"
 
@@ -54,8 +81,8 @@ min_snr_gamma = 5.0
 
 # Logging and saving
 logging_dir = "/workspace/logs"
-log_prefix = "bespoke_baby_sd15"
-save_every_n_epochs = 1
+log_prefix = "keep_tokens_3_experiment"
+save_every_n_epochs = 1       # Save all epochs for analysis
 save_state = true
 
 # Memory optimization
@@ -63,8 +90,37 @@ gradient_checkpointing = true
 cache_latents = true
 cache_latents_to_disk = false
 
-# Other settings
-noise_offset = 0.05
+# Augmentation settings
+noise_offset = 0.05           # Light noise offset for diversity
 multires_noise_iterations = 6
 multires_noise_discount = 0.3
+
+# Reproducibility
 seed = 42
+
+# ============================================================================
+# NOTES FOR MLOps TRACKING:
+# ============================================================================
+# Run Name: SD15_KEEP_TOKENS_3_EXPERIMENT
+# Caption Version: final_corrected_lips_12hex_v1
+# Training Dataset: 203 original images
+#
+# Key Parameters to Track:
+#   - architecture.network_dim: 32
+#   - architecture.network_alpha: 16
+#   - hyperparameters.learning_rate: 1e-4
+#   - hyperparameters.max_train_epochs: 10
+#   - data.keep_tokens: 3
+#   - data.caption_dropout_rate: 0.05
+#   - data.num_images: 203
+#
+# Quality Checkpoints:
+#   - Epoch 1-2: Expect pixel art style, wrong background (baseline)
+#   - Epoch 3-4: GREEN BACKGROUND should appear (breakthrough earlier than Epoch 7)
+#   - Epoch 5-7: Quality convergence, stable green background
+#   - Epoch 8-10: Production quality (target 8-9/10)
+#
+# Comparison Baseline:
+#   - SD15_FINAL_CORRECTED_CAPTIONS: Best epoch 6 (7.3/10), green bg at epoch 7
+#   - SD15_PERFECT: Epoch 7 (9/10 production ready)
+# ============================================================================
