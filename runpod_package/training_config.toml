@@ -50,9 +50,9 @@ save_model_as = "safetensors"
 
 # Training settings
 max_train_epochs = 10
-train_batch_size = 1
-gradient_accumulation_steps = 4
-mixed_precision = "fp16"
+train_batch_size = 4              # A100 optimization: 4x faster (80GB VRAM)
+gradient_accumulation_steps = 1   # Keep effective batch = 4 (SAME quality)
+mixed_precision = "bf16"          # A100 optimization: faster + better precision
 xformers = true
 sdpa = false
 
