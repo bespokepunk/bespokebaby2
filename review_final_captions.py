@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Interactive Caption Review Interface
+FINAL CAPTION REVIEW UI - Review all 203 world-class captions
 - View images with their final captions
 - Edit captions directly
 - Track approval/modification status
@@ -14,8 +14,9 @@ from pathlib import Path
 from PIL import Image
 
 # Paths
-TRAINING_DIR = "civitai_v2_7_training"
-REVIEW_DATA = "caption_review_status.json"
+CAPTIONS_DIR = "FINAL_WORLD_CLASS_CAPTIONS"
+IMAGES_DIR = "runpod_package/training_data"
+REVIEW_DATA = "final_caption_review_status.json"
 
 class CaptionReviewer:
     def __init__(self):
@@ -27,24 +28,26 @@ class CaptionReviewer:
         """Load all images and their final captions"""
         self.items = []
 
-        # Get all .txt files
-        txt_files = sorted(Path(TRAINING_DIR).glob("*.txt"))
+        # Get all .txt files from FINAL_WORLD_CLASS_CAPTIONS
+        txt_files = sorted(Path(CAPTIONS_DIR).glob("*.txt"))
 
         for txt_file in txt_files:
-            img_file = txt_file.with_suffix('.png')
+            # Image is in IMAGES_DIR with same name
+            img_file = Path(IMAGES_DIR) / txt_file.with_suffix('.png').name
 
             if img_file.exists():
                 with open(txt_file, 'r') as f:
                     caption = f.read().strip()
 
                 self.items.append({
-                    'filename': img_file.name,
+                    'filename': txt_file.name,
                     'image_path': str(img_file),
                     'txt_path': str(txt_file),
-                    'caption': caption
+                    'caption': caption,
+                    'char_count': len(caption)
                 })
 
-        print(f"✓ Loaded {len(self.items)} images with captions")
+        print(f"✓ Loaded {len(self.items)} captions with images")
 
     def load_review_status(self):
         """Load review status from JSON file"""
@@ -84,6 +87,7 @@ class CaptionReviewer:
 
         # Get caption to display (modified if exists, else original)
         current_caption = status_info.get('modified_caption') or item['caption']
+        current_char_count = len(current_caption)
 
         # Stats
         total = len(self.items)
@@ -91,9 +95,13 @@ class CaptionReviewer:
         modified = sum(1 for s in self.status.values() if s['status'] == 'modified')
         pending = total - approved - modified
 
+        # Character count status
+        char_status = "✅ Good" if 150 <= current_char_count <= 350 else "⚠️ Check length"
+
         info_text = f"""
-**Image {self.current_index + 1} of {total}**
+**Caption {self.current_index + 1} of {total}**
 **Filename:** {filename}
+**Characters:** {current_char_count} {char_status}
 **Status:** {status_info['status'].upper()}
 
 **Progress:**
@@ -102,7 +110,7 @@ class CaptionReviewer:
 - ⏳ Pending: {pending}
 
 ---
-**Original Caption:**
+**Original Caption ({item['char_count']} chars):**
 {status_info['original_caption']}
         """
 
@@ -194,14 +202,14 @@ reviewer = CaptionReviewer()
 
 
 # Build Gradio Interface
-with gr.Blocks(title="Caption Review Interface", theme=gr.themes.Soft()) as demo:
-    gr.Markdown("# 📝 Final Caption Review & Editor")
-    gr.Markdown("Review your final captions, make edits, and track your progress.")
+with gr.Blocks(title="Final Caption Review - All 203", theme=gr.themes.Soft()) as demo:
+    gr.Markdown("# 🎨 FINAL CAPTION REVIEW - All 203 World-Class Captions")
+    gr.Markdown("Review, edit, and approve your cleaned captions. All changes save automatically.")
 
     with gr.Row():
         with gr.Column(scale=1):
             # Image display
-            image_display = gr.Image(label="Current Image", type="pil")
+            image_display = gr.Image(label="Current Image", type="pil", height=400)
 
             # Info panel
             info_panel = gr.Markdown()
@@ -209,7 +217,7 @@ with gr.Blocks(title="Caption Review Interface", theme=gr.themes.Soft()) as demo
         with gr.Column(scale=1):
             # Caption editor
             caption_editor = gr.Textbox(
-                label="Caption",
+                label="Caption (Editable)",
                 lines=8,
                 placeholder="Edit caption here..."
             )
@@ -218,21 +226,24 @@ with gr.Blocks(title="Caption Review Interface", theme=gr.themes.Soft()) as demo
             feedback_box = gr.Textbox(
                 label="Feedback / Notes (optional)",
                 lines=3,
-                placeholder="Add notes about why you changed this caption..."
+                placeholder="Add notes about this caption..."
             )
 
+            gr.Markdown("### 🎯 Review Actions")
             # Action buttons
             with gr.Row():
-                approve_btn = gr.Button("✅ Approve", variant="primary")
-                save_modified_btn = gr.Button("💾 Save Modified", variant="secondary")
+                approve_btn = gr.Button("✅ Approve & Next", variant="primary", size="lg")
+                save_modified_btn = gr.Button("✏️ Save Edit & Next", variant="secondary", size="lg")
 
+            gr.Markdown("### 🧭 Navigation")
             with gr.Row():
                 prev_btn = gr.Button("⬅️ Previous")
                 next_btn = gr.Button("➡️ Next")
                 jump_pending_btn = gr.Button("⏭️ Jump to Pending")
 
+            gr.Markdown("### 💾 Export")
             # Export button
-            export_btn = gr.Button("📤 Export Feedback for Regeneration", variant="stop")
+            export_btn = gr.Button("📤 Export All Feedback", variant="stop")
             export_status = gr.Textbox(label="Export Status", interactive=False)
 
     # Event handlers
@@ -295,11 +306,34 @@ with gr.Blocks(title="Caption Review Interface", theme=gr.themes.Soft()) as demo
 
 if __name__ == "__main__":
     print("=" * 80)
-    print("CAPTION REVIEW INTERFACE")
+    print("🎨 FINAL CAPTION REVIEW UI - All 203 Captions")
     print("=" * 80)
     print()
-    print("Starting Gradio interface...")
-    print("Open the URL in your browser to start reviewing captions.")
+    print(f"✓ Loaded {len(reviewer.items)} captions from {CAPTIONS_DIR}")
+    print()
+    print("📊 Quick Stats:")
+    total = len(reviewer.items)
+    approved = sum(1 for s in reviewer.status.values() if s['status'] == 'approved')
+    modified = sum(1 for s in reviewer.status.values() if s['status'] == 'modified')
+    pending = total - approved - modified
+    print(f"   ✅ Approved: {approved}")
+    print(f"   ✏️  Modified: {modified}")
+    print(f"   ⏳ Pending: {pending}")
+    print()
+    print("🚀 Starting Gradio interface...")
+    print("   Username: admin")
+    print("   Password: test123")
     print()
 
-    demo.launch(share=False, inbrowser=True)
+    # Get credentials from environment or use defaults
+    username = os.getenv('GRADIO_USERNAME', 'admin')
+    password = os.getenv('GRADIO_PASSWORD', 'test123')
+
+    demo.launch(
+        share=False,
+        server_name="0.0.0.0",
+        server_port=7860,
+        auth=(username, password),
+        show_error=True,
+        inbrowser=True
+    )

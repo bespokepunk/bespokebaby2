@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Punk Trait Suggestions (Basic)</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0f172a;
+      color: #f9fafb;
+      margin: 0;
+      padding: 24px;
+    }
+    h1 {
+      margin: 0 0 12px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #94a3b8;
+    }
+    select, input {
+      width: 100%;
+      max-width: 320px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.8);
+      color: inherit;
+      margin-bottom: 16px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.4);
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    }
+    thead {
+      background: #1e3a8a;
+    }
+    tbody tr:hover {
+      background: rgba(59, 130, 246, 0.15);
+    }
+    .swatch {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    pre {
+      background: rgba(15, 23, 42, 0.8);
+      padding: 16px;
+      border-radius: 12px;
+      overflow: auto;
+      margin-top: 32px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Punk Trait Suggestions (Basic Viewer)</h1>
+  <label for="spriteSelect">Sprite</label>
+  <select id="spriteSelect"></select>
+
+  <label for="categorySelect">Category</label>
+  <select id="categorySelect">
+    <option value="All">All categories</option>
+  </select>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Layer Name</th>
+        <th>Colour</th>
+        <th>Coverage</th>
+        <th>Notes</th>
+      </tr>
+    </thead>
+    <tbody id="traitTable"></tbody>
+  </table>
+
+  <pre id="pixelMaskOutput">Select a trait row to copy pixel coordinates.</pre>
+
+  <script>
+    const spriteSelect = document.getElementById('spriteSelect');
+    const categorySelect = document.getElementById('categorySelect');
+    const traitTable = document.getElementById('traitTable');
+    const pixelMaskOutput = document.getElementById('pixelMaskOutput');
+
+    let data = [];
+    let spriteMap = new Map();
+
+    async function loadData() {
+      const response = await fetch('data/trait_suggestions.json');
+      if (!response.ok) {
+        traitTable.innerHTML = `<tr><td colspan="5">Failed to load data (${response.status}). Ensure http.server is running.</td></tr>`;
+        return;
+      }
+      data = await response.json();
+      spriteMap = groupBySprite(data);
+      populateSprites();
+      populateCategories();
+      renderTraits();
+    }
+
+    function groupBySprite(items) {
+      const map = new Map();
+      for (const item of items) {
+        const id = item.sprite_id;
+        if (!map.has(id)) map.set(id, []);
+        map.get(id).push(item);
+      }
+      for (const list of map.values()) {
+        list.sort((a, b) => a.category.localeCompare(b.category));
+      }
+      return map;
+    }
+
+    function populateSprites() {
+      spriteSelect.innerHTML = '';
+      Array.from(spriteMap.keys()).sort().forEach(id => {
+        const option = document.createElement('option');
+        option.value = id;
+        option.textContent = id;
+        spriteSelect.appendChild(option);
+      });
+    }
+
+    function populateCategories() {
+      const categories = new Set(['All']);
+      data.forEach(item => categories.add(item.category));
+      categorySelect.innerHTML = '';
+      Array.from(categories).sort().forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat;
+        option.textContent = cat;
+        categorySelect.appendChild(option);
+      });
+    }
+
+    function renderTraits() {
+      const spriteId = spriteSelect.value || spriteSelect.options[0]?.value;
+      if (!spriteId) {
+        traitTable.innerHTML = '<tr><td colspan="5">No sprites found.</td></tr>';
+        return;
+      }
+      spriteSelect.value = spriteId;
+
+      const traits = spriteMap.get(spriteId) || [];
+      const filterValue = categorySelect.value;
+      const filtered = traits.filter(item => filterValue === 'All' || item.category === filterValue);
+
+      if (!filtered.length) {
+        traitTable.innerHTML = '<tr><td colspan="5">No traits match this filter.</td></tr>';
+        return;
+      }
+
+      const fragment = document.createDocumentFragment();
+      filtered.forEach(trait => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${trait.category}</td>
+          <td>${trait.variant_hint}</td>
+          <td><span class="swatch" style="background:${trait.color_hex}"></span> ${trait.color_name} (${trait.color_hex})</td>
+          <td>${parseFloat(trait.coverage_pct).toFixed(2)}%</td>
+          <td>${trait.notes}</td>
+        `;
+        tr.addEventListener('click', () => {
+          pixelMaskOutput.textContent = trait.pixel_mask || 'No pixel mask available for this trait.';
+        });
+        fragment.appendChild(tr);
+      });
+
+      traitTable.innerHTML = '';
+      traitTable.appendChild(fragment);
+      pixelMaskOutput.textContent = 'Click a trait row to copy pixel coordinates.';
+    }
+
+    spriteSelect.addEventListener('change', renderTraits);
+    categorySelect.addEventListener('change', renderTraits);
+
+    loadData();
+  </script>
+</body>
+</html>
+

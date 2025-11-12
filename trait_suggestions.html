@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punk Trait Suggestions</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #0f172a;
+      --surface: #1f2937;
+      --surface-alt: #111827;
+      --text: #f9fafb;
+      --accent: #60a5fa;
+      --border: rgba(148, 163, 184, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 45%, #111827 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 24px clamp(16px, 4vw, 48px);
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.85);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.45);
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 5vw, 34px);
+      letter-spacing: 0.03em;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 760px;
+      color: rgba(226, 232, 240, 0.78);
+      line-height: 1.6;
+    }
+
+    .layout {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(240px, 300px) 1fr;
+      min-height: 0;
+      transition: grid-template-columns 0.25s ease;
+    }
+
+    .layout.collapsed-aside {
+      grid-template-columns: 0px 1fr;
+    }
+
+    aside {
+      border-right: 1px solid var(--border);
+      background: rgba(17, 25, 40, 0.82);
+      backdrop-filter: blur(18px);
+      display: flex;
+      flex-direction: column;
+      transition: border-right 0.25s ease, padding 0.25s ease;
+    }
+
+    .layout.collapsed-aside aside {
+      padding: 0;
+      border-right: none;
+      overflow: hidden;
+    }
+
+    .aside-inner {
+      padding: 20px clamp(14px, 3vw, 24px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      min-height: 0;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(191, 219, 254, 0.7);
+    }
+
+    input[type="search"],
+    select {
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.85);
+      color: inherit;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 15px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input[type="search"]:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.25);
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    #spriteList {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      overflow-y: auto;
+      min-height: 0;
+      max-height: calc(100vh - 220px);
+    }
+
+    #spriteList li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 10px 12px;
+      cursor: pointer;
+      background: rgba(30, 41, 59, 0.8);
+      transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+    }
+
+    #spriteList li:hover {
+      background: rgba(59, 130, 246, 0.2);
+      border-color: rgba(96, 165, 250, 0.6);
+      transform: translateY(-1px);
+    }
+
+    #spriteList li.active {
+      background: rgba(96, 165, 250, 0.25);
+      border-color: rgba(96, 165, 250, 0.85);
+      box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.4);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: rgba(96, 165, 250, 0.18);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+      color: rgba(226, 232, 240, 0.9);
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: clamp(18px, 3vw, 32px);
+    }
+
+    .main-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-left h2 {
+      margin: 0;
+      font-size: clamp(20px, 3vw, 28px);
+    }
+
+    .stats {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: rgba(226, 232, 240, 0.7);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    .stats span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(30, 64, 175, 0.3);
+      border: 1px solid rgba(96, 165, 250, 0.25);
+    }
+
+    .toggle-sidebar {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      background: rgba(30, 41, 59, 0.85);
+      color: inherit;
+      font-size: 20px;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .toggle-sidebar:hover {
+      background: rgba(59, 130, 246, 0.22);
+      border-color: rgba(96, 165, 250, 0.6);
+    }
+
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+      gap: 24px;
+      align-items: flex-start;
+      min-height: 0;
+    }
+
+    .table-wrapper {
+      background: rgba(15, 23, 42, 0.65);
+      border-radius: 18px;
+      border: 1px solid rgba(96, 165, 250, 0.15);
+      box-shadow: inset 0 1px 0 rgba(96, 165, 250, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .table-wrapper-inner {
+      max-height: calc(100vh - 260px);
+      overflow: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead {
+      background: linear-gradient(120deg, rgba(30, 64, 175, 0.78), rgba(59, 130, 246, 0.55));
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    tbody tr {
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    tbody tr:hover {
+      background: rgba(59, 130, 246, 0.14);
+    }
+
+    tbody tr.active-row {
+      background: rgba(96, 165, 250, 0.2);
+      box-shadow: inset 0 0 0 1px rgba(96, 165, 250, 0.35);
+    }
+
+    .copy-btn {
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      background: rgba(30, 58, 138, 0.35);
+      color: inherit;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: "JetBrains Mono", "Fira Code", SFMono-Regular, Menlo, monospace;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      border-color: rgba(96, 165, 250, 0.6);
+      background: rgba(59, 130, 246, 0.25);
+    }
+
+    .swatch {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      margin-right: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      vertical-align: middle;
+    }
+
+    .preview-column {
+      position: sticky;
+      top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-self: flex-start;
+    }
+
+    .preview {
+      position: relative;
+      width: min(28vw, 320px);
+      aspect-ratio: 1 / 1;
+      border-radius: 24px;
+      border: 1px solid rgba(96, 165, 250, 0.45);
+      background: rgba(15, 23, 42, 0.72);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+    }
+
+    .preview img {
+      width: 100%;
+      height: 100%;
+      image-rendering: pixelated;
+      object-fit: contain;
+    }
+
+    .preview canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .hover-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(226, 232, 240, 0.75);
+    }
+
+    .hover-toggle input {
+      accent-color: var(--accent);
+      width: 16px;
+      height: 16px;
+    }
+
+    .pixel-mask-panel {
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .pixel-mask-panel pre {
+      margin: 0;
+      max-height: 160px;
+      overflow: auto;
+      background: rgba(15, 23, 42, 0.85);
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .pixel-mask-panel button {
+      align-self: flex-start;
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      background: rgba(30, 64, 175, 0.35);
+      color: inherit;
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .pixel-mask-panel button:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    @media (max-width: 1100px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+      .preview-column {
+        position: static;
+        width: min(60vw, 320px);
+      }
+    }
+
+    @media (max-width: 960px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+      aside {
+        max-height: 320px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .layout.collapsed-aside {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Punk Trait Suggestions</h1>
+    <p>
+      Browse the automatically generated trait hints for every sprite. Copy the suggested
+      <code>Category_Variant</code> strings, inspect exact pixels for each trait, and keep the preview
+      locked while you work in Aseprite.
+    </p>
+  </header>
+
+  <div class="layout" id="layout">
+    <aside>
+      <div class="aside-inner">
+        <div class="input-group">
+          <label for="spriteSearch">Sprite Filter</label>
+          <input id="spriteSearch" type="search" placeholder="Search (e.g. lady_012)" autocomplete="off">
+        </div>
+        <ul id="spriteList" aria-label="Sprite IDs"></ul>
+      </div>
+    </aside>
+
+    <main>
+      <div class="main-header">
+        <div class="header-left">
+          <button id="toggleSidebar" class="toggle-sidebar" aria-label="Toggle sprite list" aria-pressed="false">☰</button>
+          <div>
+            <h2 id="spriteTitle">Select a sprite</h2>
+            <div class="stats" id="stats"></div>
+          </div>
+        </div>
+        <label class="hover-toggle" for="hoverToggle">
+          <input type="checkbox" id="hoverToggle" checked>
+          Auto-preview on hover
+        </label>
+      </div>
+
+      <div class="controls-row">
+        <div class="input-group">
+          <label for="categoryFilter">Category</label>
+          <select id="categoryFilter" disabled>
+            <option value="All">All categories</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label for="componentSelect">Component</label>
+          <select id="componentSelect" disabled>
+            <option value="-1">Entire trait</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="content-grid">
+        <div class="table-wrapper">
+          <div class="table-wrapper-inner">
+            <table aria-label="Trait suggestions">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Category</th>
+                  <th>Layer Name</th>
+                  <th>Copy String</th>
+                  <th>Colour</th>
+                  <th>Coverage</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="traitBody">
+                <tr>
+                  <td colspan="7" style="text-align:center; padding:28px; color:rgba(226,232,240,0.6);">
+                    Choose a sprite to see its traits.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="preview-column">
+          <div class="preview" id="previewWrapper">
+            <img id="spritePreview" alt="Sprite preview" src="" hidden>
+            <canvas id="highlightCanvas" width="512" height="512"></canvas>
+          </div>
+          <div class="pixel-mask-panel">
+            <button id="copyMaskButton" disabled>Copy pixel mask</button>
+            <pre id="pixelMaskOutput">Select a trait to preview pixel coordinates.</pre>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script defer src="trait_viewer.js"></script>
+</body>
+</html>
+

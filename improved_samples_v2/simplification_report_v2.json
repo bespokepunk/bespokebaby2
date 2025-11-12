@@ -1,0 +1,2822 @@
+{
+  "summary": {
+    "total_samples": 203,
+    "avg_original_length": 334.1,
+    "avg_new_length": 293.7,
+    "avg_reduction_pct": 12.5,
+    "target_met_count": 44,
+    "target_met_pct": 21.7
+  },
+  "samples": [
+    {
+      "filename": "lad_001_carbon.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing gray baseball cap with multicolored (red gold and white) logo in the center, lips, neutral expression, dark brown eyes, medium male skin tone, checkered brick background, medium grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing gray cap with logo, neutral expression, dark brown eyes, medium skin, brick background, medium grey shirt, pixel art style",
+      "original_length": 289,
+      "new_length": 184,
+      "reduction": 105,
+      "reduction_pct": 36.3,
+      "changes": [
+        "Removed 'lips' token",
+        "Removed 'male/female' from skin tone",
+        "Simplified accessory description",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_002_cash.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, bright lime green yellow green hair tied back in queue ponytail with side wings fluffed out in 18th century colonial style, wearing black rectangular sunglasses covering eyes, dark eyes, lips, neutral expression, light pale green skin tone, split background, wearing classic vintage revolutionary war era dark grey suit with light grey and white undergarments, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, green colonial wig in ponytail, black sunglasses, dark eyes, neutral expression, light pale green skin tone, divided background, gray colonial suit, pixel art style",
+      "original_length": 446,
+      "new_length": 212,
+      "reduction": 234,
+      "reduction_pct": 52.5,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified complex hair description",
+        "Simplified accessory description",
+        "Fixed background description",
+        "Simplified clothing description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_003_chai.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, bald, wearing white furry bucket hat, lips, slight smile, dark red brown eyes, medium male skin tone color, light light opal orange background, wearing a large oversized camouflaged coloured hoodie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, bald, white furry hat, slight smile, dark brown eyes, medium skin color, light orange background, camo hoodie, pixel art style",
+      "original_length": 284,
+      "new_length": 174,
+      "reduction": 110,
+      "reduction_pct": 38.7,
+      "changes": [
+        "Removed 'lips' token",
+        "Removed 'male/female' from skin tone",
+        "Simplified accessory description",
+        "Fixed background description",
+        "Simplified clothing description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_004_silicon.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair not as short today on sides but shorter and again longer on top to create his look, wearing longer and side swept on top a school kideyes, lips, neutral expression, skin, solid background, classic vintage style kids suite of the time, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair not as short today on sides but shorter and again longer on top to create his look, wearing longer and side swept on top a school kid, brown eyes, neutral expression, skin, background, classic vintage style kids suite of the time, pixel art style",
+      "original_length": 325,
+      "new_length": 299,
+      "reduction": 26,
+      "reduction_pct": 8.0,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed broken text pattern",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_005_copper.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, dark lighter brown hair clearly distinct from dark brown eyes, lips, neutral expression, medium light skin tone, brown background with yellow representing electricity, wearing classic simple suit and tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, brown hair clearly distinct from dark brown eyes, neutral expression, medium light skin tone, brown background with yellow representing electricity, wearing classic simple suit and tie, pixel art style",
+      "original_length": 290,
+      "new_length": 249,
+      "reduction": 41,
+      "reduction_pct": 14.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_006_redshift.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, sandy dirty blonde small mohawk with buzzed sides (short mohawk), wearing stubble, deep blue pallips, neutral expression, medium dark blue eyes, light male skin tone, brown background, pigmented blue collared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, blonde mohawk, with stubble, deep blue neutral expression, medium dark blue eyes, light skin, brown background, pigmented blue collared shirt, pixel art style",
+      "original_length": 301,
+      "new_length": 206,
+      "reduction": 95,
+      "reduction_pct": 31.6,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Removed 'male/female' from skin tone",
+        "Fixed broken text pattern",
+        "Simplified complex hair description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_007_titanium.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, dark brown to black hair with medium brown highlights and natural sheen, longer face-framing emo/gothic style, wearing stubble, eyes medium brown, light male skin tone, medium grey background, black trenchcoat and dark grey t shirt underneath, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, dark brown hair with highlights, emo style, with stubble, eyes medium brown, light skin, medium grey background, black coat, gray shirt, pixel art style",
+      "original_length": 349,
+      "new_length": 214,
+      "reduction": 135,
+      "reduction_pct": 38.7,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Removed 'male/female' from skin tone",
+        "Simplified complex hair description",
+        "Simplified clothing description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_008_platinum.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, buzzed hair on left side and long side swept hair dangling on the right, wearing stubble, dual colored eyes - left is lips, neutral expression, medium to light purple, light male skin tone, solid background, sandy grey color shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, asymmetric hair (buzzed left, long right), with stubble, dual colored eyes - left is neutral expression, light purple, light skin, background, gray shirt, pixel art style",
+      "original_length": 317,
+      "new_length": 218,
+      "reduction": 99,
+      "reduction_pct": 31.2,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Removed 'male/female' from skin tone",
+        "Simplified complex hair description",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_009_steel.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, bald, wearing silver rimmed glasses, wearing stubble, lips, slight smile, light medium brownred eyes, medium to light skin (middle eastern), more electric blue background (lighter almost sky blue), dark blue jacket with white t shirt underneath, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, bald, wearing silver glasses, with stubble, slight smile, light brown eyes, medium to light skin, bright blue background, blue jacket, white shirt, pixel art style",
+      "original_length": 331,
+      "new_length": 211,
+      "reduction": 120,
+      "reduction_pct": 36.3,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Simplified accessory description",
+        "Fixed background description",
+        "Simplified clothing description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_010_aluminum.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing red forward a baseball cap, wearing silver rimmed glasses, stubble, lips, slight smile, light medium brownred eyes, medium to light skin (middle eastern), bright blue background (lighter almost sky blue), orange jacket with white t shirt underneath, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing red forward a baseball cap, wearing silver glasses, stubble, slight smile, light brown eyes, medium to light skin, sky blue background, orange jacket, white shirt, pixel art style",
+      "original_length": 349,
+      "new_length": 241,
+      "reduction": 108,
+      "reduction_pct": 30.9,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description",
+        "Fixed background description",
+        "Simplified clothing description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_011_chocolate.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing stubble, lips, slight smile, light honey brown eyes, medium skin, split background, on top of a plain black tee shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, with stubble, slight smile, brown eyes, medium skin, divided background, black shirt, pixel art style",
+      "original_length": 218,
+      "new_length": 155,
+      "reduction": 63,
+      "reduction_pct": 28.9,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description",
+        "Simplified clothing description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_012_chromium.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair longer on top and shorter on sides styled in modern casual-polished cut messy but well-groomed, wearing light gray stubble, gray eyes, lips, slight smile, light gray skin tone, solid background, wearing dark golden yellow shirt with plain white light gray layer, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair, modern cut, with light gray stubble, gray eyes, slight smile, light gray skin tone, background, wearing dark golden yellow shirt with plain white light gray layer, pixel art style",
+      "original_length": 364,
+      "new_length": 244,
+      "reduction": 120,
+      "reduction_pct": 33.0,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Simplified complex hair description",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_013_caramel.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, jet black hair with hard edge against dark brown skin, multicolored background - blue, blue jacket and golden yellow shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, jet black hair with hard edge against dark brown skin, blue and white divided background, blue jacket and golden yellow shirt, pixel art style",
+      "original_length": 209,
+      "new_length": 190,
+      "reduction": 19,
+      "reduction_pct": 9.1,
+      "changes": [
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_014_sugar.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, dark red dark brown ashy hair, eyes, light skin, bright bleu (Coinbase blue) background, simple white light lavender blue collared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, dark red dark brown ashy hair, eyes, light skin, bright bleu (Coinbase blue) background, simple white light lavender blue collared shirt, pixel art style",
+      "original_length": 243,
+      "new_length": 215,
+      "reduction": 28,
+      "reduction_pct": 11.5,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_015_jackson.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, bright lime green yellow green hair styled in horizontal rolls above ears in 18th century colonial style, wearing black rectangular sunglasses covering eyes, dark eyes, lips, neutral expression, light pale green skin tone, split background, wearing classic vintage revolutionary war era dark grey suit with white undergarments, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, bright lime green yellow green hair styled in horizontal rolls above ears in 18th century colonial style, black sunglasses, dark eyes, neutral expression, light pale green skin tone, divided background, gray colonial suit, pixel art style",
+      "original_length": 413,
+      "new_length": 286,
+      "reduction": 127,
+      "reduction_pct": 30.8,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description",
+        "Fixed background description",
+        "Simplified clothing description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_016_tungsten.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, thin bright lime green yellow green hair with balding receding top and very little hair in natural 18th century style no wig, wearing black rectangular sunglasses covering eyes, dark eyes, lips, neutral expression, light pale green skin tone, split background, wearing classic vintage revolutionary war era light grey suit with white undergarments, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, thin bright lime green yellow green hair with balding receding top and very little hair in natural 18th century style no wig, black sunglasses, dark eyes, neutral expression, light pale green skin tone, divided background, gray colonial suit, pixel art style",
+      "original_length": 434,
+      "new_length": 306,
+      "reduction": 128,
+      "reduction_pct": 29.5,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description",
+        "Fixed background description",
+        "Simplified clothing description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_017_ink.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, bright lime green yellow green wig curled and tied in queue in classic 18th century colonial style, wearing black rectangular sunglasses covering eyes, dark eyes, lips, neutral expression, light pale green skin tone, split background, wearing classic vintage revolutionary war era dark grey suit with white undergarments, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, bright lime green yellow green wig curled and tied in queue in classic 18th century colonial style, black sunglasses, dark eyes, neutral expression, light pale green skin tone, divided background, gray colonial suit, pixel art style",
+      "original_length": 407,
+      "new_length": 280,
+      "reduction": 127,
+      "reduction_pct": 31.2,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description",
+        "Fixed background description",
+        "Simplified clothing description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_018_mandarin.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, neutral expression, light skin with white facial hair, wearing forward facing baseball cap with C logo on it baseball cap is dark grey dimensioned to lighter grey and the C is beige, wearing black glasses rimmed with light to medium brown pale eyes, light skin with white facial hair, light pale green background, dark blue jacket with black shirt and logo containing yellow green red and purple colors, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, neutral expression, light skin with white facial hair, wearing forward facing baseball cap with C logo on it baseball cap is dark grey dimensioned to lighter grey and the C is beige, wearing black glasses rimmed with light to medium brown pale eyes, light skin with white facial hair, light pale green background, dark blue jacket with black shirt and logo containing yellow green red and purple colors, pixel art style",
+      "original_length": 495,
+      "new_length": 467,
+      "reduction": 28,
+      "reduction_pct": 5.7,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_019_diamond.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, large voluminous messy brown hair with natural dimension and wild texture, lips, neutral expression, light opal seafoam green blue eyes, skin, bright green background, teal blue shirt with white logo on it in center, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, large voluminous messy brown hair with natural dimension and wild texture, neutral expression, light opal seafoam green blue eyes, skin, bright green background, teal blue shirt with white logo on it in center, pixel art style",
+      "original_length": 302,
+      "new_length": 274,
+      "reduction": 28,
+      "reduction_pct": 9.3,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_020_gpu.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, dirty blonde to sandy lips, slight smile, medium warmer blonder hair, wearing messy hair, medium to light brown eyes, heavier set wider jaw light skin male, wearing a white lanyard and black hoodie here with a pale blue grey background, a white lanyard and black hoodie here with a pale blue grey background, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, dirty blonde to sandy slight smile, medium warmer blonder hair, wearing messy hair, medium to light brown eyes, heavier set wider jaw light skin male, wearing a white lanyard and black hoodie here with a pale blue grey background, a white lanyard and black hoodie here with a pale blue grey background, pixel art style",
+      "original_length": 394,
+      "new_length": 366,
+      "reduction": 28,
+      "reduction_pct": 7.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_021_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, light medium lighter brown hair clearly distinct from dark brown eyes, light stubble and light skin, gradient background, black dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, light medium lighter brown hair clearly distinct from dark brown eyes, light stubble and light skin, gradient background, black dark grey shirt, pixel art style",
+      "original_length": 250,
+      "new_length": 222,
+      "reduction": 28,
+      "reduction_pct": 11.2,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_022_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, bald, wearing combo rimmed glasses, wearing gold chain thick, mustache, eyes, bald hispanic lips, neutral expression, medium skin male, gradient background, a salmon collaredshirt for a wedding perhaps and a dark black grey suit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, bald, wearing combo rimmed glasses, wearing gold chain thick, mustache, eyes, bald hispanic neutral expression, medium skin male, gradient background, a salmon collaredshirt for a wedding perhaps and a dark black grey suit, pixel art style",
+      "original_length": 315,
+      "new_length": 287,
+      "reduction": 28,
+      "reduction_pct": 8.9,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_023_x-2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, long hair, wearing green with diamonds minecraft style thicker chunkier crown, lips, neutral expression, dark brown eyes, asian male light skin, aqua teal blue to seafoam light green background, wearing tight black dark grey functional material a wetsuit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, long hair, wearing green with diamonds minecraft style thicker chunkier crown, neutral expression, dark brown eyes, asian male light skin, aqua teal blue to seafoam light green background, wearing tight black dark grey functional material a wetsuit, pixel art style",
+      "original_length": 341,
+      "new_length": 313,
+      "reduction": 28,
+      "reduction_pct": 8.2,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_023_x-3.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, long hair, wearing green with diamonds minecraft style thicker chunkier crown, lips, neutral expression, dark brown eyes, asian male light skin, aqua teal blue to seafoam light green background, wearing tight black dark grey functional material a wetsuit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, long hair, wearing green with diamonds minecraft style thicker chunkier crown, neutral expression, dark brown eyes, asian male light skin, aqua teal blue to seafoam light green background, wearing tight black dark grey functional material a wetsuit, pixel art style",
+      "original_length": 341,
+      "new_length": 313,
+      "reduction": 28,
+      "reduction_pct": 8.2,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_023_x-4.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, long hair, wearing green with diamonds minecraft style thicker chunkier crown, lips, neutral expression, dark brown eyes, asian male light skin, aqua teal blue to seafoam light green background, wearing tight black dark grey functional material a wetsuit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, long hair, wearing green with diamonds minecraft style thicker chunkier crown, neutral expression, dark brown eyes, asian male light skin, aqua teal blue to seafoam light green background, wearing tight black dark grey functional material a wetsuit, pixel art style",
+      "original_length": 341,
+      "new_length": 313,
+      "reduction": 28,
+      "reduction_pct": 8.2,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_023_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, long hair, lips, neutral expression, dark brown eyes, asian male light skin, aqua teal blue to seafoam light green background, wearing tight black dark grey functional material a wetsuit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, long hair, neutral expression, dark brown eyes, asian male light skin, aqua teal blue to seafoam light green background, wearing tight black dark grey functional material a wetsuit, pixel art style",
+      "original_length": 273,
+      "new_length": 245,
+      "reduction": 28,
+      "reduction_pct": 10.3,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_024_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing Deepl Blue baseball cap (forward) with lighter lavender logo/insignia on it, wearing lips, slight smile, dark purple rimmed sunglasses with lighter purple lens, stubble, medium black skin male, solid background, white blue collared shirt unbuttoneded, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing Deepl Blue baseball cap (forward) with lighter lavender logo/insignia on it, wearing slight smile, dark purple rimmed sunglasses with lighter purple lens, stubble, medium black skin male, background, white blue collared shirt unbuttoneded, pixel art style",
+      "original_length": 351,
+      "new_length": 317,
+      "reduction": 34,
+      "reduction_pct": 9.7,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_025_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing near black San Francisco Giant baseball cap (forward)wearing stubble, lips, slight smile, medium dark brown eyes, medium black skin male, plain greybackground, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing near black San Francisco Giant baseball cap (forward)with stubble, slight smile, medium dark brown eyes, medium black skin male, plain greybackground, clothing, pixel art style",
+      "original_length": 269,
+      "new_length": 238,
+      "reduction": 31,
+      "reduction_pct": 11.5,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_026_chromiumabstractsalmon.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair longer on top and shorter on sides styled in modern casual-polished cut messy but well-groomed, wearing light gray stubble, gray eyes, lips, slight smile, light gray skin tone, bright green background, wearing dark salmon pink shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair, modern cut, with light gray stubble, gray eyes, slight smile, light gray skin tone, bright green background, wearing dark salmon pink shirt, pixel art style",
+      "original_length": 335,
+      "new_length": 221,
+      "reduction": 114,
+      "reduction_pct": 34.0,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Simplified complex hair description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_027_chromiumabstractyellow.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair longer on top and shorter on sides styled in modern casual-polished cut messy but well-groomed, wearing light gray stubble, gray eyes, lips, slight smile, light gray skin tone, bright green background, wearing dark golden yellow shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair, modern cut, with light gray stubble, gray eyes, slight smile, light gray skin tone, bright green background, wearing dark golden yellow shirt, pixel art style",
+      "original_length": 337,
+      "new_length": 223,
+      "reduction": 114,
+      "reduction_pct": 33.8,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Simplified complex hair description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_028_chromiumabstractgreen.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair longer on top and shorter on sides styled in modern casual-polished cut messy but well-groomed, wearing light gray stubble, gray eyes, lips, slight smile, light gray skin tone, bright green background, wearing dark pale green shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair, modern cut, with light gray stubble, gray eyes, slight smile, light gray skin tone, bright green background, wearing dark pale green shirt, pixel art style",
+      "original_length": 334,
+      "new_length": 220,
+      "reduction": 114,
+      "reduction_pct": 34.1,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Simplified complex hair description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_029_famous-9.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, neutral expression, dark brown well styled and cut hair, wearing thinener on the sides and soimetime shas that beautiful curve to it, wearing glasses, stubble, eyes, light skin, bright blue background light skin with stubble, bitcoin orange colored shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, neutral expression, dark brown well styled and cut hair, wearing thinener on the sides and soimetime shas that beautiful curve to it, wearing glasses, stubble, eyes, light skin, bright blue background light skin with stubble, bitcoin orange colored shirt, pixel art style",
+      "original_length": 347,
+      "new_length": 319,
+      "reduction": 28,
+      "reduction_pct": 8.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_029_famous4.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, neutral expression, dark brown well styled and cut hair, wearing thinener on the sides and soimetime shas that beautiful curve to itwearing stubble, glowing green laser eyes, light skin, gradient background, bitcoin orange colored shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, neutral expression, dark brown well styled and cut hair, wearing thinener on the sides and soimetime shas that beautiful curve to itwith stubble, glowing green laser eyes, light skin, gradient background, bitcoin orange colored shirt, pixel art style",
+      "original_length": 329,
+      "new_length": 298,
+      "reduction": 31,
+      "reduction_pct": 9.4,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_030_ink.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, deep blackpurple eyes, and facial hair beard and stubble, wearing stubble, deep black purple eyes, lips, neutral expression, medium dark skin tone skin tone with before shoulder length beautiful dimensioned shiny moist dreads, solid background, cream overtop with red and blue shirt underneath, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, deep blackpurple eyes, and facial hair beard and stubble, with stubble, deep black purple eyes, neutral expression, medium dark skin tone skin tone with before shoulder length beautiful dimensioned shiny moist dreads, background, cream overtop with red and blue shirt underneath, pixel art style",
+      "original_length": 380,
+      "new_length": 343,
+      "reduction": 37,
+      "reduction_pct": 9.7,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_031_fin.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, blacklips, neutral expression, dark brown semi curly wavy hair, wearing messy hair with some flipped out on the right or sticking out but look good, wearing duo tone silver rimmed glasses and medium to dark brown eyesduo tone silver rimmed glasses and medium to dark brown eyes, light skin, solid background, red sport coat jacket and grey under t shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, black neutral expression, dark brown semi curly wavy hair, wearing messy hair with some flipped out on the right or sticking out but look good, wearing duo tone silver glasses and medium to dark brown eyesduo tone silver glasses and medium to dark brown eyes, light skin, background, red sport coat jacket and grey under t shirt, pixel art style",
+      "original_length": 440,
+      "new_length": 393,
+      "reduction": 47,
+      "reduction_pct": 10.7,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_032_shaman-4.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, long sex icon black silky shiny hair, wearing dual colored purple party glasses with semi translucent, wearing stubble, green hazel brown eyes underneath, lips, neutral expression, light olive skin, solid background, black hoodie with two cherries on it, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, long sex icon black silky shiny hair, wearing dual colored purple party glasses with semi translucent, with stubble, green hazel brown eyes underneath, neutral expression, light olive skin, background, black hoodie with two cherries on it, pixel art style",
+      "original_length": 340,
+      "new_length": 303,
+      "reduction": 37,
+      "reduction_pct": 10.9,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_033_molecule-2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, clean haircut, lightbrown eyes, lips, slight smile, light skin, solid background, wearing a classic black sportcoat with a white shirt underneath it, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, clean haircut, lightbrown eyes, slight smile, light skin, background, wearing a classic black sportcoat with a white shirt underneath it, pixel art style",
+      "original_length": 235,
+      "new_length": 201,
+      "reduction": 34,
+      "reduction_pct": 14.5,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_035_JUAN.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, longer hair on top and messy and flicking / curled out on top right, wearing longer hair on top and messy and flicking / curled out on top right, wearing silver and brown frames glasses, stubble, lips, neutral expression, medium to dark brown eyes, light skin (male from comulbia), checkered brick background, white shirt underneath blue jacket, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, longer hair on top and messy and flicking / curled out on top right, wearing longer hair on top and messy and flicking / curled out on top right, wearing silver and brown frames glasses, stubble, neutral expression, medium to dark brown eyes, light skin (male from comulbia), brick background, white shirt underneath blue jacket, pixel art style",
+      "original_length": 431,
+      "new_length": 393,
+      "reduction": 38,
+      "reduction_pct": 8.8,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_036_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, dark medium brown hair, wearing white dimensioned cowboy, medium light brown green tinted eyes and dark grey shirt, light skin but with a nice tan, gradient background, medium light brown green tinted eyes and dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, dark medium brown hair, wearing white dimensioned cowboy, medium light brown green tinted eyes and dark grey shirt, light skin but with a nice tan, gradient background, medium light brown green tinted eyes and dark grey shirt, pixel art style",
+      "original_length": 332,
+      "new_length": 304,
+      "reduction": 28,
+      "reduction_pct": 8.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_037_aressprout.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, ashy sandy rbown hair with natural blonde highlights from the sun, wearing lips, neutral expression, dark grey / grey hoodie with silver chain, shorter on the sides but a litte longer to side sweepo over and make it seme liek the sides have long hair (howevr youd describe this tyle?) seafoam green / pale greenblue eyes light, light skin, solid background, dark grey / grey hoodie with silver chain, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, ashy sandy rbown hair with natural blonde highlights from the sun, wearing neutral expression, dark grey / grey hoodie with silver chain, shorter on the sides but a litte longer to side sweepo over and make it seme liek the sides have long hair (howevr youd describe this tyle?) seafoam green / pale greenblue eyes light, light skin, background, dark grey / grey hoodie with silver chain, pixel art style",
+      "original_length": 486,
+      "new_length": 452,
+      "reduction": 34,
+      "reduction_pct": 7.0,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_038_cashking-6.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, neutral expression, dark black curly stylized hair similar to martin shrkeli or another star, wearing hair longer on top but side sweat and very clean and well done, wearing black rectangular sunglasses covering eyes with white reflection, stubble, skin, solid background, black blazer with colorful slilk cshirt (think armani exschange) undnearth, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, neutral expression, dark black curly stylized hair similar to martin shrkeli or another star, hair longer on top but side sweat and very clean and well done, black sunglasses with white reflection, stubble, skin, background, black blazer with colorful slilk cshirt (think armani exschange) undnearth, pixel art style",
+      "original_length": 440,
+      "new_length": 364,
+      "reduction": 76,
+      "reduction_pct": 17.3,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed broken text pattern",
+        "Simplified accessory description",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_039_davinci-2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, long dark gray black flowing hair and long waving beard flowing over shoulders and chest thick and well-groomed luxurious Renaissance style, wearing black beret or artist style hat with shadows and dimension, deep blue eyes, lips, neutral expression, medium olive skin tone, solid background, wearing artist clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, long dark gray black flowing hair and long waving beard flowing over shoulders and chest thick and well-groomed luxurious Renaissance style, wearing black beret or artist style hat with shadows and dimension, deep blue eyes, neutral expression, medium olive skin tone, background, wearing artist clothing, pixel art style",
+      "original_length": 403,
+      "new_length": 369,
+      "reduction": 34,
+      "reduction_pct": 8.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_040_melzarmagic.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, mushroom cut style hair but short, wearing silver rimmed glasses, wearing stubble, lips, slight smile, medium plain brown eyes, medium male skin tone, solid background, a white/light grey for shadows collared shirt and a darker grey tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, mushroom cut style hair but short, wearing silver glasses, with stubble, slight smile, medium plain brown eyes, medium skin, background, a white/light grey for shadows collared shirt and a darker grey tie, pixel art style",
+      "original_length": 323,
+      "new_length": 269,
+      "reduction": 54,
+      "reduction_pct": 16.7,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Removed 'male/female' from skin tone",
+        "Simplified accessory description",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_041_Maradona.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, he has voluminous voluptuous fluffy afrostyle huge curly lips, slight smile, dark medium and light lighter brown hair clearly distinct from dark brown eyes, he has light stubble and is medium skinned (from argentina) here is wearing his blue and light blue argentina jersey and is on the field with the blue sky behind him and green playing field, solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, he has voluminous voluptuous fluffy afrostyle huge curly slight smile, dark medium and light lighter brown hair clearly distinct from dark brown eyes, he has light stubble and is medium skinned here is wearing his blue and light blue argentina jersey and is on the field with the blue sky behind him and green playing field, background, clothing, pixel art style",
+      "original_length": 461,
+      "new_length": 410,
+      "reduction": 51,
+      "reduction_pct": 11.1,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_043_jeremey.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, short buzzed hair with a little longer on top, wearing lips, neutral expression, dark grey rimmed glasses with semi translcuent/opaque blue lenseseyes, light skin, gradient background, dark grey sportcoat jacket with red shirt undeath, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, short buzzed hair with a little longer on top, wearing neutral expression, dark grey rimmed glasses with semi translcuent/opaque blue lenseseyes, light skin, gradient background, dark grey sportcoat jacket with red shirt undeath, pixel art style",
+      "original_length": 321,
+      "new_length": 293,
+      "reduction": 28,
+      "reduction_pct": 8.7,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_045_homewithkids3.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, bald, wearing lips, neutral expression, light beige light tan color baseball cap, wearing beard, lightbrown blueish eyes, skin, pastel colored hoodie with light grey background, pastel colored hoodie with light grey background, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, bald, wearing neutral expression, light beige light tan color baseball cap, with beard, lightbrown blueish eyes, skin, pastel colored hoodie with light grey background, pastel colored hoodie with light grey background, pixel art style",
+      "original_length": 313,
+      "new_length": 282,
+      "reduction": 31,
+      "reduction_pct": 9.9,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_046_NATE.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing lips, slight smile, dark blue dimensioned backward baseball cap, wearing stubble, light blue and pale green eyes, skin, pale rouge background, big patterned coat and dark green shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing slight smile, dark blue dimensioned backward baseball cap, with stubble, light blue and pale green eyes, skin, pale rouge background, big patterned coat and dark green shirt, pixel art style",
+      "original_length": 283,
+      "new_length": 252,
+      "reduction": 31,
+      "reduction_pct": 11.0,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_047_CYGAAR1.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing red and white hat with a white igloo on the hat, blue eyes and one eye winking, lips, neutral expression, skin, bright green background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing red and white hat with a white igloo on the hat, blue eyes and one eye winking, neutral expression, skin, bright green background, clothing, pixel art style",
+      "original_length": 246,
+      "new_length": 218,
+      "reduction": 28,
+      "reduction_pct": 11.4,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_049_gainzyyyy12.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing translucent orange mog style goggle glasses and an silver purple ethereum colored crown with diamonds on it, translucent orange mog style goggle glasses and an silver purple ethereum colored crown with diamonds on it, with a gold chain, eyes, lips, neutral expression, skin, solid background, classic brighter blue suit with white collared shirt and red tie (wallstreet financier style), hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing translucent orange mog style goggle glasses and an silver purple ethereum colored crown with diamonds on it, translucent orange mog style goggle glasses and an silver purple ethereum colored crown with diamonds on it, with a gold chain, eyes, neutral expression, skin, background, classic brighter blue suit with white collared shirt and red tie (wallstreet financier style), pixel art style",
+      "original_length": 487,
+      "new_length": 453,
+      "reduction": 34,
+      "reduction_pct": 7.0,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_049_gainzyyyy18.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing translucent cyan mog style goggle glasses and an silver purple ethereum colored crown with diamonds on it, translucent cyan mog style goggle glasses and an silver purple ethereum colored crown with diamonds on it, with a gold chain, eyes, lips, neutral expression, skin, solid background, classic brighter blue suit with white collared shirt and red tie (wallstreet financier style) and smoking a brown joint with an orange tip and smoke is coming out of the top, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing translucent cyan mog style goggle glasses and an silver purple ethereum colored crown with diamonds on it, translucent cyan mog style goggle glasses and an silver purple ethereum colored crown with diamonds on it, with a gold chain, eyes, neutral expression, skin, background, classic brighter blue suit with white collared shirt and red tie (wallstreet financier style) and smoking a brown joint with an orange tip and smoke is coming out of the top, pixel art style",
+      "original_length": 563,
+      "new_length": 529,
+      "reduction": 34,
+      "reduction_pct": 6.0,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_050_nate-2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, sandy dirty bright blonde hair clearly distinct from light peachy skin tone, solid background, classic blue suit light blue collared shirt and blue tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, sandy dirty bright blonde hair clearly distinct from light peachy skin tone, background, classic blue suit light blue collared shirt and blue tie, pixel art style",
+      "original_length": 238,
+      "new_length": 210,
+      "reduction": 28,
+      "reduction_pct": 11.8,
+      "changes": [
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_050_nate.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, sandy dirty bright blonde hair clearly distinct from light peachy skin tone, solid background, classic blue suit light blue collared shirt and blue tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, sandy dirty bright blonde hair clearly distinct from light peachy skin tone, background, classic blue suit light blue collared shirt and blue tie, pixel art style",
+      "original_length": 238,
+      "new_length": 210,
+      "reduction": 28,
+      "reduction_pct": 11.8,
+      "changes": [
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_051_DEVON-2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, darker dimensioned LONG brown reddish hair and beard - beard is not short but not long, wearing black lips, slight smile, dark grey dimensioned backwards baseball cap, wearing beard, eyes, light skin, light dustrose background, purple overcoat jacket and dark green shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, darker dimensioned LONG brown reddish hair and beard - beard is not short but not long, wearing black slight smile, dark grey dimensioned backwards baseball cap, with beard, eyes, light skin, light dustrose background, purple overcoat jacket and dark green shirt, pixel art style",
+      "original_length": 358,
+      "new_length": 327,
+      "reduction": 31,
+      "reduction_pct": 8.7,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_051_DEVON-4.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, darker dimensioned LONG brown reddish hair and beard - beard is not short but not long, wearing lips, slight smile, Light purple gradient majestic epic magical wizard hat with cyan accent ribbon and golden yellow Z center in the middlewearing beard, eyes, skin, gradient background, purple overcoat jacket and dark green shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, darker dimensioned LONG brown reddish hair and beard - beard is not short but not long, wearing slight smile, Light purple gradient majestic epic magical wizard hat with cyan accent ribbon and golden yellow Z center in the middlewith beard, eyes, skin, gradient background, purple overcoat jacket and dark green shirt, pixel art style",
+      "original_length": 413,
+      "new_length": 382,
+      "reduction": 31,
+      "reduction_pct": 7.5,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_054_sterling.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, ashy brown colored hair lips, slight smile, light sandy brown color hair, wearing stubble, eyes, skin, grey background, dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, ashy brown colored hair slight smile, light sandy brown color hair, with stubble, eyes, skin, grey background, dark grey shirt, pixel art style",
+      "original_length": 222,
+      "new_length": 191,
+      "reduction": 31,
+      "reduction_pct": 14.0,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_054_sterlingglasses.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, ashy brown colored hair lips, slight smile, light sandy brown color hair, wearing dark grey rimmed glasses and light pale icey blue yeeswearing stubble, eyes, skin, grey background, dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, ashy brown colored hair slight smile, light sandy brown color hair, wearing dark grey rimmed glasses and light pale icey blue yeeswith stubble, eyes, skin, grey background, dark grey shirt, pixel art style",
+      "original_length": 284,
+      "new_length": 253,
+      "reduction": 31,
+      "reduction_pct": 10.9,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_054_sterlingglasses3withcrown5.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, ashy brown colored hair lips, slight smile, light sandy brown color hair, wearing the center looks a crown and is also golden, wearing darkred rimmed glasses and lige pale icey blue yees, stubble, eyes, skin, Radial Hot pink background, dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, ashy brown colored hair slight smile, light sandy brown color hair, wearing the center looks a crown and is also golden, wearing darkred rimmed glasses and lige pale icey blue yees, stubble, eyes, skin, Radial Hot pink background, dark grey shirt, pixel art style",
+      "original_length": 339,
+      "new_length": 311,
+      "reduction": 28,
+      "reduction_pct": 8.3,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_055_Luke.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing opaque pinkpurple style party glasses, wearing stubble, light green hazel brown eyes covered by semi translucent lenses, lips, neutral expression, light skin tone, radial blue to green background, grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing opaque pinkpurple style party glasses, with stubble, light green hazel brown eyes covered by semi translucent lenses, neutral expression, light skin tone, radial blue to green background, grey shirt, pixel art style",
+      "original_length": 465,
+      "new_length": 434,
+      "reduction": 31,
+      "reduction_pct": 6.7,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_055_Luke10.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing golden crown with purple gems and diamonds, wearing opaque pinkpurple style party glasses, stubble, light green hazel brown eyes covered by semi translucent lenses, lips, neutral expression, light skin tone, purple to medium green gradient background, grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing golden crown with purple gems and diamonds, wearing opaque pinkpurple style party glasses, stubble, light green hazel brown eyes covered by semi translucent lenses, neutral expression, light skin tone, purple to medium green gradient background, grey shirt, pixel art style",
+      "original_length": 520,
+      "new_length": 492,
+      "reduction": 28,
+      "reduction_pct": 5.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_055_Luke3.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing black bucket hat with dark grey accents shadows, wearing opaque pinkpurple style party glasses, stubble, light green hazel brown eyes covered by semi translucent lenses, lips, neutral expression, light skin tone, split background, grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing black bucket hat with dark grey accents shadows, wearing opaque pinkpurple style party glasses, stubble, light green hazel brown eyes covered by semi translucent lenses, neutral expression, light skin tone, divided background, grey shirt, pixel art style",
+      "original_length": 499,
+      "new_length": 473,
+      "reduction": 26,
+      "reduction_pct": 5.2,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_055_Luke6.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing purple cowboy hat, wearing opaque pinkpurple style party glasses, stubble, light green hazel brown eyes covered by semi translucent lenses, lips, neutral expression, light skin tone, solid background, grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing purple cowboy hat, wearing opaque pinkpurple style party glasses, stubble, light green hazel brown eyes covered by semi translucent lenses, neutral expression, light skin tone, background, grey shirt, pixel art style",
+      "original_length": 469,
+      "new_length": 435,
+      "reduction": 34,
+      "reduction_pct": 7.2,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_055_Luke8.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing small beanie cap of orange and black with yellow ball at top, wearing stubble, light greenhazel brown eyes, lips, neutral expression, light skin tone, solid background, blue shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, golden blonde to dirty blonde ombre with natural sun-bleached highlights from beach and sun and salt creating long tousled thick wavy and curly surfer style hair, wearing small beanie cap of orange and black with yellow ball at top, with stubble, light greenhazel brown eyes, neutral expression, light skin tone, background, blue shirt, pixel art style",
+      "original_length": 437,
+      "new_length": 400,
+      "reduction": 37,
+      "reduction_pct": 8.5,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_057_Hugh.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, light brown ashy medium brown hair, wearing brown cowboy hat, dark greenblue eyes, medium skin tone, italian flag as background, simple blue suit with grey collaredshirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, light brown ashy medium brown hair, wearing brown cowboy hat, dark greenblue eyes, medium skin tone, italian flag as background, simple blue suit with grey collaredshirt, pixel art style",
+      "original_length": 276,
+      "new_length": 248,
+      "reduction": 28,
+      "reduction_pct": 10.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_057_Hugh5.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing brown cowboy hat, wearing black rectangular sunglasses covering eyes with white reflectionlips, slight smile, medium skin tone, italian flag as background, simple blue suit with grey collaredshirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing brown cowboy hat, black sunglasses with white reflection slight smile, medium skin tone, italian flag as background, simple blue suit with grey collaredshirt, pixel art style",
+      "original_length": 297,
+      "new_length": 236,
+      "reduction": 61,
+      "reduction_pct": 20.5,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_058_SAVVA.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, thin cut on sides/ fades, longer side swept hair on top of lips, neutral expression, dark ashy brown fasing bledning into dark grey and the nlight grey and a bit of white with tints of brown, wearing stubble, light green brown eyes, skin, solid background, simple ddark grey/blue shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, thin cut on sides/ fades, longer side swept hair on top of neutral expression, dark ashy brown fasing bledning into dark grey and the nlight grey and a bit of white with tints of brown, with stubble, light green brown eyes, skin, background, simple ddark grey/blue shirt, pixel art style",
+      "original_length": 372,
+      "new_length": 335,
+      "reduction": 37,
+      "reduction_pct": 9.9,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_059_SamAScientist.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair longer on top and shorter on sides styled in modern casual-polished cut messy but well-groomed, wearing light gray stubble, wearing dark blue rimmed lab glasses with light blue lenses and reflections, dark eyes, lips, slight smile, light gray skin tone, light blue background, white lab coat over yellow shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, light gray hair, modern cut, with light gray stubble, wearing dark blue rimmed lab glasses with light blue lenses and reflections, dark eyes, slight smile, light gray skin tone, light blue background, white lab coat over yellow shirt, pixel art style",
+      "original_length": 412,
+      "new_length": 298,
+      "reduction": 114,
+      "reduction_pct": 27.7,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Simplified complex hair description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_060_bhaitradingbot2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, neutral expression, medium indian skinned male, big hair on top side swept a modern bollywood elvis presely almost, wearing black shinyy hairmustche and dark borown eyes, medium indian skin male, solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, neutral expression, medium indian skinned male, big hair on top side swept a modern bollywood elvis presely almost, wearing black shinyy hairmustche and dark borown eyes, medium indian skin male, background, clothing, pixel art style",
+      "original_length": 315,
+      "new_length": 281,
+      "reduction": 34,
+      "reduction_pct": 10.8,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_061_DOPE10.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, dark brown dirty brown hair, wearing dark pale purple top hat with red reasperry ribbon in center, wearing black rectangular sunglasses covering eyes with white reflection, stubble, light skin, red background, classic blue suit and tie with white colared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, dark brown dirty brown hair, wearing dark pale purple top hat with red reasperry ribbon in center, black sunglasses with white reflection, stubble, light skin, red background, classic blue suit and tie with white colared shirt, pixel art style",
+      "original_length": 367,
+      "new_length": 305,
+      "reduction": 62,
+      "reduction_pct": 16.9,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_061_DOPE7.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, dark brown dirty brown hair, wearing backwards dark baseball cap with tints of brown maroon purple and dark blue etc, wearing black rectangular sunglasses covering eyes with white reflection, stubble, light skin, light pale green background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, dark brown dirty brown hair, wearing backwards dark baseball cap with tints of brown maroon purple and dark blue etc, black sunglasses with white reflection, stubble, light skin, light pale green background, clothing, pixel art style",
+      "original_length": 357,
+      "new_length": 295,
+      "reduction": 62,
+      "reduction_pct": 17.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_061_DOPE9.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, dark brown dirty brown hair, wearing dark pale purple top hat with red reasperry ribbon in center, wearing black rectangular sunglasses covering eyes with white reflection, stubble, light skin, solid background, classic blue suit and tie with white colared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, dark brown dirty brown hair, wearing dark pale purple top hat with red reasperry ribbon in center, black sunglasses with white reflection, stubble, light skin, background, classic blue suit and tie with white colared shirt, pixel art style",
+      "original_length": 369,
+      "new_length": 301,
+      "reduction": 68,
+      "reduction_pct": 18.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_062_devox2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, dark full beard of facial hair, wearing full beard, honey brown light ebrown medium brown eyes, middle eastern light skin brown, pale red background, dark brown shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, dark full beard of facial hair, wearing full beard, honey brown light ebrown medium brown eyes, middle eastern light skin brown, pale red background, dark brown shirt, pixel art style",
+      "original_length": 273,
+      "new_length": 245,
+      "reduction": 28,
+      "reduction_pct": 10.3,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_063_kenichi.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, lips, neutral expression, light honey brown eyes, light medium dark skin tone skin tone, red background, classic black suit and white collared shirt and tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, neutral expression, brown eyes, light medium dark skin tone skin tone, red background, classic black suit and white collared shirt and tie, pixel art style",
+      "original_length": 249,
+      "new_length": 209,
+      "reduction": 40,
+      "reduction_pct": 16.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_064_Scott.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, greenalmost tint of brown deep brown warm yellow lighter brown hair clearly distinct from dark brown eyes, light pinkish skin, solid background, simple dark collared shirt with simple design, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, greenalmost tint of brown deep brown warm yellow lighter brown hair clearly distinct from dark brown eyes, light pinkish skin, background, simple dark collared shirt with simple design, pixel art style",
+      "original_length": 277,
+      "new_length": 249,
+      "reduction": 28,
+      "reduction_pct": 10.1,
+      "changes": [
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_064_sensei.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, minimal amount of grey hair slicked back or to the slide and back, emdium to lips, slight smile, dark brown eyes, light skin, solid background, blue collared shirt with dark grey jacket, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, minimal amount of grey hair slicked back or to the slide and back, emdium to slight smile, dark brown eyes, light skin, background, blue collared shirt with dark grey jacket, pixel art style",
+      "original_length": 272,
+      "new_length": 238,
+      "reduction": 34,
+      "reduction_pct": 12.5,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_066_napoli2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, neutral expression, dark brown hair, wearing fidora baseball cap black and dark greywearing stubble, eyes, light olive skin, solid background, patterened mutlicolored loose silk shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, neutral expression, dark brown hair, wearing fidora baseball cap black and dark greywith stubble, eyes, light olive skin, background, patterened mutlicolored loose silk shirt, pixel art style",
+      "original_length": 276,
+      "new_length": 239,
+      "reduction": 37,
+      "reduction_pct": 13.4,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_068_mayor.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing snowboarder style goggle glassespurple purple blue aand bluewearing stubble, eyes, lips, neutral expression, skin, blue background, Big Orange Hoodie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing snowboarder style goggle glassespurple purple blue aand bluewith stubble, eyes, neutral expression, skin, blue background, Big Orange Hoodie, pixel art style",
+      "original_length": 250,
+      "new_length": 219,
+      "reduction": 31,
+      "reduction_pct": 12.4,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_070_IRAsBF2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, silver black shiny sleek gelled styled model hair, wearing golden stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, lips, neutral expression, medium dark brown eyes, light medium skin olive or brazilian, solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, silver black shiny sleek gelled styled model hair, wearing golden stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, neutral expression, medium dark brown eyes, light medium skin olive or brazilian, background, clothing, pixel art style",
+      "original_length": 421,
+      "new_length": 387,
+      "reduction": 34,
+      "reduction_pct": 8.1,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_075_mmhm.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing beard, eyes, sutubble beard on face and lips, neutral expression, light skin, solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, with beard, eyes, sutubble beard on face and neutral expression, light skin, background, clothing, pixel art style",
+      "original_length": 205,
+      "new_length": 168,
+      "reduction": 37,
+      "reduction_pct": 18.0,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_078_btoshi.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, black people mno frow hair that turns to grey and white naturally, wearing fancy top hat with decor on it and a bucklewearing stubble, lips, neutral expression, dark brown eyes, light dark skin tone skin tone, solid background, classic hight suit vintage and underwhite garment, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, black people mno frow hair that turns to grey and white naturally, wearing fancy top hat with decor on it and a bucklewith stubble, neutral expression, dark brown eyes, light dark skin tone skin tone, background, classic hight suit vintage and underwhite garment, pixel art style",
+      "original_length": 364,
+      "new_length": 327,
+      "reduction": 37,
+      "reduction_pct": 10.2,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_079_ravish.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, longer hair on top and shorter/buzzed on sides - nicely done, wearing stubble, lips, slight smile, dark brown eyes, medium male skin tone, split background, dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, longer hair on top and shorter/buzzed on sides - nicely done, with stubble, slight smile, dark brown eyes, medium skin, divided background, dark grey shirt, pixel art style",
+      "original_length": 259,
+      "new_length": 220,
+      "reduction": 39,
+      "reduction_pct": 15.1,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Removed 'male/female' from skin tone",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_080_fcpo.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, long hair on top side swept (little boys style hair), eyes, lips, slight smile, light skin, orange background, purple collared shirt with a grey northface vest, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, long hair on top side swept (little boys style hair), eyes, slight smile, light skin, orange background, purple collared shirt with a grey northface vest, pixel art style",
+      "original_length": 246,
+      "new_length": 218,
+      "reduction": 28,
+      "reduction_pct": 11.4,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_081_iggy2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, stubble/facial hair fuul beard, wearing all cpatterns and shades of greyswearing stubble, lips, slight smile, medium brown skin (mexican), solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, stubble/facial hair fuul beard, wearing all cpatterns and shades of greyswith stubble, slight smile, medium brown skin, background, clothing, pixel art style",
+      "original_length": 252,
+      "new_length": 205,
+      "reduction": 47,
+      "reduction_pct": 18.7,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_086_Scooby.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, long hair on top that falls o neach side of face, wearing long hair on top that falls o neach side of faceseafoam lips, neutral expression, light blue eyes pa, pale light skin, light grey background, golden yellow shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, long hair on top that falls o neach side of face, wearing long hair on top that falls o neach side of faceseafoam neutral expression, light blue eyes pa, pale light skin, light grey background, golden yellow shirt, pixel art style",
+      "original_length": 306,
+      "new_length": 278,
+      "reduction": 28,
+      "reduction_pct": 9.2,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_087_HEEM.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, chin and face framed facial hair, wearing baseball cap with logo and patternwearing black coat/hoodie and silver chain, eyes, lips, slight smile, skin, solid background, black coat/hoodie and silver chain, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, chin and face framed facial hair, wearing baseball cap with logo and patternwearing black coat/hoodie and silver chain, eyes, slight smile, skin, background, black coat/hoodie and silver chain, pixel art style",
+      "original_length": 291,
+      "new_length": 257,
+      "reduction": 34,
+      "reduction_pct": 11.7,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_088_Kareem.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, extended mustache and chin hair, wearing mustache, lips, neutral expression, medium grey eyes, skin, solid background, classic grey suit and white collared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, extended mustache and chin hair, wearing mustache, neutral expression, medium grey eyes, skin, background, classic grey suit and white collared shirt, pixel art style",
+      "original_length": 248,
+      "new_length": 214,
+      "reduction": 34,
+      "reduction_pct": 13.7,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_089_aguda.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, mustach and chin hair, wearing short hair on side but tall/lips, neutral expression, medium length on top but stands up straighteyes, dark black skin, solid background, classic black and white suit with patterned tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, mustach and chin hair, wearing short hair on side but tall/ neutral expression, medium length on top but stands up straighteyes, dark black skin, background, classic black and white suit with patterned tie, pixel art style",
+      "original_length": 303,
+      "new_length": 270,
+      "reduction": 33,
+      "reduction_pct": 10.9,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_090_drscott.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, reddblondish strawberry bloish short hair, wearing stubble, green hazel yellowsih eyes warmer green, lips, slight smile, light skin, orange background, blue shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, reddblondish strawberry bloish short hair, with stubble, green hazel yellowsih eyes warmer green, slight smile, light skin, orange background, blue shirt, pixel art style",
+      "original_length": 249,
+      "new_length": 218,
+      "reduction": 31,
+      "reduction_pct": 12.4,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_091_amit.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, red eyes/pink eyes, lips, slight smile, indian colored skin dark, white background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, red eyes/pink eyes, slight smile, indian colored skin dark, white background, clothing, pixel art style",
+      "original_length": 185,
+      "new_length": 157,
+      "reduction": 28,
+      "reduction_pct": 15.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_092_derrick.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, balddeep greenblue eyes, lips, slight smile, light skin, light blue background, dark collared shirt uneath, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, balddeep greenblue eyes, slight smile, light skin, light blue background, dark collared shirt uneath, pixel art style",
+      "original_length": 193,
+      "new_length": 165,
+      "reduction": 28,
+      "reduction_pct": 14.5,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_093_photogee.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing black low bucke hat with logo on it and dimensionbright red eyes/lips, neutral expression, pale red eyes, skin, solid background, simple dark grey black and white coat, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing black low bucke hat with logo on it and dimensionbright red eyes/ neutral expression, pale red eyes, skin, background, simple dark grey black and white coat, pixel art style",
+      "original_length": 268,
+      "new_length": 235,
+      "reduction": 33,
+      "reduction_pct": 12.3,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_094_storm.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, normal style nhaircut lips, slight smile, dark brown to jet black hair with hard edge against dark brown skin colored dark skin tone, bright blue background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, normal style nhaircut slight smile, dark brown to jet black hair with hard edge against dark brown skin colored dark skin tone, bright blue background, clothing, pixel art style",
+      "original_length": 253,
+      "new_length": 225,
+      "reduction": 28,
+      "reduction_pct": 11.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_095_godfather.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, buzeed/short length brownred warm colored hair, wearing full beard, deep blue eyes, lips, neutral expression, medium dark dark skin tone skin tone, solid background, classic black and whit suit with a black tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, buzeed/short length brownred warm colored hair, wearing full beard, deep blue eyes, neutral expression, medium dark dark skin tone skin tone, background, classic black and whit suit with a black tie, pixel art style",
+      "original_length": 297,
+      "new_length": 263,
+      "reduction": 34,
+      "reduction_pct": 11.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_096_apollo.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing headband bandada, wearing stubble, eyes, lips, slight smile, skin, solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing headband bandada, with stubble, eyes, slight smile, skin, background, clothing, pixel art style",
+      "original_length": 194,
+      "new_length": 157,
+      "reduction": 37,
+      "reduction_pct": 19.1,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_097_drralph.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, older hairstyle - voluminous lmost looks a wig but its not, wearing lips, slight smile, dark red brown to some light brown because it shinny with sheen and straightbluee green eyes, light skin, white background clean, classic black and white suit with collared shirt unbuttoneded, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, older hairstyle - voluminous lmost looks a wig but its not, wearing slight smile, dark red brown to some light brown because it shinny with sheen and straightbluee green eyes, light skin, white background clean, classic black and white suit with collared shirt unbuttoneded, pixel art style",
+      "original_length": 366,
+      "new_length": 338,
+      "reduction": 28,
+      "reduction_pct": 7.7,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_098_Murtaza.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, baldwearing stubble, lips, slight smile, dark brown eyes, skin, pale green background, dark blue light blue collared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, baldwith stubble, slight smile, dark brown eyes, skin, pale green background, dark blue light blue collared shirt, pixel art style",
+      "original_length": 209,
+      "new_length": 178,
+      "reduction": 31,
+      "reduction_pct": 14.8,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lad_099_amenshiller.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, ashy lips, neutral expression, dark brown medium lighter brown hair clearly distinct from dark brown eyes, medium black skin male, lglight grey background, white collared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, ashy neutral expression, dark brown medium lighter brown hair clearly distinct from dark brown eyes, medium black skin male, lglight grey background, white collared shirt, pixel art style",
+      "original_length": 263,
+      "new_length": 235,
+      "reduction": 28,
+      "reduction_pct": 10.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_102_bunya.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, curly semim long but not long tfine but full hair on top and more thinner on the sides (young punk look type), wearing darker grey spark but there beardwearing beard, lips, slight smile, light bluegreen eyes, light skin, dark blue background, dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, curly semim long but not long tfine but full hair on top and more thinner on the sides (young punk look type), wearing darker grey spark but there beardwith beard, slight smile, light bluegreen eyes, light skin, dark blue background, dark grey shirt, pixel art style",
+      "original_length": 345,
+      "new_length": 314,
+      "reduction": 31,
+      "reduction_pct": 9.0,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_102_bunya2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, curly semim long but not long tfine but full hair on top and more thinner on the sides (young punk look type), wearing darker grey spark but there beardwearing beard, lips, slight smile, light bluegreen eyes, light skin, light grey blue background, dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, curly semim long but not long tfine but full hair on top and more thinner on the sides (young punk look type), wearing darker grey spark but there beardwith beard, slight smile, light bluegreen eyes, light skin, light grey blue background, dark grey shirt, pixel art style",
+      "original_length": 351,
+      "new_length": 320,
+      "reduction": 31,
+      "reduction_pct": 8.8,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_102_bunya3.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, curly semim long but not long tfine but full hair on top and more thinner on the sides (young punk look type), wearing darker grey sparse but there beard, wearing silver rimmed glasses withlips, slight smile, dark grey filler / inner and light grey reflection, beard, eyes, light skin, dark blue background, dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, curly semim long but not long tfine but full hair on top and more thinner on the sides (young punk look type), wearing darker grey sparse but there beard, wearing silver glasses with slight smile, dark grey filler / inner and light grey reflection, beard, eyes, light skin, dark blue background, dark grey shirt, pixel art style",
+      "original_length": 410,
+      "new_length": 376,
+      "reduction": 34,
+      "reduction_pct": 8.3,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_103_merheb.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, neutral expression, dark lighter brown hair clearly distinct from dark brown eyes, skin, split background, brown colored beige suit with creme collared shirt and brown tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, neutral expression, brown hair clearly distinct from dark brown eyes, skin, divided background, brown colored beige suit with creme collared shirt and brown tie, pixel art style",
+      "original_length": 264,
+      "new_length": 225,
+      "reduction": 39,
+      "reduction_pct": 14.8,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_103_merheb2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, neutral expression, dark lighter brown hair clearly distinct from dark brown eyes, skin, split background, brown colored beige suit with creme collared shirt and brown tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, neutral expression, brown hair clearly distinct from dark brown eyes, skin, divided background, brown colored beige suit with creme collared shirt and brown tie, pixel art style",
+      "original_length": 264,
+      "new_length": 225,
+      "reduction": 39,
+      "reduction_pct": 14.8,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_103_merheb3.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, neutral expression, dark brown hair, wearing golden flower crown, wearing flower in hair, full beard, eyes, skin, split background, brown colored beige suit with creme collared shirt and brown tie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, neutral expression, dark brown hair, wearing golden flower crown, wearing flower in hair, full beard, eyes, skin, divided background, brown colored beige suit with creme collared shirt and brown tie, pixel art style",
+      "original_length": 289,
+      "new_length": 263,
+      "reduction": 26,
+      "reduction_pct": 9.0,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_105_inkspired.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, lips, slight smile, medium black skinned man with soul patch/goetee/mini chind beard for facial hair, wearing dark grey background baseball cappwearing beard, eyes, medium black skinned man with soul patch/goetee/mini chind beard for facial hair, gradient background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, slight smile, medium black skinned man with soul patch/goetee/mini chind beard for facial hair, wearing dark grey background baseball cappwith beard, eyes, medium black skinned man with soul patch/goetee/mini chind beard for facial hair, gradient background, clothing, pixel art style",
+      "original_length": 363,
+      "new_length": 332,
+      "reduction": 31,
+      "reduction_pct": 8.5,
+      "changes": [
+        "Fixed 'wearing stubble/beard' \u2192 'with stubble/beard'",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_106_sultan.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, black lips, neutral expression, dark hair with grey highlights, wearing ninja headband, light green pale eyes, medium dark skin tone light skinned, light green background, minion black japanese style ninja suit with dark greys medium greys, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, black neutral expression, dark hair with grey highlights, wearing ninja headband, light green pale eyes, medium dark skin tone light skinned, light green background, minion black japanese style ninja suit with dark greys medium greys, pixel art style",
+      "original_length": 326,
+      "new_length": 298,
+      "reduction": 28,
+      "reduction_pct": 8.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lad_74_lc.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lad, big voluminous hair and lips, neutral expression, medium colored low contrast rimmed glasses, wearing grayscale, wearing mustache, eyes, skin, solid background, a classic black and white suit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lad, big voluminous hair and neutral expression, medium colored low contrast rimmed glasses, wearing grayscale, wearing mustache, eyes, skin, background, a classic black and white suit, pixel art style",
+      "original_length": 278,
+      "new_length": 244,
+      "reduction": 34,
+      "reduction_pct": 12.2,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_000_lemon.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, hair tied up in a bun, wearing red and white polka dot bandana headband tied around forehead in 1940s wartime style, light purple medium purple pale eyes, lips, neutral expression, light skin tone, dark green and light green checkered brick background, wearing denim peter pan collared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, hair tied up in a bun, wearing red and white polka dot bandana headband tied around forehead in 1940s wartime style, light purple medium purple pale eyes, neutral expression, light skin tone, dark green and light green brick background, wearing denim peter pan collared shirt, pixel art style",
+      "original_length": 379,
+      "new_length": 341,
+      "reduction": 38,
+      "reduction_pct": 10.0,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_001_hazelnut.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, pink & red bow in hair with white center (#ff0255, #c37d7d, #f9efaf), wearing golden stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, bright green eyes, lips, slight smile, medium olive colored skin, dark green background (#1d4a46, #398434, #69af64), clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, pink & red bow in hair with white center (, ), wearing golden stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, bright green eyes, slight smile, medium olive colored skin, dark green background (, ), clothing, pixel art style",
+      "original_length": 452,
+      "new_length": 378,
+      "reduction": 74,
+      "reduction_pct": 16.4,
+      "changes": [
+        "Removed 6 hex codes",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_002_vanilla.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium length bright blonde hair clearly distinct from light peachy skin tone, light blue background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium length bright blonde hair clearly distinct from light peachy skin tone, light blue background, clothing, pixel art style",
+      "original_length": 198,
+      "new_length": 176,
+      "reduction": 22,
+      "reduction_pct": 11.1,
+      "changes": [],
+      "target_met": true
+    },
+    {
+      "filename": "lady_003_cashew.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, short black shiny silky flipped out long layered hair, wearing long dangly golden stud earring visible on side of head next to ear, small distinct point of colors, wearing golden necklace with pendant and lowcut white unbuttoned blouse, light brown honey eyes, lips, neutral expression, light skin, grey background medium, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, short black shiny silky flipped out long layered hair, wearing long dangly golden stud earring visible on side of head next to ear, small distinct point of colors, wearing golden necklace with pendant and lowcut white unbuttoned blouse, light brown honey eyes, neutral expression, light skin, grey background medium, clothing, pixel art style",
+      "original_length": 419,
+      "new_length": 391,
+      "reduction": 28,
+      "reduction_pct": 6.7,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_004_nutmeg.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, reddish maroon purple dark hair (#29161c, #311926, #2c2129) in a low side bun with messy texture and volume on top, eyes, lips, neutral expression, dark skin tone, light orange background, golden low cut shirt (#d69f66, #c68b3d, #e8b43e), hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, reddish maroon purple dark hair (, ) in a low side bun with messy texture and volume on top, eyes, neutral expression, dark skin tone, light orange background, golden low cut shirt (, ), pixel art style",
+      "original_length": 325,
+      "new_length": 251,
+      "reduction": 74,
+      "reduction_pct": 22.8,
+      "changes": [
+        "Removed 6 hex codes",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_005_cinnamon.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, Short medium length no layers except bangs flipped out strawberry blond hair, wearing Short medium length no layers except bangs flipped out strawberry blond hair, wearing golden necklace, green light blueish tinted eyes, lips, neutral expression, light skin, brown dark background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, Short medium length no layers except bangs flipped out strawberry blond hair, wearing Short medium length no layers except bangs flipped out strawberry blond hair, wearing golden necklace, green light blueish tinted eyes, neutral expression, light skin, brown dark background, clothing, pixel art style",
+      "original_length": 379,
+      "new_length": 351,
+      "reduction": 28,
+      "reduction_pct": 7.4,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_006_pepper.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, black and white two-tone split hair divided right down the middle creating dramatic contrasting look, wearing green stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of color, light pale green eyes, lips, neutral expression, pale light pink skin tone, split background, wearing red and beige and peach top jacket, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, black and white two-tone split hair divided right down the middle creating dramatic contrasting look, wearing green stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of color, light pale green eyes, neutral expression, pale light pink skin tone, divided background, wearing red and beige and peach top jacket, pixel art style",
+      "original_length": 493,
+      "new_length": 467,
+      "reduction": 26,
+      "reduction_pct": 5.3,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_007_alloy.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, natural medium and light highlighted bright blonde hair clearly distinct from light peachy skin tone tone, deep dark purple background, wearing raspberry jumpsuit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, natural medium and light highlighted bright blonde hair clearly distinct from light peachy skin tone tone, deep dark purple background, wearing raspberry jumpsuit, pixel art style",
+      "original_length": 250,
+      "new_length": 228,
+      "reduction": 22,
+      "reduction_pct": 8.8,
+      "changes": [],
+      "target_met": false
+    },
+    {
+      "filename": "lady_008_pinksilk.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium dark and light lighter brown hair clearly distinct from dark brown eyes, lips, slight smile, light skin tone, pink background, elegant clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium dark and light lighter brown hair clearly distinct from dark brown eyes, slight smile, light skin tone, pink background, elegant clothing, pixel art style",
+      "original_length": 238,
+      "new_length": 210,
+      "reduction": 28,
+      "reduction_pct": 11.8,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_009_bluesilk.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium dark and light brown hair with highlights styled in elegant French twist updo with short bangs swept to the side, wearing pearl diamond tiara crown, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, dark eyes, lips, slight smile, light skin tone, tiffany blue background, elegant clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium dark and light brown hair with highlights styled in elegant French twist updo with short bangs swept to the side, wearing pearl diamond tiara crown, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, dark eyes, slight smile, light skin tone, tiffany blue background, elegant clothing, pixel art style",
+      "original_length": 503,
+      "new_length": 475,
+      "reduction": 28,
+      "reduction_pct": 5.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_010_saffron.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, blonde curly hair that is fine and not full, wearing blonde curly hair that is fine and not fullbbright green eyes, lips, slight smile, olive skin tone, raspberry shirt dark dark green background, raspberry shirt dark dark green background, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, blonde curly hair that is fine and not full, wearing blonde curly hair that is fine and not fullbbright green eyes, slight smile, olive skin tone, raspberry shirt dark dark green background, raspberry shirt dark dark green background, pixel art style",
+      "original_length": 327,
+      "new_length": 299,
+      "reduction": 28,
+      "reduction_pct": 8.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_011_sage.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, short layered but longe medium brown middle parted decently thick hair, wearing short layered but longe medium brown middle parted decently thick hairlight light sage green eyes, lips, slight smile, light skin, blue grey medium background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, short layered but longe medium brown middle parted decently thick hair, wearing short layered but longe medium brown middle parted decently thick hairlight light sage green eyes, slight smile, light skin, blue grey medium background, clothing, pixel art style",
+      "original_length": 336,
+      "new_length": 308,
+      "reduction": 28,
+      "reduction_pct": 8.3,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_012_parasite.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, short length black hair, dark deep blue eyes with reflection, lips, neutral expression, skintone is blue because of the blue light reflection from being in a hospital as this is a doctor, EKG style background with cyan and pink and dark blue, white lab coat, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, short length black hair, dark deep blue eyes with reflection, neutral expression, skintone is blue because of the blue light reflection from being in a hospital as this is a doctor, EKG style background with cyan and pink and dark blue, white lab coat, pixel art style",
+      "original_length": 345,
+      "new_length": 317,
+      "reduction": 28,
+      "reduction_pct": 8.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_013_rosemary.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium length medium brown hair blown out and swept to the side middle parted, pale green light eyes, lips, slight smile, medium skin tone olive, gradient background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium length medium brown hair blown out and swept to the side middle parted, pale green light eyes, slight smile, medium skin tone olive, gradient background, clothing, pixel art style",
+      "original_length": 263,
+      "new_length": 235,
+      "reduction": 28,
+      "reduction_pct": 10.6,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_014_olive.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, blonde curly hair that is fine and not full, wearing brown rimmed sunglasses with light browns for filler and reflection, lips, neutral expression, olive skin tone, dark purple background, raspberry shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, blonde curly hair that is fine and not full, wearing brown rimmed sunglasses with light browns for filler and reflection, neutral expression, olive skin tone, dark purple background, raspberry shirt, pixel art style",
+      "original_length": 292,
+      "new_length": 264,
+      "reduction": 28,
+      "reduction_pct": 9.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_015_lime.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, short, curled in hairstyle with grey streak on one side and also very shiny and full, wearing curled in hairstyle with grey streak on one side and also very shiny and full, wearing pink transparent rimmed glasses, medium light brown eyes and, lips, slight smile, skin, bright lime green background, grey classic womens blazer with collared shirt and sweater underneath, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, short, curled in hairstyle with grey streak on one side and also very shiny and full, wearing curled in hairstyle with grey streak on one side and also very shiny and full, wearing pink transparent rimmed glasses, medium light brown eyes and, slight smile, skin, bright lime green background, grey classic womens blazer with collared shirt and sweater underneath, pixel art style",
+      "original_length": 456,
+      "new_length": 428,
+      "reduction": 28,
+      "reduction_pct": 6.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_016_honey.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, white full straight hair with blonde highlights (#f7c978, #fff9d9) and brown tints (#686350, #5f5a49), wearing brown rimmed chunky glasses, green light green hazel eyes, lips, slight smile, light skin, split background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, white full straight hair with blonde highlights (, ) and brown tints (, ), wearing brown rimmed chunky glasses, green light green hazel eyes, slight smile, light skin, divided background, clothing, pixel art style",
+      "original_length": 316,
+      "new_length": 262,
+      "reduction": 54,
+      "reduction_pct": 17.1,
+      "changes": [
+        "Removed 4 hex codes",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_017_pine.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, hair, eyes, lips, slight smile, light skin, pale light green background, yellow dress with denim jacket on, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, hair, eyes, slight smile, light skin, pale light green background, yellow dress with denim jacket on, pixel art style",
+      "original_length": 194,
+      "new_length": 166,
+      "reduction": 28,
+      "reduction_pct": 14.4,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_018_strawberry.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, sleeker shorter bright red dark red medium red hair with longer and medium length layer, wearing silver necklace with golden pendant, hazel green golden eyes, lips, slight smile, light skin, hunter green type background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, sleeker shorter bright red dark red medium red hair with longer and medium length layer, wearing silver necklace with golden pendant, hazel green golden eyes, slight smile, light skin, hunter green type background, clothing, pixel art style",
+      "original_length": 317,
+      "new_length": 289,
+      "reduction": 28,
+      "reduction_pct": 8.8,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_019_banana.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, sleeker shorter bright red dark red medium red hair with longer and medium length layer, wearing light green rimmed sunglasses with brown lenses, wearing silver necklace with golden pendant, lips, slight smile, light skin, periwinkle bright background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, sleeker shorter bright red dark red medium red hair with longer and medium length layer, wearing light green rimmed sunglasses with brown lenses, wearing silver necklace with golden pendant, slight smile, light skin, periwinkle bright background, clothing, pixel art style",
+      "original_length": 349,
+      "new_length": 321,
+      "reduction": 28,
+      "reduction_pct": 8.0,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_020_blood.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, curly long shiny crispy black sand sivlery hair, light brown eyes, lips, neutral expression, black girl so dark skin, split background, lowcut black shirt (bandeau top bralet), hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, curly long shiny crispy black sand sivlery hair, light brown eyes, neutral expression, black girl so dark skin, divided background, lowcut black shirt (bandeau top bralet), pixel art style",
+      "original_length": 263,
+      "new_length": 237,
+      "reduction": 26,
+      "reduction_pct": 9.9,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_021_diamond.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium/short length with some layers dark brown reddish maroon hair with lighter reds that have been died and show more in the light, wearing short length with some layers dark brown reddish maroon hair with lighter reds that have been died and show more in the light, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of color, silver diamond pendant necklace, green pale bluish hazel eyes, lips, slight smile, skin, light tiffany blue almost white background, tiffany blue shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium/short length with some layers dark brown reddish maroon hair with lighter reds that have been died and show more in the light, wearing short length with some layers dark brown reddish maroon hair with lighter reds that have been died and show more in the light, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of color, silver diamond pendant necklace, green pale bluish hazel eyes, slight smile, skin, light tiffany blue almost white background, tiffany blue shirt, pixel art style",
+      "original_length": 677,
+      "new_length": 649,
+      "reduction": 28,
+      "reduction_pct": 4.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_022_gold.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, bitcoin orange and white colored bow in hair with white center, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, wearing bitcoin orange and white colored bow in hair with white center, bright green eyes, lips, slight smile, medium olive colored skin, dark grey background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, bitcoin orange and white colored bow in hair with white center, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, wearing bitcoin orange and white colored bow in hair with white center, bright green eyes, slight smile, medium olive colored skin, dark grey background, clothing, pixel art style",
+      "original_length": 490,
+      "new_length": 462,
+      "reduction": 28,
+      "reduction_pct": 5.7,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_023_silver.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, ethereum foundations colored bow in hair with white center, wearing silver stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, wearing ethereum foundations colored bow in hair with white center, bright green eyes, lips, slight smile, medium olive colored skin, split background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, ethereum foundations colored bow in hair with white center, wearing silver stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, wearing ethereum foundations colored bow in hair with white center, bright green eyes, slight smile, medium olive colored skin, divided background, clothing, pixel art style",
+      "original_length": 477,
+      "new_length": 451,
+      "reduction": 26,
+      "reduction_pct": 5.5,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_024_linen.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, long medium brown layered hair, bright green money eyes, lips, slight smile, light olive skin, light tiffany blue background, light lavender peter pan collared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, long medium brown layered hair, bright green money eyes, slight smile, light olive skin, light tiffany blue background, light lavender peter pan collared shirt, pixel art style",
+      "original_length": 253,
+      "new_length": 225,
+      "reduction": 28,
+      "reduction_pct": 11.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_025_mistletoe.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, long medium brown layered hair, bright green money eyes, lips, slight smile, light olive skin, deep blue background, green peter pan collared shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, long medium brown layered hair, bright green money eyes, slight smile, light olive skin, deep blue background, green peter pan collared shirt, pixel art style",
+      "original_length": 235,
+      "new_length": 207,
+      "reduction": 28,
+      "reduction_pct": 11.9,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_026_fur.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, long black straight blown out hair with long long layers if any at all, wearing Brown Cat Ears headband, light pale green eyes, lips, slight smile, light skin tone, bright blue background, pale green shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, long black straight blown out hair with long long layers if any at all, wearing Brown Cat Ears headband, light pale green eyes, slight smile, light skin tone, bright blue background, pale green shirt, pixel art style",
+      "original_length": 293,
+      "new_length": 265,
+      "reduction": 28,
+      "reduction_pct": 9.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_027_nitrogen.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, long black straight blown out hair with long long layers if any at all, wearing black structured baseball cap with curved front brim and flat crown, cap sits on top of head covering hairline, wearing brown rimmed glasses, light pale green eyes, lips, slight smile, light skin tone, split background, bright blue shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, long black straight blown out hair with long long layers if any at all, wearing black structured baseball cap with curved front brim and flat crown, cap sits on top of head covering hairline, wearing brown rimmed glasses, light pale green eyes, slight smile, light skin tone, divided background, bright blue shirt, pixel art style",
+      "original_length": 405,
+      "new_length": 379,
+      "reduction": 26,
+      "reduction_pct": 6.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_028_marshmallow.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, blown out black girl hair medium length side parted mostly straight with a little volume and shiny/crispy, wearing blown out black girl hair medium length side parted mostly straight with a little volume and shiny/crispy, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, orange brown light medium colored eyes and, lips, slight smile, medium skin (light skin black woman), solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, blown out black girl hair medium length side parted mostly straight with a little volume and shiny/crispy, wearing blown out black girl hair medium length side parted mostly straight with a little volume and shiny/crispy, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, orange brown light medium colored eyes and, slight smile, medium skin (light skin black woman), background, clothing, pixel art style",
+      "original_length": 608,
+      "new_length": 574,
+      "reduction": 34,
+      "reduction_pct": 5.6,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_029_basil.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, short bob hair - flat and thin, maroon dark brown glasses and medium brown light brown eyes, lips, slight smile, medium skin, split background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, short bob hair - flat and thin, maroon dark brown glasses and medium brown light brown eyes, slight smile, medium skin, divided background, clothing, pixel art style",
+      "original_length": 240,
+      "new_length": 214,
+      "reduction": 26,
+      "reduction_pct": 10.8,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_030_grass.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium length single layer hair with a puff to pull the front frame areas back, hazel green blue eyes, lips, slight smile, medium olive skin, solid background, bright red top with white collared shirt underneath, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium length single layer hair with a puff to pull the front frame areas back, hazel green blue eyes, slight smile, medium olive skin, background, bright red top with white collared shirt underneath, pixel art style",
+      "original_length": 299,
+      "new_length": 265,
+      "reduction": 34,
+      "reduction_pct": 11.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_031_paprika.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, long red straight hair, wearing necklace, freckles on face, lips, neutral expression, dark brown eyes, lips with little makeup, light skin tone, solid background, wearing grey sweater, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, long red straight hair, wearing necklace, freckles on face, neutral expression, dark brown eyes with little makeup, light skin tone, background, wearing grey sweater, pixel art style",
+      "original_length": 271,
+      "new_length": 231,
+      "reduction": 40,
+      "reduction_pct": 14.8,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_032_salt.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, white grey ashy lighter brown hair clearly distinct from dark brown eyes, lips, slight smile, light skin, hot deep red background, cream collared peter pan style shirt blouse, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, white grey ashy lighter brown hair clearly distinct from dark brown eyes, slight smile, light skin, hot deep red background, cream collared peter pan style shirt blouse, pixel art style",
+      "original_length": 262,
+      "new_length": 234,
+      "reduction": 28,
+      "reduction_pct": 10.7,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_033_staranise.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium brown mauve brown feathered layered 70s style hair with soft layers that flip away from cheeks and forehead creating signature feathered effect, magnetic green golden bright deep eyes, lips, slight smile, light skin tone, solid background, wearing golden yellow necklace red jacket and top, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium brown mauve brown feathered layered 70s style hair with soft layers that flip away from cheeks and forehead creating signature feathered effect, magnetic green golden bright deep eyes, slight smile, light skin tone, background, wearing golden yellow necklace red jacket and top, pixel art style",
+      "original_length": 384,
+      "new_length": 350,
+      "reduction": 34,
+      "reduction_pct": 8.9,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_034_lavender.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, hair, wearing long dangling diamond stud earring visible on side of head next to ear, small distinct point of color, diamonds dangling earrings red brown dark eyes and even some purple in the eyes, lips, slight smile, medium skin (medium skin tone girl), split background, professional blazer and collared shirt outfit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, hair, wearing long dangling diamond stud earring visible on side of head next to ear, small distinct point of color, diamonds dangling earrings red brown dark eyes and even some purple in the eyes, slight smile, medium skin (medium skin tone girl), divided background, professional blazer and collared shirt outfit, pixel art style",
+      "original_length": 406,
+      "new_length": 380,
+      "reduction": 26,
+      "reduction_pct": 6.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_035_turmeric.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, high contrast highlighted dark brown and medium blonde hair, light pink background and red brown dark eyes and even some purple in the eyes, lips, slight smile, medium skin (medium skin tone girl), light pink background and red brown dark eyes and even some purple in the eyes, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, high contrast highlighted dark brown and medium blonde hair, light pink background and red brown dark eyes and even some purple in the eyes, slight smile, medium skin (medium skin tone girl), light pink background and red brown dark eyes and even some purple in the eyes, clothing, pixel art style",
+      "original_length": 374,
+      "new_length": 346,
+      "reduction": 28,
+      "reduction_pct": 7.5,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_036_boisenberry.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, bright red with deep reds and tones through long layered blown out wavy gorgeous hair, wearing bright red rimmed glasses with purple fill, hazel yellow green eyes, lips, slight smile, skin, deep royal purple pigmented background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, bright red with deep reds and tones through long layered blown out wavy gorgeous hair, wearing bright red rimmed glasses with purple fill, hazel yellow green eyes, slight smile, skin, deep royal purple pigmented background, clothing, pixel art style",
+      "original_length": 326,
+      "new_length": 298,
+      "reduction": 28,
+      "reduction_pct": 8.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_037_rose.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, cat ears as the style of hair half up half down twin pony tails but shaped and formed ot looked cat ears, wearing light skin and golden stud earring visible on side of head next to ear, small distinct point of color, medium brown eyes, lips, slight smile, light skin, light medium pink background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, cat ears as the style of hair half up half down twin pony tails but shaped and formed ot looked cat ears, wearing light skin and golden stud earring visible on side of head next to ear, small distinct point of color, medium brown eyes, slight smile, light skin, light medium pink background, clothing, pixel art style",
+      "original_length": 394,
+      "new_length": 366,
+      "reduction": 28,
+      "reduction_pct": 7.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_038_peanut.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, shiny silk black hair at roots and through to ends with ombre coloring of maroons and reds blended throughout in the lighter parts that catch the light (reflects these colors #986052, #682528, #9e5552), dark brown purple eyes, lips, slight smile, light skin, light blue background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, shiny silk black hair at roots and through to ends with ombre coloring of maroons and reds blended throughout in the lighter parts that catch the light (reflects these colors, ), dark brown purple eyes, slight smile, light skin, light blue background, clothing, pixel art style",
+      "original_length": 378,
+      "new_length": 326,
+      "reduction": 52,
+      "reduction_pct": 13.8,
+      "changes": [
+        "Removed 3 hex codes",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_039_sandalwood.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, bright red with deep reds and tones through long layered blown out wavy gorgeous hair, wearing bright red rimmed glasses with purple fill, hazel yellow green eyes, lips, slight smile, skin, checkered brick background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, bright red with deep reds and tones through long layered blown out wavy gorgeous hair, wearing bright red rimmed glasses with purple fill, hazel yellow green eyes, slight smile, skin, brick background, clothing, pixel art style",
+      "original_length": 314,
+      "new_length": 276,
+      "reduction": 38,
+      "reduction_pct": 12.1,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_040_fivespice.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, dark brown black reddish hair, wearing golden yellow necklace and deep purple shirt, reddish dark brown eyes, lips, slight smile, light skin, light yellow background, golden yellow necklace and deep purple shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, dark brown black reddish hair, wearing golden yellow necklace and deep purple shirt, reddish dark brown eyes, slight smile, light skin, light yellow background, golden yellow necklace and deep purple shirt, pixel art style",
+      "original_length": 299,
+      "new_length": 271,
+      "reduction": 28,
+      "reduction_pct": 9.4,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_041_bayleaf.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, bright red with deep reds and tones through long layered blown out wavy gorgeous hair, hazel yellow green eyes, lips, neutral expression, skin, light blue greyish background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, bright red with deep reds and tones through long layered blown out wavy gorgeous hair, hazel yellow green eyes, neutral expression, skin, light blue greyish background, clothing, pixel art style",
+      "original_length": 271,
+      "new_length": 243,
+      "reduction": 28,
+      "reduction_pct": 10.3,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_042_almond.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, half up half down medium/dark brown to light lighter brown hair clearly distinct from dark brown eyes, lips, slight smile, light skin tone, light pink background, light yellow beige shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, half up half down medium/dark brown to light lighter brown hair clearly distinct from dark brown eyes, slight smile, light skin tone, light pink background, light yellow beige shirt, pixel art style",
+      "original_length": 275,
+      "new_length": 247,
+      "reduction": 28,
+      "reduction_pct": 10.2,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_043_orange.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, black voluminous medium length big curly dark shiny hair, wearing golden crown with white diamonds and also gems in Solana blockchain colors, dark eyes, lips, slight smile, light skin tone, hot pink raspberry background with green candlestick chart, low cut red shirt with cleavage, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, black voluminous medium length big curly dark shiny hair, wearing golden crown with white diamonds and also gems in Solana blockchain colors, dark eyes, slight smile, light skin tone, hot pink raspberry background with green candlestick chart, low cut red shirt with cleavage, pixel art style",
+      "original_length": 369,
+      "new_length": 341,
+      "reduction": 28,
+      "reduction_pct": 7.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_044_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, short china bangs bob hair, eyes, lips, slight smile, light medium skin yellow #ebbd9a), medium green and light green pinstripe background, yellow necklace lowcut yellow shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, short china bangs bob hair, eyes, slight smile, light medium skin yellow ), medium green and light green pinstripe background, yellow necklace lowcut yellow shirt, pixel art style",
+      "original_length": 263,
+      "new_length": 228,
+      "reduction": 35,
+      "reduction_pct": 13.3,
+      "changes": [
+        "Removed 1 hex codes",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_045_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, ombre hair that is medium/short length transitioning from dark brown (#664c40, #785e4a) to light brown (#927c6c, #c1b6ac) and then to extremely blonde highlights, wearing golden necklace and top, medium light brown hazel eyes, lips, slight smile, light skin, medium green and light green pinstripe background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, ombre hair that is medium/short length transitioning from dark brown (, ) to light brown (, ) and then to extremely blonde highlights, wearing golden necklace and top, medium light brown hazel eyes, slight smile, light skin, medium green and light green pinstripe background, clothing, pixel art style",
+      "original_length": 406,
+      "new_length": 350,
+      "reduction": 56,
+      "reduction_pct": 13.8,
+      "changes": [
+        "Removed 4 hex codes",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_046_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, dark black curly hair side parted, wearing two toned golden rimmed glasses with brown lenses and lighter brown reflections, wearing silver hoop stud earring visible on side of head next to ear, small distinct point of colors, eyes, lips, slight smile, light medium skin, medium gree and light green pinstripes background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, dark black curly hair side parted, wearing two toned golden rimmed glasses with brown lenses and lighter brown reflections, wearing silver hoop stud earring visible on side of head next to ear, small distinct point of colors, eyes, slight smile, light medium skin, medium gree and light green pinstripes background, clothing, pixel art style",
+      "original_length": 418,
+      "new_length": 390,
+      "reduction": 28,
+      "reduction_pct": 6.7,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_047_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, fluffy voluminous layered, also long blonde highlighted sandy light hair almost doll in symmetry perfection etc, deep dark blue purpleyes, lips, slight smile, light skin, solid background, marroon pale shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, fluffy voluminous layered, also long blonde highlighted sandy light hair almost doll in symmetry perfection etc, deep dark blue purpleyes, slight smile, light skin, background, marroon pale shirt, pixel art style",
+      "original_length": 295,
+      "new_length": 261,
+      "reduction": 34,
+      "reduction_pct": 11.5,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_048_pink.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, dark dark brown ombre hair to purple to reddpink to all shades of pink red and purple, wearing dark dark brown ombre hair to purple to reddish pink to all shades of pink red and purple, lips, slight smile, medium skin dark brown eyes, hot pink purple background bright, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, dark dark brown ombre hair to purple to reddpink to all shades of pink red and purple, wearing dark dark brown ombre hair to purple to reddish pink to all shades of pink red and purple, slight smile, medium skin dark brown eyes, hot pink purple background bright, clothing, pixel art style",
+      "original_length": 366,
+      "new_length": 338,
+      "reduction": 28,
+      "reduction_pct": 7.7,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_049_abstractangels.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, hair, shadow and bright deep green emerald eyes, lips, slight smile, light skin, gradient background, green shirt and top, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, hair, shadow and bright deep green emerald eyes, slight smile, light skin, gradient background, green shirt and top, pixel art style",
+      "original_length": 209,
+      "new_length": 181,
+      "reduction": 28,
+      "reduction_pct": 13.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_050_x-6.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, black / dark dark brown hair completely in two braids, wearing bangs at the top front that are very short, wearing golden rimmed glasses with brownish/dark grey fill and light grey reflection, silver hoop stud earring visible on side of head next to ear, small distinct point of colors, eyes, lips, neutral expression, medium skin tone, gradient background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, black / dark dark brown hair completely in two braids, wearing bangs at the top front that are very short, wearing golden rimmed glasses with brownish/dark grey fill and light grey reflection, silver hoop stud earring visible on side of head next to ear, small distinct point of colors, eyes, neutral expression, medium skin tone, gradient background, clothing, pixel art style",
+      "original_length": 454,
+      "new_length": 426,
+      "reduction": 28,
+      "reduction_pct": 6.2,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_051_rosieabstract.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, dark brown medium brown hair tied up in a bun, wearing orange and white polka dot bandana headband tied around forehead in 1940s wartime style, light purple medium purple pale eyes, lips, neutral expression, light skin tone, dark green and light green checkered brick background, wearing bright seafoam green peter pan collared shirt with grey edges, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, dark brown medium brown hair tied up in a bun, wearing orange and white polka dot bandana headband tied around forehead in 1940s wartime style, light purple medium purple pale eyes, neutral expression, light skin tone, dark green and light green brick background, wearing bright seafoam green peter pan collared shirt with grey edges, pixel art style",
+      "original_length": 437,
+      "new_length": 399,
+      "reduction": 38,
+      "reduction_pct": 8.7,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_052_pinksilkabstract.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium dark and light lighter brown hair clearly distinct from dark brown eyes, lips, slight smile, light skin tone, gradient background, elegant clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium dark and light lighter brown hair clearly distinct from dark brown eyes, slight smile, light skin tone, gradient background, elegant clothing, pixel art style",
+      "original_length": 242,
+      "new_length": 214,
+      "reduction": 28,
+      "reduction_pct": 11.6,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_053_pepperabstract.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, black and white two-tone split hair divided right down the middle creating dramatic contrasting look, wearing green stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of color, light pale green eyes, lips, neutral expression, pale light pink skin tone, split background, wearing red and beige and peach top jacket, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, black and white two-tone split hair divided right down the middle creating dramatic contrasting look, wearing green stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of color, light pale green eyes, neutral expression, pale light pink skin tone, divided background, wearing red and beige and peach top jacket, pixel art style",
+      "original_length": 493,
+      "new_length": 467,
+      "reduction": 26,
+      "reduction_pct": 5.3,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_054_hazelnutabstract-3.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, blue bow in hair with white center, wearing golden stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, wearing large blue ribbon bow positioned on top center of head clearly visible above hairline, traditional bow shape with two loops and center knot, blue color clearly distinct from hair with white center, bright green eyes, lips, slight smile, medium olive colored skin, medium green and light green pinstripe background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, blue bow in hair with white center, wearing golden stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, wearing large blue ribbon bow positioned on top center of head clearly visible above hairline, traditional bow shape with two loops and center knot, blue color clearly distinct from hair with white center, bright green eyes, slight smile, medium olive colored skin, medium green and light green pinstripe background, clothing, pixel art style",
+      "original_length": 624,
+      "new_length": 596,
+      "reduction": 28,
+      "reduction_pct": 4.5,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_055_bloodabstract.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, curly shiny blueclong hair, brownishblack eyes medium tone, lips, neutral expression, dark dark skin tone color, medium green and light green pinstripe background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, curly shiny blueclong hair, brownishblack eyes medium tone, neutral expression, dark dark skin tone color, medium green and light green pinstripe background, clothing, pixel art style",
+      "original_length": 260,
+      "new_length": 232,
+      "reduction": 28,
+      "reduction_pct": 10.8,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_056_alloyabstract.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, natural medium and light highlighted bright blonde hair clearly distinct from light peachy skin tone tone, pink to purple gradient background, wearing raspberry jumpsuit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, natural medium and light highlighted bright blonde hair clearly distinct from light peachy skin tone tone, pink to purple gradient background, wearing raspberry jumpsuit, pixel art style",
+      "original_length": 257,
+      "new_length": 235,
+      "reduction": 22,
+      "reduction_pct": 8.6,
+      "changes": [
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_057_bluesilkabstract.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium dark and light brown hair with highlights styled in elegant French twist updo with short bangs swept to the side, wearing pearl diamond tiara crown, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, dark eyes, lips, slight smile, light skin tone, gradient background, elegant clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium dark and light brown hair with highlights styled in elegant French twist updo with short bangs swept to the side, wearing pearl diamond tiara crown, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of colors, dark eyes, slight smile, light skin tone, gradient background, elegant clothing, pixel art style",
+      "original_length": 499,
+      "new_length": 471,
+      "reduction": 28,
+      "reduction_pct": 5.6,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_058_x.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, flat black hair with some dark brown available where the sun has hit, wearing gold necklace with diamond, deep red brown eyes, lips, slight smile, light skin, blue pale background light, pink shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, flat black hair with some dark brown available where the sun has hit, wearing gold necklace with diamond, deep red brown eyes, slight smile, light skin, blue pale background light, pink shirt, pixel art style",
+      "original_length": 285,
+      "new_length": 257,
+      "reduction": 28,
+      "reduction_pct": 9.8,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_059_paula-5.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, high contrast medium/short highlighted hair between dark brown and light brown, wearing silver rimmed glasses with dark purple insides and light purple reflection, eyes, lips, slight smile, medium skin color (Colombian), medium green background, yellow necklaces and purple jacket/shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, high contrast medium/short highlighted hair between dark brown and light brown, wearing silver glasses with dark purple insides and light purple reflection, eyes, slight smile, medium skin color (Colombian), medium green background, yellow necklaces and purple jacket/shirt, pixel art style",
+      "original_length": 374,
+      "new_length": 339,
+      "reduction": 35,
+      "reduction_pct": 9.4,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_059_paula-6.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, high contrast medium/short highlighted hair between dark brown and light brown, wearing silver rimmed glasses with dark purple insides and light purple reflection, eyes, lips, slight smile, medium skin color (Colombian), light bright green and medium green pinstripe background, yellow necklaces and purple jacket/shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, high contrast medium/short highlighted hair between dark brown and light brown, wearing silver glasses with dark purple insides and light purple reflection, eyes, slight smile, medium skin color (Colombian), light bright green and medium green pinstripe background, yellow necklaces and purple jacket/shirt, pixel art style",
+      "original_length": 407,
+      "new_length": 372,
+      "reduction": 35,
+      "reduction_pct": 8.6,
+      "changes": [
+        "Removed 'lips' token",
+        "Simplified accessory description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_060_winehouse.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, large black shiny beehive updo with volume and reflections half-up half-down style, wearing red flower in hair, mole on face, hazel green deep eyes, lips, slight smile, light skin, purple lavender light background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, large black shiny beehive updo with volume and reflections half-up half-down style, wearing red flower in hair, mole on face, hazel green deep eyes, slight smile, light skin, purple lavender light background, clothing, pixel art style",
+      "original_length": 311,
+      "new_length": 283,
+      "reduction": 28,
+      "reduction_pct": 9.0,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_061_nikkkk-2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, red medium length brown dark brown medium brown red auburn hair, light blue/green pale eyes, lips, neutral expression, light skin, green background, pink and green sweat/shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, red medium length brown dark brown medium brown red auburn hair, light blue/green pale eyes, neutral expression, light skin, green background, pink and green sweat/shirt, pixel art style",
+      "original_length": 263,
+      "new_length": 235,
+      "reduction": 28,
+      "reduction_pct": 10.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_062_Dalia-2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, dark dark reddish black hair to medium brown dark lighter brown hair clearly distinct from dark brown eyes, lips, slight smile, skin, pink background, red hoodie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, dark dark reddish black hair to medium brown brown hair clearly distinct from dark brown eyes, slight smile, skin, pink background, red hoodie, pixel art style",
+      "original_length": 249,
+      "new_length": 208,
+      "reduction": 41,
+      "reduction_pct": 16.5,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_062_Dalia-BD.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, dark dark reddish black hair to medium brown dark lighter brown hair clearly distinct from dark brown eyes, lips, slight smile, skin, pinstripe icey blue and lighter blue background, red hoodie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, dark dark reddish black hair to medium brown brown hair clearly distinct from dark brown eyes, slight smile, skin, pinstripe icey blue and lighter blue background, red hoodie, pixel art style",
+      "original_length": 281,
+      "new_length": 240,
+      "reduction": 41,
+      "reduction_pct": 14.6,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_063_PVR-3.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, messy bun in a clip shiny style (black semi curly hair), wearing gold rimmed round sunglasses with black-grey lenses and light grey reflection, lips, slight smile, medium light skin tone, bright orange background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, messy bun in a clip shiny style (black semi curly hair), wearing gold rimmed round sunglasses with black-grey lenses and light grey reflection, slight smile, medium light skin tone, bright orange background, clothing, pixel art style",
+      "original_length": 310,
+      "new_length": 282,
+      "reduction": 28,
+      "reduction_pct": 9.0,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_064_aubree-2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, red auburn dark brown dark red natural red hair color, wearing golden necklace with diamonds and design, green hazel yellowish eyes, lips, slight smile, straight/blown out style light skin, hot bright pink background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, red auburn dark brown dark red natural red hair color, wearing golden necklace with diamonds and design, green hazel yellowish eyes, slight smile, straight/blown out style light skin, hot bright pink background, clothing, pixel art style",
+      "original_length": 314,
+      "new_length": 286,
+      "reduction": 28,
+      "reduction_pct": 8.9,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_065_miggs-4.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, blonde with highlights and some browns but also to light blonde green ombre hair (starting from roots) light/ skin, wearing yellow/gold necklace, blue and green light colored eyes, lips, neutral expression, onde green ombre hair (starting from roots) light/ skin, solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, blonde with highlights and some browns but also to light blonde green ombre hair (starting from roots) light/ skin, wearing yellow/gold necklace, blue and green light colored eyes, neutral expression, onde green ombre hair (starting from roots) light/ skin, background, clothing, pixel art style",
+      "original_length": 378,
+      "new_length": 344,
+      "reduction": 34,
+      "reduction_pct": 9.0,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_065_miggs.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, dark to light blonde green ombre hair (starting from roots(, wearing yellow/gold necklace, eyes, lips, neutral expression, light/ skin, solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, dark to light blonde green ombre hair (starting from roots(, wearing yellow/gold necklace, eyes, neutral expression, light/ skin, background, clothing, pixel art style",
+      "original_length": 250,
+      "new_length": 216,
+      "reduction": 34,
+      "reduction_pct": 13.6,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_066_monalisa-3.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, warm chestnut brown wavy hair with fine curls cascading from center part down to shoulders on both sides covered by transparent veil, medium light brown eyes, lips, neutral expression, olive colored skin tone, mountainous nature background of many colors, wearing Renaissance clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, warm chestnut brown wavy hair with fine curls cascading from center part down to shoulders on both sides covered by transparent veil, medium light brown eyes, neutral expression, olive colored skin tone, mountainous nature background of many colors, wearing Renaissance clothing, pixel art style",
+      "original_length": 372,
+      "new_length": 344,
+      "reduction": 28,
+      "reduction_pct": 7.5,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_067_salamander-2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium length dark brown black hair semi ombre to light medium brown at tips, dark brown eyes, lips, slight smile, medium light skin, solid background, big fluffy furry brown winter jacket, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium length dark brown black hair semi ombre to light medium brown at tips, dark brown eyes, slight smile, medium light skin, background, big fluffy furry brown winter jacket, pixel art style",
+      "original_length": 276,
+      "new_length": 242,
+      "reduction": 34,
+      "reduction_pct": 12.3,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_068_nikkisf-4.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, dark black dark lighter brown hair clearly distinct from dark brown eyes, lips, slight smile, light skin, checkered brick background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, dark black brown hair clearly distinct from dark brown eyes, slight smile, light skin, brick background, clothing, pixel art style",
+      "original_length": 230,
+      "new_length": 179,
+      "reduction": 51,
+      "reduction_pct": 22.2,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_069_giulia.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, majestic hippie hair with beads rasta and dreadlocks, light brown eyes and medium brown skin, blue lips, neutral expression, light brown eyes and medium brown skin, light yellow background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, majestic hippie hair with beads rasta and dreadlocks, light brown eyes and medium brown skin, blue neutral expression, light brown eyes and medium brown skin, light yellow background, clothing, pixel art style",
+      "original_length": 286,
+      "new_length": 258,
+      "reduction": 28,
+      "reduction_pct": 9.8,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_070_mango.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, bubble gum pink straight/wavy blown out long hair, purple/periwinkle deep eyes, lips, slight smile, skin, elf ears, bright green background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, bubble gum pink straight/wavy blown out long hair, purple/periwinkle deep eyes, slight smile, skin, elf ears, bright green background, clothing, pixel art style",
+      "original_length": 237,
+      "new_length": 209,
+      "reduction": 28,
+      "reduction_pct": 11.8,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_071_papaya.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, light brown ashy lighter brown hair clearly distinct from dark brown eyes, lips, neutral expression, medium skin tone, brown/tan background, lowcut dark grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, light brown ashy lighter brown hair clearly distinct from dark brown eyes, neutral expression, medium skin tone, brown/tan background, lowcut dark grey shirt, pixel art style",
+      "original_length": 251,
+      "new_length": 223,
+      "reduction": 28,
+      "reduction_pct": 11.2,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_072_tangerine.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, long luxurious vibrant red orange auburn hair with side-bangs covering right eye cascading voluminous waves with deep side part waist-length gravity-defying bouffant, wearing golden chunky stud earring visible on side of head next to ear, small distinct point of colors, light purple blue pale pastel eyes, lips, neutral expression, light skin tone, blue background, wearing lowcut red shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, long luxurious vibrant red orange auburn hair with side-bangs covering right eye cascading voluminous waves with deep side part waist-length gravity-defying bouffant, wearing golden chunky stud earring visible on side of head next to ear, small distinct point of colors, light purple blue pale pastel eyes, neutral expression, light skin tone, blue background, wearing lowcut red shirt, pixel art style",
+      "original_length": 479,
+      "new_length": 451,
+      "reduction": 28,
+      "reduction_pct": 5.8,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_073_mango_punk.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, yellow/orange bright blonde hair clearly distinct from light peachy skin tone, bright green background, red lowcut shirt and golden necklace, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, yellow/orange bright blonde hair clearly distinct from light peachy skin tone, bright green background, red lowcut shirt and golden necklace, pixel art style",
+      "original_length": 228,
+      "new_length": 206,
+      "reduction": 22,
+      "reduction_pct": 9.6,
+      "changes": [],
+      "target_met": true
+    },
+    {
+      "filename": "lady_074_melon.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, hair, wearing white structured baseball cap with curved front brim and flat crown, cap sits on top of head covering hairline, wearing big dark brown rimmed sunglasses with blue reflection but originally filled with dark reed, white diamond stud earring visible on side of head next to ear, small distinct point of color, lips, neutral expression, skin, bright green background, blue jacket with white hoodie undenarth it with lifeguard cross on it, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, hair, wearing white structured baseball cap with curved front brim and flat crown, cap sits on top of head covering hairline, wearing big dark brown rimmed sunglasses with blue reflection but originally filled with dark reed, white diamond stud earring visible on side of head next to ear, small distinct point of color, neutral expression, skin, bright green background, blue jacket with white hoodie undenarth it with lifeguard cross on it, pixel art style",
+      "original_length": 535,
+      "new_length": 507,
+      "reduction": 28,
+      "reduction_pct": 5.2,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_075_clementine.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, bright red short punk style hair (with bangs and bob style etc messy), bright green eyes, lips, neutral expression, light skin, light and dark blue checker brick background, diamond necklace and grey tanktop style outfit shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, bright red short punk style hair (with bangs and bob style etc messy), bright green eyes, neutral expression, light skin, light and dark blue checker brick background, diamond necklace and grey tanktop style outfit shirt, pixel art style",
+      "original_length": 314,
+      "new_length": 286,
+      "reduction": 28,
+      "reduction_pct": 8.9,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_076_orange_blossom.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, red dark lighter brown hair clearly distinct from dark brown eyes, lips, neutral expression, medium brown skin, solid background, golden necklace and red shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, red brown hair clearly distinct from dark brown eyes, neutral expression, medium brown skin, background, golden necklace and red shirt, pixel art style",
+      "original_length": 247,
+      "new_length": 200,
+      "reduction": 47,
+      "reduction_pct": 19.0,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_077_pink_grapefruit.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, blue beret hat, voluptuous wavy red hair medium / long length, wearing blue beret hat, wearing, a necklace, eyes, lips, neutral expression, skin, two tone background - bubble gum pink and light/white blue, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, blue beret hat, voluptuous wavy red hair medium / long length, wearing blue beret hat, wearing, a necklace, eyes, neutral expression, skin, two tone background - bubble gum pink and light/white blue, clothing, pixel art style",
+      "original_length": 302,
+      "new_length": 274,
+      "reduction": 28,
+      "reduction_pct": 9.3,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_078_orange_zest.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, middle parted hair, eyes, lips, slight smile, medium/light skin, burnt orange background, white U neck shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, middle parted hair, eyes, slight smile, medium/light skin, burnt orange background, white U neck shirt, pixel art style",
+      "original_length": 196,
+      "new_length": 168,
+      "reduction": 28,
+      "reduction_pct": 14.3,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_079_lime_breeze.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, medium brown to blonde ombre hair, medium brown eyes/light brown eyes, lips, neutral expression, medium colored skin, dark yellow to bright yellow gradient background, dark teal/pale teal to light teal colored wings and dark yellow orange brown burnt colors for the clothing (shirt), hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, medium brown to blonde ombre hair, medium brown eyes/light brown eyes, neutral expression, medium colored skin, dark yellow to bright yellow gradient background, dark teal/pale teal to light teal colored wings and dark yellow orange brown burnt colors for the clothing (shirt), pixel art style",
+      "original_length": 370,
+      "new_length": 342,
+      "reduction": 28,
+      "reduction_pct": 7.6,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_080_zesty_lime.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, black dark lighter brown hair clearly distinct from dark brown eyes, lips, neutral expression, light skin, grey background, white collared peter pan shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, black brown hair clearly distinct from dark brown eyes, neutral expression, light skin, grey background, white collared peter pan shirt, pixel art style",
+      "original_length": 242,
+      "new_length": 201,
+      "reduction": 41,
+      "reduction_pct": 16.9,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_083_Marianne3.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, black curly long voluminous hair with purple shades and tones (#2b0030, #26152d, #1e0a23, #311c3b), lips, slight smile, medium tan skin, bright purple background, cream blazer with black tshirt underneath, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, black curly long voluminous hair with purple shades and tones (, , ), slight smile, medium tan skin, bright purple background, cream blazer with black tshirt underneath, pixel art style",
+      "original_length": 292,
+      "new_length": 234,
+      "reduction": 58,
+      "reduction_pct": 19.9,
+      "changes": [
+        "Removed 4 hex codes",
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_085_IRA2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, blonde dreads in a half up half down style (#d2c099, #c1b287, #beae82), cyan/seafoam green eyes, lips, neutral expression, skin, hot red background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, blonde dreads in a half up half down style (, ), cyan/seafoam green eyes, neutral expression, skin, hot red background, clothing, pixel art style",
+      "original_length": 245,
+      "new_length": 194,
+      "reduction": 51,
+      "reduction_pct": 20.8,
+      "changes": [
+        "Removed 3 hex codes",
+        "Removed 'lips' token"
+      ],
+      "target_met": true
+    },
+    {
+      "filename": "lady_086_ELENI9.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, red auburn straight/blown out hair framing face and contained within hoodie, lilac/periwinkle deep eyes, lips, slight smile, light skin, eggshell light yellow background, light pink/fluffy onesie hoodie, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, red auburn straight/blown out hair framing face and contained within hoodie, lilac/periwinkle deep eyes, slight smile, light skin, eggshell light yellow background, light pink/fluffy onesie hoodie, pixel art style",
+      "original_length": 290,
+      "new_length": 262,
+      "reduction": 28,
+      "reduction_pct": 9.7,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_087_feybirthday5.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, ombre hair from dark black to dark brown to medium to light brown to dark blonde to light blonde, wearing white diamond stud earring visible on side of head next to ear, small distinct point of colors, hazel green light colored eyes, lips, slight smile, medium colored skin (very light colored indian girl), creme colored background, lavender shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, ombre hair from dark black to dark brown to medium to light brown to dark blonde to light blonde, wearing white diamond stud earring visible on side of head next to ear, small distinct point of colors, hazel green light colored eyes, slight smile, medium colored skin (very light colored indian girl), creme colored background, lavender shirt, pixel art style",
+      "original_length": 436,
+      "new_length": 408,
+      "reduction": 28,
+      "reduction_pct": 6.4,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_088_r.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, wavy brown hair with dark browns (#503b29, #473525, #493928), wearing glasses, ocean green / seafoam green eyes, lips, slight smile, medium tan light skin, checkered brick background, wearing a checkered pattern shirt with orange red and shades of blue, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, wavy brown hair with dark browns (, ), wearing glasses, ocean green / seafoam green eyes, slight smile, medium tan light skin, brick background, wearing a checkered pattern shirt with orange red and shades of blue, pixel art style",
+      "original_length": 340,
+      "new_length": 279,
+      "reduction": 61,
+      "reduction_pct": 17.9,
+      "changes": [
+        "Removed 3 hex codes",
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_090_missthang.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, ombre hair from black to dark to medium / light brown with some tones of red, wearing long gold dangling stud earring visible on side of head next to ear, small distinct point of colors, wearing blue collared shirt with gold necklace, deep green eyes, lips, slight smile, medium tan / light tan skin, solid background, blue collared shirt with gold necklace, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, ombre hair from black to dark to medium / light brown with some tones of red, wearing long gold dangling stud earring visible on side of head next to ear, small distinct point of colors, wearing blue collared shirt with gold necklace, deep green eyes, slight smile, medium tan / light tan skin, background, blue collared shirt with gold necklace, pixel art style",
+      "original_length": 445,
+      "new_length": 411,
+      "reduction": 34,
+      "reduction_pct": 7.6,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_094_violetta.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, lighter brown hair clearly distinct from dark brown eyes, lips, neutral expression, light skin, multicolored background (light creme/beige, gold necklace and white/ light grey shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, lighter brown hair clearly distinct from dark brown eyes, neutral expression, light skin, multicolored background (light creme/beige, gold necklace and white/ light grey shirt, pixel art style",
+      "original_length": 269,
+      "new_length": 241,
+      "reduction": 28,
+      "reduction_pct": 10.4,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_095_royalty.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, Ballerina style bun light brown medium lighter brown hair clearly distinct from dark brown eyes, lips, neutral expression, light skin, multicolored background of pale green and light creme, pink ballerina low cut bodysuit, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, Ballerina style bun light brown medium lighter brown hair clearly distinct from dark brown eyes, neutral expression, light skin, multicolored background of pale green and light creme, pink ballerina low cut bodysuit, pixel art style",
+      "original_length": 309,
+      "new_length": 281,
+      "reduction": 28,
+      "reduction_pct": 9.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_096_yuri.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, purple anime cosplay style hair, purple light medium purple eyes, lips, neutral expression, light colored skin, greybackground, purple brown jacket and orange undershirt vest, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, purple anime cosplay style hair, purple light medium purple eyes, neutral expression, light colored skin, greybackground, purple brown jacket and orange undershirt vest, pixel art style",
+      "original_length": 262,
+      "new_length": 234,
+      "reduction": 28,
+      "reduction_pct": 10.7,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_097_dani.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, wavy dark black brown shiny half up half down style hair, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of color, eyes color is brown but lighter than skin color, lips, slight smile, black girl medium / dark skin, light/pale pinklavender background, brown shirt, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, wavy dark black brown shiny half up half down style hair, wearing diamond stud stud earring visible on side of head next to ear, small distinct point of color visible on side of head next to ear, small distinct point of color, eyes color is brown but lighter than skin color, slight smile, black girl medium / dark skin, light/pale pinklavender background, brown shirt, pixel art style",
+      "original_length": 462,
+      "new_length": 434,
+      "reduction": 28,
+      "reduction_pct": 6.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_097_dani2.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, long textured curly multicolored brown hair with yellow accessory, wearing dark red maroon rimmed glasses, wearing white diamond stud earring visible on side of head next to ear, small distinct point of color, light green pale green eyes, lips, slight smile, medium dark skin tone, grey background, grey turtleneck, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, long textured curly multicolored brown hair with yellow accessory, wearing dark red maroon rimmed glasses, wearing white diamond stud earring visible on side of head next to ear, small distinct point of color, light green pale green eyes, slight smile, medium dark skin tone, grey background, grey turtleneck, pixel art style",
+      "original_length": 402,
+      "new_length": 374,
+      "reduction": 28,
+      "reduction_pct": 7.0,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_098_heyeah.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, short bob cut brown medium lighter brown hair clearly distinct from dark brown eyes, lips, neutral expression, light skin, electric purplblue bright background, light grey pink jacket with white tshirt and dark grey logo, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, short bob cut brown medium lighter brown hair clearly distinct from dark brown eyes, neutral expression, light skin, electric purplblue bright background, light grey pink jacket with white tshirt and dark grey logo, pixel art style",
+      "original_length": 308,
+      "new_length": 280,
+      "reduction": 28,
+      "reduction_pct": 9.1,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_099_VQ.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, sky blue background, yellow blonde hair with highlights, wearing white rectangular sunglasses with thin plastic frames and thin temples behind ears, lenses completely cover eyes rims with lips, slight smile, dark grey lenses, medium tan skin, sky blue background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, sky blue background, yellow blonde hair with highlights, wearing white rectangular sunglasses with thin plastic frames and thin temples behind ears, lenses completely cover eyes rims with slight smile, dark grey lenses, medium tan skin, sky blue background, clothing, pixel art style",
+      "original_length": 360,
+      "new_length": 332,
+      "reduction": 28,
+      "reduction_pct": 7.8,
+      "changes": [
+        "Removed 'lips' token"
+      ],
+      "target_met": false
+    },
+    {
+      "filename": "lady_099_domino.txt",
+      "original": "pixel art, 24x24, portrait of bespoke punk lady, hair, wearing red hooded cape with hood pulled up partially covering face and obscuring one eye, light lavender/periwinkle eyes, lips, neutral expression, medium light skin, solid background, clothing, hard color borders, sharp pixel edges",
+      "improved": "pixel art, 24x24, portrait of bespoke punk lady, hair, wearing red hooded cape with hood pulled up partially covering face and obscuring one eye, light lavender/periwinkle eyes, neutral expression, medium light skin, background, clothing, pixel art style",
+      "original_length": 288,
+      "new_length": 254,
+      "reduction": 34,
+      "reduction_pct": 11.8,
+      "changes": [
+        "Removed 'lips' token",
+        "Fixed background description"
+      ],
+      "target_met": false
+    }
+  ]
+}

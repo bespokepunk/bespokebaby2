@@ -1,11 +1,73 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
 \margl1440\margr1440\vieww11500\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\deftab720
+\pard\pardeftab720\partightenfactor0
 
-\f0\fs24 \cf0   You're tired. Deploy this MVP tonight, test it, then:\
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 one thing Idont see in this plan, is the usggest traits for each image.. I know Ineed to go throug hand manually select pizels and edit the names according to all this info but Ishould not need to manually also map the colors to the current output of this project Ishoud definitely be spot checking and just copy and pasting after selecting nad creating the layerts.
+\f1 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+\
+-Base\
+  Base_Skin_[tone]\
+  Base_Outline (optional if you separate the outline)\
+\
+Face\
+  Face_Eyes_Base\
+  Face_Eyes_Color_[name] (only if iris color swaps)\
+  Face_Brows_[shape/color]\
+  Face_Mouth_[expression/color]\
+  FacialHair_Stubble_[light/dark]\
+  FacialHair_Beard_[style/color]\
+  FacialHair_Mustache_[style/color]\
+\
+Hair\
+  Hair_Main_[style/color]\
+  Hair_Highlight_[color] (if independent)\
+  Hair_Accessory_Flower_[size/color]\
+  Hair_Accessory_Bow_[size/color]\
+  Hair_Accessory_Clip_[shape/color]\
+\
+Headwear\
+  Headwear_Crown_[style/color]\
+  Headwear_Hat_[type/color/logo]\
+  Headwear_Halo_[color]\
+\
+Eyewear & Face Accessories\
+  Eyewear_[type/color/logo]\
+  FaceAccessory_Cigarette\
+  FaceAccessory_CigHolder\
+  FaceAccessory_Joint\
+  FaceAccessory_Mask_[color] (if any)\
+\
+Jewelry\
+  Earrings_[style/color] (add _Left/_Right if asymmetrical)\
+  Necklace_[style/color/logo]\
+  NoseRing_[style/color] (if present)\
+\
+Clothing\
+  Clothing_Top_[type/color/pattern]\
+  Clothing_Collar_[color]\
+  Clothing_Emblem_[logo/color] (only if separate)\
+\
+Background\
+  Background_Solid_[color]\
+  Background_Gradient_[color1_color2]\
+  Background_Brick_[color]\
+  Background_Special_[description] (for anything unique)\
+\
+Misc\
+  Prop_[item/color] (anything handheld or extra)\
+  Effect_[glow/sparkle/etc] (if you add FX layers)\
+\
+For each sprite, start with `Base_Skin_*`, then layer categories in this order so toggling makes sense: Hair \uc0\u8594  Headwear \u8594  Eyewear \u8594  Face accessories \u8594  Jewelry \u8594  Clothing \u8594  Background \u8594  Misc. Rename every layer immediately after you promote it so you don\'92t lose track.  \
+\
+\
+You're tired. Deploy this MVP tonight, test it, then:\
   - Get user feedback\
   - Decide if Epoch 9 retraining is worth it\
   - Fix issues based on real usage, not speculation\

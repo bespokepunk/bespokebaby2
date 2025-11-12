@@ -1,0 +1,11 @@
+[
+  {
+    "filename": "lad_024_x.txt",
+    "original": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing Deepl Blue baseball cap (forward) with lighter lavender logo/insignia on it, wearing lips, slight smile, dark purple rimmed sunglasses with lighter purple lens, stubble, medium black skin male, solid background, white blue collared shirt unbuttoneded, hard color borders, sharp pixel edges",
+    "improved": "pixel art, 24x24, portrait of bespoke punk lad, hair, wearing Deepl Blue baseball cap (forward) with lighter lavender logo/insignia on it, wearing slight smile, dark purple rimmed sunglasses with lighter purple lens, stubble, medium black skin, background, white blue collared shirt unbuttoneded, pixel art style",
+    "issues": [
+      "Added blue eyes",
+      "\u26a0\ufe0f Hair description uncertain - needs review"
+    ]
+  }
+]
