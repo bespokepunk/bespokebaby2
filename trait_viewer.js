@@ -30,7 +30,7 @@ const state = {
   currentMasks: [],
   selectedSpriteId: null,
   selectedTraitIndex: null,
-  selectedComponentIndex: -1,
+  selectedComponentKey: "-1",
   hoverPreview: true,
 };
 
@@ -107,6 +107,102 @@ function buildSpriteMap(data) {
   state.spriteIds = Array.from(map.keys()).sort();
 }
 
+function groupTraitsByVariant(traits) {
+  const groups = [];
+  const map = new Map();
+  const totalPixels = 24 * 24;
+
+  for (const trait of traits) {
+    const key = `${trait.category}||${trait.variant_hint}`;
+    let group = map.get(key);
+    if (!group) {
+      group = {
+        sprite_id: trait.sprite_id,
+        category: trait.category,
+        variant_hint: trait.variant_hint,
+        pixelSet: new Set(),
+        pixels: [],
+        pixel_mask: "",
+        coverage_pct: 0,
+        color_hex: trait.color_hex,
+        color_name: trait.color_name,
+        notes: "",
+        slices: [],
+        sliceSummary: "",
+        multiColor: false,
+      };
+      map.set(key, group);
+      groups.push(group);
+    }
+    const slicePixels = trait.pixels || [];
+    const sliceSet = new Set(slicePixels.map(({ row, col }) => `${row},${col}`));
+    group.slices.push({
+      color_hex: trait.color_hex,
+      color_name: trait.color_name,
+      coverage_pct: trait.coverage_pct,
+      notes: trait.notes || "",
+      pixels: slicePixels,
+      pixel_mask: trait.pixel_mask,
+      pixelSet: sliceSet,
+    });
+  }
+
+  for (const group of groups) {
+    const unionSet = new Set();
+    const noteSet = new Set();
+    const colourNames = new Set();
+    const colourHexes = new Set();
+
+    group.slices.forEach((slice) => {
+      slice.pixelSet.forEach((coord) => unionSet.add(coord));
+      if (slice.notes) {
+        noteSet.add(slice.notes);
+      }
+      if (slice.color_name) {
+        colourNames.add(slice.color_name);
+      }
+      if (slice.color_hex) {
+        colourHexes.add(slice.color_hex.toLowerCase());
+      }
+    });
+
+    group.pixelSet = unionSet;
+    const pixels = Array.from(unionSet, (coord) => {
+      const [rowStr, colStr] = coord.split(",");
+      return { row: Number(rowStr), col: Number(colStr) };
+    }).sort((a, b) => (a.row === b.row ? a.col - b.col : a.row - b.row));
+    group.pixels = pixels;
+    group.pixel_mask = pixels.map(({ row, col }) => `${row},${col}`).join(";");
+    group.coverage_pct = unionSet.size
+      ? Number(((unionSet.size / totalPixels) * 100).toFixed(2))
+      : 0;
+
+    const sliceSummary = group.slices
+      .map((slice) => {
+        const pct = ((slice.pixels.length / totalPixels) * 100).toFixed(2);
+        return `${slice.color_name || "Unnamed"} (${slice.pixels.length} px, ${pct}%)`;
+      })
+      .join(" • ");
+    group.sliceSummary = sliceSummary;
+
+    const combinedNotes = Array.from(noteSet).join(" · ");
+    group.notes = combinedNotes;
+
+    if (colourHexes.size === 1) {
+      const firstSlice = group.slices[0];
+      group.color_hex = firstSlice.color_hex;
+      group.color_name = firstSlice.color_name;
+      group.multiColor = false;
+    } else {
+      group.color_hex = null;
+      group.color_name = `${colourHexes.size} colours`;
+      group.multiColor = true;
+    }
+  }
+
+  return groups;
+}
+
 function attachEventListeners() {
   elements.spriteSearch.addEventListener("input", (event) => {
     renderSpriteList(event.target.value.trim().toLowerCase());
@@ -122,10 +218,15 @@ function attachEventListeners() {
   });
 
   elements.componentSelect.addEventListener("change", () => {
-    state.selectedComponentIndex = Number(elements.componentSelect.value);
+    const { value } = elements.componentSelect;
+    if (!value) {
+      state.selectedComponentKey = "-1";
+      return;
+    }
+    state.selectedComponentKey = value;
     if (state.selectedTraitIndex !== null) {
       const trait = state.currentTraits[state.selectedTraitIndex];
-      highlightTrait(trait, state.selectedComponentIndex);
+      highlightTrait(trait, state.selectedComponentKey);
     }
   });
 
@@ -212,13 +313,12 @@ function selectSprite(spriteId) {
   }
   state.selectedSpriteId = spriteId;
   state.selectedTraitIndex = null;
-  state.selectedComponentIndex = -1;
+  state.selectedComponentKey = "-1";
   updateActiveSpriteListItem();
   elements.categoryFilter.value = "All";
   elements.componentSelect.innerHTML = '<option value="-1">Entire trait</option>';
   elements.componentSelect.disabled = true;
   updatePreviewImage(spriteId);
-  updateStats(state.spriteMap.get(spriteId) || []);
   renderTraits();
 }
 
@@ -260,11 +360,12 @@ function renderTraits() {
     ? allTraits.filter((trait) => trait.category === filterValue)
     : allTraits.slice();
 
-  state.currentTraits = filteredTraits;
+  const groupedTraits = groupTraitsByVariant(filteredTraits);
+  state.currentTraits = groupedTraits;
   state.currentRows = [];
   state.currentMasks = [];
   state.selectedTraitIndex = null;
-  state.selectedComponentIndex = -1;
+  state.selectedComponentKey = "-1";
   state.currentMaskString = "";
   elements.traitBody.innerHTML = "";
   elements.pixelMaskOutput.textContent = "Select a trait to preview pixel coordinates.";
@@ -272,7 +373,7 @@ function renderTraits() {
   elements.componentSelect.innerHTML = '<option value="-1">Entire trait</option>';
   elements.componentSelect.disabled = true;
 
-  if (!filteredTraits.length) {
+  if (!groupedTraits.length) {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.colSpan = 7;
@@ -283,10 +384,13 @@ function renderTraits() {
     row.appendChild(cell);
     elements.traitBody.appendChild(row);
     clearHighlight();
+    updateStats(groupedTraits);
     return;
   }
 
-  filteredTraits.forEach((trait, index) => {
+  updateStats(groupedTraits);
+
+  groupedTraits.forEach((trait, index) => {
     const row = document.createElement("tr");
     row.dataset.index = String(index);
 
@@ -328,13 +432,44 @@ function renderTraits() {
     row.appendChild(copyCell);
 
     const colourCell = document.createElement("td");
-    const swatch = document.createElement("span");
-    swatch.className = "swatch";
-    swatch.style.background = trait.color_hex;
-    colourCell.appendChild(swatch);
-    const colourText = document.createElement("span");
-    colourText.textContent = `${trait.color_name} (${trait.color_hex})`;
-    colourCell.appendChild(colourText);
+    if (trait.multiColor && trait.slices.length > 1) {
+      const stack = document.createElement("div");
+      stack.className = "swatch-stack";
+      trait.slices.forEach((slice, sliceIndex) => {
+        if (!slice.color_hex) {
+          return;
+        }
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "swatch-button";
+        btn.style.background = slice.color_hex;
+        btn.title = `${slice.color_name || "Colour"} (${slice.color_hex}) — ${slice.pixels.length} px`;
+        btn.addEventListener("click", (event) => {
+          event.stopPropagation();
+          selectTraitRow(row, index);
+          state.selectedComponentKey = `slice-${sliceIndex}`;
+          elements.componentSelect.value = `slice-${sliceIndex}`;
+          highlightTrait(trait, state.selectedComponentKey);
+        });
+        stack.appendChild(btn);
+      });
+      colourCell.appendChild(stack);
+      const colourText = document.createElement("span");
+      const uniqueNames = Array.from(new Set(trait.slices.map((slice) => slice.color_name)));
+      colourText.textContent = `${trait.slices.length} colours`;
+      colourText.title = uniqueNames.join(", ");
+      colourCell.appendChild(colourText);
+    } else {
+      const swatch = document.createElement("span");
+      swatch.className = "swatch";
+      swatch.style.background = trait.color_hex || "#ffffff";
+      colourCell.appendChild(swatch);
+      const colourText = document.createElement("span");
+      colourText.textContent = trait.color_hex
+        ? `${trait.color_name} (${trait.color_hex})`
+        : trait.color_name;
+      colourCell.appendChild(colourText);
+    }
     row.appendChild(colourCell);
 
     const coverageCell = document.createElement("td");
@@ -342,17 +477,26 @@ function renderTraits() {
     row.appendChild(coverageCell);
 
     const notesCell = document.createElement("td");
-    notesCell.textContent = trait.notes;
+    const noteParts = [];
+    if (trait.notes) {
+      noteParts.push(trait.notes);
+    }
+    if (trait.multiColor && trait.sliceSummary) {
+      noteParts.push(`Colours: ${trait.sliceSummary}`);
+    }
+    notesCell.textContent = noteParts.join(" · ");
     row.appendChild(notesCell);
 
-    const maskSet = new Set(trait.pixels.map(({ row: r, col: c }) => `${r},${c}`));
+    const maskSet = trait.pixelSet
+      ? new Set(trait.pixelSet)
+      : new Set(trait.pixels.map(({ row: r, col: c }) => `${r},${c}`));
     state.currentMasks[index] = maskSet;
 
     row.addEventListener("mouseenter", () => {
       if (!state.hoverPreview || state.selectedTraitIndex === Number(row.dataset.index)) {
         return;
       }
-      highlightTrait(trait, state.selectedComponentIndex);
+      highlightTrait(trait, state.selectedComponentKey);
     });
 
     row.addEventListener("mouseleave", () => {
@@ -360,7 +504,7 @@ function renderTraits() {
         clearHighlight();
       } else {
         const selected = state.currentTraits[state.selectedTraitIndex];
-        highlightTrait(selected, state.selectedComponentIndex);
+        highlightTrait(selected, state.selectedComponentKey);
       }
     });
 
@@ -382,7 +526,7 @@ function selectTraitRow(row, index) {
   state.currentRows.forEach((r) => r.classList.remove("active-row"));
   row.classList.add("active-row");
   state.selectedTraitIndex = index;
-  state.selectedComponentIndex = -1;
+  state.selectedComponentKey = "-1";
   elements.componentSelect.innerHTML = '<option value="-1">Entire trait</option>';
   elements.componentSelect.disabled = true;
 
@@ -391,23 +535,46 @@ function selectTraitRow(row, index) {
   if (components.length > 1) {
     components.forEach((component, componentIndex) => {
       const option = document.createElement("option");
-      option.value = String(componentIndex);
+      option.value = `component-${componentIndex}`;
       option.textContent = `Component ${componentIndex + 1} (${component.length} px)`;
       elements.componentSelect.appendChild(option);
     });
     elements.componentSelect.disabled = false;
-    elements.componentSelect.value = "-1";
   }
+
+  if (trait.slices && trait.slices.length > 1) {
+    const separator = document.createElement("option");
+    separator.textContent = "Original colours";
+    separator.disabled = true;
+    separator.value = "";
+    elements.componentSelect.appendChild(separator);
+    trait.slices.forEach((slice, sliceIndex) => {
+      const option = document.createElement("option");
+      option.value = `slice-${sliceIndex}`;
+      const labelHex = slice.color_hex ? slice.color_hex : "n/a";
+      option.textContent = `${slice.color_name || "Colour"} (${labelHex}) — ${slice.pixels.length} px`;
+      elements.componentSelect.appendChild(option);
+    });
+    elements.componentSelect.disabled = false;
+  }
+  elements.componentSelect.value = "-1";
 
   highlightTrait(trait, -1);
 }
 
-function highlightTrait(trait, componentIndex) {
+function highlightTrait(trait, componentKey) {
   if (!trait) {
     clearHighlight();
     return;
   }
-  const pixels = getPixelsForComponent(trait, componentIndex);
+  if (typeof componentKey === "string" && componentKey.startsWith("slice-")) {
+    elements.componentSelect.value = componentKey;
+  } else if (typeof componentKey === "string" && componentKey.startsWith("component-")) {
+    elements.componentSelect.value = componentKey;
+  } else {
+    elements.componentSelect.value = "-1";
+  }
+  const pixels = getPixelsForComponent(trait, componentKey);
   if (!pixels.length) {
     clearHighlight();
     elements.pixelMaskOutput.textContent = "No pixel data available for this trait.";
@@ -422,15 +589,39 @@ function highlightTrait(trait, componentIndex) {
   elements.pixelMaskOutput.textContent = formatPixelSummary(maskString, pixels.length);
 }
 
-function getPixelsForComponent(trait, componentIndex) {
-  if (componentIndex === undefined || componentIndex === null || componentIndex < 0) {
+function getPixelsForComponent(trait, componentKey) {
+  if (componentKey === undefined || componentKey === null || componentKey === -1 || componentKey === "-1") {
+    return trait.pixels;
+  }
+  if (typeof componentKey === "string") {
+    if (componentKey.startsWith("slice-")) {
+      const index = Number(componentKey.split("-")[1]);
+      const slice = trait.slices?.[index];
+      return slice && slice.pixels ? slice.pixels : trait.pixels;
+    }
+    if (componentKey.startsWith("component-")) {
+      const idx = Number(componentKey.split("-")[1]);
+      const components = computeComponents(trait);
+      if (!components.length) {
+        return trait.pixels;
+      }
+      return components[idx] || trait.pixels;
+    }
+    const numeric = Number(componentKey);
+    if (!Number.isNaN(numeric) && numeric >= 0) {
+      const components = computeComponents(trait);
+      if (!components.length) {
+        return trait.pixels;
+      }
+      return components[numeric] || trait.pixels;
+    }
     return trait.pixels;
   }
   const components = computeComponents(trait);
   if (!components.length) {
     return trait.pixels;
   }
-  return components[componentIndex] || trait.pixels;
+  return components[componentKey] || trait.pixels;
 }
 
 function computeComponents(trait) {
@@ -557,7 +748,18 @@ function updateStats(traits) {
   if (background) {
     items.push(`<span>Background <strong>${background.variant_hint}</strong></span>`);
   }
-  const uniqueColours = new Set(traits.map((trait) => trait.color_hex));
+  const uniqueColours = new Set();
+  traits.forEach((trait) => {
+    if (trait.slices && trait.slices.length) {
+      trait.slices.forEach((slice) => {
+        if (slice.color_hex) {
+          uniqueColours.add(slice.color_hex.toLowerCase());
+        }
+      });
+    } else if (trait.color_hex) {
+      uniqueColours.add(trait.color_hex.toLowerCase());
+    }
+  });
   items.push(`<span>Unique colours <strong>${uniqueColours.size}</strong></span>`);
   elements.stats.innerHTML = items.join("");
 }
