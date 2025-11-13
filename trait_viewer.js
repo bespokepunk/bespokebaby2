@@ -1,3 +1,19 @@
+function updateSpriteBadge(badgeElement) {
+  const spriteId = badgeElement.dataset.spriteId;
+  const traits = state.spriteMap.get(spriteId) || [];
+  const categoryFilter = elements.categoryFilter.value;
+  const visibleCount =
+    !categoryFilter || categoryFilter === "All"
+      ? traits.filter((trait) => trait.category !== "Palette").length
+      : traits.filter((trait) => trait.category === categoryFilter).length;
+  badgeElement.textContent = String(visibleCount);
+}
+
+function updateAllBadges() {
+  const badges = elements.spriteList.querySelectorAll(".badge");
+  badges.forEach((badge) => updateSpriteBadge(badge));
+}
+
 "use strict";
 
 const elements = {
@@ -335,7 +351,8 @@ function renderSpriteList(filterText = state.spriteFilterText) {
     nameSpan.textContent = id;
     const badge = document.createElement("span");
     badge.className = "badge";
-    badge.textContent = String(state.spriteMap.get(id)?.length ?? 0);
+    badge.dataset.spriteId = id;
+    updateSpriteBadge(badge);
     li.appendChild(nameSpan);
     li.appendChild(badge);
     li.addEventListener("click", () => selectSprite(id));
@@ -398,9 +415,15 @@ function renderTraits() {
   const spriteId = state.selectedSpriteId;
   const allTraits = state.spriteMap.get(spriteId) || [];
   const filterValue = elements.categoryFilter.value;
-  const filteredTraits = filterValue && filterValue !== "All"
-    ? allTraits.filter((trait) => trait.category === filterValue)
-    : allTraits.slice();
+  let filteredTraits;
+  if (!filterValue || filterValue === "All") {
+    filteredTraits = allTraits.filter((trait) => trait.category !== "Palette");
+  } else {
+    filteredTraits = allTraits.filter((trait) => trait.category === filterValue);
+    if (filteredTraits.length === 0 && filterValue === "Palette") {
+      filteredTraits = allTraits.filter((trait) => trait.category === "Palette");
+    }
+  }
 
   filteredTraits.sort((a, b) => {
     const priorityA = getCategoryPriority(a.category);
@@ -411,11 +434,33 @@ function renderTraits() {
     if (a.category !== b.category) {
       return a.category.localeCompare(b.category);
     }
-    return a.variant_hint.localeCompare(b.variant_hint);
+    if (a.variant_hint !== b.variant_hint) {
+      return a.variant_hint.localeCompare(b.variant_hint);
+    }
+    return (a.color_hex || "").localeCompare(b.color_hex || "");
   });
 
   const groupedTraits = groupTraitsByVariant(filteredTraits);
-  state.currentTraits = groupedTraits;
+  groupedTraits.sort((a, b) => {
+    const priorityA = getCategoryPriority(a.category);
+    const priorityB = getCategoryPriority(b.category);
+    if (priorityA !== priorityB) {
+      return priorityA - priorityB;
+    }
+    if (a.category !== b.category) {
+      return a.category.localeCompare(b.category);
+    }
+    if (a.variant_hint !== b.variant_hint) {
+      return a.variant_hint.localeCompare(b.variant_hint);
+    }
+    return a.variant_hint.localeCompare(b.variant_hint);
+  });
+
+  const displayTraits = filterValue === "Palette"
+    ? groupedTraits
+    : groupedTraits.filter((trait) => trait.category !== "Palette");
+
+  state.currentTraits = displayTraits;
   state.currentRows = [];
   state.currentMasks = [];
   state.selectedTraitIndex = null;
@@ -426,8 +471,9 @@ function renderTraits() {
   elements.copyMaskButton.disabled = true;
   elements.componentSelect.innerHTML = '<option value="-1">Entire trait</option>';
   elements.componentSelect.disabled = true;
+  updateAllBadges();
 
-  if (!groupedTraits.length) {
+  if (!displayTraits.length) {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
     cell.colSpan = 7;
@@ -438,13 +484,13 @@ function renderTraits() {
     row.appendChild(cell);
     elements.traitBody.appendChild(row);
     clearHighlight();
-    updateStats(groupedTraits);
+    updateStats(displayTraits);
     return;
   }
 
-  updateStats(groupedTraits);
+  updateStats(displayTraits);
 
-  groupedTraits.forEach((trait, index) => {
+  displayTraits.forEach((trait, index) => {
     const row = document.createElement("tr");
     row.dataset.index = String(index);
 
