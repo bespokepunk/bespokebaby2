@@ -23,6 +23,10 @@ const elements = {
   toggleSidebar: document.getElementById("toggleSidebar"),
   spriteTitle: document.getElementById("spriteTitle"),
   stats: document.getElementById("stats"),
+  paletteSection: document.getElementById("paletteSection"),
+  paletteMeta: document.getElementById("paletteMeta"),
+  palettePreview: document.getElementById("palettePreview"),
+  paletteCanvas: document.getElementById("paletteMiniCanvas"),
   categoryFilter: document.getElementById("categoryFilter"),
   componentSelect: document.getElementById("componentSelect"),
   hoverToggle: document.getElementById("hoverToggle"),
@@ -38,17 +42,15 @@ const highlightCtx = elements.highlightCanvas.getContext("2d");
 
 const CATEGORY_ORDER = {
   Background: 0,
-  Outline: 1,
-  Skin: 2,
-  Headwear: 3,
-  HeadwearAccessory: 4,
-  Hair: 5,
-  FacialHair: 6,
-  Eyes: 7,
-  Mouth: 8,
-  FaceAccessory: 9,
-  Clothing: 10,
-  NeckAccessory: 11,
+  Base: 1,
+  Face: 2,
+  Hair: 3,
+  FacialHair: 4,
+  Headwear: 5,
+  Eyewear: 6,
+  FaceAccessory: 7,
+  Jewelry: 8,
+  Clothing: 9,
   Palette: 200,
   Unassigned: 300,
 };
@@ -70,6 +72,8 @@ const state = {
   selectedComponentKey: "-1",
   hoverPreview: true,
 };
+
+const palettePixelCache = new Map();
 
 initViewer().catch((error) => {
   showError(`Failed to initialise viewer: ${error.message}`);
@@ -378,6 +382,9 @@ function selectSprite(spriteId) {
   elements.componentSelect.innerHTML = '<option value="-1">Entire trait</option>';
   elements.componentSelect.disabled = true;
   updatePreviewImage(spriteId);
+  updatePalettePreview(spriteId).catch((error) => {
+    console.error(error);
+  });
   renderTraits();
 }
 
@@ -409,6 +416,187 @@ function updatePreviewImage(spriteId) {
     elements.previewImage.src = lowRes;
   };
   elements.previewImage.src = highRes;
+}
+
+async function loadSpritePalettePixels(spriteId) {
+  if (palettePixelCache.has(spriteId)) {
+    return palettePixelCache.get(spriteId);
+  }
+  const image = new Image();
+  image.src = `data/punks_24px/${spriteId}.png`;
+  const counts = await new Promise((resolve, reject) => {
+    image.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = 24;
+      canvas.height = 24;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        reject(new Error("Unable to obtain canvas context for palette extraction."));
+        return;
+      }
+      ctx.clearRect(0, 0, 24, 24);
+      ctx.drawImage(image, 0, 0, 24, 24);
+      const { data } = ctx.getImageData(0, 0, 24, 24);
+      const map = new Map();
+      for (let i = 0; i < data.length; i += 4) {
+        const alpha = data[i + 3];
+        if (alpha < 16) {
+          continue;
+        }
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+        const hex = `#${r.toString(16).padStart(2, "0")}${g
+          .toString(16)
+          .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+        map.set(hex, (map.get(hex) || 0) + 1);
+      }
+      resolve(
+        Array.from(map.entries()).map(([hex, count]) => ({
+          hex,
+          count,
+        }))
+      );
+    };
+    image.onerror = () => reject(new Error(`Failed to load low-res sprite for ${spriteId}`));
+  });
+  palettePixelCache.set(spriteId, counts);
+  return counts;
+}
+
+async function updatePalettePreview(spriteId) {
+  const section = elements.paletteSection;
+  const preview = elements.palettePreview;
+  const meta = elements.paletteMeta;
+  const canvas = elements.paletteCanvas;
+  if (!section || !preview || !meta || !canvas) {
+    return;
+  }
+
+  if (!spriteId || !state.spriteMap.has(spriteId)) {
+    section.hidden = true;
+    preview.innerHTML = "";
+    meta.textContent = "";
+    clearPaletteCanvas();
+    return;
+  }
+
+  const traits = state.spriteMap.get(spriteId) || [];
+  const nameMap = new Map();
+  const registerName = (hex, name) => {
+    if (!hex || !name) {
+      return;
+    }
+    const normalized = hex.startsWith("#") ? hex.toLowerCase() : `#${hex.toLowerCase()}`;
+    if (!nameMap.has(normalized)) {
+      nameMap.set(normalized, name);
+    }
+  };
+
+  traits.forEach((trait) => {
+    if (trait.color_hex && trait.color_name) {
+      registerName(trait.color_hex, trait.color_name);
+    }
+    if (trait.slices?.length) {
+      trait.slices.forEach((slice) => {
+        if (slice.color_hex && slice.color_name) {
+          registerName(slice.color_hex, slice.color_name);
+        }
+      });
+    }
+  });
+
+  let pixelCounts;
+  try {
+    pixelCounts = await loadSpritePalettePixels(spriteId);
+  } catch (error) {
+    console.error(error);
+    section.hidden = true;
+    preview.innerHTML = "";
+    meta.textContent = "Palette unavailable";
+    clearPaletteCanvas();
+    return;
+  }
+
+  const totalPixels = 24 * 24;
+  const colours = pixelCounts
+    .map(({ hex, count }) => {
+      const normalized = hex.toLowerCase();
+      const formatted = normalized.toUpperCase();
+      const coverage = (count / totalPixels) * 100;
+      return {
+        hex: formatted,
+        name: nameMap.get(normalized) || "",
+        coverage,
+      };
+    })
+    .filter((entry) => entry.hex);
+  if (!colours.length) {
+    section.hidden = true;
+    preview.innerHTML = "";
+    meta.textContent = "";
+    clearPaletteCanvas();
+    return;
+  }
+
+  colours.sort((a, b) => {
+    if ((b.coverage ?? 0) !== (a.coverage ?? 0)) {
+      return (b.coverage ?? 0) - (a.coverage ?? 0);
+    }
+    return a.hex.localeCompare(b.hex);
+  });
+
+  section.hidden = false;
+  preview.innerHTML = "";
+  colours.forEach((colour) => {
+    const swatch = document.createElement("div");
+    swatch.className = "palette-swatch";
+    swatch.style.background = colour.hex;
+    swatch.dataset.hex = colour.hex;
+    const namePart = colour.name ? `${colour.name}` : "Colour";
+    const coveragePart = colour.coverage ? ` — ${colour.coverage.toFixed(2)}%` : "";
+    swatch.title = `${namePart} ${colour.hex}${coveragePart}`;
+    preview.appendChild(swatch);
+  });
+
+  const metaParts = [`${colours.length} colours`];
+  const totalCoverage = colours.reduce((acc, entry) => acc + (entry.coverage || 0), 0);
+  if (totalCoverage > 0) {
+    metaParts.push(`${totalCoverage.toFixed(1)}% coverage`);
+  }
+  meta.textContent = metaParts.join(" · ");
+  drawPaletteCanvas(colours);
+}
+
+function drawPaletteCanvas(colours) {
+  const canvas = elements.paletteCanvas;
+  if (!canvas) {
+    return;
+  }
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    return;
+  }
+  const count = colours.length || 1;
+  canvas.width = Math.max(count, 1);
+  canvas.height = 1;
+  ctx.imageSmoothingEnabled = false;
+  colours.forEach((colour, index) => {
+    ctx.fillStyle = colour.hex;
+    ctx.fillRect(index, 0, 1, 1);
+  });
+}
+
+function clearPaletteCanvas() {
+  const canvas = elements.paletteCanvas;
+  if (!canvas) {
+    return;
+  }
+  const ctx = canvas.getContext("2d");
+  if (!ctx) {
+    return;
+  }
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function renderTraits() {
