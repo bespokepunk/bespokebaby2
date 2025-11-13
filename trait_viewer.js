@@ -20,6 +20,27 @@ const elements = {
 
 const highlightCtx = elements.highlightCanvas.getContext("2d");
 
+const CATEGORY_ORDER = {
+  Background: 0,
+  Outline: 1,
+  Skin: 2,
+  Headwear: 3,
+  HeadwearAccessory: 4,
+  Hair: 5,
+  FacialHair: 6,
+  Eyes: 7,
+  Mouth: 8,
+  FaceAccessory: 9,
+  Clothing: 10,
+  NeckAccessory: 11,
+  Palette: 200,
+  Unassigned: 300,
+};
+
+function getCategoryPriority(category) {
+  return CATEGORY_ORDER[category] ?? 1000;
+}
+
 const state = {
   spriteIds: [],
   spriteMap: new Map(),
@@ -101,7 +122,14 @@ function buildSpriteMap(data) {
     map.get(trait.sprite_id).push(trait);
   }
   for (const traits of map.values()) {
-    traits.sort((a, b) => a.category.localeCompare(b.category));
+    traits.sort((a, b) => {
+      const priorityA = getCategoryPriority(a.category);
+      const priorityB = getCategoryPriority(b.category);
+      if (priorityA !== priorityB) {
+        return priorityA - priorityB;
+      }
+      return a.variant_hint.localeCompare(b.variant_hint);
+    });
   }
   state.spriteMap = map;
   state.spriteIds = Array.from(map.keys()).sort();
@@ -198,7 +226,21 @@ function groupTraitsByVariant(traits) {
       group.color_name = `${colourHexes.size} colours`;
       group.multiColor = true;
     }
+    group.priority = getCategoryPriority(group.category);
+    if (!group.notes && colourNames.size) {
+      group.notes = `Unique colours ${Array.from(colourNames).join(", ")}`;
+    }
   }
+
+  groups.sort((a, b) => {
+    if (a.priority !== b.priority) {
+      return a.priority - b.priority;
+    }
+    if (a.category !== b.category) {
+      return a.category.localeCompare(b.category);
+    }
+    return a.variant_hint.localeCompare(b.variant_hint);
+  });
 
   return groups;
 }
@@ -359,6 +401,18 @@ function renderTraits() {
   const filteredTraits = filterValue && filterValue !== "All"
     ? allTraits.filter((trait) => trait.category === filterValue)
     : allTraits.slice();
+
+  filteredTraits.sort((a, b) => {
+    const priorityA = getCategoryPriority(a.category);
+    const priorityB = getCategoryPriority(b.category);
+    if (priorityA !== priorityB) {
+      return priorityA - priorityB;
+    }
+    if (a.category !== b.category) {
+      return a.category.localeCompare(b.category);
+    }
+    return a.variant_hint.localeCompare(b.variant_hint);
+  });
 
   const groupedTraits = groupTraitsByVariant(filteredTraits);
   state.currentTraits = groupedTraits;
