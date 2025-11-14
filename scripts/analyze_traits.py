@@ -1405,14 +1405,22 @@ def refine_results_postprocess(
     background_palette: List[Tuple[str, int]],
 ) -> List[RegionResult]:
     from collections import defaultdict, Counter
+    import sys
+
+    print(f"[REFINE] Starting postprocess for {sprite_id}", flush=True)
 
     total_pixels = 24 * 24
     outline_set = set(outline_pixels)
 
+    print(f"[REFINE] Building category_entries from {len(results)} results", flush=True)
     category_entries: Dict[str, List[Tuple[RegionResult, set[Tuple[int, int]]]]] = defaultdict(list)
-    for res in results:
+    for idx, res in enumerate(results):
+        if idx % 5 == 0:
+            print(f"[REFINE] Parsing result {idx}/{len(results)}: category={res.category}", flush=True)
         mask_set = parse_pixel_mask(res.pixel_mask)
         category_entries[res.category].append((res, mask_set))
+
+    print(f"[REFINE] category_entries built: {list(category_entries.keys())}", flush=True)
 
     sprite_lower = sprite_id.lower()
     allow_facial_hair = not sprite_lower.startswith("lady_")
@@ -1904,26 +1912,43 @@ def refine_results_postprocess(
         update_skin_tracking(primary_entry.color_hex, merged_mask)
 
     merge_skin_variants()
+    print(f"[REFINE] merge_skin_variants completed", flush=True)
 
     def reclaim_dark_foreground_from_background() -> None:
+        print(f"[REFINE] reclaim_dark_foreground_from_background starting", flush=True)
         background_items = list(category_to_entry.get("Background", []))
         if not background_items:
+            print(f"[REFINE] reclaim_dark: no background items", flush=True)
             return
         changed = False
         adjacency_offsets = ((1, 0), (-1, 0), (0, 1), (0, -1))
-        for res, mask in background_items:
+        for bg_idx, (res, mask) in enumerate(background_items):
+            print(f"[REFINE] reclaim_dark: processing bg item {bg_idx+1}/{len(background_items)}, mask_size={len(mask)}", flush=True)
             if not mask:
                 continue
             colour_luminance = relative_luminance(res.color_hex)
             if colour_luminance > 135:
+                print(f"[REFINE] reclaim_dark: skipping light color (luminance={colour_luminance})", flush=True)
                 continue
             remaining = set(mask)
             components: List[set[Tuple[int, int]]] = []
+            outer_iter_count = 0
+            MAX_OUTER_ITERATIONS = 1000
             while remaining:
+                outer_iter_count += 1
+                if outer_iter_count > MAX_OUTER_ITERATIONS:
+                    print(f"[REFINE] reclaim_dark: INFINITE LOOP DETECTED! outer while exceeded {MAX_OUTER_ITERATIONS} iterations, remaining={len(remaining)}", flush=True)
+                    raise RuntimeError(f"Infinite loop in reclaim_dark_foreground outer while: {outer_iter_count} iterations, {len(remaining)} pixels remaining")
                 start = remaining.pop()
                 stack = [start]
                 component = {start}
+                inner_iter_count = 0
+                MAX_INNER_ITERATIONS = 10000
                 while stack:
+                    inner_iter_count += 1
+                    if inner_iter_count > MAX_INNER_ITERATIONS:
+                        print(f"[REFINE] reclaim_dark: INFINITE LOOP DETECTED! inner while exceeded {MAX_INNER_ITERATIONS} iterations, stack_size={len(stack)}, component_size={len(component)}", flush=True)
+                        raise RuntimeError(f"Infinite loop in reclaim_dark_foreground inner while: {inner_iter_count} iterations")
                     row, col = stack.pop()
                     for dr, dc in adjacency_offsets:
                         coord = (row + dr, col + dc)
@@ -1932,6 +1957,7 @@ def refine_results_postprocess(
                             stack.append(coord)
                             component.add(coord)
                 components.append(component)
+            print(f"[REFINE] reclaim_dark: found {len(components)} components in {outer_iter_count} iterations", flush=True)
             leftover = set(mask)
             for comp in components:
                 if len(comp) < 12:
@@ -1975,17 +2001,24 @@ def refine_results_postprocess(
             category_entries["Background"] = category_to_entry.get("Background", [])
 
     reclaim_dark_foreground_from_background()
+    print(f"[REFINE] reclaim_dark_foreground_from_background completed", flush=True)
 
     processed_headwear: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
     headwear_processed_union: set[Tuple[int, int]] = set()
     headwear_color_set: set[str] = set()
-    for res, mask in headwear_entries:
+    print(f"[REFINE] Processing {len(headwear_entries)} headwear entries", flush=True)
+    for hw_idx, (res, mask) in enumerate(headwear_entries):
+        print(f"[REFINE] Headwear {hw_idx+1}/{len(headwear_entries)}: mask_size={len(mask)}", flush=True)
         mask = mask - outline_candidates
         if background_mask:
             mask = {coord for coord in mask if coord not in background_mask}
         if not mask:
+            print(f"[REFINE] Headwear: mask is empty after filtering, continuing", flush=True)
             continue
+        print(f"[REFINE] Headwear: creating color counter for {len(mask)} pixels", flush=True)
+        print(f"[REFINE] Headwear: mask type={type(mask)}, sample={list(mask)[:5] if mask else 'empty'}", flush=True)
         color_counts = Counter(tuple(int(c) for c in arr[row, col][:3]) for row, col in mask)
+        print(f"[REFINE] Headwear: color_counts created with {len(color_counts)} unique colors", flush=True)
         if not color_counts:
             continue
         sorted_colors = color_counts.most_common()
@@ -1996,14 +2029,18 @@ def refine_results_postprocess(
             continue
         lower_ratio = sum(1 for row, _ in mask if row >= 7) / len(mask)
         top_ratio = sum(1 for row, _ in mask if row <= 3) / len(mask)
+        print(f"[REFINE] Headwear: checking hair-like properties...", flush=True)
+        looks_hair = looks_like_hair(mask)
+        print(f"[REFINE] Headwear: looks_like_hair={looks_hair}", flush=True)
         if (
-            looks_like_hair(mask)
+            looks_hair
             and lower_ratio >= 0.4
             and top_ratio <= 0.4
-            and (touches_skin(mask) or touches_hair(mask))
         ):
-            add_pixels("Hair", set(mask), dominant_hex)
-            continue
+            print(f"[REFINE] Headwear: checking touches_skin/touches_hair...", flush=True)
+            if touches_skin(mask) or touches_hair(mask):
+                add_pixels("Hair", set(mask), dominant_hex)
+                continue
         res.color_hex = dominant_hex
         res.color_name = color_name_for_category(dominant_hex, color_map, "Headwear")
         res.variant_hint = f"Headwear_{res.color_name}"
@@ -2043,7 +2080,11 @@ def refine_results_postprocess(
 
     pending_eye_highlights: List[Tuple[str, set[Tuple[int, int]]]] = []
 
-    for res, mask in category_entries.get("Hair", []):
+    print(f"[REFINE] Headwear loop completed, processing Hair entries", flush=True)
+    hair_entries_list = list(category_entries.get("Hair", []))  # Snapshot copy to avoid infinite loop
+    print(f"[REFINE] Processing {len(hair_entries_list)} hair entries", flush=True)
+    for hair_idx, (res, mask) in enumerate(hair_entries_list):
+        print(f"[REFINE] Hair {hair_idx+1}/{len(hair_entries_list)}: mask_size={len(mask)}", flush=True)
         mask = mask - outline_candidates - headwear_processed_union
         if not mask:
             continue
