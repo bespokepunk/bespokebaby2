@@ -168,52 +168,158 @@
     main {
       display: flex;
       flex-direction: column;
-      gap: 18px;
-      padding: clamp(18px, 3vw, 32px);
+      gap: 24px;
+      padding: clamp(20px, 3vw, 34px);
     }
 
-    .main-header {
+    .main-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 22px;
+      border-radius: 20px;
+      background: rgba(15, 23, 42, 0.78);
+      border: 1px solid rgba(96, 165, 250, 0.18);
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.38);
+    }
+
+    .toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .sprite-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sprite-label {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: rgba(191, 219, 254, 0.58);
+    }
+
+    .sprite-title-block h2 {
+      margin: 0;
+      font-size: clamp(22px, 4vw, 30px);
+    }
+
+    .toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(13, 21, 38, 0.88);
+      border-radius: 20px;
+      border: 1px solid rgba(96, 165, 250, 0.16);
+      padding: 20px 22px;
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.42);
+    }
+
+    .card-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      margin-bottom: 18px;
     }
 
-    .header-left {
+    .card-title {
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-size: 12px;
+      color: rgba(191, 219, 254, 0.82);
+    }
+
+    .toolbar-chip {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(45, 64, 106, 0.42);
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      font-size: 13px;
+      color: rgba(226, 232, 240, 0.8);
+    }
+
+    .card-subtitle {
+      font-size: 13px;
+      color: rgba(191, 219, 254, 0.68);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(300px, 360px) minmax(0, 1fr);
+      grid-template-areas:
+        "preview summary"
+        "preview table";
+      gap: 24px;
+      align-items: start;
+    }
+
+    .preview-card {
+      grid-area: preview;
+      position: sticky;
+      top: clamp(16px, 3vw, 28px);
+      align-self: start;
+    }
+
+    .summary-card {
+      grid-area: summary;
+      position: sticky;
+      top: clamp(16px, 3vw, 28px);
+      align-self: start;
+    }
+
+    .table-card {
+      grid-area: table;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .preview-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 18px;
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      background: rgba(11, 18, 32, 0.86);
       display: flex;
       align-items: center;
-      gap: 16px;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(96, 165, 250, 0.08), 0 18px 40px rgba(15, 23, 42, 0.45);
     }
 
-    .header-left h2 {
-      margin: 0;
-      font-size: clamp(20px, 3vw, 28px);
+    .preview-frame img {
+      width: 100%;
+      height: 100%;
+      image-rendering: pixelated;
+      object-fit: contain;
     }
 
-    .stats {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      color: rgba(226, 232, 240, 0.7);
-      font-size: 14px;
-      margin-top: 6px;
-    }
-
-    .stats span {
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(30, 64, 175, 0.3);
-      border: 1px solid rgba(96, 165, 250, 0.25);
+    .preview-frame canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
     }
 
     .palette-section {
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      padding: 14px 16px;
-      border-radius: 18px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(96, 165, 250, 0.18);
+      gap: 12px;
+      padding: 16px 18px;
+      margin-top: 18px;
+      border-radius: 16px;
+      background: rgba(12, 20, 34, 0.78);
+      border: 1px solid rgba(96, 165, 250, 0.2);
       box-shadow: inset 0 1px 0 rgba(96, 165, 250, 0.08);
     }
 
@@ -236,8 +342,46 @@
     }
 
     .palette-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-weight: 500;
       opacity: 0.8;
+    }
+
+    .collapse-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(96, 165, 250, 0.35);
+      background: rgba(18, 31, 52, 0.6);
+      color: rgba(226, 232, 240, 0.78);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .collapse-toggle svg {
+      width: 12px;
+      height: 12px;
+      transition: transform 0.2s ease;
+    }
+
+    .collapse-toggle[aria-expanded="false"] svg {
+      transform: rotate(-90deg);
+    }
+
+    .collapsible-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .collapsible-body.collapsed {
+      display: none;
     }
 
     #paletteMiniCanvas {
@@ -246,7 +390,7 @@
       height: 28px;
       border-radius: 10px;
       border: 1px solid rgba(96, 165, 250, 0.25);
-      background: rgba(30, 41, 59, 0.8);
+      background: rgba(17, 27, 44, 0.85);
       image-rendering: pixelated;
     }
 
@@ -283,6 +427,29 @@
       transform: translate(-50%, -2px);
     }
 
+    .ghost-button {
+      border: 1px solid rgba(96, 165, 250, 0.26);
+      background: rgba(17, 27, 44, 0.6);
+      color: rgba(226, 232, 240, 0.9);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor: pointer;
+      align-self: flex-start;
+      margin-bottom: 14px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .ghost-button:hover {
+      border-color: rgba(96, 165, 250, 0.55);
+      background: rgba(28, 41, 66, 0.8);
+    }
+
+    .ghost-button:disabled {
+      opacity: 0.45;
+      cursor: default;
+    }
+
 
     .toggle-sidebar {
       display: inline-flex;
@@ -304,33 +471,107 @@
       border-color: rgba(96, 165, 250, 0.6);
     }
 
-    .controls-row {
+    .stat-chip-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 10px;
+      margin-bottom: 18px;
+      color: rgba(226, 232, 240, 0.82);
+      font-size: 14px;
     }
 
-    .content-grid {
+    .stat-chip-grid span {
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(45, 64, 106, 0.42);
+      border: 1px solid rgba(96, 165, 250, 0.25);
+    }
+
+    .summary-block {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .summary-block[hidden] {
+      display: none;
+    }
+
+    .summary-title {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(191, 219, 254, 0.55);
+    }
+
+    .category-summary,
+    .colour-summary {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .summary-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(45, 64, 106, 0.35);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      font-size: 13px;
+      color: rgba(226, 232, 240, 0.85);
+    }
+
+    .summary-pill .value {
+      font-weight: 600;
+      color: rgba(226, 232, 240, 0.95);
+    }
+
+    .colour-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      background: rgba(17, 27, 44, 0.7);
+      border: 1px solid rgba(96, 165, 250, 0.2);
+      font-size: 13px;
+      color: rgba(226, 232, 240, 0.85);
+    }
+
+    .colour-pill .summary-swatch {
+      width: 16px;
+      height: 16px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.4);
+    }
+
+    .colour-pill .metric {
+      font-size: 11px;
+      color: rgba(191, 219, 254, 0.75);
+    }
+
+    .filters-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
-      gap: 24px;
-      align-items: flex-start;
-      min-height: 0;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
     }
 
-    .table-wrapper {
-      background: rgba(15, 23, 42, 0.65);
-      border-radius: 18px;
-      border: 1px solid rgba(96, 165, 250, 0.15);
-      box-shadow: inset 0 1px 0 rgba(96, 165, 250, 0.08);
-      overflow: hidden;
+    .table-card .table-wrapper {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
       display: flex;
       flex-direction: column;
       min-height: 0;
     }
 
     .table-wrapper-inner {
-      max-height: calc(100vh - 260px);
+      max-height: clamp(320px, 60vh, 660px);
       overflow: auto;
     }
 
@@ -431,44 +672,6 @@
       outline-offset: 2px;
     }
 
-    .preview-column {
-      position: sticky;
-      top: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      align-self: flex-start;
-    }
-
-    .preview {
-      position: relative;
-      width: min(28vw, 320px);
-      aspect-ratio: 1 / 1;
-      border-radius: 24px;
-      border: 1px solid rgba(96, 165, 250, 0.45);
-      background: rgba(15, 23, 42, 0.72);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
-    }
-
-    .preview img {
-      width: 100%;
-      height: 100%;
-      image-rendering: pixelated;
-      object-fit: contain;
-    }
-
-    .preview canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
     .hover-toggle {
       display: inline-flex;
       align-items: center;
@@ -484,13 +687,14 @@
     }
 
     .pixel-mask-panel {
-      background: rgba(15, 23, 42, 0.72);
+      background: rgba(12, 20, 34, 0.78);
       border: 1px solid rgba(96, 165, 250, 0.2);
       border-radius: 16px;
-      padding: 16px;
+      padding: 16px 18px;
       display: flex;
       flex-direction: column;
       gap: 12px;
+      margin-top: 18px;
     }
 
     .pixel-mask-panel pre {
@@ -520,19 +724,20 @@
       cursor: default;
     }
 
-    @media (max-width: 1100px) {
-      .content-grid {
-        grid-template-columns: 1fr;
-      }
-      .preview-column {
-        position: static;
-        width: min(60vw, 320px);
-      }
-    }
-
     @media (max-width: 960px) {
       .layout {
         grid-template-columns: 1fr;
+      }
+      .content-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "preview"
+          "summary"
+          "table";
+      }
+      .preview-card,
+      .summary-card {
+        position: static;
       }
       aside {
         max-height: 320px;
@@ -541,6 +746,11 @@
       }
       .layout.collapsed-aside {
         grid-template-columns: 1fr;
+      }
+      .main-toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
       }
     }
   </style>
@@ -567,80 +777,133 @@
     </aside>
 
     <main>
-      <div class="main-header">
-        <div class="header-left">
+      <div class="main-toolbar">
+        <div class="toolbar-left">
           <button id="toggleSidebar" class="toggle-sidebar" aria-label="Toggle sprite list" aria-pressed="false">☰</button>
-          <div>
+          <div class="sprite-title-block">
+            <span class="sprite-label">Selected Sprite</span>
             <h2 id="spriteTitle">Select a sprite</h2>
-            <div class="stats" id="stats"></div>
           </div>
         </div>
-        <label class="hover-toggle" for="hoverToggle">
-          <input type="checkbox" id="hoverToggle" checked>
-          Auto-preview on hover
-        </label>
-      </div>
-
-      <div class="controls-row">
-        <div class="input-group">
-          <label for="categoryFilter">Category</label>
-          <select id="categoryFilter" disabled>
-            <option value="All">All categories</option>
-          </select>
-        </div>
-        <div class="input-group">
-          <label for="componentSelect">Component</label>
-          <select id="componentSelect" disabled>
-            <option value="-1">Entire trait</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="palette-section" id="paletteSection" hidden>
-        <div class="palette-header">
-          <span class="palette-title">Sprite Palette</span>
-          <span class="palette-meta" id="paletteMeta"></span>
-        </div>
-        <canvas id="paletteMiniCanvas" width="1" height="1" aria-hidden="true"></canvas>
-        <div class="palette-preview" id="palettePreview"></div>
+        <div class="toolbar-actions" id="toolbarChips"></div>
       </div>
 
       <div class="content-grid">
-        <div class="table-wrapper">
-          <div class="table-wrapper-inner">
-            <table aria-label="Trait suggestions">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Category</th>
-                  <th>Layer Name</th>
-                  <th>Copy String</th>
-                  <th>Colour</th>
-                  <th>Coverage</th>
-                  <th>Notes</th>
-                </tr>
-              </thead>
-              <tbody id="traitBody">
-                <tr>
-                  <td colspan="7" style="text-align:center; padding:28px; color:rgba(226,232,240,0.6);">
-                    Choose a sprite to see its traits.
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        <section class="card preview-card">
+          <div class="card-header">
+            <span class="card-title">Sprite Preview</span>
+            <label class="hover-toggle" for="hoverToggle">
+              <input type="checkbox" id="hoverToggle" checked>
+              Auto-preview on hover
+            </label>
           </div>
-        </div>
-
-        <div class="preview-column">
-          <div class="preview" id="previewWrapper">
+          <button id="clearHighlightButton" class="ghost-button" type="button" disabled>Clear highlight</button>
+          <div class="preview-frame" id="previewWrapper">
             <img id="spritePreview" alt="Sprite preview" src="" hidden>
             <canvas id="highlightCanvas" width="512" height="512"></canvas>
           </div>
+          <section class="palette-section" id="paletteSection" hidden>
+            <div class="palette-header">
+              <span class="palette-title">Sprite Palette</span>
+              <div class="palette-meta">
+                <span id="paletteMeta"></span>
+                <button class="collapse-toggle" type="button" data-collapse-target="#paletteBody" aria-expanded="true">
+                  <svg viewBox="0 0 12 12" aria-hidden="true">
+                    <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  Collapse
+                </button>
+              </div>
+            </div>
+            <div class="collapsible-body" id="paletteBody">
+              <canvas id="paletteMiniCanvas" width="1" height="1" aria-hidden="true"></canvas>
+              <div class="palette-preview" id="palettePreview"></div>
+            </div>
+          </section>
           <div class="pixel-mask-panel">
-            <button id="copyMaskButton" disabled>Copy pixel mask</button>
-            <pre id="pixelMaskOutput">Select a trait to preview pixel coordinates.</pre>
+            <div class="card-header" style="margin-bottom: 10px;">
+              <span class="card-title">Pixel Mask</span>
+              <button class="collapse-toggle" type="button" data-collapse-target="#maskBody" aria-expanded="true">
+                <svg viewBox="0 0 12 12" aria-hidden="true">
+                  <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Collapse
+              </button>
+            </div>
+            <div class="collapsible-body" id="maskBody">
+              <button id="copyMaskButton" disabled>Copy pixel mask</button>
+              <pre id="pixelMaskOutput">Select a trait to preview pixel coordinates.</pre>
+            </div>
           </div>
-        </div>
+        </section>
+
+        <section class="card summary-card">
+          <div class="card-header">
+            <span class="card-title">Sprite Details</span>
+            <button class="collapse-toggle" type="button" data-collapse-target="#summaryBody" aria-expanded="true">
+              <svg viewBox="0 0 12 12" aria-hidden="true">
+                <path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Collapse
+            </button>
+          </div>
+          <div class="collapsible-body" id="summaryBody">
+            <div class="stat-chip-grid" id="stats"></div>
+            <div class="summary-block" id="categoryBlock" hidden>
+              <span class="summary-title">Category breakdown</span>
+              <div class="category-summary" id="categorySummary"></div>
+            </div>
+            <div class="summary-block" id="colourBlock" hidden>
+              <span class="summary-title">Colour breakdown</span>
+              <div class="colour-summary" id="colourSummary"></div>
+            </div>
+            <div class="filters-grid">
+              <div class="input-group">
+                <label for="categoryFilter">Category</label>
+                <select id="categoryFilter" disabled>
+                  <option value="All">All categories</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label for="componentSelect">Component</label>
+                <select id="componentSelect" disabled>
+                  <option value="-1">Entire trait</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card table-card">
+          <div class="card-header">
+            <span class="card-title">Trait Breakdown</span>
+            <span class="card-subtitle" id="traitCountLabel">No traits</span>
+          </div>
+          <div class="table-wrapper">
+            <div class="table-wrapper-inner">
+              <table aria-label="Trait suggestions">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Category</th>
+                    <th>Layer Name</th>
+                    <th>Copy String</th>
+                    <th>Colour</th>
+                    <th>Coverage</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="traitBody">
+                  <tr>
+                    <td colspan="7" style="text-align:center; padding:28px; color:rgba(226,232,240,0.6);">
+                      Choose a sprite to see its traits.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
       </div>
     </main>
   </div>

@@ -20,10 +20,10 @@ import json
 import logging
 import math
 import re
-from collections import Counter, deque
+from collections import Counter, defaultdict, deque
 from dataclasses import dataclass, replace
 from pathlib import Path
-from typing import Deque, Dict, Iterable, List, Tuple
+from typing import Any, Deque, Dict, Iterable, List, Set, Tuple
 
 import numpy as np
 from PIL import Image
@@ -114,6 +114,7 @@ ACCESSORY_WHITE_HEXES = {"#ffffff", "#fefefe", "#fdfdfd"}
 OUTLINE_HEX_CODES = {"#000000", "#111111", "#181818", "#1e1e1e", "#241010", "#281002"}
 
 COLOR_NAME_CACHE: Dict[Tuple[str, str | None], str] = {}
+GLOBAL_COLOR_NAME_CACHE: Dict[str, str] = {}
 
 EPIC_CONTEXT_SUFFIXES: Dict[str, List[str]] = {
     "general": ["Gleam", "Pulse", "Aura", "Whisper"],
@@ -197,6 +198,11 @@ def generate_epic_color_name(hex_code: str, context: str | None = None) -> str:
     if cached:
         return cached
 
+    global_name = GLOBAL_COLOR_NAME_CACHE.get(hex_code.lower())
+    if global_name:
+        COLOR_NAME_CACHE[cache_key] = global_name
+        return global_name
+
     r, g, b = hex_to_rgb(hex_code)
     h, l, s = colorsys.rgb_to_hls(r / 255.0, g / 255.0, b / 255.0)
 
@@ -227,8 +233,9 @@ def generate_epic_color_name(hex_code: str, context: str | None = None) -> str:
     )
 
     composed = f"{prefix}{base}{suffix}"
-    COLOR_NAME_CACHE[cache_key] = composed
-    return composed
+    canonical = GLOBAL_COLOR_NAME_CACHE.setdefault(hex_code.lower(), composed)
+    COLOR_NAME_CACHE[cache_key] = canonical
+    return canonical
 
 
 def color_context_for_category(category: str | None) -> str | None:
@@ -248,6 +255,7 @@ def color_context_for_category(category: str | None) -> str | None:
         "Background": "background",
         "Outline": "outline",
         "Palette": "palette",
+        "PaletteFull": "palette",
         "Base": "base",
         "Face": "face",
         "Eyewear": "eyewear",
@@ -328,14 +336,33 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Enable verbose logging.",
     )
+    parser.add_argument(
+        "--json-output",
+        type=Path,
+        help="Optional JSON file to mirror the CSV output (consumed by the viewer).",
+    )
+    parser.add_argument(
+        "--cache-dir",
+        type=Path,
+        help="Directory to store per-sprite cache files so runs can be resumed.",
+    )
+    parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="Skip sprites that already have cached results (requires --cache-dir).",
+    )
     return parser.parse_args()
 
 
 def configure_logging(verbose: bool) -> None:
+    base_level = logging.DEBUG if verbose else logging.INFO
     logging.basicConfig(
-        level=logging.DEBUG if verbose else logging.INFO,
+        level=logging.INFO,
         format="%(levelname)s %(message)s",
     )
+    LOGGER.setLevel(base_level)
+    logging.getLogger("PIL").setLevel(logging.WARNING)
+    logging.getLogger("PIL.PngImagePlugin").setLevel(logging.WARNING)
 
 
 def load_custom_color_map(path: Path | None) -> Dict[str, str]:
@@ -466,6 +493,125 @@ def dominant_colors(counter: Counter, top_n: int) -> List[Tuple[str, int]]:
     return [(rgb_to_hex(rgb), count) for rgb, count in counter.most_common(top_n)]
 
 
+def relative_luminance(hex_code: str) -> float:
+    r, g, b = hex_to_rgb(hex_code)
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b
+
+
+def mask_bounds(mask: Set[Tuple[int, int]]) -> Tuple[int, int, int, int]:
+    rows = [row for row, _ in mask]
+    cols = [col for _, col in mask]
+    return min(rows), max(rows), min(cols), max(cols)
+
+
+def mask_within(
+    mask: Set[Tuple[int, int]],
+    row_min: int,
+    row_max: int,
+    col_min: int,
+    col_max: int,
+    tolerance: int = 0,
+) -> bool:
+    for row, col in mask:
+        if row < row_min - tolerance or row > row_max + tolerance:
+            return False
+        if col < col_min - tolerance or col > col_max + tolerance:
+            return False
+    return True
+
+
+def classify_ear_accessory(
+    mask: Set[Tuple[int, int]],
+    color_hex: str,
+    skin_colors: Set[str],
+    hair_colors: Set[str],
+) -> Tuple[str, str] | None:
+    if not mask:
+        return None
+    lowered = color_hex.lower()
+    if lowered in skin_colors or lowered in hair_colors or lowered in {"#000000"}:
+        return None
+    row_min, row_max, col_min, col_max = mask_bounds(mask)
+    height = row_max - row_min + 1
+    width = col_max - col_min + 1
+    centre_col = (col_min + col_max) / 2.0
+    side = "Left" if centre_col < 12 else "Right"
+    luminance = relative_luminance(color_hex)
+    if luminance > 210 and width <= 2 and height >= 3 and len(mask) >= 3:
+        return ("Airpod", side)
+    if height >= 4 and width <= 3 and len(mask) >= 3:
+        return ("Dangly", side)
+    if width >= 3 and height <= 3 and len(mask) >= 3:
+        return ("Hoop", side)
+    if width <= 2 and height <= 2 and len(mask) >= 2:
+        return ("Stud", side)
+    return None
+
+
+def classify_mouth_accessory(
+    mask: Set[Tuple[int, int]],
+    color_hex: str,
+    pixel_array: np.ndarray,
+) -> str | None:
+    if not mask:
+        return None
+    row_min, row_max, col_min, col_max = mask_bounds(mask)
+    height = row_max - row_min + 1
+    width = col_max - col_min + 1
+    if row_min < 11 or row_max > 17:
+        return None
+    if width < 3 or width > 6:
+        return None
+    if height > 3:
+        return None
+    if col_min >= 7 and col_max <= 16:
+        return None
+    unique_hexes = {
+        rgb_to_hex(tuple(int(pixel_array[row, col][k]) for k in range(3))) for row, col in mask
+    }
+    if len(unique_hexes) <= 1:
+        return None
+    luminance = relative_luminance(color_hex)
+    if luminance > 190:
+        return "Cigarette"
+    if luminance > 120:
+        return "CigaretteHolder"
+    return "Joint"
+
+
+def ensure_palette_full_entries(
+    refined: List[RegionResult],
+    arr: np.ndarray,
+    color_map: Dict[str, str],
+) -> None:
+    total_pixels = arr.shape[0] * arr.shape[1]
+    existing = {
+        res.color_hex.lower()
+        for res in refined
+        if res.category == "PaletteFull"
+    }
+    colour_counter = collect_colors(arr)
+    for (r, g, b), count in colour_counter.items():
+        hex_code = rgb_to_hex((r, g, b))
+        lower = hex_code.lower()
+        if lower in existing:
+            continue
+        color_name = color_name_for_category(hex_code, color_map, "Palette")
+        refined.append(
+            RegionResult(
+                sprite_id=refined[0].sprite_id if refined else "",
+                category="PaletteFull",
+                variant_hint=f"PaletteFull_{color_name}",
+                color_hex=hex_code,
+                color_name=color_name,
+                coverage_pct=round(count / total_pixels * 100.0, 2),
+                notes="full_palette_autofill",
+                pixel_mask="",
+            )
+        )
+        existing.add(lower)
+
+
 def detect_vertical_stripes(arr: np.ndarray) -> List[Tuple[str, float]]:
     rows, cols = arr.shape[:2]
     if cols < 6:
@@ -530,6 +676,66 @@ def detect_vertical_stripes(arr: np.ndarray) -> List[Tuple[str, float]]:
     return stripe_data
 
 
+def detect_pinstripe_background(arr: np.ndarray) -> List[Tuple[str, float]]:
+    h, w, _ = arr.shape
+    if w < 4:
+        return []
+    column_hexes: List[str] = []
+    for col in range(w):
+        column_slice = arr[:, col : col + 1, :]
+        counts = collect_colors(column_slice)
+        if not counts:
+            return []
+        (r, g, b), count = counts.most_common(1)[0]
+        if count < int(h * 0.85):
+            return []
+        column_hexes.append(rgb_to_hex((r, g, b)))
+    unique_hexes = list(dict.fromkeys(column_hexes))
+    if len(unique_hexes) < 2 or len(unique_hexes) > 5:
+        return []
+    period = None
+    for candidate in range(2, min(6, w // 2 + 1)):
+        if all(column_hexes[i] == column_hexes[i % candidate] for i in range(w)):
+            period = candidate
+            break
+    if period is None:
+        return []
+    freq = Counter(column_hexes)
+    return [(hex_code, count / w) for hex_code, count in freq.items()]
+
+
+def detect_panel_background(arr: np.ndarray) -> List[Tuple[str, float]]:
+    h, w, _ = arr.shape
+    mid_row = h // 2
+    mid_col = w // 2
+    if mid_row == 0 or mid_col == 0:
+        return []
+    quadrants = [
+        (slice(0, mid_row), slice(0, mid_col)),
+        (slice(0, mid_row), slice(mid_col, w)),
+        (slice(mid_row, h), slice(0, mid_col)),
+        (slice(mid_row, h), slice(mid_col, w)),
+    ]
+    total_pixels = float(h * w)
+    panel_info: List[Tuple[str, float]] = []
+    unique_hexes: set[str] = set()
+    for row_slice, col_slice in quadrants:
+        region = arr[row_slice, col_slice]
+        counts = collect_colors(region)
+        if not counts:
+            return []
+        (r, g, b), count = counts.most_common(1)[0]
+        quadrant_pixels = region.shape[0] * region.shape[1]
+        if quadrant_pixels == 0 or count < max(6, int(quadrant_pixels * 0.45)):
+            return []
+        hex_code = rgb_to_hex((r, g, b))
+        unique_hexes.add(hex_code)
+        panel_info.append((hex_code, count / total_pixels))
+    if len(unique_hexes) < 3:
+        return []
+    return panel_info
+
+
 def classify_background(arr: np.ndarray) -> Tuple[str, float, str, List[Tuple[str, int]], List[str]]:
     h, w, _ = arr.shape
     all_colors = collect_colors(arr)
@@ -553,6 +759,28 @@ def classify_background(arr: np.ndarray) -> Tuple[str, float, str, List[Tuple[st
             for hex_code, ratio in stripe_info
         ]
         return main_hex, coverage, classification, stripe_palette, [hex_code for hex_code, _ in stripe_info]
+
+    pinstripe_info = detect_pinstripe_background(arr)
+    if pinstripe_info:
+        classification = "Pinstripe"
+        main_hex = pinstripe_info[0][0]
+        coverage = pinstripe_info[0][1]
+        pin_palette = [
+            (hex_code, max(1, int(round(ratio * h * w))))
+            for hex_code, ratio in pinstripe_info
+        ]
+        return main_hex, coverage, classification, pin_palette, [hex_code for hex_code, _ in pinstripe_info]
+
+    panel_info = detect_panel_background(arr)
+    if panel_info:
+        classification = "Panels"
+        main_hex = panel_info[0][0]
+        coverage = panel_info[0][1]
+        panel_palette = [
+            (hex_code, max(1, int(round(ratio * h * w))))
+            for hex_code, ratio in panel_info
+        ]
+        return main_hex, coverage, classification, panel_palette, [hex_code for hex_code, _ in panel_info]
 
     if unique_count > 1 and coverage < 0.95:
         if looks_like_brick(arr, top_colors[0][0]):
@@ -663,21 +891,26 @@ def compute_pixel_mask(
 def collect_background_pixels(arr: np.ndarray, primary_hex: str, palette: List[Tuple[str, int]]) -> str:
     rows, cols = arr.shape[:2]
     candidate_hexes = {primary_hex.lower()}
-    border_rows = set(range(rows))
-    rows_with_color: Dict[str, set[int]] = {}
-    for hex_code, _ in palette:
-        rows_with_color[hex_code.lower()] = set()
+    border_presence: Dict[str, Dict[str, bool]] = defaultdict(
+        lambda: {"top": False, "bottom": False, "left": False, "right": False}
+    )
+    for col in range(cols):
+        r, g, b, a = [int(x) for x in arr[0, col]]
+        if a >= 16:
+            border_presence[rgb_to_hex((r, g, b)).lower()]["top"] = True
+        r, g, b, a = [int(x) for x in arr[rows - 1, col]]
+        if a >= 16:
+            border_presence[rgb_to_hex((r, g, b)).lower()]["bottom"] = True
     for row in range(rows):
-        for col in range(cols):
-            r, g, b, a = [int(x) for x in arr[row, col]]
-            if a < 16:
-                continue
-            hex_code = rgb_to_hex((r, g, b)).lower()
-            if hex_code in rows_with_color:
-                rows_with_color[hex_code].add(row)
-    for lowered, row_set in rows_with_color.items():
-        if row_set == border_rows:
-            candidate_hexes.add(lowered)
+        r, g, b, a = [int(x) for x in arr[row, 0]]
+        if a >= 16:
+            border_presence[rgb_to_hex((r, g, b)).lower()]["left"] = True
+        r, g, b, a = [int(x) for x in arr[row, cols - 1]]
+        if a >= 16:
+            border_presence[rgb_to_hex((r, g, b)).lower()]["right"] = True
+    for hex_code, flags in border_presence.items():
+        if (flags["top"] and flags["bottom"]) or (flags["left"] and flags["right"]):
+            candidate_hexes.add(hex_code)
     candidate_rgbs = {hex_to_rgb(code) for code in candidate_hexes}
 
     visited: set[Tuple[int, int]] = set()
@@ -940,19 +1173,37 @@ def analyze_sprite(
                     ignore_hexes.append(suggestion.color_hex)
 
     # Record dominant palette overall for quick reference.
+    total_pixels = 24 * 24
     all_colors = collect_colors(arr)
     for hex_code, count in dominant_colors(all_colors, top_colors):
         color_name = color_name_for_category(hex_code, color_map, "Palette")
-        coverage = 100.0 * count / (24 * 24)
+        coverage = 100.0 * count / total_pixels
         results.append(
             RegionResult(
                 sprite_id=sprite_id,
                 category="Palette",
-                variant_hint=f"Color_{color_name}",
+                variant_hint=f"Palette_{color_name}",
                 color_hex=hex_code,
                 color_name=color_name,
                 coverage_pct=round(coverage, 2),
                 notes="global_dominant_color",
+            )
+        )
+
+    # Full palette coverage for validation / downstream processing.
+    for (r, g, b), count in all_colors.items():
+        hex_code = rgb_to_hex((r, g, b))
+        color_name = color_name_for_category(hex_code, color_map, "Palette")
+        coverage = 100.0 * count / total_pixels
+        results.append(
+            RegionResult(
+                sprite_id=sprite_id,
+                category="PaletteFull",
+                variant_hint=f"PaletteFull_{color_name}",
+                color_hex=hex_code,
+                color_name=color_name,
+                coverage_pct=round(coverage, 2),
+                notes=f"full_palette; pixels={count}",
             )
         )
 
@@ -999,6 +1250,53 @@ def write_csv(path: Path, records: List[RegionResult]) -> None:
             )
 
 
+def region_result_to_dict(record: RegionResult) -> Dict[str, Any]:
+    return {
+        "sprite_id": record.sprite_id,
+        "category": record.category,
+        "variant_hint": record.variant_hint,
+        "color_hex": record.color_hex,
+        "color_name": record.color_name,
+        "coverage_pct": round(record.coverage_pct, 2),
+        "notes": record.notes,
+        "pixel_mask": record.pixel_mask,
+    }
+
+
+def region_result_from_dict(payload: Dict[str, Any]) -> RegionResult:
+    return RegionResult(
+        sprite_id=payload["sprite_id"],
+        category=payload["category"],
+        variant_hint=payload["variant_hint"],
+        color_hex=payload["color_hex"],
+        color_name=payload.get("color_name", ""),
+        coverage_pct=float(payload.get("coverage_pct", 0.0)),
+        notes=payload.get("notes", ""),
+        pixel_mask=payload.get("pixel_mask", ""),
+    )
+
+
+def write_json_output(path: Path, records: List[RegionResult]) -> None:
+    ensure_directory(path.parent)
+    data = [region_result_to_dict(record) for record in records]
+    with path.open("w", encoding="utf-8") as handle:
+        json.dump(data, handle, indent=2)
+
+
+def load_cached_results(path: Path) -> List[RegionResult]:
+    with path.open("r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    return [region_result_from_dict(item) for item in payload]
+
+
+def write_cache_file(path: Path, records: List[RegionResult]) -> None:
+    ensure_directory(path.parent)
+    tmp_path = path.with_suffix(path.suffix + ".tmp")
+    with tmp_path.open("w", encoding="utf-8") as handle:
+        json.dump([region_result_to_dict(record) for record in records], handle, indent=2)
+    tmp_path.replace(path)
+
+
 def ensure_directory(path: Path) -> None:
     if not path.exists():
         path.mkdir(parents=True, exist_ok=True)
@@ -1022,6 +1320,22 @@ def describe_background_variant(
                 stripe_names.append(name)
         suffix = "_".join(stripe_names).replace(" ", "")
         return f"Stripe_{suffix}"
+    if bg_class == "Pinstripe":
+        stripe_names: List[str] = []
+        for hex_code, _ in palette:
+            name = color_name_for_category(hex_code, color_map, "Background")
+            if name not in stripe_names:
+                stripe_names.append(name)
+        suffix = "_".join(stripe_names[:4]).replace(" ", "")
+        return f"Pinstripe_{suffix}"
+    if bg_class == "Panels":
+        panel_names: List[str] = []
+        for hex_code, _ in palette[:4]:
+            name = color_name_for_category(hex_code, color_map, "Background")
+            if name not in panel_names:
+                panel_names.append(name)
+        suffix = "_".join(panel_names).replace(" ", "")
+        return f"Panels_{suffix}"
     if bg_class == "Brick":
         if len(palette) < 2:
             return f"Brick_{primary}".replace(" ", "")
@@ -1178,6 +1492,57 @@ def refine_results_postprocess(
         if res.category == "Hair":
             hair_union.update(mask)
             hair_color_set.add(res.color_hex.lower())
+        elif res.category == "Clothing":
+            clothing_union.update(mask)
+
+    def update_entry_mask(res: RegionResult, new_mask: set[Tuple[int, int]]) -> None:
+        category = res.category
+        existing_mask = parse_pixel_mask(res.pixel_mask)
+        if category == "Hair" and existing_mask:
+            hair_union.difference_update(existing_mask)
+        if category == "Clothing" and existing_mask:
+            clothing_union.difference_update(existing_mask)
+        if category not in category_to_entry:
+            return
+        for idx, (entry, mask) in enumerate(category_to_entry[category]):
+            if entry is res:
+                category_to_entry[category][idx] = (res, new_mask)
+                break
+        for idx, (entry, mask) in enumerate(processed_entries):
+            if entry is res:
+                processed_entries[idx] = (res, new_mask)
+                break
+        res.pixel_mask = mask_to_string(new_mask)
+        res.coverage_pct = round(len(new_mask) / total_pixels * 100.0, 2)
+        if category == "Hair":
+            hair_union.update(new_mask)
+        if category == "Clothing":
+            clothing_union.update(new_mask)
+
+    def remove_entry(res: RegionResult) -> None:
+        existing_mask = parse_pixel_mask(res.pixel_mask)
+        category = res.category
+        if category in category_to_entry:
+            category_to_entry[category] = [
+                (entry, mask) for entry, mask in category_to_entry[category] if entry is not res
+            ]
+        processed_entries[:] = [(entry, mask) for entry, mask in processed_entries if entry is not res]
+        refined[:] = [entry for entry in refined if entry is not res]
+        if category == "Hair" and existing_mask:
+            hair_union.difference_update(existing_mask)
+            color_lower = res.color_hex.lower()
+            if not any(
+                entry.color_hex.lower() == color_lower for entry, _ in category_to_entry.get("Hair", [])
+            ):
+                hair_color_set.discard(color_lower)
+        if category == "Headwear":
+            color_lower = res.color_hex.lower()
+            if not any(
+                entry.color_hex.lower() == color_lower for entry, _ in category_to_entry.get("Headwear", [])
+            ):
+                headwear_color_set.discard(color_lower)
+        if category == "Clothing" and existing_mask:
+            clothing_union.difference_update(existing_mask)
 
     def update_skin_tracking(hex_code: str, coords: set[Tuple[int, int]]) -> None:
         if not coords:
@@ -1186,6 +1551,87 @@ def refine_results_postprocess(
         lowered = hex_code.lower()
         skin_colors_map[lowered] |= coords
         skin_color_set.add(lowered)
+
+    def extract_note_value(res: RegionResult, key: str) -> str | None:
+        if not res.notes:
+            return None
+        for part in res.notes.split(";"):
+            segment = part.strip()
+            if segment.startswith(f"{key}="):
+                return segment.split("=", 1)[1]
+        return None
+
+    def append_note(res: RegionResult, key: str, value: str) -> None:
+        entry = f"{key}={value}"
+        if res.notes:
+            parts = [segment.strip() for segment in res.notes.split(";") if segment.strip()]
+            if entry in parts:
+                return
+            parts.append(entry)
+            res.notes = ";".join(parts)
+        else:
+            res.notes = entry
+
+    def replace_note(res: RegionResult, key: str, value: str | None) -> None:
+        parts = [segment.strip() for segment in (res.notes or "").split(";") if segment.strip()]
+        filtered = [segment for segment in parts if not segment.startswith(f"{key}=")]
+        if value is not None:
+            filtered.append(f"{key}={value}")
+        res.notes = ";".join(filtered)
+
+    def layer_key_for_result(res: RegionResult) -> str | None:
+        category = res.category or ""
+        if category in {"Palette", "PaletteFull", "Unassigned"}:
+            return None
+        hint = res.variant_hint or ""
+        parts = hint.split("_")
+        if len(parts) == 1:
+            return hint
+        if category == "Jewelry" and len(parts) >= 3 and parts[1].startswith("Earring"):
+            return "_".join(parts[:3])
+        if category == "Face" and parts[1] == "MouthAccessory" and len(parts) >= 3:
+            return "_".join(parts[:3])
+        if category == "FaceAccessory" and len(parts) >= 3 and parts[1].startswith("Earpiece"):
+            return "_".join(parts[:3])
+        return "_".join(parts[:2])
+
+    def collapse_logical_layers(results: List[RegionResult]) -> None:
+        grouped: Dict[str, List[RegionResult]] = defaultdict(list)
+        key_order: List[str] = []
+        passthrough: List[RegionResult] = []
+        for res in results:
+            key = layer_key_for_result(res)
+            if not key:
+                passthrough.append(res)
+                continue
+            if key not in grouped:
+                key_order.append(key)
+            grouped[key].append(res)
+        collapsed: List[RegionResult] = []
+        for key in key_order:
+            candidates = grouped[key]
+            if len(candidates) == 1:
+                collapsed.append(candidates[0])
+                continue
+            primary = max(
+                candidates,
+                key=lambda res: len(parse_pixel_mask(res.pixel_mask)),
+            )
+            union_mask: set[Tuple[int, int]] = set()
+            for res in candidates:
+                union_mask |= parse_pixel_mask(res.pixel_mask)
+            if union_mask:
+                primary.pixel_mask = mask_to_string(union_mask)
+                primary.coverage_pct = round(len(union_mask) / total_pixels * 100.0, 2)
+            accent_names = {
+                res.color_name
+                for res in candidates
+                if res is not primary and res.color_name
+            }
+            if accent_names:
+                append_note(primary, "layer_accents", ",".join(sorted(accent_names)))
+            collapsed.append(primary)
+        results[:] = passthrough + collapsed
 
     def touches_skin(coords: set[Tuple[int, int]]) -> bool:
         if not coords or not skin_union:
@@ -1222,10 +1668,16 @@ def refine_results_postprocess(
         if not mask_set:
             return False
         rows = [row for row, _ in mask_set]
+        cols = [col for _, col in mask_set]
         min_row, max_row = min(rows), max(rows)
-        if max_row >= 18:
+        if max_row >= 19:
             return False
-        return min_row <= 10 and max_row <= 17
+        if len(mask_set) < 4:
+            return False
+        width = max(cols) - min(cols) + 1
+        if width < 3:
+            return False
+        return min_row <= 7 and max_row <= 18
 
     def looks_like_glasses(mask_set: set[Tuple[int, int]], hex_code: str) -> bool:
         if not mask_set:
@@ -1276,6 +1728,41 @@ def refine_results_postprocess(
             if len(component) >= 3:
                 large_components += 1
         return large_components >= 2
+
+    def classify_headwear_shape(mask_set: set[Tuple[int, int]]) -> str | None:
+        if not mask_set:
+            return None
+        rows = [row for row, _ in mask_set]
+        cols = [col for _, col in mask_set]
+        min_row, max_row = min(rows), max(rows)
+        min_col, max_col = min(cols), max(cols)
+        height = max_row - min_row + 1
+        width = max_col - min_col + 1
+        row_counts = Counter(rows)
+        top_band_rows = [row for row in row_counts if row <= min_row + 1]
+        top_pixels = sum(row_counts[row] for row in top_band_rows)
+        top_ratio = top_pixels / len(mask_set)
+        bottom_pixels = row_counts.get(max_row, 0)
+        spans_left = min_col <= 1
+        spans_right = max_col >= 22
+        touches_bottom = max_row >= 18
+        if height <= 3 and top_ratio > 0.6:
+            return "Halo"
+        if touches_bottom and height >= 8 and width >= 8:
+            return "Hood"
+        if min_row <= 1 and top_ratio >= 0.25 and height >= 5:
+            return "Crown"
+        if width >= 12 and height <= 7 and spans_left and spans_right:
+            return "Hat_Cowboy"
+        if width >= 11 and height >= 6 and bottom_pixels > row_counts.get(min_row, 0) + 2:
+            return "Hat_Bucket"
+        if width <= 9 and height >= 6 and bottom_pixels >= row_counts.get(min_row, 0) - 1:
+            return "Beanie"
+        if height >= 8 and width <= 8:
+            return "Hat_Top"
+        if height <= 5 and width >= 10 and not spans_left and not spans_right:
+            return "Headband"
+        return None
 
     def distance_to_hair_palette(hex_code: str) -> float:
         if not hair_color_set:
@@ -1374,6 +1861,15 @@ def refine_results_postprocess(
             return
         # Recompute dominant colour within merged mask
         if merged_mask:
+            hair_union_local: set[Tuple[int, int]] = set()
+            for _, hair_mask in category_to_entry.get("Hair", []):
+                hair_union_local |= hair_mask
+            headwear_union_local: set[Tuple[int, int]] = set()
+            for _, headwear_mask in category_to_entry.get("Headwear", []):
+                headwear_union_local |= headwear_mask
+            cleaned_mask = merged_mask - hair_union_local - headwear_union_local
+            if cleaned_mask:
+                merged_mask = cleaned_mask
             rgb_counts = Counter(tuple(int(arr[row, col][k]) for k in range(3)) for row, col in merged_mask)
             sorted_colors = sorted(rgb_counts.items(), key=lambda kv: kv[1], reverse=True)
             dominant_rgb: Tuple[int, int, int] | None = None
@@ -1408,6 +1904,77 @@ def refine_results_postprocess(
         update_skin_tracking(primary_entry.color_hex, merged_mask)
 
     merge_skin_variants()
+
+    def reclaim_dark_foreground_from_background() -> None:
+        background_items = list(category_to_entry.get("Background", []))
+        if not background_items:
+            return
+        changed = False
+        adjacency_offsets = ((1, 0), (-1, 0), (0, 1), (0, -1))
+        for res, mask in background_items:
+            if not mask:
+                continue
+            colour_luminance = relative_luminance(res.color_hex)
+            if colour_luminance > 135:
+                continue
+            remaining = set(mask)
+            components: List[set[Tuple[int, int]]] = []
+            while remaining:
+                start = remaining.pop()
+                stack = [start]
+                component = {start}
+                while stack:
+                    row, col = stack.pop()
+                    for dr, dc in adjacency_offsets:
+                        coord = (row + dr, col + dc)
+                        if coord in remaining:
+                            remaining.remove(coord)
+                            stack.append(coord)
+                            component.add(coord)
+                components.append(component)
+            leftover = set(mask)
+            for comp in components:
+                if len(comp) < 12:
+                    continue
+                rows = [row for row, _ in comp]
+                cols = [col for _, col in comp]
+                max_row = max(rows)
+                if max_row <= 5:
+                    continue
+                interior = sum(
+                    1 for row, col in comp if 4 <= row <= 20 and 3 <= col <= 20
+                )
+                if interior / len(comp) < 0.4:
+                    continue
+                adjacency_found = False
+                for row, col in comp:
+                    for dr, dc in adjacency_offsets:
+                        nbr = (row + dr, col + dc)
+                        if (
+                            nbr in skin_union
+                            or nbr in outline_set
+                            or nbr in mouth_union
+                            or nbr in eye_union
+                        ):
+                            adjacency_found = True
+                            break
+                    if adjacency_found:
+                        break
+                if not adjacency_found:
+                    continue
+                add_pixels("Hair", set(comp), res.color_hex)
+                leftover -= comp
+                changed = True
+            if leftover != set(mask):
+                if leftover:
+                    update_entry_mask(res, leftover)
+                else:
+                    remove_entry(res)
+        if changed:
+            category_entries["Hair"] = category_to_entry.get("Hair", [])
+            category_entries["Background"] = category_to_entry.get("Background", [])
+
+    reclaim_dark_foreground_from_background()
 
     processed_headwear: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
     headwear_processed_union: set[Tuple[int, int]] = set()
@@ -1557,6 +2124,90 @@ def refine_results_postprocess(
 
     merge_hair_variants()
 
+    def peel_nonhair_from_hair() -> None:
+        hair_entries = category_to_entry.get("Hair", [])
+        if not hair_entries:
+            return
+        updated: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
+        for res, mask in hair_entries:
+            if not mask:
+                continue
+            color_groups: Dict[str, set[Tuple[int, int]]] = defaultdict(set)
+            for row, col in mask:
+                hex_code = rgb_to_hex(tuple(int(arr[row, col][k]) for k in range(3)))
+                color_groups[hex_code].add((row, col))
+            primary_hex = res.color_hex.lower()
+            kept: set[Tuple[int, int]] = set()
+            removed_any = False
+            for hex_code, coords in color_groups.items():
+                lower = hex_code.lower()
+                if lower == primary_hex:
+                    kept |= coords
+                    continue
+                ratio = len(coords) / len(mask)
+                luminance_delta = abs(relative_luminance(hex_code) - relative_luminance(res.color_hex))
+                palette_distance = distance_to_hair_palette(hex_code)
+                if ratio <= 0.22 and (luminance_delta >= 25 or palette_distance > 32):
+                    coord_set = set(coords)
+                    if is_mouth_candidate(coord_set):
+                        add_pixels("Mouth", coord_set, hex_code)
+                    elif touches_skin(coord_set):
+                        add_pixels("FaceAccessory", coord_set, hex_code)
+                    elif min(row for row, _ in coord_set) <= 5:
+                        add_pixels("Headwear", coord_set, hex_code)
+                    else:
+                        add_pixels("Headwear", coord_set, hex_code)
+                    removed_any = True
+                else:
+                    kept |= coords
+            if removed_any:
+                if kept:
+                    update_entry_mask(res, kept)
+                    updated.append((res, kept))
+                else:
+                    remove_entry(res)
+            else:
+                updated.append((res, mask))
+        if updated:
+            category_to_entry["Hair"] = updated
+
+    peel_nonhair_from_hair()
+
+    def merge_facial_hair_variants() -> None:
+        facial_entries = category_to_entry.get("FacialHair", [])
+        if not facial_entries:
+            return
+        primary_entry, _ = max(facial_entries, key=lambda item: len(item[1]))
+        merged_mask: set[Tuple[int, int]] = set()
+        accent_colors: List[str] = []
+        for entry, mask in facial_entries:
+            merged_mask |= mask
+            if entry is not primary_entry:
+                accent_colors.append(color_name_for_category(entry.color_hex, color_map, "FacialHair"))
+        if not merged_mask:
+            return
+        if accent_colors:
+            append_note(primary_entry, "facialhair_accents", ",".join(sorted(set(accent_colors))))
+        rgb_counts = Counter(tuple(int(arr[row, col][k]) for k in range(3)) for row, col in merged_mask)
+        if rgb_counts:
+            dominant_rgb, _ = max(rgb_counts.items(), key=lambda item: item[1])
+            dominant_hex = rgb_to_hex(dominant_rgb)
+            primary_entry.color_hex = dominant_hex
+            primary_entry.color_name = color_name_for_category(dominant_hex, color_map, "FacialHair")
+            primary_entry.variant_hint = f"FacialHair_Main_{primary_entry.color_name}"
+        primary_entry.pixel_mask = mask_to_string(merged_mask)
+        primary_entry.coverage_pct = round(len(merged_mask) / total_pixels * 100.0, 2)
+        category_to_entry["FacialHair"] = [(primary_entry, merged_mask)]
+        processed_entries[:] = [
+            (primary_entry if res is primary_entry else res, merged_mask if res is primary_entry else mask)
+            for res, mask in processed_entries
+            if res.category != "FacialHair" or res is primary_entry
+        ]
+        refined[:] = [res for res in refined if res.category != "FacialHair"]
+        refined.append(primary_entry)
+
+    merge_facial_hair_variants()
+
     for res, mask in category_entries.get("Eyes", []):
         mask = mask - outline_candidates
         if not mask:
@@ -1612,6 +2263,13 @@ def refine_results_postprocess(
 
     def relabel_headwear_and_glasses() -> None:
         headwear_entries = category_to_entry.get("Headwear", [])
+        def ensure_flag(res: RegionResult, flag: str) -> None:
+            notes = res.notes or ""
+            parts = [segment.strip() for segment in notes.split(";") if segment.strip()]
+            if flag in parts:
+                return
+            parts.append(flag)
+            res.notes = ";".join(parts)
         for res, mask in headwear_entries:
             if not mask:
                 continue
@@ -1621,7 +2279,17 @@ def refine_results_postprocess(
             width = max(cols) - min(cols) + 1
             if max(rows) <= 7 and width >= 5:
                 res.variant_hint = f"Headwear_Cap_{res.color_name}"
+        eye_color_set = {
+            res.color_hex.lower()
+            for res, _ in category_to_entry.get("Eyes", [])
+            if res.color_hex
+        }
         face_entries = category_to_entry.get("FaceAccessory", [])
+        reflection_entries = [
+            (res, mask)
+            for res, mask in face_entries
+            if res.color_hex and res.color_hex.lower() in ACCESSORY_WHITE_HEXES and mask
+        ]
         glasses_bounds: List[Tuple[int, int, int, int, str]] = []
         for res, mask in face_entries:
             if not mask:
@@ -1631,36 +2299,67 @@ def refine_results_postprocess(
             min_row, max_row = min(rows), max(rows)
             width = max(cols) - min(cols) + 1
             height = max_row - min_row + 1
+            overlap = mask & eye_union
+            if overlap:
+                overlap_cols = [col for _, col in overlap]
+                coverage_ratio = len(overlap) / len(mask)
+                if (
+                    coverage_ratio >= 0.5
+                    and width >= 6
+                    and min(overlap_cols) <= 11
+                    and max(overlap_cols) >= 12
+                    and min_row >= 6
+                    and height <= 8
+                ):
+                    color_name = color_name_for_category(res.color_hex, color_map, context="glass")
+                    variant = f"FaceAccessory_Glasses_{color_name}"
+                    res.variant_hint = variant
+                    res.color_name = color_name
+                    ensure_flag(res, "glasses_lens")
+                    ensure_flag(res, "glasses_tint")
+                    glasses_bounds.append((min_row, max_row, min(cols), max(cols), variant))
+                    continue
             if (
                 min_row >= 6
                 and height <= 6
                 and width >= 6
                 and looks_like_glasses(mask, res.color_hex)
+                and res.color_hex.lower() not in eye_color_set
             ):
+                has_reflection = False
+                for refl_res, refl_mask in reflection_entries:
+                    if refl_res is res:
+                        continue
+                    r_rows = [row for row, _ in refl_mask]
+                    r_cols = [col for _, col in refl_mask]
+                    if not r_rows or not r_cols:
+                        continue
+                    r_min_row, r_max_row = min(r_rows), max(r_rows)
+                    r_min_col, r_max_col = min(r_cols), max(r_cols)
+                    if (
+                        r_min_row >= min_row - 1
+                        and r_max_row <= max_row + 1
+                        and r_min_col >= min(cols) - 1
+                        and r_max_col <= max(cols) + 1
+                    ):
+                        has_reflection = True
+                        break
                 color_name = color_name_for_category(res.color_hex, color_map, context="glass")
                 variant = f"FaceAccessory_Glasses_{color_name}"
                 res.variant_hint = variant
                 res.color_name = color_name
-                current_notes = res.notes or ""
-                if "glasses_lens" not in current_notes:
-                    res.notes = (
-                        f"{current_notes};glasses_lens".strip(";")
-                        if current_notes
-                        else "glasses_lens"
-                    )
+                ensure_flag(res, "glasses_lens")
+                if has_reflection:
+                    ensure_flag(res, "glasses_reflection")
+                else:
+                    ensure_flag(res, "glasses_solid")
                 glasses_bounds.append((min_row, max_row, min(cols), max(cols), variant))
                 continue
             if looks_like_headphones(mask):
                 color_name = color_name_for_category(res.color_hex, color_map, "FaceAccessory")
                 res.variant_hint = f"FaceAccessory_Headphones_{color_name}"
                 res.color_name = color_name
-                current_notes = res.notes or ""
-                if "headphones" not in current_notes:
-                    res.notes = (
-                        f"{current_notes};headphones".strip(";")
-                        if current_notes
-                        else "headphones"
-                    )
+                ensure_flag(res, "headphones")
                 continue
         if glasses_bounds:
             for res, mask in face_entries:
@@ -1679,13 +2378,7 @@ def refine_results_postprocess(
                     ):
                         res.variant_hint = variant
                         res.color_name = color_name_for_category(res.color_hex, color_map, context="glass")
-                        current_notes = res.notes or ""
-                        if "glasses_reflection" not in current_notes:
-                            res.notes = (
-                                f"{current_notes};glasses_reflection".strip(";")
-                                if current_notes
-                                else "glasses_reflection"
-                            )
+                        ensure_flag(res, "glasses_reflection")
                         break
 
     def reassign_cap_pixels() -> None:
@@ -1742,6 +2435,18 @@ def refine_results_postprocess(
                 headwear_color_set.discard(color_lower)
                 refined[:] = [r for r in refined if r is not res]
                 processed_entries[:] = [(r, m) for r, m in processed_entries if r is not res]
+            elif (
+                classify_headwear_shape(mask) is None
+                and min_row <= 2
+                and max_row >= 10
+                and relative_luminance(res.color_hex) <= 120
+                and sum(1 for row, _ in mask if 6 <= row <= 14) >= 0.3 * len(mask)
+            ):
+                add_pixels("Hair", set(mask), res.color_hex)
+                hair_color_set.add(res.color_hex.lower())
+                headwear_color_set.discard(color_lower)
+                refined[:] = [r for r in refined if r is not res]
+                processed_entries[:] = [(r, m) for r, m in processed_entries if r is not res]
             else:
                 keep.append((res, mask))
         category_to_entry["Headwear"] = keep
@@ -1792,6 +2497,24 @@ def refine_results_postprocess(
         res.coverage_pct = round(len(mask) / total_pixels * 100.0, 2)
         register_entry(res, mask)
 
+    def connected_components_from_mask(mask: set[Tuple[int, int]]) -> List[set[Tuple[int, int]]]:
+        components: List[set[Tuple[int, int]]] = []
+        remaining = set(mask)
+        while remaining:
+            start = remaining.pop()
+            stack = [start]
+            component: set[Tuple[int, int]] = {start}
+            while stack:
+                row, col = stack.pop()
+                for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    coord = (row + dr, col + dc)
+                    if coord in remaining:
+                        remaining.remove(coord)
+                        stack.append(coord)
+                        component.add(coord)
+            components.append(component)
+        return components
+
     def merge_mouth_variants() -> None:
         mouth_entries = category_to_entry.get("Mouth", [])
         if not mouth_entries:
@@ -1802,12 +2525,53 @@ def refine_results_postprocess(
             merged_mask |= mask
         if not merged_mask:
             return
+        allowed_rows = range(8, 18)
+        allowed_cols = range(4, 20)
+        trimmed_mask: set[Tuple[int, int]] = set()
+        for row, col in merged_mask:
+            if row not in allowed_rows or col not in allowed_cols:
+                continue
+            rgb = tuple(int(arr[row, col][k]) for k in range(3))
+            if rgb_to_hex(rgb).lower() in skin_color_set:
+                continue
+            trimmed_mask.add((row, col))
+        if not trimmed_mask:
+            trimmed_mask = {coord for coord in merged_mask if coord[0] in allowed_rows and coord[1] in allowed_cols}
+        if trimmed_mask:
+            components = connected_components_from_mask(trimmed_mask)
+            scored_components: List[Tuple[float, set[Tuple[int, int]]]] = []
+            for comp in components:
+                rows = [row for row, _ in comp]
+                cols = [col for _, col in comp]
+                size = len(comp)
+                row_span = max(rows) - min(rows) + 1
+                col_center = sum(cols) / size
+                centre_distance = abs(col_center - 11.5)
+                score = size - centre_distance
+                if row_span <= 3 or size >= 3:
+                    scored_components.append((score, comp))
+            scored_components.sort(key=lambda item: item[0], reverse=True)
+            selected_mask: set[Tuple[int, int]] = set()
+            for score, comp in scored_components:
+                if not selected_mask:
+                    selected_mask |= comp
+                    continue
+                overlap = selected_mask & comp
+                if overlap:
+                    selected_mask |= comp
+                elif len(comp) >= 3:
+                    selected_mask |= comp
+            if selected_mask:
+                merged_mask = selected_mask
         rgb_counts = Counter(tuple(int(arr[row, col][k]) for k in range(3)) for row, col in merged_mask)
         filtered = [item for item in rgb_counts.items() if rgb_to_hex(item[0]).lower() not in skin_color_set]
         if filtered:
             dominant_rgb = max(filtered, key=lambda kv: kv[1])[0]
         else:
-            dominant_rgb = max(rgb_counts.items(), key=lambda kv: kv[1])[0]
+            dominant_rgb = min(
+                rgb_counts.items(),
+                key=lambda kv: (relative_luminance(rgb_to_hex(kv[0])), -kv[1]),
+            )[0]
         dominant_hex = rgb_to_hex(dominant_rgb)
         primary_entry.color_hex = dominant_hex
         primary_entry.color_name = color_name_for_category(dominant_hex, color_map, "Mouth")
@@ -1859,6 +2623,82 @@ def refine_results_postprocess(
 
     merge_mouth_variants()
     prune_hair_overlap()
+    def component_dominant_hex(comp: set[Tuple[int, int]]) -> str:
+        rgb_counts = Counter(tuple(int(arr[row, col][k]) for k in range(3)) for row, col in comp)
+        dominant_rgb = max(rgb_counts.items(), key=lambda kv: kv[1])[0]
+        return rgb_to_hex(dominant_rgb)
+
+    def looks_like_headwear_component(comp: set[Tuple[int, int]]) -> bool:
+        if not comp:
+            return False
+        rows = [row for row, _ in comp]
+        cols = [col for _, col in comp]
+        min_row, max_row = min(rows), max(rows)
+        width = max(cols) - min(cols) + 1
+        height = max_row - min_row + 1
+        if min_row <= 2 and width >= 4:
+            return True
+        if min_row <= 4 and height <= 6 and width >= 6:
+            return True
+        return False
+
+    def promote_glasses_from_outline() -> None:
+        if not outline_candidates or not eye_union:
+            return
+        visited: set[Tuple[int, int]] = set()
+        height, width = arr.shape[:2]
+        pending: List[Tuple[set[Tuple[int, int]], str]] = []
+        for start in list(outline_candidates):
+            if start in visited or start not in outline_candidates:
+                continue
+            stack = [start]
+            component: set[Tuple[int, int]] = set()
+            while stack:
+                row, col = stack.pop()
+                if (row, col) in visited or (row, col) not in outline_candidates:
+                    continue
+                visited.add((row, col))
+                component.add((row, col))
+                for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nr, nc = row + dr, col + dc
+                    if 0 <= nr < height and 0 <= nc < width and (nr, nc) not in visited:
+                        if (nr, nc) in outline_candidates:
+                            stack.append((nr, nc))
+            if len(component) < 4:
+                continue
+            rows = [r for r, _ in component]
+            cols = [c for _, c in component]
+            min_row, max_row = min(rows), max(rows)
+            min_col, max_col = min(cols), max(cols)
+            comp_width = max_col - min_col + 1
+            comp_height = max_row - min_row + 1
+            if comp_width < 4 or comp_height > 6:
+                continue
+            if min_row < 5 or max_row > 16:
+                continue
+            if comp_width < comp_height:
+                continue
+            touches_eye = bool(component & eye_union)
+            if not touches_eye:
+                for row, col in component:
+                    neighbourhood = {
+                        (row + dr, col + dc)
+                        for dr in (-1, 0, 1)
+                        for dc in (-1, 0, 1)
+                    }
+                    if neighbourhood & eye_union:
+                        touches_eye = True
+                        break
+            if not touches_eye:
+                continue
+            sample_row, sample_col = next(iter(component))
+            rgb = tuple(int(arr[sample_row, sample_col][k]) for k in range(3))
+            hex_code = rgb_to_hex(rgb)
+            pending.append((component, hex_code))
+        for comp, hex_code in pending:
+            outline_candidates.difference_update(comp)
+            add_pixels("FaceAccessory", set(comp), hex_code)
+
     def refine_hair_components() -> None:
         nonlocal hair_union
         hair_entries = category_to_entry.get("Hair", [])
@@ -1870,6 +2710,7 @@ def refine_results_postprocess(
         updated_entries: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
         facial_components: List[set[Tuple[int, int]]] = []
         changed = False
+        pending_headwear: List[set[Tuple[int, int]]] = []
         for res, mask in hair_entries:
             working = set(mask)
             if headwear_pixels:
@@ -1901,11 +2742,30 @@ def refine_results_postprocess(
                 components.append(component)
             keep_components: List[set[Tuple[int, int]]] = []
             facial_candidates: List[set[Tuple[int, int]]] = []
+            accessory_components: List[Tuple[set[Tuple[int, int]], str]] = []
+            primary_hex = res.color_hex
+            primary_rgb = hex_to_rgb(primary_hex) if primary_hex else (0, 0, 0)
+            primary_lum = relative_luminance(primary_hex) if primary_hex else 0.0
             for comp in components:
                 rows = [row for row, _ in comp]
                 min_row = min(rows)
                 max_row = max(rows)
                 lower_count = sum(1 for row in rows if row >= 11)
+                comp_hex = component_dominant_hex(comp)
+                if (
+                    comp_hex
+                    and primary_hex
+                    and comp_hex.lower() != primary_hex.lower()
+                    and len(comp) <= 80
+                    and min_row <= 12
+                ):
+                    comp_rgb = hex_to_rgb(comp_hex)
+                    dist = squared_distance(comp_rgb, primary_rgb)
+                    lum_delta = abs(relative_luminance(comp_hex) - primary_lum)
+                    if dist > 15000 or lum_delta > 85:
+                        accessory_components.append((comp, comp_hex))
+                        changed = True
+                        continue
                 if (
                     lower_count >= 3
                     and lower_count / len(comp) >= 0.5
@@ -1913,8 +2773,16 @@ def refine_results_postprocess(
                     and touches_skin(comp)
                 ):
                     facial_candidates.append(comp)
+                elif looks_like_headwear_component(comp):
+                    pending_headwear.append(comp)
+                    changed = True
                 else:
                     keep_components.append(comp)
+            if accessory_components:
+                for comp, comp_hex in accessory_components:
+                    headwear_pixels |= comp
+                    headwear_color_set.add(comp_hex.lower())
+                    add_pixels("Headwear", set(comp), comp_hex)
             if keep_components:
                 combined_hair = set().union(*keep_components)
                 if combined_hair != mask:
@@ -1932,6 +2800,13 @@ def refine_results_postprocess(
             category_to_entry["Hair"] = updated_entries
         elif hair_entries:
             category_to_entry.pop("Hair", None)
+        if pending_headwear:
+            for comp in pending_headwear:
+                headwear_pixels |= comp
+                comp_hex = component_dominant_hex(comp)
+                add_pixels("Headwear", comp, comp_hex)
+                if comp_hex:
+                    headwear_color_set.add(comp_hex.lower())
         if changed:
             hair_union.clear()
             for _, mask in updated_entries:
@@ -1954,13 +2829,13 @@ def refine_results_postprocess(
             for res, mask in updated_entries:
                 if not mask:
                     continue
-                sample_row, sample_col = next(iter(mask))
-                sample_rgb = tuple(int(arr[sample_row, sample_col][k]) for k in range(3))
-                sample_hex = rgb_to_hex(sample_rgb)
-                res.color_hex = sample_hex
-                res.color_name = color_name_for_category(sample_hex, color_map, "Hair")
+                rgb_counts = Counter(tuple(int(arr[row, col][k]) for k in range(3)) for row, col in mask)
+                dominant_rgb = max(rgb_counts.items(), key=lambda kv: kv[1])[0]
+                dominant_hex = rgb_to_hex(dominant_rgb)
+                res.color_hex = dominant_hex
+                res.color_name = color_name_for_category(dominant_hex, color_map, "Hair")
                 res.variant_hint = f"Hair_{res.color_name}"
-                hair_color_set.add(sample_hex.lower())
+                hair_color_set.add(dominant_hex.lower())
         if facial_components:
             combined_facial = set().union(*facial_components)
             if combined_facial:
@@ -2103,6 +2978,7 @@ def refine_results_postprocess(
     promote_hair_to_headwear()
     final_headwear_cleanup()
     merge_eye_variants()
+    promote_glasses_from_outline()
     relabel_headwear_and_glasses()
 
     eye_entries_after = category_to_entry.get("Eyes")
@@ -2187,6 +3063,67 @@ def refine_results_postprocess(
         res.pixel_mask = mask_to_string(mask)
         res.coverage_pct = round(len(mask) / total_pixels * 100.0, 2)
         register_entry(res, mask)
+
+    merge_eye_variants()
+    def scrub_eyes_from_hair_headwear() -> None:
+        eye_entries_local = category_to_entry.get("Eyes", [])
+        if not eye_entries_local:
+            return
+        eye_union_local: set[Tuple[int, int]] = set()
+        for _, mask in eye_entries_local:
+            eye_union_local |= mask
+        for cat in ("Hair", "Headwear"):
+            entries = category_to_entry.get(cat, [])
+            if not entries:
+                continue
+            cleaned_entries: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
+            for res, mask in entries:
+                cleaned_mask = mask - eye_union_local
+                if cleaned_mask == mask:
+                    cleaned_entries.append((res, mask))
+                    continue
+                if cleaned_mask:
+                    update_entry_mask(res, cleaned_mask)
+                    cleaned_entries.append((res, cleaned_mask))
+                else:
+                    remove_entry(res)
+            category_to_entry[cat] = cleaned_entries
+
+    scrub_eyes_from_hair_headwear()
+    def expand_eyewear_masks() -> None:
+        eyewear_entries = []
+        for res, mask in category_to_entry.get("FaceAccessory", []):
+            notes = res.notes or ""
+            if "glasses_lens" in notes or res.variant_hint.startswith("FaceAccessory_Glasses_"):
+                eyewear_entries.append((res, mask))
+        if not eyewear_entries:
+            return
+        for res, mask in eyewear_entries:
+            expanded = set(mask)
+            queue = deque(mask)
+            while queue:
+                row, col = queue.popleft()
+                for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nr, nc = row + dr, col + dc
+                    if not (0 <= nr < arr.shape[0] and 0 <= nc < arr.shape[1]):
+                        continue
+                    coord = (nr, nc)
+                    if coord in expanded:
+                        continue
+                    if coord not in outline_candidates:
+                        continue
+                    if nr < 5 or nr > 18:
+                        continue
+                    rgb = tuple(int(arr[nr, nc][k]) for k in range(3))
+                    hex_lower = rgb_to_hex(rgb).lower()
+                    if hex_lower in {res.color_hex.lower(), "#000000"}:
+                        outline_candidates.discard(coord)
+                        expanded.add(coord)
+                        queue.append(coord)
+            if expanded != set(mask):
+                update_entry_mask(res, expanded)
+
+    expand_eyewear_masks()
 
     for res, mask in category_entries.get("Clothing", []):
         mask = mask - headwear_processed_union - outline_candidates
@@ -2321,8 +3258,89 @@ def refine_results_postprocess(
             )
             register_entry(extra_res, coords)
 
+    def extract_neck_jewelry() -> None:
+        clothing_entries = list(category_to_entry.get("Clothing", []))
+        if not clothing_entries:
+            return
+        for res, mask in clothing_entries:
+            potential_chain: set[Tuple[int, int]] = set()
+            for row, col in mask:
+                if row < 14 or row > 20:
+                    continue
+                rgb = tuple(int(arr[row, col][k]) for k in range(3))
+                luminance = relative_luminance(rgb_to_hex(rgb))
+                if luminance < 140:
+                    continue
+                r, g, b = rgb
+                if r >= g + 5 and r >= b + 10:
+                    potential_chain.add((row, col))
+            if not potential_chain:
+                continue
+            components = connected_components_from_mask(potential_chain)
+            found_chain = False
+            remaining = set(mask)
+            for comp in components:
+                if len(comp) < 4:
+                    continue
+                rows = [row for row, _ in comp]
+                cols = [col for _, col in comp]
+                min_row, max_row = min(rows), max(rows)
+                min_col, max_col = min(cols), max(cols)
+                height = max_row - min_row + 1
+                width = max_col - min_col + 1
+                if len(comp) <= 40:
+                    if width >= 3 or height >= 4:
+                        pass
+                    else:
+                        continue
+                    found_chain = True
+                    remaining -= comp
+                    rgb_counts = Counter(tuple(int(arr[row, col][k]) for k in range(3)) for row, col in comp)
+                    dominant_rgb = max(rgb_counts.items(), key=lambda kv: kv[1])[0]
+                    hex_code = rgb_to_hex(dominant_rgb)
+                    color_name = color_name_for_category(hex_code, color_map, "Jewelry")
+                    jewelry_entry = RegionResult(
+                        sprite_id=sprite_id,
+                        category="Jewelry",
+                        variant_hint=f"Jewelry_Neck_{color_name}",
+                        color_hex=hex_code,
+                        color_name=color_name,
+                        coverage_pct=round(len(comp) / total_pixels * 100.0, 2),
+                        notes="auto_chain_detect",
+                        pixel_mask=mask_to_string(comp),
+                    )
+                    register_entry(jewelry_entry, set(comp))
+            if found_chain:
+                if remaining:
+                    update_entry_mask(res, remaining)
+                else:
+                    remove_entry(res)
+
+    extract_neck_jewelry()
+
+    merge_facial_hair_variants()
+    def scrub_mouth_from_facial_hair() -> None:
+        if not mouth_union:
+            return
+        entries = list(category_to_entry.get("FacialHair", []))
+        if not entries:
+            return
+        for res, mask in entries:
+            cleaned_mask = mask - mouth_union
+            if cleaned_mask != mask:
+                if cleaned_mask:
+                    update_entry_mask(res, cleaned_mask)
+                else:
+                    remove_entry(res)
+
+    scrub_mouth_from_facial_hair()
+
     # Palette entries remain unchanged.
     for res, mask in category_entries.get("Palette", []):
+        processed_entries.append((res, mask))
+        category_to_entry[res.category].append((res, mask))
+
+    for res, mask in category_entries.get("PaletteFull", []):
         processed_entries.append((res, mask))
         category_to_entry[res.category].append((res, mask))
 
@@ -2408,7 +3426,14 @@ def refine_results_postprocess(
             residual_assignments[("Background", hex_code)].update(coords)
             continue
         if category == "Clothing":
-            if touches_hair(coords) or hex_code.lower() in hair_color_set or looks_like_hair(coords):
+            rows_local = [row for row, _ in coords]
+            min_row = min(rows_local)
+            max_row = max(rows_local)
+            if (
+                (touches_hair(coords) or hex_code.lower() in hair_color_set or looks_like_hair(coords))
+                and max_row <= 14
+                and min_row <= 10
+            ):
                 add_pixels("Hair", coords, hex_code)
                 continue
             if is_mouth_candidate(coords):
@@ -2474,6 +3499,18 @@ def refine_results_postprocess(
         if res.category != "Outline":
             occupied_pixels |= mask
     outline_set -= occupied_pixels
+    hair_like_pixels: set[Tuple[int, int]] = set()
+    for res in refined:
+        if res.category in {"Hair", "FacialHair"}:
+            hair_like_pixels |= parse_pixel_mask(res.pixel_mask)
+    outline_set -= hair_like_pixels
+    face_accessory_pixels: set[Tuple[int, int]] = set()
+    for res in refined:
+        if res.category in {"FaceAccessory", "Eyewear"} or (
+            res.category == "Face" and res.variant_hint.startswith("Face_Eyes")
+        ):
+            face_accessory_pixels |= parse_pixel_mask(res.pixel_mask)
+    outline_set -= face_accessory_pixels
     outline_result = RegionResult(
         sprite_id=sprite_id,
         category="Outline",
@@ -2555,6 +3592,26 @@ def refine_results_postprocess(
                     res.category = "FaceAccessory"
                     res.color_name = color_name
                     res.variant_hint = f"FaceAccessory_Headphones_{color_name}"
+                elif res.variant_hint.startswith("FaceAccessory_Earpiece_"):
+                    color_name = color_name_for_category(color_hex, color_map, "FaceAccessory")
+                    res.category = "FaceAccessory"
+                    res.color_name = color_name
+                    res.variant_hint = f"{res.variant_hint}_{color_name}"
+                elif res.variant_hint.startswith("FaceAccessory_Cigarette"):
+                    color_name = color_name_for_category(color_hex, color_map, "FaceAccessory")
+                    res.category = "Face"
+                    res.color_name = color_name
+                    res.variant_hint = f"Face_MouthAccessory_Cigarette_{color_name}"
+                elif res.variant_hint.startswith("FaceAccessory_CigaretteHolder"):
+                    color_name = color_name_for_category(color_hex, color_map, "FaceAccessory")
+                    res.category = "Face"
+                    res.color_name = color_name
+                    res.variant_hint = f"Face_MouthAccessory_Holder_{color_name}"
+                elif res.variant_hint.startswith("FaceAccessory_Joint"):
+                    color_name = color_name_for_category(color_hex, color_map, "FaceAccessory")
+                    res.category = "Face"
+                    res.color_name = color_name
+                    res.variant_hint = f"Face_MouthAccessory_Joint_{color_name}"
                 else:
                     color_name = color_name_for_category(color_hex, color_map, "FaceAccessory")
                     res.color_name = color_name
@@ -2563,7 +3620,10 @@ def refine_results_postprocess(
                 color_name = color_name_for_category(color_hex, color_map, "Headwear")
                 res.category = "Headwear"
                 res.color_name = color_name
-                if "_Cap_" in res.variant_hint:
+                shape_token = extract_note_value(res, "headwear_shape")
+                if shape_token:
+                    res.variant_hint = f"Headwear_{shape_token}_{color_name}"
+                elif "_Cap_" in res.variant_hint:
                     res.variant_hint = f"Headwear_Cap_{color_name}"
                 else:
                     res.variant_hint = f"Headwear_{color_name}"
@@ -2571,12 +3631,28 @@ def refine_results_postprocess(
                 color_name = color_name_for_category(color_hex, color_map, "Clothing")
                 res.category = "Clothing"
                 res.color_name = color_name
-                res.variant_hint = f"Clothing_Top_{color_name}"
+                garment_token = extract_note_value(res, "garment_type")
+                garment_label = garment_token if garment_token else "Top"
+                garment_label = garment_label.replace(" ", "")
+                res.variant_hint = f"Clothing_{garment_label}_{color_name}"
+                extra_token = extract_note_value(res, "garment_extra")
+                if extra_token:
+                    res.variant_hint = f"{res.variant_hint}_{extra_token.replace(' ', '')}"
             elif orig_category == "NeckAccessory":
                 color_name = color_name_for_category(color_hex, color_map, "Jewelry")
                 res.category = "Jewelry"
                 res.color_name = color_name
                 res.variant_hint = f"Jewelry_Neck_{color_name}"
+            elif orig_category == "Jewelry":
+                color_name = color_name_for_category(color_hex, color_map, "Jewelry")
+                res.category = "Jewelry"
+                res.color_name = color_name
+                if res.variant_hint.startswith("Jewelry_Earring"):
+                    res.variant_hint = f"{res.variant_hint}_{color_name}"
+                elif res.variant_hint.startswith("Jewelry_Neck_"):
+                    res.variant_hint = f"Jewelry_Neck_{color_name}"
+                else:
+                    res.variant_hint = f"Jewelry_{color_name}"
             elif orig_category == "Background":
                 color_name = color_name_for_category(color_hex, color_map, "Background")
                 res.color_name = color_name
@@ -2587,6 +3663,10 @@ def refine_results_postprocess(
                 res.color_name = color_name
                 if not res.variant_hint.startswith("Palette_"):
                     res.variant_hint = f"Palette_{color_name}"
+            elif orig_category == "PaletteFull":
+                color_name = color_name_for_category(color_hex, color_map, "Palette")
+                res.color_name = color_name
+                res.variant_hint = f"PaletteFull_{color_name}"
             elif orig_category == "Unassigned":
                 color_name = color_name_for_category(color_hex, color_map, "Unassigned")
                 res.color_name = color_name
@@ -2604,6 +3684,315 @@ def refine_results_postprocess(
             merged[key] = res
     refined = list(merged.values())
 
+    def refine_micro_accessories(results: List[RegionResult]) -> None:
+        eye_entries_local = category_to_entry.get("Eyes", [])
+        eye_color_set_local = {
+            res.color_hex.lower()
+            for res, _ in eye_entries_local
+            if res.color_hex
+        }
+        eye_masks_local = [
+            parse_pixel_mask(res.pixel_mask) for res, _ in eye_entries_local
+        ]
+        for res in results:
+            mask_set = parse_pixel_mask(res.pixel_mask)
+            if not mask_set:
+                continue
+            if res.category in {"FaceAccessory", "Jewelry", "Clothing", "Headwear"}:
+                if mask_within(mask_set, 7, 16, 0, 8, tolerance=1) or mask_within(mask_set, 7, 16, 16, 24, tolerance=1):
+                    ear_info = classify_ear_accessory(
+                        mask_set,
+                        res.color_hex,
+                        skin_color_set,
+                        hair_color_set,
+                    )
+                    if ear_info:
+                        variant, side = ear_info
+                        if variant == "Airpod":
+                            res.category = "FaceAccessory"
+                            res.variant_hint = f"FaceAccessory_Earpiece_{side}"
+                        else:
+                            res.category = "Jewelry"
+                            res.variant_hint = f"Jewelry_Earring{variant}_{side}"
+                        append_note(res, "micro_detect", f"{variant.lower()}_{side.lower()}")
+                        continue
+            if res.category in {"FaceAccessory", "Clothing"}:
+                if mask_within(mask_set, 11, 17, 6, 18, tolerance=1):
+                    mouth_variant = classify_mouth_accessory(mask_set, res.color_hex, arr)
+                    if mouth_variant:
+                        lower = res.color_hex.lower() if res.color_hex else ""
+                        if lower in eye_color_set_local:
+                            continue
+                        if eye_masks_local:
+                            overlap_ratio = max(
+                                len(mask_set & eye_mask) / max(len(mask_set), 1)
+                                for eye_mask in eye_masks_local
+                            )
+                            if overlap_ratio >= 0.5:
+                                continue
+                        res.category = "FaceAccessory"
+                        res.variant_hint = f"FaceAccessory_{mouth_variant}"
+                        append_note(res, "micro_detect", mouth_variant.lower())
+
+    refine_micro_accessories(refined)
+    def annotate_headwear_shapes() -> None:
+        entries = category_to_entry.get("Headwear", [])
+        if not entries:
+            return
+        for res, mask in entries:
+            shape = classify_headwear_shape(mask)
+            if not shape:
+                continue
+            shape_token = shape.replace(" ", "_")
+            append_note(res, "headwear_shape", shape_token)
+
+    annotate_headwear_shapes()
+    def extract_headphones_from_hair() -> None:
+        hair_entries_snapshot = list(category_to_entry.get("Hair", []))
+        if not hair_entries_snapshot:
+            return
+        for res, mask in hair_entries_snapshot:
+            if not mask:
+                continue
+            components = connected_components_from_mask(mask)
+            left_candidates: List[set[Tuple[int, int]]] = []
+            right_candidates: List[set[Tuple[int, int]]] = []
+            band_candidates: List[set[Tuple[int, int]]] = []
+            for comp in components:
+                rows = [row for row, _ in comp]
+                cols = [col for _, col in comp]
+                min_row, max_row = min(rows), max(rows)
+                min_col, max_col = min(cols), max(cols)
+                height = max_row - min_row + 1
+                width = max_col - min_col + 1
+                if 3 <= width <= 5 and 3 <= height <= 9 and 6 <= min_row <= 16 and max_row <= 18:
+                    if min_col <= 3 and touches_skin(comp):
+                        left_candidates.append(comp)
+                    elif max_col >= 20 and touches_skin(comp):
+                        right_candidates.append(comp)
+                    continue
+                if (
+                    width >= 6
+                    and height <= 3
+                    and min_row <= 9
+                    and max_row <= 12
+                    and min_col >= 5
+                    and max_col <= 18
+                ):
+                    band_candidates.append(comp)
+            if not left_candidates or not right_candidates:
+                continue
+            left_comp = max(left_candidates, key=len)
+            right_comp = max(right_candidates, key=len)
+            headphone_mask = set(left_comp) | set(right_comp)
+            if band_candidates:
+                band_comp = max(band_candidates, key=len)
+                headphone_mask |= band_comp
+            remaining_mask = set(mask) - headphone_mask
+            hair_union.difference_update(headphone_mask)
+            if remaining_mask:
+                update_entry_mask(res, remaining_mask)
+            else:
+                remove_entry(res)
+            color_name = color_name_for_category(res.color_hex, color_map, "FaceAccessory")
+            headphone_res = RegionResult(
+                sprite_id=sprite_id,
+                category="FaceAccessory",
+                variant_hint=f"FaceAccessory_Headphones_{color_name}",
+                color_hex=res.color_hex,
+                color_name=color_name,
+                coverage_pct=round(len(headphone_mask) / total_pixels * 100.0, 2),
+                notes="headphones",
+            )
+            headphone_res.pixel_mask = mask_to_string(headphone_mask)
+            register_entry(headphone_res, headphone_mask)
+            refined.append(headphone_res)
+
+    extract_headphones_from_hair()
+    def classify_clothing_garment(mask: set[Tuple[int, int]]) -> Tuple[str | None, List[str]]:
+        if not mask:
+            return (None, [])
+        rows = [row for row, _ in mask]
+        cols = [col for _, col in mask]
+        min_row, max_row = min(rows), max(rows)
+        min_col, max_col = min(cols), max(cols)
+        height = max_row - min_row + 1
+        width = max_col - min_col + 1
+        hood_edge_pixels = sum(
+            1 for row, col in mask if row <= min_row + 3 and (col <= 4 or col >= 19)
+        )
+        hood_ratio = hood_edge_pixels / len(mask)
+        bottom_pixels = sum(1 for row, _ in mask if row >= max_row - 2)
+        collar_pixels = sum(1 for row, _ in mask if row <= min_row + 1)
+        components = connected_components_from_mask(mask)
+        centre_col = (min_col + max_col) / 2.0
+        extras: List[str] = []
+        for comp in components:
+            comp_rows = [row for row, _ in comp]
+            comp_cols = [col for _, col in comp]
+            comp_min_row, comp_max_row = min(comp_rows), max(comp_rows)
+            comp_min_col, comp_max_col = min(comp_cols), max(comp_cols)
+            comp_height = comp_max_row - comp_min_row + 1
+            comp_width = comp_max_col - comp_min_col + 1
+            if (
+                comp_width <= 2
+                and comp_height >= 4
+                and abs(((comp_min_col + comp_max_col) / 2.0) - centre_col) <= 1.5
+                and comp_min_row <= min_row + 6
+            ):
+                extras.append("Tie")
+                break
+        garment = "Top"
+        if hood_ratio >= 0.08 and width >= 10:
+            garment = "Hoodie"
+        elif height >= 12 and bottom_pixels >= 8:
+            garment = "Coat"
+        elif width >= 10 and height >= 6:
+            garment = "Jacket"
+        elif width <= 8 and height >= 10:
+            garment = "DressTop"
+        elif collar_pixels >= max(6, int(len(mask) * 0.2)) and height <= 5 and width <= 8:
+            garment = "Turtleneck"
+        elif height <= 5 and width >= 8:
+            garment = "SuitTop"
+        elif bottom_pixels >= 6 and width >= 9:
+            garment = "Jacket"
+        if "Tie" in extras and garment in {"Top", "SuitTop"}:
+            garment = "SuitTop"
+        return (garment, extras)
+
+    def annotate_clothing_garments() -> None:
+        entries = category_to_entry.get("Clothing", [])
+        if not entries:
+            return
+        combined_mask: set[Tuple[int, int]] = set()
+        for _, mask in entries:
+            combined_mask |= mask
+        garment, extras = classify_clothing_garment(combined_mask)
+        for res, _ in entries:
+            if garment:
+                append_note(res, "garment_type", garment.replace(" ", ""))
+            for extra in extras:
+                append_note(res, "garment_extra", extra.replace(" ", ""))
+
+    annotate_clothing_garments()
+
+    def merge_headwear_components() -> None:
+        entries = category_to_entry.get("Headwear", [])
+        if not entries:
+            return
+        primary_res, primary_mask = max(entries, key=lambda item: len(item[1]))
+        combined_mask: set[Tuple[int, int]] = set(primary_mask)
+        accent_names: List[str] = []
+        for res, mask in entries:
+            if res is primary_res:
+                continue
+            combined_mask |= mask
+            accent_names.append(color_name_for_category(res.color_hex, color_map, "Headwear"))
+            remove_entry(res)
+        if accent_names:
+            existing = extract_note_value(primary_res, "headwear_accents")
+            values = set(accent_names)
+            if existing:
+                values.update(value.strip() for value in existing.split(","))
+            replace_note(primary_res, "headwear_accents", ",".join(sorted(values)))
+        update_entry_mask(primary_res, combined_mask)
+        category_to_entry["Headwear"] = [(primary_res, combined_mask)]
+
+    merge_headwear_components()
+    def scrub_headwear_from_hair() -> None:
+        headwear_union_local: set[Tuple[int, int]] = set()
+        for res, mask in category_to_entry.get("Headwear", []):
+            headwear_union_local |= mask
+        if not headwear_union_local:
+            return
+        hair_entries_local = category_to_entry.get("Hair", [])
+        if not hair_entries_local:
+            return
+        cleaned: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
+        for res, mask in hair_entries_local:
+            cleaned_mask = mask - headwear_union_local
+            if cleaned_mask != mask:
+                if cleaned_mask:
+                    update_entry_mask(res, cleaned_mask)
+                    cleaned.append((res, cleaned_mask))
+                else:
+                    remove_entry(res)
+            else:
+                cleaned.append((res, mask))
+        category_to_entry["Hair"] = cleaned
+
+    scrub_headwear_from_hair()
+
+    def merge_clothing_components() -> None:
+        entries = category_to_entry.get("Clothing", [])
+        if not entries:
+            return
+        grouped: Dict[str, List[Tuple[int, RegionResult, set[Tuple[int, int]]]]] = defaultdict(list)
+        for idx, (res, mask) in enumerate(entries):
+            garment = extract_note_value(res, "garment_type") or "Top"
+            grouped[garment].append((idx, res, mask))
+        merged_entries: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
+        for garment, comps in grouped.items():
+            combined_mask: set[Tuple[int, int]] = set()
+            for _, _, mask in comps:
+                combined_mask |= mask
+            if not combined_mask:
+                continue
+            primary_idx, primary_res, _ = max(comps, key=lambda item: len(item[2]))
+            rgb_counts = Counter(tuple(int(arr[row, col][k]) for k in range(3)) for row, col in combined_mask)
+            if rgb_counts:
+                dominant_rgb, _ = max(rgb_counts.items(), key=lambda item: item[1])
+                dominant_hex = rgb_to_hex(dominant_rgb)
+                primary_res.color_hex = dominant_hex
+                primary_res.color_name = color_name_for_category(dominant_hex, color_map, "Clothing")
+            garment_token = garment.replace(" ", "")
+            append_note(primary_res, "garment_type", garment_token)
+            accent_names: List[str] = []
+            for idx, res, mask in comps:
+                if idx == primary_idx:
+                    continue
+                accent_names.append(color_name_for_category(res.color_hex, color_map, "Clothing"))
+            if accent_names:
+                append_note(primary_res, "clothing_accents", ",".join(sorted(set(accent_names))))
+            update_entry_mask(primary_res, combined_mask)
+            merged_entries.append((primary_res, combined_mask))
+            for idx, res, _ in comps:
+                if idx == primary_idx:
+                    continue
+                remove_entry(res)
+        category_to_entry["Clothing"] = merged_entries
+
+    merge_clothing_components()
+
+    def prune_false_eyewear(results: List[RegionResult]) -> None:
+        total_pixels = 24 * 24
+        eye_map: Dict[str, RegionResult] = {}
+        for res in results:
+            if (
+                res.category == "Face"
+                and res.variant_hint.startswith("Face_Eyes")
+                and res.color_hex
+            ):
+                eye_map.setdefault(res.color_hex.lower(), res)
+        filtered: List[RegionResult] = []
+        for res in results:
+            if res.category == "Eyewear":
+                notes = res.notes or ""
+                has_reflection = "glasses_reflection" in notes or "glasses_tint" in notes
+                if not has_reflection and res.color_hex:
+                    key = res.color_hex.lower()
+                    eye_res = eye_map.get(key)
+                    if eye_res:
+                        eye_mask = parse_pixel_mask(eye_res.pixel_mask)
+                        eyewear_mask = parse_pixel_mask(res.pixel_mask)
+                        combined = eye_mask | eyewear_mask
+                        eye_res.pixel_mask = mask_to_string(combined)
+                        eye_res.coverage_pct = round(len(combined) / total_pixels * 100.0, 2)
+                        continue
+            filtered.append(res)
+        results[:] = filtered
+
     # Keep ordering similar to original: Background, Outline, Skin, Hair, Headwear...
     order_priority = {
         "Background": 0,
@@ -2618,9 +4007,11 @@ def refine_results_postprocess(
         "Clothing": 9,
         "NeckAccessory": 10,
         "Palette": 200,
+        "PaletteFull": 201,
         "Unassigned": 300,
     }
 
+    collapse_logical_layers(refined)
     refined.sort(key=lambda res: (order_priority.get(res.category, 99), res.variant_hint))
 
     captured_pixels = set(background_mask) | outline_candidates
@@ -2641,7 +4032,72 @@ def refine_results_postprocess(
         for row, col in missing:
             r, g, b = [int(v) for v in arr[row, col][:3]]
             missing_hex_map[rgb_to_hex((r, g, b))].add((row, col))
+        preferred_categories = (
+            "Headwear",
+            "Hair",
+            "FacialHair",
+            "Clothing",
+            "Face",
+            "Base",
+            "Background",
+        )
         for hex_code, coords in missing_hex_map.items():
+            lower_hex = hex_code.lower()
+            coord_set = set(coords)
+            assigned = False
+            for category in preferred_categories:
+                for res in refined:
+                    if res.category == category and res.color_hex.lower() == lower_hex:
+                        existing_mask = parse_pixel_mask(res.pixel_mask)
+                        updated_mask = existing_mask | coord_set
+                        res.pixel_mask = mask_to_string(updated_mask)
+                        res.coverage_pct = round(len(updated_mask) / total_pixels * 100.0, 2)
+                        assigned = True
+                        break
+                if assigned:
+                    break
+            if assigned:
+                continue
+            context_map = {
+                "Headwear": "Headwear",
+                "Hair": "Hair",
+                "FacialHair": "FacialHair",
+                "Clothing": "Clothing",
+                "Face": "Eyes",
+                "Base": "Skin",
+                "Background": "Background",
+            }
+            for category in preferred_categories:
+                candidates = [res for res in refined if res.category == category]
+                if not candidates:
+                    continue
+                template = max(
+                    candidates,
+                    key=lambda res: len(parse_pixel_mask(res.pixel_mask)),
+                )
+                template_tokens = template.variant_hint.split("_")
+                if len(template_tokens) >= 2:
+                    base_hint = "_".join(template_tokens[:2])
+                else:
+                    base_hint = template.variant_hint
+                context = context_map.get(category, category)
+                color_name = color_name_for_category(hex_code, color_map, context)
+                new_variant = f"{base_hint}_{color_name}"
+                new_entry = RegionResult(
+                    sprite_id=sprite_id,
+                    category=category,
+                    variant_hint=new_variant,
+                    color_hex=hex_code,
+                    color_name=color_name,
+                    coverage_pct=round(len(coord_set) / total_pixels * 100.0, 2),
+                    notes="auto_backfill",
+                    pixel_mask=mask_to_string(coord_set),
+                )
+                refined.append(new_entry)
+                assigned = True
+                break
+            if assigned:
+                continue
             color_name = color_name_for_category(hex_code, color_map, "Unassigned")
             refined.append(
                 RegionResult(
@@ -2655,13 +4111,18 @@ def refine_results_postprocess(
                     pixel_mask=mask_to_string(coords),
                 )
             )
+
+    ensure_palette_full_entries(refined, arr, color_map)
     apply_taxonomy_labels(refined)
+    collapse_logical_layers(refined)
     if not allow_facial_hair:
         for res in refined:
             if res.category == "FacialHair":
                 res.category = "Hair"
                 res.color_name = color_name_for_category(res.color_hex, color_map, "Hair")
                 res.variant_hint = f"Hair_Main_{res.color_name}"
+    prune_false_eyewear(refined)
+    refined.sort(key=lambda res: (order_priority.get(res.category, 99), res.variant_hint))
     return refined
 
 
@@ -2670,24 +4131,62 @@ def main() -> int:
     configure_logging(args.verbose)
     color_map = load_custom_color_map(args.color_map)
 
+    if args.resume and not args.cache_dir:
+        LOGGER.error("--resume requires --cache-dir to be specified.")
+        return 1
+
+    cache_dir: Path | None = args.cache_dir
+    if cache_dir:
+        ensure_directory(cache_dir)
+        LOGGER.info("Caching per-sprite results in %s (resume=%s)", cache_dir, args.resume)
+
+    if args.json_output:
+        ensure_directory(args.json_output.parent)
+
     if not args.src.exists():
         LOGGER.error("Source directory does not exist: %s", args.src)
         return 1
 
-    files = sorted(args.src.rglob("*.png"))
+    if args.src.is_file():
+        files = [args.src]
+    else:
+        files = sorted(args.src.rglob("*.png"))
     if not files:
         LOGGER.error("No PNG files found in %s", args.src)
         return 1
 
-    LOGGER.info("Analysing %d sprites…", len(files))
+    total = len(files)
+    LOGGER.info("Analysing %d sprite%s…", total, "" if total == 1 else "s")
     all_results: List[RegionResult] = []
-    for path in files:
-        sprite_results = analyze_sprite(path, color_map, args.top_colors)
-        if sprite_results:
-            all_results.extend(sprite_results)
+    failures: List[str] = []
+    progress_interval = max(1, total // 50)  # log at ~50 checkpoints
+    for index, path in enumerate(files, start=1):
+        sprite_id = path.stem
+        cache_file: Path | None = cache_dir / f"{sprite_id}.json" if cache_dir else None
+        sprite_results: List[RegionResult] = []
+        try:
+            if cache_file and cache_file.exists() and args.resume:
+                LOGGER.debug("Loading cached results for %s", sprite_id)
+                sprite_results = load_cached_results(cache_file)
+            else:
+                sprite_results = analyze_sprite(path, color_map, args.top_colors)
+                if cache_file:
+                    write_cache_file(cache_file, sprite_results)
+        except Exception:
+            failures.append(sprite_id)
+            LOGGER.exception("Failed to analyse %s", sprite_id)
+            continue
+        if index == 1 or index == total or index % progress_interval == 0:
+            LOGGER.info("Processed %4d / %d (%s)", index, total, sprite_id)
+        all_results.extend(sprite_results)
 
     write_csv(args.output, all_results)
     LOGGER.info("Wrote %s with %d records.", args.output, len(all_results))
+    if args.json_output:
+        write_json_output(args.json_output, all_results)
+        LOGGER.info("Wrote %s with %d records.", args.json_output, len(all_results))
+    if failures:
+        LOGGER.warning("Completed with %d failures: %s", len(failures), ", ".join(failures))
     return 0
 
 

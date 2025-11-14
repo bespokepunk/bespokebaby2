@@ -23,17 +23,24 @@ const elements = {
   toggleSidebar: document.getElementById("toggleSidebar"),
   spriteTitle: document.getElementById("spriteTitle"),
   stats: document.getElementById("stats"),
+  toolbarChips: document.getElementById("toolbarChips"),
   paletteSection: document.getElementById("paletteSection"),
   paletteMeta: document.getElementById("paletteMeta"),
   palettePreview: document.getElementById("palettePreview"),
   paletteCanvas: document.getElementById("paletteMiniCanvas"),
+  traitCountLabel: document.getElementById("traitCountLabel"),
   categoryFilter: document.getElementById("categoryFilter"),
   componentSelect: document.getElementById("componentSelect"),
   hoverToggle: document.getElementById("hoverToggle"),
   traitBody: document.getElementById("traitBody"),
+  categoryBlock: document.getElementById("categoryBlock"),
+  categorySummary: document.getElementById("categorySummary"),
+  colourBlock: document.getElementById("colourBlock"),
+  colourSummary: document.getElementById("colourSummary"),
   previewWrapper: document.getElementById("previewWrapper"),
   previewImage: document.getElementById("spritePreview"),
   highlightCanvas: document.getElementById("highlightCanvas"),
+  clearHighlightButton: document.getElementById("clearHighlightButton"),
   copyMaskButton: document.getElementById("copyMaskButton"),
   pixelMaskOutput: document.getElementById("pixelMaskOutput"),
 };
@@ -52,6 +59,7 @@ const CATEGORY_ORDER = {
   Jewelry: 8,
   Clothing: 9,
   Palette: 200,
+  PaletteFull: 201,
   Unassigned: 300,
 };
 
@@ -74,6 +82,83 @@ const state = {
 };
 
 const palettePixelCache = new Map();
+let activePaletteRequest = 0;
+const DEFAULT_MASK_MESSAGE = "Select a trait to preview pixel coordinates.";
+
+function humaniseToken(value) {
+  return value
+    .replace(/_/g, " ")
+    .replace(/([a-z])([A-Z])/g, "$1 $2")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function humaniseNotes(noteString) {
+  if (!noteString) {
+    return [];
+  }
+  const readable = [];
+  const tokens = noteString.split(";");
+  tokens.forEach((raw) => {
+    const token = raw.trim();
+    if (!token) {
+      return;
+    }
+    if (token === "headphones") {
+      readable.push("Headphones");
+      return;
+    }
+    if (token === "glasses_lens") {
+      readable.push("Lens");
+      return;
+    }
+    if (token === "glasses_reflection") {
+      readable.push("Reflection");
+      return;
+    }
+    if (token === "glasses_tint") {
+      readable.push("Tint overlay");
+      return;
+    }
+    const [key, value] = token.split("=", 2);
+    if (!value) {
+      readable.push(humaniseToken(token));
+      return;
+    }
+    const friendlyValue = value
+      .split(",")
+      .map((entry) => humaniseToken(entry))
+      .join(", ");
+    switch (key) {
+      case "headwear_shape":
+        readable.push(`Shape: ${friendlyValue}`);
+        break;
+      case "headwear_accents":
+        readable.push(`Accents: ${friendlyValue}`);
+        break;
+      case "garment_type":
+        readable.push(`Garment: ${friendlyValue}`);
+        break;
+      case "garment_extra":
+        readable.push(`Extra: ${friendlyValue}`);
+        break;
+      case "clothing_accents":
+        readable.push(`Colour accents: ${friendlyValue}`);
+        break;
+      case "micro_detect":
+        readable.push(`Micro accessory: ${friendlyValue}`);
+        break;
+      default:
+        readable.push(`${humaniseToken(key)}: ${friendlyValue}`);
+        break;
+    }
+  });
+  return readable;
+}
+
+if (elements.clearHighlightButton) {
+  elements.clearHighlightButton.disabled = true;
+}
 
 initViewer().catch((error) => {
   showError(`Failed to initialise viewer: ${error.message}`);
@@ -312,6 +397,12 @@ function attachEventListeners() {
 
   elements.previewWrapper.addEventListener("click", handlePreviewClick);
 
+  if (elements.clearHighlightButton) {
+    elements.clearHighlightButton.addEventListener("click", () => {
+      clearSelection();
+    });
+  }
+
   elements.copyMaskButton.addEventListener("click", () => {
     if (!state.currentMaskString) {
       return;
@@ -330,6 +421,24 @@ function attachEventListeners() {
           elements.copyMaskButton.textContent = "Copy pixel mask";
         }, 1400);
       });
+  });
+
+  document.querySelectorAll("[data-collapse-target]").forEach((button) => {
+    const targetSelector = button.getAttribute("data-collapse-target");
+    if (!targetSelector) {
+      return;
+    }
+    const target = document.querySelector(targetSelector);
+    if (!target) {
+      return;
+    }
+    const expanded = button.getAttribute("aria-expanded") !== "false";
+    target.classList.toggle("collapsed", !expanded);
+    button.addEventListener("click", () => {
+      const currentlyExpanded = button.getAttribute("aria-expanded") !== "false";
+      button.setAttribute("aria-expanded", currentlyExpanded ? "false" : "true");
+      target.classList.toggle("collapsed", currentlyExpanded);
+    });
   });
 }
 
@@ -473,7 +582,12 @@ async function updatePalettePreview(spriteId) {
     return;
   }
 
+  const requestId = ++activePaletteRequest;
+
   if (!spriteId || !state.spriteMap.has(spriteId)) {
+    if (requestId !== activePaletteRequest) {
+      return;
+    }
     section.hidden = true;
     preview.innerHTML = "";
     meta.textContent = "";
@@ -511,10 +625,17 @@ async function updatePalettePreview(spriteId) {
     pixelCounts = await loadSpritePalettePixels(spriteId);
   } catch (error) {
     console.error(error);
+    if (requestId !== activePaletteRequest) {
+      return;
+    }
     section.hidden = true;
     preview.innerHTML = "";
     meta.textContent = "Palette unavailable";
     clearPaletteCanvas();
+    return;
+  }
+
+  if (requestId !== activePaletteRequest) {
     return;
   }
 
@@ -532,10 +653,17 @@ async function updatePalettePreview(spriteId) {
     })
     .filter((entry) => entry.hex);
   if (!colours.length) {
+    if (requestId !== activePaletteRequest) {
+      return;
+    }
     section.hidden = true;
     preview.innerHTML = "";
     meta.textContent = "";
     clearPaletteCanvas();
+    return;
+  }
+
+  if (requestId !== activePaletteRequest) {
     return;
   }
 
@@ -605,11 +733,16 @@ function renderTraits() {
   const filterValue = elements.categoryFilter.value;
   let filteredTraits;
   if (!filterValue || filterValue === "All") {
-    filteredTraits = allTraits.filter((trait) => trait.category !== "Palette");
+    filteredTraits = allTraits.filter(
+      (trait) => trait.category !== "Palette" && trait.category !== "PaletteFull"
+    );
   } else {
     filteredTraits = allTraits.filter((trait) => trait.category === filterValue);
     if (filteredTraits.length === 0 && filterValue === "Palette") {
       filteredTraits = allTraits.filter((trait) => trait.category === "Palette");
+    }
+    if (filteredTraits.length === 0 && filterValue === "PaletteFull") {
+      filteredTraits = allTraits.filter((trait) => trait.category === "PaletteFull");
     }
   }
 
@@ -648,6 +781,15 @@ function renderTraits() {
     ? groupedTraits
     : groupedTraits.filter((trait) => trait.category !== "Palette");
 
+  if (elements.traitCountLabel) {
+    const count = displayTraits.length;
+    const categorySuffix =
+      filterValue && filterValue !== "All" ? ` • ${filterValue}` : "";
+    elements.traitCountLabel.textContent = count
+      ? `${count} trait${count !== 1 ? "s" : ""}${categorySuffix}`
+      : "No traits";
+  }
+
   state.currentTraits = displayTraits;
   state.currentRows = [];
   state.currentMasks = [];
@@ -655,10 +797,13 @@ function renderTraits() {
   state.selectedComponentKey = "-1";
   state.currentMaskString = "";
   elements.traitBody.innerHTML = "";
-  elements.pixelMaskOutput.textContent = "Select a trait to preview pixel coordinates.";
+  elements.pixelMaskOutput.textContent = DEFAULT_MASK_MESSAGE;
   elements.copyMaskButton.disabled = true;
   elements.componentSelect.innerHTML = '<option value="-1">Entire trait</option>';
   elements.componentSelect.disabled = true;
+  if (elements.clearHighlightButton) {
+    elements.clearHighlightButton.disabled = true;
+  }
   updateAllBadges();
 
   if (!displayTraits.length) {
@@ -765,10 +910,7 @@ function renderTraits() {
     row.appendChild(coverageCell);
 
     const notesCell = document.createElement("td");
-    const noteParts = [];
-    if (trait.notes) {
-      noteParts.push(trait.notes);
-    }
+    const noteParts = humaniseNotes(trait.notes);
     if (trait.multiColor && trait.sliceSummary) {
       noteParts.push(`Colours: ${trait.sliceSummary}`);
     }
@@ -797,14 +939,20 @@ function renderTraits() {
     });
 
     row.addEventListener("click", () => {
-      selectTraitRow(row, index);
+      if (state.selectedTraitIndex === index) {
+        clearSelection();
+      } else {
+        selectTraitRow(row, index);
+      }
     });
 
     elements.traitBody.appendChild(row);
     state.currentRows.push(row);
   });
 
-  selectTraitRow(state.currentRows[0], 0);
+  if (state.currentRows.length) {
+    clearSelection();
+  }
 }
 
 function selectTraitRow(row, index) {
@@ -848,6 +996,9 @@ function selectTraitRow(row, index) {
   elements.componentSelect.value = "-1";
 
   highlightTrait(trait, -1);
+  if (elements.clearHighlightButton) {
+    elements.clearHighlightButton.disabled = false;
+  }
 }
 
 function highlightTrait(trait, componentKey) {
@@ -874,7 +1025,20 @@ function highlightTrait(trait, componentKey) {
   const maskString = pixelsToMaskString(pixels);
   state.currentMaskString = maskString;
   elements.copyMaskButton.disabled = false;
-  elements.pixelMaskOutput.textContent = formatPixelSummary(maskString, pixels.length);
+  const lines = [formatPixelSummary(maskString, pixels.length)];
+  if (trait.slices && trait.slices.length > 1) {
+    const totalPixels = pixels.length || 1;
+    const sliceSummary = trait.slices
+      .map((slice) => {
+        const count = slice.pixels?.length ?? 0;
+        const pct = ((count / totalPixels) * 100).toFixed(1);
+        const sliceName = slice.color_name || slice.color_hex || "Colour";
+        return `${sliceName} (${count} px, ${pct}%)`;
+      })
+      .join(" • ");
+    lines.push(`Colours: ${sliceSummary}`);
+  }
+  elements.pixelMaskOutput.textContent = lines.join("\n");
 }
 
 function getPixelsForComponent(trait, componentKey) {
@@ -974,11 +1138,16 @@ function drawPixels(pixels) {
   const scaleY = rect.height / 24;
   clearHighlight();
 
-  highlightCtx.fillStyle = "rgba(96, 165, 250, 0.32)";
-  highlightCtx.strokeStyle = "rgba(14, 165, 233, 0.95)";
-  highlightCtx.lineWidth = 2.8;
+  const strokeWidth = Math.max(1, Math.min(scaleX, scaleY) * 0.22);
+  highlightCtx.fillStyle = "rgba(59, 130, 246, 0.18)";
+  highlightCtx.strokeStyle = "rgba(96, 165, 250, 0.9)";
+  highlightCtx.lineWidth = strokeWidth;
+  highlightCtx.lineJoin = "round";
+  highlightCtx.lineCap = "round";
+
   pixels.forEach(({ row, col }) => {
     highlightCtx.fillRect(col * scaleX, row * scaleY, scaleX, scaleY);
+    highlightCtx.strokeRect(col * scaleX, row * scaleY, scaleX, scaleY);
   });
 
   const rows = pixels.map((pixel) => pixel.row);
@@ -1013,6 +1182,21 @@ function clearHighlight() {
   highlightCtx.restore();
 }
 
+function clearSelection() {
+  state.selectedTraitIndex = null;
+  state.selectedComponentKey = "-1";
+  state.currentRows.forEach((row) => row.classList.remove("active-row"));
+  elements.componentSelect.innerHTML = '<option value="-1">Entire trait</option>';
+  elements.componentSelect.disabled = true;
+  state.currentMaskString = "";
+  elements.pixelMaskOutput.textContent = DEFAULT_MASK_MESSAGE;
+  elements.copyMaskButton.disabled = true;
+  if (elements.clearHighlightButton) {
+    elements.clearHighlightButton.disabled = true;
+  }
+  clearHighlight();
+}
+
 function pixelsToMaskString(pixels) {
   return pixels.map(({ row, col }) => `${row},${col}`).join(";");
 }
@@ -1027,29 +1211,112 @@ function formatPixelSummary(maskString, count) {
 
 function updateStats(traits) {
   if (!traits.length) {
-    elements.stats.innerHTML = "";
+    elements.stats.innerHTML = "<span>Awaiting selection</span>";
+    if (elements.toolbarChips) {
+      elements.toolbarChips.innerHTML = "";
+    }
+    if (elements.categorySummary) {
+      elements.categorySummary.innerHTML = "";
+    }
+    if (elements.colourSummary) {
+      elements.colourSummary.innerHTML = "";
+    }
+    if (elements.categoryBlock) {
+      elements.categoryBlock.hidden = true;
+    }
+    if (elements.colourBlock) {
+      elements.colourBlock.hidden = true;
+    }
     return;
   }
+
+  const totalPixels = 24 * 24;
+  const categoryCounts = new Map();
+  const colourTotals = new Map();
+  const colourNames = new Map();
+
+  const addColour = (hex, name, count) => {
+    if (!hex) {
+      return;
+    }
+    const normalised = hex.toLowerCase();
+    const pixels = Number.isFinite(count) ? count : 0;
+    colourTotals.set(normalised, (colourTotals.get(normalised) || 0) + pixels);
+    if (name && !colourNames.has(normalised)) {
+      colourNames.set(normalised, name);
+    }
+  };
+
+  traits.forEach((trait) => {
+    categoryCounts.set(trait.category, (categoryCounts.get(trait.category) || 0) + 1);
+    if (trait.slices && trait.slices.length) {
+      trait.slices.forEach((slice) => {
+        const count = slice.pixels?.length ?? Math.round((slice.coverage_pct / 100) * totalPixels);
+        addColour(slice.color_hex, slice.color_name, count);
+      });
+    } else if (trait.color_hex) {
+      const count = trait.pixels?.length ?? Math.round((trait.coverage_pct / 100) * totalPixels);
+      addColour(trait.color_hex, trait.color_name, count);
+    }
+  });
+
+  const totalColourPixels = Array.from(colourTotals.values()).reduce((sum, value) => sum + value, 0);
+  const uniqueColourCount = colourTotals.size;
+
   const items = [];
   items.push(`<span>Traits <strong>${traits.length}</strong></span>`);
   const background = traits.find((trait) => trait.category === "Background");
   if (background) {
     items.push(`<span>Background <strong>${background.variant_hint}</strong></span>`);
   }
-  const uniqueColours = new Set();
-  traits.forEach((trait) => {
-    if (trait.slices && trait.slices.length) {
-      trait.slices.forEach((slice) => {
-        if (slice.color_hex) {
-          uniqueColours.add(slice.color_hex.toLowerCase());
-        }
-      });
-    } else if (trait.color_hex) {
-      uniqueColours.add(trait.color_hex.toLowerCase());
-    }
-  });
-  items.push(`<span>Unique colours <strong>${uniqueColours.size}</strong></span>`);
+  items.push(`<span>Unique colours <strong>${uniqueColourCount}</strong></span>`);
   elements.stats.innerHTML = items.join("");
+
+  if (elements.toolbarChips) {
+    const chips = [
+      `<span class="toolbar-chip">Traits ${traits.length}</span>`,
+      `<span class="toolbar-chip">Colours ${uniqueColourCount}</span>`,
+    ];
+    if (background) {
+      chips.push(`<span class="toolbar-chip">${background.variant_hint}</span>`);
+    }
+    elements.toolbarChips.innerHTML = chips.join("");
+  }
+
+  if (elements.categorySummary && elements.categoryBlock) {
+    const sortedCategories = Array.from(categoryCounts.entries()).sort((a, b) => {
+      const diff = getCategoryPriority(a[0]) - getCategoryPriority(b[0]);
+      if (diff !== 0) {
+        return diff;
+      }
+      return a[0].localeCompare(b[0]);
+    });
+    elements.categorySummary.innerHTML = sortedCategories
+      .map(
+        ([category, count]) =>
+          `<span class="summary-pill"><span class="label">${category}</span><span class="value">${count}</span></span>`
+      )
+      .join("");
+    elements.categoryBlock.hidden = sortedCategories.length === 0;
+  }
+
+  if (elements.colourSummary && elements.colourBlock) {
+    const sortedColours = Array.from(colourTotals.entries()).sort((a, b) => b[1] - a[1]);
+    const topColours = sortedColours.slice(0, 8);
+    const colourMarkup = topColours
+      .map(([hex, count]) => {
+        const displayName = colourNames.get(hex) || hex.toUpperCase();
+        const pct = totalColourPixels ? ((count / totalColourPixels) * 100).toFixed(1) : "0.0";
+        return `<span class="colour-pill"><span class="summary-swatch" style="background:${hex};"></span><span>${displayName}</span><span class="metric">${count} px${totalColourPixels ? ` (${pct}%)` : ""}</span></span>`;
+      })
+      .join("");
+    const remainder =
+      sortedColours.length > topColours.length
+        ? `<span class="colour-pill">+${sortedColours.length - topColours.length} more</span>`
+        : "";
+    elements.colourSummary.innerHTML = `${colourMarkup}${remainder}`;
+    elements.colourBlock.hidden = sortedColours.length === 0;
+  }
 }
 
 function populateCategoryFilter(data) {
