@@ -30,6 +30,9 @@ const config: Config = {
         mono: ['var(--font-mono)', 'monospace'],
         sans: ['var(--font-sans)', 'sans-serif'],
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
       animation: {
         'pixel-pulse': 'pixel-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'float': 'float 6s ease-in-out infinite',

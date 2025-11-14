@@ -1,0 +1,66 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Elegant banner for social sharing and promotional use -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0a0806;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#140f0a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="goldShine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#c9a96e;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#ffd700;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#c9a96e;stop-opacity:0.3" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#c9a96e;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#c9a96e;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Pixel grid overlay -->
+  <g opacity="0.03">
+    <line x1="0" y1="0" x2="1200" y2="0" stroke="#c9a96e" stroke-width="1" />
+    <line x1="0" y1="24" x2="1200" y2="24" stroke="#c9a96e" stroke-width="1" />
+    <line x1="0" y1="48" x2="1200" y2="48" stroke="#c9a96e" stroke-width="1" />
+    <line x1="0" y1="72" x2="1200" y2="72" stroke="#c9a96e" stroke-width="1" />
+    <line x1="0" y1="96" x2="1200" y2="96" stroke="#c9a96e" stroke-width="1" />
+  </g>
+
+  <!-- Glow effect -->
+  <ellipse cx="600" cy="315" rx="600" ry="400" fill="url(#glow)"/>
+
+  <!-- Corner decorations -->
+  <rect x="40" y="40" width="24" height="24" fill="#c9a96e"/>
+  <rect x="1136" y="40" width="24" height="24" fill="#c9a96e"/>
+  <rect x="40" y="566" width="24" height="24" fill="#c9a96e"/>
+  <rect x="1136" y="566" width="24" height="24" fill="#c9a96e"/>
+
+  <!-- Main text - BESPOKE PUNKS -->
+  <text x="600" y="280" font-family="serif" font-size="96" font-weight="600" fill="url(#goldShine)" text-anchor="middle" letter-spacing="8">
+    BESPOKE PUNKS
+  </text>
+
+  <!-- Subtitle -->
+  <text x="600" y="360" font-family="sans-serif" font-size="28" fill="#c9a96e" text-anchor="middle" letter-spacing="12" opacity="0.8">
+    174 HANDCRAFTED PIXEL SOULS
+  </text>
+
+  <!-- Bottom line -->
+  <rect x="400" y="420" width="400" height="2" fill="url(#goldShine)"/>
+
+  <!-- Tagline -->
+  <text x="600" y="470" font-family="sans-serif" font-size="20" fill="#c9a96e" text-anchor="middle" letter-spacing="4" opacity="0.6">
+    WHERE CRAFT MEETS CODE
+  </text>
+
+  <!-- Decorative pixels scattered -->
+  <rect x="180" y="200" width="8" height="8" fill="#c9a96e" opacity="0.4"/>
+  <rect x="1020" y="240" width="8" height="8" fill="#c9a96e" opacity="0.4"/>
+  <rect x="240" y="440" width="8" height="8" fill="#c9a96e" opacity="0.4"/>
+  <rect x="960" y="400" width="8" height="8" fill="#c9a96e" opacity="0.4"/>
+  <rect x="340" y="180" width="6" height="6" fill="#ffd700" opacity="0.3"/>
+  <rect x="860" y="480" width="6" height="6" fill="#ffd700" opacity="0.3"/>
+</svg>

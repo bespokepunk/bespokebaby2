@@ -2,9 +2,37 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bespoke-punks.onrender.com'),
   title: 'Bespoke Punks — Pixel Perfect Identity',
-  description: '100% You. Bespoke pixel art portraits that capture your essence. Handcrafted meets AI.',
-  keywords: ['pixel art', 'NFT', 'digital identity', 'bespoke', 'AI art', 'machine learning'],
+  description: '174 handcrafted pixel souls. Bespoke pixel art portraits that capture your essence. Where craft meets code.',
+  keywords: ['pixel art', 'NFT', 'digital identity', 'bespoke', 'AI art', 'machine learning', 'crypto punks'],
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/logo.svg',
+  },
+  openGraph: {
+    title: 'Bespoke Punks — Pixel Perfect Identity',
+    description: '174 handcrafted pixel souls. Where craft meets code.',
+    url: 'https://bespoke-punks.onrender.com',
+    siteName: 'Bespoke Punks',
+    images: [
+      {
+        url: '/banner.svg',
+        width: 1200,
+        height: 630,
+        alt: 'Bespoke Punks - 174 Handcrafted Pixel Souls',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Bespoke Punks — Pixel Perfect Identity',
+    description: '174 handcrafted pixel souls. Where craft meets code.',
+    images: ['/banner.svg'],
+  },
 };
 
 export default function RootLayout({
