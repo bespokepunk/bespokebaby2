@@ -253,70 +253,109 @@ export default function Home() {
                           style={{ background: 'white' }}
                         />
 
-                        {/* TUNNEL VIEW - Portal to punk's world (wide cinematic angle) */}
+                        {/* ACTUAL WORLD SCENE - This will show the punk's unique world */}
                         <motion.div
-                          className="absolute left-0 top-0 bottom-0 w-[75vw] overflow-hidden"
-                          initial={{ scaleX: 0, opacity: 0 }}
-                          animate={{ scaleX: 1, opacity: 1 }}
-                          exit={{ scaleX: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                          style={{
-                            transformOrigin: 'left center',
-                          }}
+                          className="relative w-[90vw] h-[80vh] overflow-hidden rounded-lg border-4"
+                          style={{ borderColor: `hsl(${colorShift}, 60%, 60%)` }}
+                          initial={{ scale: 0.5, rotate: -5, opacity: 0 }}
+                          animate={{ scale: 1, rotate: 0, opacity: 1 }}
+                          exit={{ scale: 0.5, rotate: 5, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
                         >
-                          {/* Tunnel frame with glowing border */}
-                          <div
-                            className="relative w-full h-full border-r-8"
-                            style={{
-                              borderColor: `hsl(${colorShift}, 70%, 60%)`,
-                              boxShadow: `inset -40px 0 80px rgba(0,0,0,0.6), 0 0 60px hsl(${colorShift}, 70%, 50%)`,
-                            }}
-                          >
-                            {/* PunkWorld component - animated world scenes */}
-                            <PunkWorld
-                              punkIndex={selectedPunks.indexOf(punk)}
-                              punkName={punk}
-                              colorShift={colorShift}
-                            />
+                          {/*
+                            ANIMATED PIXEL WORLD - Pans/rotates through punk's universe
+                            Different world types assigned based on punk index
+                            TODO: Replace with AI-generated videos or images for each specific punk
+                          */}
 
-                            {/* Vignette edges for depth */}
-                            <div
-                              className="absolute inset-0 pointer-events-none"
-                              style={{
-                                background: 'radial-gradient(ellipse 120% 100% at 80% 50%, transparent 30%, rgba(0,0,0,0.7) 100%)',
+                          {/* World Type Selection - rotating through different environments */}
+                          {i % 4 === 0 && (
+                            /* CYBERPUNK CITY - Panning horizontally */
+                            <motion.div
+                              className="absolute inset-0 bg-gradient-to-b from-indigo-900 via-purple-900 to-pink-900"
+                              animate={{
+                                x: [-200, 200],
                               }}
-                            />
+                              transition={{
+                                duration: 8,
+                                ease: 'linear',
+                                repeat: Infinity,
+                                repeatType: 'reverse',
+                              }}
+                            >
+                            {/* Sky/background */}
+                            <div className="absolute inset-0 opacity-30">
+                              {[...Array(50)].map((_, starIndex) => (
+                                <div
+                                  key={starIndex}
+                                  className="absolute w-1 h-1 bg-white rounded-full"
+                                  style={{
+                                    left: `${Math.random() * 100}%`,
+                                    top: `${Math.random() * 60}%`,
+                                    opacity: Math.random() * 0.8 + 0.2,
+                                  }}
+                                />
+                              ))}
+                            </div>
+
+                            {/* City buildings */}
+                            <div className="absolute bottom-0 left-0 right-0 h-[60%] flex items-end justify-around gap-1 px-4">
+                              {[...Array(12)].map((_, buildingIndex) => {
+                                const height = 40 + Math.random() * 60;
+                                const hue = colorShift + buildingIndex * 15;
+                                return (
+                                  <motion.div
+                                    key={buildingIndex}
+                                    className="relative"
+                                    style={{
+                                      width: `${4 + Math.random() * 6}%`,
+                                      height: `${height}%`,
+                                      background: `linear-gradient(180deg, hsl(${hue}, 50%, 20%) 0%, hsl(${hue}, 60%, 10%) 100%)`,
+                                      boxShadow: `0 0 20px hsl(${hue}, 70%, 50%)`,
+                                    }}
+                                    initial={{ y: 100, opacity: 0 }}
+                                    animate={{ y: 0, opacity: 1 }}
+                                    transition={{ delay: buildingIndex * 0.03, duration: 0.3 }}
+                                  >
+                                    {/* Windows */}
+                                    <div className="grid grid-cols-2 gap-1 p-1">
+                                      {[...Array(Math.floor(height / 15))].map((_, windowRow) => (
+                                        <div
+                                          key={windowRow}
+                                          className="w-full h-2 bg-yellow-300"
+                                          style={{
+                                            opacity: Math.random() > 0.3 ? 0.8 : 0.2,
+                                            boxShadow: '0 0 4px rgba(255, 255, 100, 0.8)',
+                                          }}
+                                        />
+                                      ))}
+                                    </div>
+                                  </motion.div>
+                                );
+                              })}
+                            </div>
+
+                            {/* Floating text - punk's name */}
+                            <motion.div
+                              className="absolute top-1/4 left-1/2 -translate-x-1/2 text-center"
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.2, duration: 0.4 }}
+                            >
+                              <p className="font-mono text-4xl tracking-[0.5em] mb-4" style={{ color: `hsl(${colorShift}, 80%, 80%)`, textShadow: `0 0 40px hsl(${colorShift}, 80%, 60%)` }}>
+                                {punk.replace(/_/g, ' ').split(' ').slice(0, 2).join(' ').toUpperCase()}'S WORLD
+                              </p>
+                              <p className="font-mono text-sm tracking-wider text-white/60">
+                                A glimpse into their universe...
+                              </p>
+                            </motion.div>
                           </div>
 
-                          {/* Corner bracket indicators */}
-                          <div className="absolute top-4 right-4 w-12 h-12 border-t-4 border-r-4 border-[#c9a96e] opacity-60" />
-                          <div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-[#c9a96e] opacity-60" />
-                        </motion.div>
-
-                        {/* Punk info overlay (right side) */}
-                        <motion.div
-                          className="absolute right-8 top-1/2 -translate-y-1/2 text-right max-w-xs"
-                          initial={{ opacity: 0, x: 50 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 50 }}
-                          transition={{ delay: 0.2, duration: 0.4 }}
-                        >
-                          <p
-                            className="font-mono text-6xl mb-4 leading-none"
-                            style={{
-                              color: `hsl(${colorShift}, 90%, 80%)`,
-                              textShadow: `0 0 40px hsl(${colorShift}, 90%, 60%), 0 0 80px hsl(${colorShift}, 80%, 50%)`,
-                            }}
-                          >
-                            {punk.replace(/_/g, ' ').split(' ').slice(0, 2).join(' ').toUpperCase()}
-                          </p>
-                          <div className="w-full h-1 mb-4" style={{ background: `hsl(${colorShift}, 70%, 60%)` }} />
-                          <p className="font-mono text-sm tracking-widest text-white/60 mb-2">
-                            WORLD VISION
-                          </p>
-                          <p className="text-xs text-white/40 font-mono">
-                            // A glimpse into their universe
-                          </p>
+                          {/* Corner pixels */}
+                          <div className="absolute top-0 left-0 w-6 h-6 bg-[#c9a96e]" />
+                          <div className="absolute top-0 right-0 w-6 h-6 bg-[#c9a96e]" />
+                          <div className="absolute bottom-0 left-0 w-6 h-6 bg-[#c9a96e]" />
+                          <div className="absolute bottom-0 right-0 w-6 h-6 bg-[#c9a96e]" />
                         </motion.div>
 
                         {/* Instruction */}
