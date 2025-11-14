@@ -1758,6 +1758,15 @@ def refine_results_postprocess(
             return "Halo"
         if touches_bottom and height >= 8 and width >= 8:
             return "Hood"
+        if (
+            not touches_bottom
+            and height >= 5
+            and height <= 9
+            and width >= 7
+            and top_ratio >= 0.25
+            and bottom_pixels <= row_counts.get(min_row, 0) + 3
+        ):
+            return "Beanie"
         if min_row <= 1 and top_ratio >= 0.25 and height >= 5:
             return "Crown"
         if width >= 12 and height <= 7 and spans_left and spans_right:
@@ -2253,6 +2262,24 @@ def refine_results_postprocess(
         mask = mask - outline_candidates
         if not mask:
             continue
+        print(f"[REFINE] Eyes: initial mask size {len(mask)}", flush=True)
+        outline_like_pixels = {
+            coord
+            for coord in mask
+            if rgb_to_hex(
+                tuple(int(arr[coord[0], coord[1]][channel]) for channel in range(3))
+            ).lower()
+            in OUTLINE_HEX_CODES
+        }
+        if outline_like_pixels:
+            print(
+                f"[REFINE] Eyes: reassigning {len(outline_like_pixels)} outline pixels to base",
+                flush=True,
+            )
+            mask -= outline_like_pixels
+            outline_candidates |= outline_like_pixels
+            if not mask:
+                continue
         if res.color_hex.lower() in ACCESSORY_WHITE_HEXES and len(mask) <= 6:
             pending_eye_highlights.append((res.color_hex, mask))
             continue
@@ -2341,16 +2368,20 @@ def refine_results_postprocess(
             width = max(cols) - min(cols) + 1
             height = max_row - min_row + 1
             overlap = mask & eye_union
+            touches_eye = bool(overlap)
             if overlap:
                 overlap_cols = [col for _, col in overlap]
                 coverage_ratio = len(overlap) / len(mask)
                 if (
-                    coverage_ratio >= 0.5
-                    and width >= 6
+                    coverage_ratio >= 0.35
+                    and width >= 4
                     and min(overlap_cols) <= 11
                     and max(overlap_cols) >= 12
                     and min_row >= 6
+                    and max_row <= 16
                     and height <= 8
+                        and max_row <= 16
+                        and height <= 8
                 ):
                     color_name = color_name_for_category(res.color_hex, color_map, context="glass")
                     variant = f"FaceAccessory_Glasses_{color_name}"
@@ -2362,8 +2393,9 @@ def refine_results_postprocess(
                     continue
             if (
                 min_row >= 6
+                and max_row <= 16
                 and height <= 6
-                and width >= 6
+                and width >= 4
                 and looks_like_glasses(mask, res.color_hex)
                 and res.color_hex.lower() not in eye_color_set
             ):
@@ -2396,6 +2428,30 @@ def refine_results_postprocess(
                     ensure_flag(res, "glasses_solid")
                 glasses_bounds.append((min_row, max_row, min(cols), max(cols), variant))
                 continue
+            if not touches_eye:
+                touches_eye = any(
+                    (row + dr, col + dc) in eye_union
+                    for row, col in mask
+                    for dr in (-1, 0, 1)
+                    for dc in (-1, 0, 1)
+                )
+            if (
+                res.color_hex
+                and res.color_hex.lower() in ACCESSORY_WHITE_HEXES
+                and min_row >= 6
+                and max_row <= 16
+                and height <= 6
+                and width >= 2
+                and touches_eye
+            ):
+                color_name = color_name_for_category(res.color_hex, color_map, context="glass")
+                variant = f"FaceAccessory_Glasses_{color_name}"
+                res.variant_hint = variant
+                res.color_name = color_name
+                ensure_flag(res, "glasses_reflection")
+                ensure_flag(res, "glasses_lens")
+                glasses_bounds.append((min_row, max_row, min(cols), max(cols), variant))
+                continue
             if looks_like_headphones(mask):
                 color_name = color_name_for_category(res.color_hex, color_map, "FaceAccessory")
                 res.variant_hint = f"FaceAccessory_Headphones_{color_name}"
@@ -2421,6 +2477,82 @@ def refine_results_postprocess(
                         res.color_name = color_name_for_category(res.color_hex, color_map, context="glass")
                         ensure_flag(res, "glasses_reflection")
                         break
+
+    def merge_glasses_entries() -> None:
+        entries = category_to_entry.get("FaceAccessory", [])
+        if not entries:
+            return
+        glasses_entries: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
+        other_entries: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
+        for res, mask in entries:
+            notes = res.notes or ""
+            rows = [row for row, _ in mask]
+            cols = [col for _, col in mask]
+            min_row = min(rows) if rows else 24
+            max_row = max(rows) if rows else -1
+            width = max(cols) - min(cols) + 1 if cols else 0
+            height = max_row - min_row + 1 if rows else 0
+            adjacent_to_eye = bool(mask & eye_union) or any(
+                (row + dr, col + dc) in eye_union
+                for row, col in mask
+                for dr in (-1, 0, 1)
+                for dc in (-1, 0, 1)
+            )
+            is_glasses_candidate = (
+                "glasses" in notes
+                or res.variant_hint.startswith("FaceAccessory_Glasses_")
+                or (
+                    mask
+                    and 6 <= min_row <= 16
+                    and 2 <= width <= 12
+                    and height <= 8
+                    and (
+                        res.color_hex.lower() in ACCESSORY_WHITE_HEXES
+                        or looks_like_glasses(mask, res.color_hex)
+                    )
+                )
+            )
+            if is_glasses_candidate:
+                glasses_entries.append((res, mask))
+            else:
+                other_entries.append((res, mask))
+        if not glasses_entries:
+            return
+        grouped: Dict[str, List[Tuple[RegionResult, set[Tuple[int, int]]]]] = {}
+        for res, mask in glasses_entries:
+            key = res.variant_hint if res.variant_hint.startswith("FaceAccessory_Glasses_") else "FaceAccessory_Glasses"
+            grouped.setdefault(key, []).append((res, mask))
+        merged_entries: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
+        removed_ids = {id(res) for res, _ in glasses_entries}
+        for key, items in grouped.items():
+            union_mask: set[Tuple[int, int]] = set()
+            color_counter = Counter()
+            note_fragments: set[str] = set()
+            for res, mask in items:
+                union_mask |= mask
+                color_counter.update([res.color_hex.lower()])
+                if res.notes:
+                    note_fragments.update(segment.strip() for segment in res.notes.split(";") if segment.strip())
+            dominant_hex = max(color_counter.items(), key=lambda kv: kv[1])[0]
+            color_name = color_name_for_category(dominant_hex, color_map, context="glass")
+            variant = f"FaceAccessory_Glasses_{color_name}"
+            merged_res = RegionResult(
+                sprite_id=items[0][0].sprite_id,
+                category="FaceAccessory",
+                variant_hint=variant,
+                color_hex=dominant_hex,
+                color_name=color_name,
+                coverage_pct=round(len(union_mask) / total_pixels * 100.0, 2),
+                notes=";".join(sorted(note_fragments)) if note_fragments else "glasses_merged",
+                pixel_mask=mask_to_string(union_mask),
+            )
+            merged_entries.append((merged_res, union_mask))
+        category_to_entry["FaceAccessory"] = other_entries + merged_entries
+        processed_entries[:] = [
+            (res, mask) for res, mask in processed_entries if id(res) not in removed_ids
+        ] + merged_entries
+        refined[:] = [res for res in refined if id(res) not in removed_ids]
+        refined.extend([res for res, _ in merged_entries])
 
     def reassign_cap_pixels() -> None:
         entries = category_to_entry.get("FaceAccessory", [])
@@ -2752,6 +2884,7 @@ def refine_results_postprocess(
         facial_components: List[set[Tuple[int, int]]] = []
         changed = False
         pending_headwear: List[set[Tuple[int, int]]] = []
+        headphone_components: List[Tuple[set[Tuple[int, int]], str]] = []
         for res, mask in hair_entries:
             working = set(mask)
             if headwear_pixels:
@@ -2793,6 +2926,59 @@ def refine_results_postprocess(
                 max_row = max(rows)
                 lower_count = sum(1 for row in rows if row >= 11)
                 comp_hex = component_dominant_hex(comp)
+                headphone_clusters: List[set[Tuple[int, int]]] = []
+                candidate_pixels: set[Tuple[int, int]] = {
+                    (row, col)
+                    for row, col in comp
+                    if (col <= 6 or col >= 17)
+                    and any(
+                        (row + dr, col + dc) in skin_union
+                        for dr in (-1, 0, 1)
+                        for dc in (-1, 0, 1)
+                    )
+                }
+                while candidate_pixels:
+                    start = candidate_pixels.pop()
+                    stack = [start]
+                    cluster = {start}
+                    while stack:
+                        row, col = stack.pop()
+                        for dr, dc in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                            nbr = (row + dr, col + dc)
+                            if nbr in candidate_pixels:
+                                candidate_pixels.remove(nbr)
+                                cluster.add(nbr)
+                                stack.append(nbr)
+                    cluster_rows = [row for row, _ in cluster]
+                    cluster_cols = [col for _, col in cluster]
+                    cluster_height = max(cluster_rows) - min(cluster_rows) + 1
+                    cluster_width = max(cluster_cols) - min(cluster_cols) + 1
+                    if (
+                        len(cluster) >= 6
+                        and cluster_width >= 2
+                        and cluster_width <= 8
+                        and cluster_height <= 8
+                        and min(cluster_rows) >= 6
+                        and max(cluster_rows) <= 18
+                    ):
+                        headphone_clusters.append(cluster)
+                if headphone_clusters:
+                    for cluster in headphone_clusters:
+                        cluster_hex = component_dominant_hex(cluster)
+                        headphone_components.append((cluster, cluster_hex))
+                        comp.difference_update(cluster)
+                    changed = True
+                    if not comp:
+                        continue
+                rows = [row for row, _ in comp]
+                min_row = min(rows)
+                max_row = max(rows)
+                cols = [col for _, col in comp]
+                min_col = min(cols)
+                max_col = max(cols)
+                width = max_col - min_col + 1
+                height = max_row - min_row + 1
+                centre_col = sum(cols) / len(cols)
                 if (
                     comp_hex
                     and primary_hex
@@ -2803,15 +2989,33 @@ def refine_results_postprocess(
                     comp_rgb = hex_to_rgb(comp_hex)
                     dist = squared_distance(comp_rgb, primary_rgb)
                     lum_delta = abs(relative_luminance(comp_hex) - primary_lum)
-                    if dist > 15000 or lum_delta > 85:
+                    if (
+                        dist > 15000
+                        or lum_delta > 85
+                        or (
+                            len(comp) <= 20
+                            and lum_delta >= 25
+                            and min_row <= 10
+                        )
+                    ):
                         accessory_components.append((comp, comp_hex))
                         changed = True
                         continue
+                if (
+                    comp_hex
+                    and looks_like_headphones(comp)
+                ):
+                    headphone_components.append((comp, comp_hex))
+                    changed = True
+                    continue
                 if (
                     lower_count >= 3
                     and lower_count / len(comp) >= 0.5
                     and max_row >= 11
                     and touches_skin(comp)
+                    and width >= 3
+                    and height <= 5
+                    and 7.0 <= centre_col <= 17.0
                 ):
                     facial_candidates.append(comp)
                 elif looks_like_headwear_component(comp):
@@ -2819,11 +3023,38 @@ def refine_results_postprocess(
                     changed = True
                 else:
                     keep_components.append(comp)
+            if headphone_components:
+                for comp, comp_hex in headphone_components:
+                    color_name = color_name_for_category(comp_hex, color_map, "FaceAccessory")
+                    headphone_res = RegionResult(
+                        sprite_id=sprite_id,
+                        category="FaceAccessory",
+                        variant_hint=f"FaceAccessory_Headphones_{color_name}",
+                        color_hex=comp_hex,
+                        color_name=color_name,
+                        coverage_pct=round(len(comp) / total_pixels * 100.0, 2),
+                        notes="headphones",
+                        pixel_mask=mask_to_string(comp),
+                    )
+                    register_entry(headphone_res, set(comp))
+                    changed = True
             if accessory_components:
                 for comp, comp_hex in accessory_components:
-                    headwear_pixels |= comp
-                    headwear_color_set.add(comp_hex.lower())
-                    add_pixels("Headwear", set(comp), comp_hex)
+                    if not comp_hex:
+                        continue
+                    color_name = color_name_for_category(comp_hex, color_map, "Hair")
+                    accessory_res = RegionResult(
+                        sprite_id=sprite_id,
+                        category="Hair",
+                        variant_hint=f"Hair_Accessory_{color_name}",
+                        color_hex=comp_hex,
+                        color_name=color_name,
+                        coverage_pct=round(len(comp) / total_pixels * 100.0, 2),
+                        notes="hair_accessory",
+                        pixel_mask=mask_to_string(comp),
+                    )
+                    register_entry(accessory_res, set(comp))
+                    changed = True
             if keep_components:
                 combined_hair = set().union(*keep_components)
                 if combined_hair != mask:
@@ -3105,6 +3336,32 @@ def refine_results_postprocess(
         res.coverage_pct = round(len(mask) / total_pixels * 100.0, 2)
         register_entry(res, mask)
 
+    def scrub_hair_leakage_into_base_face() -> None:
+        if not hair_union:
+            return
+        for category in ("Base", "Face"):
+            entries = list(category_to_entry.get(category, []))
+            if not entries:
+                continue
+            refreshed: List[Tuple[RegionResult, set[Tuple[int, int]]]] = []
+            for res, mask in entries:
+                cleaned = mask - hair_union - headwear_processed_union
+                if cleaned == mask:
+                    refreshed.append((res, mask))
+                    continue
+                if not cleaned:
+                    remove_entry(res)
+                    continue
+                update_entry_mask(res, cleaned)
+                refreshed.append((res, cleaned))
+            if refreshed:
+                category_to_entry[category] = refreshed
+            else:
+                category_to_entry.pop(category, None)
+
+    scrub_hair_leakage_into_base_face()
+
+    merge_glasses_entries()
     merge_eye_variants()
     def scrub_eyes_from_hair_headwear() -> None:
         eye_entries_local = category_to_entry.get("Eyes", [])
@@ -3298,6 +3555,42 @@ def refine_results_postprocess(
                 pixel_mask=mask_to_string(coords),
             )
             register_entry(extra_res, coords)
+
+    def cleanup_clothing_hair_overlap() -> None:
+        entries = list(category_to_entry.get("Clothing", []))
+        if not entries:
+            return
+        for res, mask in entries:
+            if not mask:
+                continue
+            components = connected_components_from_mask(mask)
+            remaining = set(mask)
+            for comp in components:
+                if not comp:
+                    continue
+                rows = [row for row, _ in comp]
+                min_row = min(rows)
+                if min_row >= 18:
+                    continue
+                rgb_counts = Counter(tuple(int(arr[row, col][k]) for k in range(3)) for row, col in comp)
+                if not rgb_counts:
+                    continue
+                dominant_rgb = max(rgb_counts.items(), key=lambda kv: kv[1])[0]
+                comp_hex = rgb_to_hex(dominant_rgb)
+                if (
+                    distance_to_hair_palette(comp_hex) <= 26.0
+                    and (min_row <= 14 or touches_hair(comp))
+                ):
+                    add_pixels("Hair", set(comp), comp_hex)
+                    clothing_union.difference_update(comp)
+                    remaining -= comp
+            if remaining != set(mask):
+                if remaining:
+                    update_entry_mask(res, remaining)
+                else:
+                    remove_entry(res)
+
+    cleanup_clothing_hair_overlap()
 
     def extract_neck_jewelry() -> None:
         clothing_entries = list(category_to_entry.get("Clothing", []))

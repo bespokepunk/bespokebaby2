@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bespoke Punks - Audit UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #fafaf9;
+            color: #1c1917;
+            padding: 20px;
+        }
+
+        .header {
+            max-width: 1400px;
+            margin: 0 auto 40px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e7e5e4;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .stat-label {
+            color: #78716c;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .keep { color: #16a34a; }
+        .delete { color: #dc2626; }
+
+        .controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: 1px solid #d6d3d1;
+            background: white;
+            color: #1c1917;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        button:hover {
+            background: #f5f5f4;
+        }
+
+        button.primary {
+            background: #d4af37;
+            color: white;
+            border-color: #d4af37;
+        }
+
+        button.primary:hover {
+            background: #b8942a;
+        }
+
+        button.danger {
+            background: #dc2626;
+            color: white;
+            border-color: #dc2626;
+        }
+
+        button.danger:hover {
+            background: #b91c1c;
+        }
+
+        .grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+        }
+
+        .punk-card {
+            background: white;
+            border: 2px solid #e7e5e4;
+            border-radius: 8px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .punk-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .punk-card.marked-delete {
+            border-color: #dc2626;
+            background: #fef2f2;
+        }
+
+        .punk-card.marked-delete::after {
+            content: '✕';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 24px;
+            height: 24px;
+            background: #dc2626;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .punk-image {
+            width: 100%;
+            aspect-ratio: 1;
+            image-rendering: pixelated;
+            background: #f5f5f4;
+            border: 1px solid #e7e5e4;
+            margin-bottom: 8px;
+        }
+
+        .punk-id {
+            font-size: 11px;
+            font-weight: 500;
+            margin-bottom: 2px;
+            color: #57534e;
+        }
+
+        .punk-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1c1917;
+            word-break: break-all;
+            line-height: 1.3;
+            min-height: 36px;
+        }
+
+        .punk-full-name {
+            font-size: 10px;
+            color: #78716c;
+            margin-top: 4px;
+            word-break: break-all;
+            font-family: 'Courier New', monospace;
+        }
+
+        .output-section {
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border: 1px solid #e7e5e4;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .output-section.visible {
+            display: block;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            border: 1px solid #d6d3d1;
+            border-radius: 4px;
+            background: #fafaf9;
+            resize: vertical;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            margin: 20px 0;
+            border-bottom: 1px solid #e7e5e4;
+        }
+
+        .filter-tab {
+            padding: 8px 16px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .filter-tab.active {
+            border-bottom-color: #d4af37;
+            color: #d4af37;
+            font-weight: 600;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 8px 12px;
+            border: 1px solid #d6d3d1;
+            border-radius: 4px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Bespoke Punks - Display Audit</h1>
+        <p style="color: #78716c; margin-bottom: 20px;">Click punks to mark for deletion. Training data stays safe!</p>
+
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-label">Total:</span>
+                <span class="stat-value" id="total-count">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label keep">Keep:</span>
+                <span class="stat-value keep" id="keep-count">0</span>
+            </div>
+            <div class="stat">
+                <span class="stat-label delete">Delete:</span>
+                <span class="stat-value delete" id="delete-count">0</span>
+            </div>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="lad">Lads</button>
+            <button class="filter-tab" data-filter="lady">Ladies</button>
+            <button class="filter-tab" data-filter="marked">Marked for Deletion</button>
+        </div>
+
+        <input type="text" class="search-box" id="search" placeholder="Search by name or number...">
+
+        <div class="controls">
+            <button class="primary" onclick="generateDeleteList()">Generate Delete List</button>
+            <button onclick="clearAll()">Clear All Marks</button>
+            <button onclick="markAllX()">Mark All "x" Variants</button>
+            <button onclick="markNumberedVariants()">Mark Numbered Variants (-2, -3, -4, etc)</button>
+        </div>
+    </div>
+
+    <div class="grid" id="punk-grid"></div>
+
+    <div class="output-section" id="output-section">
+        <h2 style="margin-bottom: 16px; font-size: 20px;">Files to Delete</h2>
+        <p style="color: #78716c; margin-bottom: 12px; font-size: 14px;">
+            Copy this list and paste it back to me. I'll delete these from the display directory only.
+        </p>
+        <textarea id="delete-list" readonly></textarea>
+        <button class="primary" style="margin-top: 12px;" onclick="copyToClipboard()">Copy to Clipboard</button>
+    </div>
+
+    <script>
+        let punks = [];
+        let markedForDeletion = new Set();
+        let currentFilter = 'all';
+
+        // Load punk list
+        fetch('/punk-names.json')
+            .then(res => res.json())
+            .then(data => {
+                punks = data;
+                updateStats();
+                renderPunks();
+            });
+
+        function renderPunks() {
+            const grid = document.getElementById('punk-grid');
+            const searchTerm = document.getElementById('search').value.toLowerCase();
+
+            const filtered = punks.filter(punk => {
+                const matchesSearch = punk.toLowerCase().includes(searchTerm);
+                const matchesFilter =
+                    currentFilter === 'all' ? true :
+                    currentFilter === 'marked' ? markedForDeletion.has(punk) :
+                    punk.startsWith(currentFilter);
+                return matchesSearch && matchesFilter;
+            });
+
+            grid.innerHTML = filtered.map(punk => {
+                const parts = punk.split('_');
+                const id = `${parts[0]} #${parts[1]}`;
+                const name = parts.slice(2).join('_');
+                const isMarked = markedForDeletion.has(punk);
+
+                return `
+                    <div class="punk-card ${isMarked ? 'marked-delete' : ''}" onclick="togglePunk('${punk}')">
+                        <img src="/punks-display/${punk}.png" class="punk-image" alt="${punk}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22><rect width=%22100%22 height=%22100%22 fill=%22%23f5f5f4%22/></svg>'">
+                        <div class="punk-id">${id}</div>
+                        <div class="punk-name">${name || '(no name)'}</div>
+                        <div class="punk-full-name">${punk}</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function togglePunk(punkName) {
+            if (markedForDeletion.has(punkName)) {
+                markedForDeletion.delete(punkName);
+            } else {
+                markedForDeletion.add(punkName);
+            }
+            updateStats();
+            renderPunks();
+        }
+
+        function updateStats() {
+            document.getElementById('total-count').textContent = punks.length;
+            document.getElementById('delete-count').textContent = markedForDeletion.size;
+            document.getElementById('keep-count').textContent = punks.length - markedForDeletion.size;
+        }
+
+        function clearAll() {
+            markedForDeletion.clear();
+            updateStats();
+            renderPunks();
+        }
+
+        function markAllX() {
+            punks.forEach(punk => {
+                if (punk.includes('_x') || punk.includes('_x-')) {
+                    markedForDeletion.add(punk);
+                }
+            });
+            updateStats();
+            renderPunks();
+        }
+
+        function markNumberedVariants() {
+            punks.forEach(punk => {
+                if (punk.match(/(-2|-3|-4|-5|-6|-7|-8|-9)$/)) {
+                    markedForDeletion.add(punk);
+                }
+            });
+            updateStats();
+            renderPunks();
+        }
+
+        function generateDeleteList() {
+            const list = Array.from(markedForDeletion).sort().join('\n');
+            document.getElementById('delete-list').value = list;
+            document.getElementById('output-section').classList.add('visible');
+            document.getElementById('output-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyToClipboard() {
+            const textarea = document.getElementById('delete-list');
+            textarea.select();
+            document.execCommand('copy');
+            alert('Copied to clipboard! Paste this list back to me.');
+        }
+
+        // Filter tabs
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentFilter = tab.dataset.filter;
+                renderPunks();
+            });
+        });
+
+        // Search
+        document.getElementById('search').addEventListener('input', renderPunks);
+    </script>
+</body>
+</html>
