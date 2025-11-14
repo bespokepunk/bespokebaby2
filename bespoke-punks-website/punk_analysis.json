@@ -1,0 +1,2334 @@
+{
+  "lad_001_carbon": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_002_cash": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "pink/light",
+      "pink/light",
+      "pink/light"
+    ]
+  },
+  "lad_003_chai": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "white/light",
+      "mixed",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_004_silicon": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_005_copper": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_006_redshift": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_007_titanium": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_008_platinum": {
+    "hair_color": "red",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "red",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_009_steel": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_010_aluminum": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "red",
+      "pink/light",
+      "pink/light",
+      "red",
+      "pink/light"
+    ]
+  },
+  "lad_011_chocolate": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lad_012_chromium": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_013_caramel": {
+    "hair_color": "white/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "white/light",
+      "red",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lad_014_sugar": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_015_jackson": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "white/light",
+      "black/dark",
+      "pink/light",
+      "black/dark",
+      "pink/light"
+    ]
+  },
+  "lad_016_tungsten": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "mixed",
+      "gray/silver"
+    ]
+  },
+  "lad_017_ink": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "white/light",
+      "black/dark",
+      "black/dark",
+      "white/light",
+      "gray/silver"
+    ]
+  },
+  "lad_018_mandarin": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_019_diamond": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "black/dark",
+      "pink/light",
+      "mixed"
+    ]
+  },
+  "lad_020_gpu": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "pink/light",
+      "pink/light"
+    ]
+  },
+  "lad_021_x": {
+    "hair_color": "green",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "gray/silver",
+      "green",
+      "green"
+    ]
+  },
+  "lad_022_x": {
+    "hair_color": "green",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "green",
+      "green",
+      "gray/silver",
+      "gray/silver"
+    ]
+  },
+  "lad_023_x-2": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "gray/silver",
+      "gray/silver",
+      "gray/silver"
+    ]
+  },
+  "lad_023_x-3": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "gray/silver",
+      "gray/silver",
+      "gray/silver"
+    ]
+  },
+  "lad_023_x-4": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "gray/silver",
+      "gray/silver",
+      "gray/silver"
+    ]
+  },
+  "lad_023_x": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "gray/silver",
+      "mixed",
+      "gray/silver",
+      "gray/silver"
+    ]
+  },
+  "lad_024_x": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lad_025_x": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "mixed",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_026_chromiumabstractsalmon": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_027_chromiumabstractyellow": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_028_chromiumabstractgreen": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_029_famous-9": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "orange"
+    ]
+  },
+  "lad_029_famous4": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light"
+    ]
+  },
+  "lad_030_ink": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_031_fin": {
+    "hair_color": "black/dark",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "green",
+      "green",
+      "black/dark",
+      "pink/light",
+      "green"
+    ]
+  },
+  "lad_032_shaman-4": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "black/dark",
+      "pink/light"
+    ]
+  },
+  "lad_033_molecule-2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_035_JUAN": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_036_x": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "gray/silver",
+      "mixed",
+      "gray/silver"
+    ]
+  },
+  "lad_037_aressprout": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lad_038_cashking-6": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "pink/light",
+      "black/dark"
+    ]
+  },
+  "lad_039_davinci-2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_040_melzarmagic": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "pink/light",
+      "white/light"
+    ]
+  },
+  "lad_041_Maradona": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "green",
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_043_jeremey": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "white/light",
+      "pink/light",
+      "pink/light"
+    ]
+  },
+  "lad_045_homewithkids3": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "pink/light",
+      "black/dark",
+      "pink/light"
+    ]
+  },
+  "lad_046_NATE": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_050_nate-2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "pink/light",
+      "orange"
+    ]
+  },
+  "lad_050_nate": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_051_DEVON-2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_051_DEVON-4": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_054_sterling": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_054_sterlingglasses": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_054_sterlingglasses3withcrown5": {
+    "hair_color": "purple/pink",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "purple/pink",
+      "pink/light",
+      "purple/pink",
+      "purple/pink"
+    ]
+  },
+  "lad_055_Luke": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_055_Luke10": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "gray/silver",
+      "mixed",
+      "gray/silver"
+    ]
+  },
+  "lad_055_Luke3": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "pink/light"
+    ]
+  },
+  "lad_055_Luke6": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "mixed",
+      "mixed",
+      "pink/light",
+      "mixed"
+    ]
+  },
+  "lad_055_Luke8": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "gray/silver",
+      "mixed",
+      "red"
+    ]
+  },
+  "lad_057_Hugh": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_057_Hugh5": {
+    "hair_color": "red",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "red",
+      "pink/light",
+      "black/dark",
+      "white/light",
+      "brown"
+    ]
+  },
+  "lad_058_SAVVA": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "pink/light"
+    ]
+  },
+  "lad_059_SamAScientist": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "white/light",
+      "pink/light",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lad_060_bhaitradingbot2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_061_DOPE7": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "mixed",
+      "pink/light",
+      "pink/light",
+      "mixed"
+    ]
+  },
+  "lad_062_devox2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_063_kenichi": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "pink/light"
+    ]
+  },
+  "lad_064_Scott": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_064_sensei": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lad_066_napoli2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lad_068_mayor": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "pink/light",
+      "mixed"
+    ]
+  },
+  "lad_070_IRAsBF2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_075_mmhm": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "white/light",
+      "mixed",
+      "pink/light"
+    ]
+  },
+  "lad_078_btoshi": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lad_079_ravish": {
+    "hair_color": "red",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "red",
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_080_fcpo": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_081_iggy2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "mixed",
+      "mixed",
+      "gray/silver"
+    ]
+  },
+  "lad_086_Scooby": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "mixed",
+      "gray/silver"
+    ]
+  },
+  "lad_087_HEEM": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lad_088_Kareem": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "gray/silver",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_089_aguda": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "pink/light"
+    ]
+  },
+  "lad_090_drscott": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_091_amit": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "white/light",
+      "gray/silver",
+      "mixed",
+      "black/dark",
+      "white/light"
+    ]
+  },
+  "lad_092_derrick": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "white/light",
+      "pink/light",
+      "pink/light"
+    ]
+  },
+  "lad_093_photogee": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_094_storm": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "red",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_095_godfather": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lad_096_apollo": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "mixed",
+      "black/dark",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_097_drralph": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_098_Murtaza": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_099_amenshiller": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "white/light",
+      "black/dark",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lad_102_bunya": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "brown"
+    ]
+  },
+  "lad_102_bunya2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "brown"
+    ]
+  },
+  "lad_102_bunya3": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "pink/light",
+      "mixed"
+    ]
+  },
+  "lad_103_merheb": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_103_merheb2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lad_74_lc": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_000_lemon": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "red",
+      "mixed"
+    ]
+  },
+  "lady_001_hazelnut": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_002_vanilla": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_003_cashew": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "pink/light"
+    ]
+  },
+  "lady_004_nutmeg": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_005_cinnamon": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_006_pepper": {
+    "hair_color": "black/dark",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "white/light",
+      "white/light",
+      "red",
+      "pink/light"
+    ]
+  },
+  "lady_007_alloy": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "red",
+      "black/dark",
+      "pink/light",
+      "pink/light"
+    ]
+  },
+  "lady_008_pinksilk": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_009_bluesilk": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_010_saffron": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "black/dark"
+    ]
+  },
+  "lady_011_sage": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "red"
+    ]
+  },
+  "lady_012_parasite": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "white/light",
+      "purple/pink",
+      "pink/light"
+    ]
+  },
+  "lady_013_rosemary": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "mixed",
+      "mixed",
+      "pink/light"
+    ]
+  },
+  "lady_014_olive": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "black/dark"
+    ]
+  },
+  "lady_015_lime": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "pink/light"
+    ]
+  },
+  "lady_016_honey": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "mixed",
+      "pink/light",
+      "black/dark"
+    ]
+  },
+  "lady_017_pine": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_018_strawberry": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "mixed",
+      "red"
+    ]
+  },
+  "lady_019_banana": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "pink/light"
+    ]
+  },
+  "lady_020_blood": {
+    "hair_color": "red",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "red",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_021_diamond": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_022_gold": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_023_silver": {
+    "hair_color": "white/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "white/light",
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_024_linen": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_025_mistletoe": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_026_fur": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_027_nitrogen": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_028_marshmallow": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_029_basil": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_030_grass": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [
+      "mixed"
+    ],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "pink/light",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_031_paprika": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [
+      "mixed"
+    ],
+    "dominant_colors": [
+      "mixed",
+      "mixed",
+      "white/light",
+      "mixed",
+      "pink/light"
+    ]
+  },
+  "lady_032_salt": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "white/light",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_033_staranise": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "pink/light"
+    ]
+  },
+  "lady_034_lavender": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_035_turmeric": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "gray/silver"
+    ]
+  },
+  "lady_036_boisenberry": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "red",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_037_rose": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_038_peanut": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_039_sandalwood": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "red",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_040_fivespice": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_041_bayleaf": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "red",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_042_almond": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_043_orange": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_044_x": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_045_x": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "white/light",
+      "pink/light",
+      "white/light",
+      "gray/silver"
+    ]
+  },
+  "lady_046_x": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_047_x": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light"
+    ]
+  },
+  "lady_048_pink": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "red",
+      "red"
+    ]
+  },
+  "lady_049_abstractangels": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "white/light",
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "white/light"
+    ]
+  },
+  "lady_050_x-6": {
+    "hair_color": "gray/silver",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "gray/silver",
+      "gray/silver",
+      "mixed",
+      "pink/light"
+    ]
+  },
+  "lady_051_rosieabstract": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "mixed",
+      "black/dark",
+      "orange"
+    ]
+  },
+  "lady_052_pinksilkabstract": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light"
+    ]
+  },
+  "lady_053_pepperabstract": {
+    "hair_color": "black/dark",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "white/light",
+      "white/light",
+      "white/light",
+      "red"
+    ]
+  },
+  "lady_054_hazelnutabstract-3": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_055_bloodabstract": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_056_alloyabstract": {
+    "hair_color": "blue",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "blue",
+      "blue",
+      "mixed",
+      "pink/light"
+    ]
+  },
+  "lady_057_bluesilkabstract": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "mixed",
+      "gray/silver",
+      "gray/silver",
+      "gray/silver"
+    ]
+  },
+  "lady_058_x": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_059_paula-5": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_059_paula-6": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_060_winehouse": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_061_nikkkk-2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "pink/light",
+      "mixed"
+    ]
+  },
+  "lady_062_Dalia-2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "red",
+      "brown",
+      "brown",
+      "black/dark"
+    ]
+  },
+  "lady_062_Dalia-BD": {
+    "hair_color": "gray/silver",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "gray/silver",
+      "pink/light",
+      "white/light",
+      "black/dark",
+      "red"
+    ]
+  },
+  "lady_063_PVR-3": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_064_aubree-2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_065_miggs-4": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "white/light",
+      "pink/light"
+    ]
+  },
+  "lady_065_miggs": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "gray/silver"
+    ]
+  },
+  "lady_066_monalisa-3": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_067_salamander-2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "white/light",
+      "black/dark",
+      "pink/light",
+      "black/dark"
+    ]
+  },
+  "lady_068_nikkisf-4": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_069_giulia": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_070_mango": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "white/light",
+      "mixed",
+      "purple/pink",
+      "mixed",
+      "purple/pink"
+    ]
+  },
+  "lady_071_papaya": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_072_tangerine": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "red",
+      "red",
+      "red"
+    ]
+  },
+  "lady_073_mango_punk": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "orange",
+      "orange",
+      "orange",
+      "black/dark"
+    ]
+  },
+  "lady_074_melon": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "white/light"
+    ]
+  },
+  "lady_075_clementine": {
+    "hair_color": "gray/silver",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "gray/silver",
+      "white/light",
+      "gray/silver",
+      "red",
+      "red"
+    ]
+  },
+  "lady_076_orange_blossom": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_077_pink_grapefruit": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_078_orange_zest": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_079_lime_breeze": {
+    "hair_color": "orange",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "orange",
+      "orange",
+      "orange",
+      "orange"
+    ]
+  },
+  "lady_080_zesty_lime": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_083_Marianne3": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "mixed"
+    ]
+  },
+  "lady_085_IRA2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "black/dark",
+      "white/light",
+      "pink/light"
+    ]
+  },
+  "lady_086_ELENI9": {
+    "hair_color": "pink/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light",
+      "pink/light"
+    ]
+  },
+  "lady_087_feybirthday5": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "pink/light",
+      "mixed",
+      "pink/light"
+    ]
+  },
+  "lady_088_r": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "mixed"
+    ]
+  },
+  "lady_090_missthang": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "black/dark",
+      "black/dark",
+      "pink/light",
+      "black/dark"
+    ]
+  },
+  "lady_094_violetta": {
+    "hair_color": "mixed",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "black/dark",
+      "mixed",
+      "pink/light",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_095_royalty": {
+    "hair_color": "white/light",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "white/light",
+      "pink/light",
+      "black/dark",
+      "mixed",
+      "brown"
+    ]
+  },
+  "lady_096_yuri": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "mixed",
+      "pink/light",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_097_dani": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "black/dark",
+      "black/dark",
+      "black/dark",
+      "black/dark"
+    ]
+  },
+  "lady_097_dani2": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "mixed",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_098_heyeah": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "mixed",
+      "mixed",
+      "mixed",
+      "black/dark"
+    ]
+  },
+  "lady_099_VQ": {
+    "hair_color": "unknown",
+    "skin_tone": "unknown",
+    "accessories": [],
+    "dominant_colors": [
+      "pink/light",
+      "orange",
+      "pink/light",
+      "orange",
+      "white/light"
+    ]
+  }
+}
