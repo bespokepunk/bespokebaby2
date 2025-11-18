@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import { useState } from 'react';
 
 interface PunkWorldProps {
   punkIndex: number;
@@ -9,13 +11,52 @@ interface PunkWorldProps {
 }
 
 export default function PunkWorld({ punkIndex, punkName, colorShift }: PunkWorldProps) {
-  // Assign world type based on punk index
-  const worldType = punkIndex % 4;
-
+  const [imageError, setImageError] = useState(false);
   const displayName = punkName.replace(/_/g, ' ').split(' ').slice(0, 2).join(' ').toUpperCase();
 
+  // Try to load actual world image first, fall back to procedural if not found
+  const worldImagePath = `/punk-worlds/${punkName}WORLD.png`;
+
+  // Assign fallback world type based on punk index
+  const worldType = punkIndex % 4;
+
   return (
-    <>
+    <>{!imageError ? (
+      // ACTUAL PUNK WORLD IMAGE - Smooth pan in effect
+      <motion.div
+        className="absolute inset-0 overflow-hidden"
+        initial={{ opacity: 0, scale: 1.3, x: 0 }}
+        animate={{ opacity: 1, scale: 1, x: 0 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {/* Background blur for letterboxing areas */}
+        <div className="absolute inset-0">
+          <Image
+            src={worldImagePath}
+            alt={`${punkName} world background`}
+            fill
+            className="object-cover blur-2xl opacity-40"
+            onError={() => setImageError(true)}
+            unoptimized
+          />
+        </div>
+
+        {/* Main sharp image */}
+        <Image
+          src={worldImagePath}
+          alt={`${punkName} world`}
+          fill
+          className="object-contain relative z-10"
+          onError={() => setImageError(true)}
+          unoptimized
+          priority
+        />
+
+        {/* Vignette overlay for depth - subtle */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-20" />
+      </motion.div>
+    ) : (
+      <>
       {/* CYBERPUNK CITY - Horizontal pan */}
       {worldType === 0 && (
         <motion.div
@@ -86,30 +127,6 @@ export default function PunkWorld({ punkIndex, punkName, colorShift }: PunkWorld
               />
             ))}
           </motion.div>
-
-          {/* Punk name overlay */}
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-center z-10">
-            <motion.p
-              className="font-mono text-5xl tracking-[0.5em] mb-2"
-              style={{
-                color: `hsl(${colorShift}, 90%, 80%)`,
-                textShadow: `0 0 40px hsl(${colorShift}, 90%, 60%), 0 0 80px hsl(${colorShift}, 80%, 50%)`,
-              }}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-            >
-              {displayName}
-            </motion.p>
-            <motion.p
-              className="font-mono text-sm text-white/40 tracking-wider"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              NEON METROPOLIS
-            </motion.p>
-          </div>
         </motion.div>
       )}
 
@@ -185,29 +202,6 @@ export default function PunkWorld({ punkIndex, punkName, colorShift }: PunkWorld
               }}
             />
           ))}
-
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-center z-10">
-            <motion.p
-              className="font-mono text-5xl tracking-[0.5em] mb-2"
-              style={{
-                color: `hsl(${colorShift}, 90%, 80%)`,
-                textShadow: `0 0 40px hsl(${colorShift}, 90%, 60%)`,
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2 }}
-            >
-              {displayName}
-            </motion.p>
-            <motion.p
-              className="font-mono text-sm text-white/40"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-            >
-              ENCHANTED FOREST
-            </motion.p>
-          </div>
         </motion.div>
       )}
 
@@ -272,22 +266,6 @@ export default function PunkWorld({ punkIndex, punkName, colorShift }: PunkWorld
             </motion.div>
           ))}
 
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-center z-10">
-            <motion.p
-              className="font-mono text-5xl tracking-[0.5em] mb-2"
-              style={{
-                color: `hsl(${colorShift}, 90%, 80%)`,
-                textShadow: `0 0 40px hsl(${colorShift}, 90%, 60%)`,
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              {displayName}
-            </motion.p>
-            <motion.p className="font-mono text-sm text-white/40" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-              COSMIC STATION
-            </motion.p>
-          </div>
         </motion.div>
       )}
 
@@ -354,24 +332,10 @@ export default function PunkWorld({ punkIndex, punkName, colorShift }: PunkWorld
             />
           ))}
 
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 text-center z-10">
-            <motion.p
-              className="font-mono text-5xl tracking-[0.5em] mb-2"
-              style={{
-                color: `hsl(${colorShift}, 90%, 80%)`,
-                textShadow: `0 0 40px hsl(${colorShift}, 90%, 60%)`,
-              }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              {displayName}
-            </motion.p>
-            <motion.p className="font-mono text-sm text-white/40" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
-              DEEP OCEAN
-            </motion.p>
-          </div>
         </motion.div>
       )}
+      </>
+    )}
     </>
   );
 }

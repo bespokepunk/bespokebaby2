@@ -1,0 +1,414 @@
+{
+  "completed": [],
+  "failed": [
+    {
+      "name": "lad_001_carbon",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_002_cash",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_003_chai",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_004_silicon",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_005_copper",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_006_redshift",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_007_titanium",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_008_platinum",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_009_steel",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_010_aluminum",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_011_chocolate",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_012_chromium",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_013_caramel",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_014_jackson",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_015_jackson",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_016_tungsten",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_017_ink",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_018_mandarin",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_019_diamond",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_020_gpu",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_021_x",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_022_x",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_023_x",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_024_x",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_025_x",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_026_chromiumabstractsalmon",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_027_chromiumabstractyellow",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_028_chromiumabstractgreen",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_029_famous",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_030_ink",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_031_fin",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_032_shaman",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_033_molecule",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_035_juan",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_036_x",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_037_aressprout",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_038_cashking",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_039_davinci",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_040_melzarmagic",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_041_maradona",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_043_jeremy",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_045_homewithkids",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_046_nate",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_050_nate",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_054_sterling",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_054_sterlingglasses",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_054_sterlingglasses3withcrown5",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_055_luke",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_055_luke10",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_055_luke3",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_055_luke6",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_055_luke8",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_057_hugh",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_057_hugh5",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_058_savva",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_059_samascientist",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_060_bhaitradingbot2",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_061_dope7",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_062_devox2",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_063_kenichi",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_064_scott",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_064_sensei",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_066_napoli2",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_068_mayor",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_070_irasbf2",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_074_lc",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_075_mmhm",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_078_btoshi",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_079_ravish",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_080_fcpo",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_081_iggy2",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_086_scooby",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_087_heem",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_088_kareem",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_089_aguda",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_090_drscott",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_091_amit",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_092_derrick",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_093_photogee",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_094_storm",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_095_godfather",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_096_apollo",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_097_drralph",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_098_murtaza",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_099_amenshiller",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_102_bunya",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_102_bunya2",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_102_bunya3",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_103_merheb",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lad_103_merheb2",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_000_lemon",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_001_hazelnut",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_002_vanilla",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_003_cashew",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_004_nutmeg",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_005_cinnamon",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_006_pepper",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_007_alloy",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_008_pinksilk",
+      "error": "No task_id in response"
+    },
+    {
+      "name": "lady_009_bluesilk",
+      "error": "API error: 429 - {\"message\":\"You've hit your daily limit for this service. Try again in a while, or for higher daily limits, visit https://www.freepik.com/developers/dashboard/billing to upgrade your plan in a few seconds.\"}\n"
+    },
+    {
+      "name": "lad_001_carbon",
+      "error": "API error: 429 - {\"message\":\"You've hit your daily limit for this service. Try again in a while, or for higher daily limits, visit https://www.freepik.com/developers/dashboard/billing to upgrade your plan in a few seconds.\"}\n"
+    },
+    {
+      "name": "lad_002_cash",
+      "error": "API error: 429 - {\"message\":\"You've hit your daily limit for this service. Try again in a while, or for higher daily limits, visit https://www.freepik.com/developers/dashboard/billing to upgrade your plan in a few seconds.\"}\n"
+    }
+  ],
+  "inProgress": {}
+}

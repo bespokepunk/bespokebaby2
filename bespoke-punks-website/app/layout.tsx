@@ -45,11 +45,11 @@ export default function RootLayout({
       <body className="antialiased">
         <nav className="fixed top-0 left-0 right-0 z-50 frosted">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="flex items-center justify-between h-20">
-              <a href="/" className="serif text-xl tracking-tight accent-text">
+            <div className="flex items-center justify-between h-12">
+              <a href="/" className="serif text-base tracking-tight accent-text">
                 Bespoke Punks
               </a>
-              <div className="hidden md:flex items-center space-x-8 text-sm">
+              <div className="hidden md:flex items-center space-x-6 text-xs">
                 <a href="/" className="elegant-link hover:accent-text transition-colors">Home</a>
                 <a href="/gallery" className="elegant-link hover:accent-text transition-colors">Collection</a>
                 <a href="/about" className="elegant-link hover:accent-text transition-colors">Story</a>
@@ -59,7 +59,7 @@ export default function RootLayout({
           </div>
         </nav>
 
-        <main className="pt-20">
+        <main className="pt-12">
           {children}
         </main>
 

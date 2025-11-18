@@ -13,6 +13,7 @@ export default function GalleryPage() {
   const [hoveredPunk, setHoveredPunk] = useState<string | null>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [randomizedPunks, setRandomizedPunks] = useState<string[]>([]);
+  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
   const observerTarget = useRef<HTMLDivElement>(null);
 
   const cursorX = useMotionValue(0);
@@ -42,7 +43,8 @@ export default function GalleryPage() {
     const punkName = punk.split('_').slice(2).join('_');
     const matchesSearch = punkName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           punk.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesFilter && matchesSearch;
+    const notFailed = !failedImages.has(punk);
+    return matchesFilter && matchesSearch && notFailed;
   });
 
   const displayedPunks = filteredPunks.slice(0, visiblePunks);
@@ -55,6 +57,8 @@ export default function GalleryPage() {
 
   useEffect(() => {
     setVisiblePunks(60);
+    // Clear failed images when filter changes to give them another chance
+    setFailedImages(new Set());
   }, [filter, searchTerm]);
 
   // Infinite scroll observer
@@ -97,20 +101,20 @@ export default function GalleryPage() {
         }`} />
       </motion.div>
 
-      {/* Floating header */}
+      {/* Floating header - Ultra Compact */}
       <div className="fixed top-0 left-0 right-0 z-40 pointer-events-none">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-2">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex items-start justify-between"
+            className="flex items-center justify-between"
           >
             <div>
-              <h1 className="serif text-4xl sm:text-5xl md:text-6xl text-[#c9a96e] mb-2">
+              <h1 className="serif text-2xl sm:text-3xl text-[#c9a96e] mb-0.5">
                 The Collection
               </h1>
-              <p className="text-sm text-[#c9a96e]/60 tracking-wider">
+              <p className="text-[10px] text-[#c9a96e]/60 tracking-wider">
                 174 PIXEL SOULS
               </p>
             </div>
@@ -131,7 +135,7 @@ export default function GalleryPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="fixed top-32 left-0 right-0 z-30 pointer-events-none"
+        className="fixed top-14 left-0 right-0 z-30 pointer-events-none"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
@@ -188,7 +192,7 @@ export default function GalleryPage() {
       </motion.div>
 
       {/* Gallery - Masonry-style scattered layout */}
-      <div className="pt-56 pb-20 px-6 lg:px-8">
+      <div className="pt-36 pb-20 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
@@ -233,7 +237,7 @@ export default function GalleryPage() {
                     }}
                   >
                     <motion.div
-                      className="aspect-square relative overflow-hidden bg-black border border-[#c9a96e]/20 cursor-pointer"
+                      className="aspect-square relative overflow-hidden bg-[#0a0806] border border-[#c9a96e]/20 cursor-pointer"
                       whileHover={{
                         scale: 1.05,
                         rotate: 0,
@@ -242,17 +246,25 @@ export default function GalleryPage() {
                       }}
                       transition={{ duration: 0.2 }}
                     >
+                      {/* Loading shimmer effect */}
+                      <div className="absolute inset-0 shimmer" />
+
                       <Image
                         src={`/punks-display/${punk}.png`}
                         alt={punkId}
                         width={512}
                         height={512}
-                        className="w-full h-full object-cover pixel-perfect"
+                        className="w-full h-full object-cover pixel-perfect relative z-10"
                         loading="lazy"
                         unoptimized
-                        onError={(e) => {
-                          console.error('Failed to load:', punk);
-                          e.currentTarget.style.opacity = '0.3';
+                        onLoad={(e) => {
+                          // Hide shimmer once loaded
+                          const shimmer = e.currentTarget.previousSibling as HTMLElement;
+                          if (shimmer) shimmer.style.display = 'none';
+                        }}
+                        onError={() => {
+                          // Add to failed images set to filter it out
+                          setFailedImages(prev => new Set(prev).add(punk));
                         }}
                       />
 

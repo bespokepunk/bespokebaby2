@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useState, useEffect, useRef, useMemo } from 'react';
 import punkNames from '@/public/punk-names.json';
 import PunkWorld from '@/components/PunkWorld';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   const [selectedPunks, setSelectedPunks] = useState<string[]>([]);
@@ -14,89 +15,121 @@ export default function Home() {
   const [colorShift, setColorShift] = useState(0);
   const [capturedPunk, setCapturedPunk] = useState<string | null>(null);
   const [trailPixels, setTrailPixels] = useState<Array<{ x: number; y: number; size: number; id: number }>>([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   const pixelIdCounter = useRef(0);
 
+  // Optimize cursor updates with springs for smoother performance
+  const smoothCursorX = useSpring(cursorX, { stiffness: 300, damping: 30 });
+  const smoothCursorY = useSpring(cursorY, { stiffness: 300, damping: 30 });
+
   useEffect(() => {
     const shuffled = [...punkNames].sort(() => Math.random() - 0.5);
-    setSelectedPunks(shuffled.slice(0, 8));
+    // Reduce to 6 punks for better performance
+    setSelectedPunks(shuffled.slice(0, 6));
+
+    // Detect mobile
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   useEffect(() => {
+    let rafId: number;
+    let lastUpdate = 0;
+    const throttleMs = 32; // Reduced to ~30fps for better performance
+
     const handleMouseMove = (e: MouseEvent) => {
+      const now = Date.now();
+
+      // Always update cursor position for smooth tracking
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
-      setMousePosition({ x: e.clientX, y: e.clientY });
 
-      // Color shift based on mouse position
-      const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1920;
-      const hue = (e.clientX / windowWidth) * 60 + 20; // 20-80 range (gold to orange)
-      setColorShift(hue);
+      // Throttle other updates
+      if (now - lastUpdate < throttleMs) return;
+      lastUpdate = now;
 
-      // Add cursor trail pixel (varied sizes)
-      const sizes = [2, 3, 4, 5, 6];
-      const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+      if (rafId) cancelAnimationFrame(rafId);
 
-      pixelIdCounter.current += 1;
-      const newPixel = {
-        x: e.clientX,
-        y: e.clientY,
-        size: randomSize,
-        id: pixelIdCounter.current,
-      };
+      rafId = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY });
 
-      setTrailPixels(prev => {
-        const updated = [...prev, newPixel];
-        // Keep only last 20 pixels for performance
-        return updated.slice(-20);
+        // Color shift based on mouse position
+        const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1920;
+        const hue = (e.clientX / windowWidth) * 60 + 20; // 20-80 range (gold to orange)
+        setColorShift(hue);
+
+        // Add cursor trail pixel (varied sizes) - only on desktop, reduced count
+        if (window.innerWidth >= 768) {
+          const sizes = [3, 4, 5];
+          const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+
+          pixelIdCounter.current += 1;
+          const newPixel = {
+            x: e.clientX,
+            y: e.clientY,
+            size: randomSize,
+            id: pixelIdCounter.current,
+          };
+
+          setTrailPixels(prev => {
+            const updated = [...prev, newPixel];
+            // Keep only last 8 pixels for better performance
+            return updated.slice(-8);
+          });
+        }
       });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [cursorX, cursorY]);
 
-  // Clean up old trail pixels
+  // Clean up old trail pixels - increased interval for better performance
   useEffect(() => {
     const interval = setInterval(() => {
       setTrailPixels(prev => {
         if (prev.length === 0) return prev;
         return prev.slice(1); // Remove oldest pixel
       });
-    }, 50);
+    }, 80); // Slower cleanup = better performance
 
     return () => clearInterval(interval);
   }, []);
 
-  // Memoize positions - MORE SPREAD OUT
+  // Memoize positions - 6 punks for better performance
   const punkPositions = useMemo(() => [
     { left: '8%', top: '18%' },
     { right: '12%', top: '15%' },
     { left: '10%', bottom: '25%' },
     { right: '15%', bottom: '20%' },
     { left: '45%', top: '8%' },
-    { right: '42%', bottom: '30%' },
     { left: '20%', top: '65%' },
-    { right: '25%', top: '58%' },
   ], []);
 
   return (
     <div
-      className="min-h-screen overflow-hidden cursor-none md:cursor-none touch-auto relative"
+      className="min-h-screen overflow-hidden cursor-none md:cursor-none touch-auto relative dark:bg-black bg-stone-50 transition-colors duration-500"
       style={{
-        background: `radial-gradient(circle at ${mousePosition.x || '50%'}px ${mousePosition.y || '50%'}px, #0f0a06 0%, #000000 50%)`,
+        background: `radial-gradient(circle at ${mousePosition.x || '50%'}px ${mousePosition.y || '50%'}px, var(--radial-start) 0%, var(--radial-end) 50%)`,
       }}
     >
-      {/* CURSOR TRAIL PIXELS - Different sizes */}
+      <ThemeToggle />
+      {/* CURSOR TRAIL PIXELS - Better visibility */}
       <div className="hidden md:block fixed inset-0 pointer-events-none z-[90]">
         {trailPixels.map((pixel, index) => {
           const age = trailPixels.length - index;
           const opacity = Math.max(0, 1 - (age / trailPixels.length));
 
           return (
-            <motion.div
+            <div
               key={pixel.id}
               className="absolute"
               style={{
@@ -104,66 +137,33 @@ export default function Home() {
                 top: pixel.y,
                 width: pixel.size,
                 height: pixel.size,
+                opacity: opacity * 0.7,
+                background: `hsl(${colorShift + index * 3}, 80%, 70%)`,
+                boxShadow: `0 0 ${pixel.size * 2}px hsl(${colorShift + index * 3}, 80%, 60%)`,
+                borderRadius: '50%',
               }}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{
-                opacity: opacity * 0.6,
-                scale: 1,
-              }}
-              exit={{ opacity: 0, scale: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div
-                className="w-full h-full"
-                style={{
-                  background: `hsl(${colorShift + index * 3}, 80%, 70%)`,
-                  boxShadow: `0 0 ${pixel.size * 2}px hsl(${colorShift + index * 3}, 80%, 60%)`,
-                }}
-              />
-            </motion.div>
+            />
           );
         })}
       </div>
 
-      {/* ELEGANT LUMINOUS CURSOR - hidden on mobile */}
+      {/* ELEGANT LUMINOUS CURSOR - Simplified for performance */}
       <motion.div
-        className="hidden md:block fixed pointer-events-none z-[100]"
+        className="hidden md:block fixed pointer-events-none z-[100] will-change-transform"
         style={{
-          left: cursorX,
-          top: cursorY,
+          left: smoothCursorX,
+          top: smoothCursorY,
           x: '-50%',
           y: '-50%',
         }}
       >
-        {/* Soft outer glow */}
-        <motion.div
-          className="absolute inset-0"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-        >
-          <div
-            className="w-12 h-12 rounded-full blur-lg"
-            style={{
-              background: `radial-gradient(circle, hsl(${colorShift}, 70%, 60%) 0%, transparent 70%)`,
-            }}
-          />
-        </motion.div>
-
-        {/* Inner ring */}
+        {/* Simple ring cursor */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <motion.div
-            className="w-6 h-6 rounded-full border"
+          <div
+            className="w-6 h-6 rounded-full border-2"
             style={{
               borderColor: `hsl(${colorShift}, 60%, 60%)`,
-              boxShadow: `0 0 12px hsl(${colorShift}, 70%, 60%)`,
             }}
-            animate={{
-              rotate: 360,
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
           />
         </div>
 
@@ -173,21 +173,19 @@ export default function Home() {
             className="w-2 h-2 rounded-full"
             style={{
               background: `hsl(${colorShift}, 70%, 70%)`,
-              boxShadow: `0 0 8px hsl(${colorShift}, 80%, 60%)`,
             }}
           />
         </div>
       </motion.div>
 
-      {/* REACTIVE GRID OVERLAY - pulses on hover */}
+      {/* SUBTLE GRID OVERLAY - Static for better performance */}
       <div
-        className="fixed inset-0 pointer-events-none opacity-[0.03]"
+        className="fixed inset-0 pointer-events-none opacity-[0.02]"
         style={{
           backgroundImage: `
-            repeating-linear-gradient(0deg, transparent, transparent 47px, hsl(${colorShift}, 50%, 50%) 47px, hsl(${colorShift}, 50%, 50%) 48px),
-            repeating-linear-gradient(90deg, transparent, transparent 47px, hsl(${colorShift}, 50%, 50%) 47px, hsl(${colorShift}, 50%, 50%) 48px)
+            repeating-linear-gradient(0deg, transparent, transparent 47px, rgba(201, 169, 110, 0.3) 47px, rgba(201, 169, 110, 0.3) 48px),
+            repeating-linear-gradient(90deg, transparent, transparent 47px, rgba(201, 169, 110, 0.3) 47px, rgba(201, 169, 110, 0.3) 48px)
           `,
-          transition: 'background-image 0.3s ease',
         }}
       />
 
@@ -205,10 +203,11 @@ export default function Home() {
               style={{
                 ...basePos,
                 transform: 'translate(-50%, -50%)',
+                pointerEvents: hoveredPunk && !isHovered ? 'none' : 'auto',
               }}
               initial={{ opacity: 0, scale: 0, rotate: -180 }}
               animate={{
-                opacity: isCaptured ? 1 : (isHovered ? 1 : 0.4),
+                opacity: hoveredPunk && !isHovered ? 0 : (isCaptured ? 1 : (isHovered ? 1 : 0.4)),
                 scale: isCaptured ? 2.5 : (isHovered ? 2 : 1),
                 rotate: isCaptured ? 0 : (isHovered ? 0 : [0, 360]),
               }}
@@ -218,130 +217,92 @@ export default function Home() {
                 scale: { type: 'spring', damping: 20, stiffness: 150 },
                 rotate: { duration: isCaptured || isHovered ? 0 : 30, repeat: isCaptured || isHovered ? 0 : Infinity, ease: 'linear' }
               }}
-              onMouseEnter={() => setHoveredPunk(punk)}
-              onMouseLeave={() => setHoveredPunk(null)}
+              onMouseEnter={(e) => {
+                if (isMobile) return;
+                // Disable hover if we're in the footer/story section (below viewport)
+                const scrollY = window.scrollY;
+                if (scrollY > 100) return; // Don't show world portal if scrolled down
+                setHoveredPunk(punk);
+              }}
+              onMouseLeave={() => !isMobile && setHoveredPunk(null)}
               onClick={(e) => {
                 e.preventDefault();
-                if (isCaptured) {
-                  setCapturedPunk(null);
+                if (isMobile) {
+                  // Mobile: tap to show world portal
+                  if (hoveredPunk === punk) {
+                    setHoveredPunk(null);
+                  } else {
+                    setHoveredPunk(punk);
+                  }
                 } else {
-                  setCapturedPunk(punk);
+                  // Desktop: click to capture
+                  if (isCaptured) {
+                    setCapturedPunk(null);
+                  } else {
+                    setCapturedPunk(punk);
+                  }
                 }
               }}
             >
               <motion.div className="relative">
-                  {/* PUNK'S WORLD VISION - Actual scene/city/environment */}
+                  {/* PUNK'S WORLD VISION - Clean fullscreen portal */}
                   <AnimatePresence>
                     {isHovered && (
                       <motion.div
-                        className="fixed inset-0 pointer-events-none z-[200] flex items-center justify-center"
+                        className="fixed inset-0 z-[200]"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        style={{
-                          background: 'rgba(0, 0, 0, 0.7)',
-                          backdropFilter: 'blur(10px)',
-                        }}
+                        transition={{ duration: 0.4 }}
                       >
-                        {/* White flash */}
+                        {/* World background - full bleed */}
+                        <div className="absolute inset-0">
+                          <PunkWorld
+                            punkIndex={selectedPunks.indexOf(punk)}
+                            punkName={punk}
+                            colorShift={colorShift}
+                          />
+                        </div>
+
+                        {/* Subtle dark gradient overlay at bottom for text readability */}
+                        <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+
+                        {/* Punk name at bottom */}
                         <motion.div
-                          className="absolute inset-0"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: [0, 1, 0] }}
-                          transition={{ duration: 0.3, times: [0, 0.1, 1] }}
-                          style={{ background: 'white' }}
-                        />
-
-                        {/* TUNNEL VIEW - Portal to punk's world (wide cinematic angle) */}
-                        <motion.div
-                          className="absolute left-0 top-0 bottom-0 w-[75vw] overflow-hidden"
-                          initial={{ scaleX: 0, opacity: 0 }}
-                          animate={{ scaleX: 1, opacity: 1 }}
-                          exit={{ scaleX: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                          style={{
-                            transformOrigin: 'left center',
-                          }}
-                        >
-                          {/* Tunnel frame with glowing border */}
-                          <div
-                            className="relative w-full h-full border-r-8"
-                            style={{
-                              borderColor: `hsl(${colorShift}, 70%, 60%)`,
-                              boxShadow: `inset -40px 0 80px rgba(0,0,0,0.6), 0 0 60px hsl(${colorShift}, 70%, 50%)`,
-                            }}
-                          >
-                            {/* PunkWorld component - animated world scenes */}
-                            <PunkWorld
-                              punkIndex={selectedPunks.indexOf(punk)}
-                              punkName={punk}
-                              colorShift={colorShift}
-                            />
-
-                            {/* Vignette edges for depth */}
-                            <div
-                              className="absolute inset-0 pointer-events-none"
-                              style={{
-                                background: 'radial-gradient(ellipse 120% 100% at 80% 50%, transparent 30%, rgba(0,0,0,0.7) 100%)',
-                              }}
-                            />
-                          </div>
-
-                          {/* Corner bracket indicators */}
-                          <div className="absolute top-4 right-4 w-12 h-12 border-t-4 border-r-4 border-[#c9a96e] opacity-60" />
-                          <div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-[#c9a96e] opacity-60" />
-                        </motion.div>
-
-                        {/* Punk info overlay (right side) */}
-                        <motion.div
-                          className="absolute right-8 top-1/2 -translate-y-1/2 text-right max-w-xs"
-                          initial={{ opacity: 0, x: 50 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 50 }}
-                          transition={{ delay: 0.2, duration: 0.4 }}
+                          className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center"
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.2 }}
                         >
                           <p
-                            className="font-mono text-6xl mb-4 leading-none"
+                            className="font-mono text-4xl md:text-6xl tracking-wider"
                             style={{
-                              color: `hsl(${colorShift}, 90%, 80%)`,
-                              textShadow: `0 0 40px hsl(${colorShift}, 90%, 60%), 0 0 80px hsl(${colorShift}, 80%, 50%)`,
+                              color: `hsl(${colorShift}, 90%, 85%)`,
+                              textShadow: `0 0 30px hsl(${colorShift}, 90%, 60%), 0 2px 8px rgba(0,0,0,0.8)`,
                             }}
                           >
                             {punk.replace(/_/g, ' ').split(' ').slice(0, 2).join(' ').toUpperCase()}
                           </p>
-                          <div className="w-full h-1 mb-4" style={{ background: `hsl(${colorShift}, 70%, 60%)` }} />
-                          <p className="font-mono text-sm tracking-widest text-white/60 mb-2">
-                            WORLD VISION
-                          </p>
-                          <p className="text-xs text-white/40 font-mono">
-                            // A glimpse into their universe
-                          </p>
                         </motion.div>
 
-                        {/* Instruction */}
+                        {/* Close instruction at top */}
                         <motion.p
-                          className="absolute bottom-8 font-mono text-xs tracking-widest text-white/40"
+                          className="absolute top-6 left-1/2 -translate-x-1/2 font-mono text-xs tracking-widest text-white/60"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
-                          transition={{ delay: 0.4 }}
+                          transition={{ delay: 0.3 }}
                         >
-                          MOVE CURSOR AWAY TO CLOSE
+                          {isMobile ? 'TAP TO CLOSE' : 'HOVER AWAY TO CLOSE'}
                         </motion.p>
                       </motion.div>
                     )}
                   </AnimatePresence>
 
-                  <motion.div
-                    animate={{
-                      y: isHovered ? 0 : [0, -15, 0],
-                    }}
-                    transition={{
-                      y: {
-                        duration: 3 + i * 0.3,
-                        repeat: Infinity,
-                        ease: 'easeInOut',
-                      },
+                  <div
+                    className={hoveredPunk === punk ? '' : 'animate-float'}
+                    style={{
+                      animationDelay: `${i * 0.3}s`,
+                      animationDuration: `${3 + i * 0.3}s`,
                     }}
                   >
                     <Image
@@ -359,42 +320,23 @@ export default function Home() {
                       unoptimized
                       priority={i < 4}
                     />
-                  </motion.div>
-
-                  {/* Name with elegant glow */}
-                  {isHovered && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="absolute -bottom-16 left-1/2 -translate-x-1/2 whitespace-nowrap"
-                    >
-                      <p
-                        className="font-mono text-2xl tracking-[0.3em]"
-                        style={{
-                          color: `hsl(${colorShift}, 70%, 70%)`,
-                          textShadow: `0 0 20px hsl(${colorShift}, 80%, 60%), 0 0 40px hsl(${colorShift}, 70%, 50%)`,
-                        }}
-                      >
-                        {punk.replace(/_/g, ' ').split(' ').slice(0, 2).join(' ').toUpperCase()}
-                      </p>
-                    </motion.div>
-                  )}
+                  </div>
                 </motion.div>
             </motion.div>
           );
         })}
       </div>
 
-      {/* MASSIVE ELEGANT TEXT WITH COLOR SHIFTING */}
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden pb-32">
+      {/* MASSIVE ELEGANT TEXT WITH COLOR SHIFTING - Hide when world portal is open */}
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
         <motion.div className="relative">
           <motion.h1
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{
-              opacity: 1,
+              opacity: hoveredPunk ? 0 : 1,
               scale: 1,
             }}
-            transition={{ duration: 1.5, type: 'spring', damping: 20 }}
+            transition={{ duration: hoveredPunk ? 0.2 : 1.5, type: 'spring', damping: 20 }}
             className="font-serif text-[20vw] md:text-[25vw] leading-none select-none relative"
           >
             {/* Soft background glow */}

@@ -6,10 +6,14 @@
 
 :root {
   /* Rich, cultured color palette - vintage meets modern */
-  --background: #0f0e0d;
-  --background-light: #1a1816;
-  --foreground: #e8e3d8;
-  --foreground-muted: #a39a8b;
+  --background: #f7f4ed;
+  --background-light: #ffffff;
+  --foreground: #1a1816;
+  --foreground-muted: #6b635a;
+
+  /* Radial gradients */
+  --radial-start: #faf9f6;
+  --radial-end: #e8e3d8;
 
   /* Accent colors - sophisticated palette */
   --accent-primary: #c9a96e;    /* Champagne gold */
@@ -33,13 +37,14 @@
   --shadow-strong: 0 12px 48px rgba(201, 169, 110, 0.16);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #f7f4ed;
-    --background-light: #ffffff;
-    --foreground: #1a1816;
-    --foreground-muted: #6b635a;
-  }
+.dark {
+  --background: #0f0e0d;
+  --background-light: #1a1816;
+  --foreground: #e8e3d8;
+  --foreground-muted: #a39a8b;
+
+  --radial-start: #0f0a06;
+  --radial-end: #000000;
 }
 
 body {
@@ -179,12 +184,16 @@ h1, h2, h3, h4, h5, h6 {
       transform: translateY(0px);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translateY(-15px);
     }
   }
 
   .float {
     animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float ease-in-out infinite;
   }
 
   /* Subtle glow effect */

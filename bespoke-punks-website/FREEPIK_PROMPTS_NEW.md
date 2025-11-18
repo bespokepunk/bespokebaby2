@@ -14,7 +14,7 @@ Save each image as: `/public/punk-worlds/{punk_name}.jpg`
 
 ### lady_099_VQ
 **Style: Miniature diorama stop-motion**
-Miniature retro disco lounge diorama bathed in medium blue twilight with golden disco ball shimmer, tiny blonde figure with white-framed glasses seated at glowing turquoise table, miniature tufted velvet booths and scattered cocktail glasses, tilt-shift depth blurring edges into mystery, dream-logic scale where disco balls float like distant planets, liminal space between night and memory, shadow puppet theater depth with layered silhouettes, folkloric tale told through miniature theater, mythological shadow play across velvet walls, ancient legend whispered through golden light, ethereal ghostly glow, small-scale retro magic, handbuilt 70s funk aesthetic, tilt-shift atmospheric, 16:9
+Miniature retro disco lounge diorama bathed in medium blue twilight with golden disco ball shimmer, miniature tufted velvet booths in deep blue surrounding glowing turquoise cocktail table, tiny blonde-haired figure with white glasses visible in background booth, scattered cocktail glasses and 70s funk decor, tilt-shift depth blurring edges into atmospheric mystery, dream-logic scale where disco balls float like distant planets, liminal space between night and memory, shadow puppet theater depth with layered silhouettes, folkloric tale told through miniature theater, mythological shadow play across velvet walls, ancient legend whispered through golden light, ethereal ghostly glow, small-scale retro magic, handbuilt 70s aesthetic, tilt-shift atmospheric, 16:9
 
 ---
 
@@ -28,7 +28,7 @@ Each prompt must follow this structure:
 
 3. **Capture portrait aesthetic/vibe** - Cyberpunk, kawaii, vintage, bohemian, etc. - match the mood.
 
-4. **Include character subtly** - "tiny [exact hair color] figure with [1-2 key accessories from portrait]"
+4. **Include character subtly** - "tiny [exact hair color] figure with [1-2 key accessories from portrait] visible in background/distance/glimpsed through"
 
 5. **Atmospheric world focus** - Describe the miniature environment, not close-up character details.
 
@@ -46,8 +46,3 @@ Each prompt must follow this structure:
 9. **Handbuilt miniature craftsmanship details**
 
 ---
-
-## TO BE COMPLETED: 194 PROMPTS
-
-Using the visual data from PUNK_VISUAL_DATA_COMPLETE.md, create all remaining prompts following the lady_099_VQ example above.
-
