@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punk Selector - Choose Featured Punks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .header {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 12px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .stats {
+            color: #888;
+            margin-top: 10px;
+        }
+
+        .selected-count {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #00ff88;
+            color: #0a0a0a;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background: #00dd77;
+        }
+
+        button.secondary {
+            background: #333;
+            color: #fff;
+        }
+
+        button.secondary:hover {
+            background: #444;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .punk-card {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .punk-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-2px);
+        }
+
+        .punk-card.selected {
+            border-color: #00ff88;
+            background: #002211;
+        }
+
+        .punk-card.selected::after {
+            content: '✓';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: #00ff88;
+            color: #0a0a0a;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .punk-image {
+            width: 100%;
+            height: 160px;
+            object-fit: contain;
+            background: #0a0a0a;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            image-rendering: pixelated;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: crisp-edges;
+        }
+
+        .punk-name {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            word-break: break-word;
+        }
+
+        .punk-card.selected .punk-name {
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #00ff88;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎨 Punk Selector - Choose Featured Punks</h1>
+        <p>Select which punks you want to feature on the main page. Then generate prompts only for those.</p>
+        <div class="stats">
+            Selected: <span class="selected-count" id="count">0</span> punks
+        </div>
+
+        <div class="controls">
+            <input type="text" class="search-box" id="search" placeholder="Search punks...">
+            <button onclick="selectAll()">Select All</button>
+            <button onclick="clearAll()" class="secondary">Clear All</button>
+            <button onclick="generatePrompts()">Generate Prompts for Selected</button>
+            <button onclick="saveSelection()" class="secondary">Save Selection</button>
+        </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+
+    <script>
+        const punks = [];
+        const selected = new Set();
+
+        // Fetch all punk images
+        async function loadPunks() {
+            try {
+                const response = await fetch('/punks');
+                const files = await response.json();
+                punks.push(...files);
+                renderGrid();
+            } catch (e) {
+                // Fallback - manually add punk names if API doesn't work
+                console.log('Using fallback punk list');
+                loadFallbackPunks();
+            }
+        }
+
+        function loadFallbackPunks() {
+            // Add common punks manually
+            for (let i = 0; i <= 106; i++) {
+                const num = String(i).padStart(3, '0');
+                punks.push(`lad_${num}`);
+            }
+            for (let i = 0; i <= 99; i++) {
+                const num = String(i).padStart(3, '0');
+                punks.push(`lady_${num}`);
+            }
+            renderGrid();
+        }
+
+        function renderGrid(filter = '') {
+            const grid = document.getElementById('grid');
+            grid.innerHTML = '';
+
+            const filtered = filter
+                ? punks.filter(p => p.toLowerCase().includes(filter.toLowerCase()))
+                : punks;
+
+            filtered.forEach(punk => {
+                const card = document.createElement('div');
+                card.className = 'punk-card' + (selected.has(punk) ? ' selected' : '');
+                card.onclick = () => togglePunk(punk);
+
+                card.innerHTML = `
+                    <img class="punk-image" src="/punks/${punk}.png" alt="${punk}" onerror="this.src='/api/placeholder/160/160'">
+                    <div class="punk-name">${punk}</div>
+                `;
+
+                grid.appendChild(card);
+            });
+
+            updateCount();
+        }
+
+        function togglePunk(punk) {
+            if (selected.has(punk)) {
+                selected.delete(punk);
+            } else {
+                selected.add(punk);
+            }
+            renderGrid(document.getElementById('search').value);
+        }
+
+        function selectAll() {
+            punks.forEach(p => selected.add(p));
+            renderGrid(document.getElementById('search').value);
+        }
+
+        function clearAll() {
+            selected.clear();
+            renderGrid(document.getElementById('search').value);
+        }
+
+        function updateCount() {
+            document.getElementById('count').textContent = selected.size;
+        }
+
+        async function generatePrompts() {
+            if (selected.size === 0) {
+                alert('Please select at least one punk!');
+                return;
+            }
+
+            const selectedArray = Array.from(selected).sort();
+
+            // Send to backend to generate prompts
+            const response = await fetch('/generate-prompts', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ punks: selectedArray })
+            });
+
+            const result = await response.json();
+            alert(`Generated prompts for ${selected.size} punks!\n\nSaved to: ${result.filename}`);
+        }
+
+        function saveSelection() {
+            const selectedArray = Array.from(selected).sort();
+            localStorage.setItem('selectedPunks', JSON.stringify(selectedArray));
+            alert(`Saved selection of ${selected.size} punks!`);
+        }
+
+        function loadSelection() {
+            const saved = localStorage.getItem('selectedPunks');
+            if (saved) {
+                const savedArray = JSON.parse(saved);
+                savedArray.forEach(p => selected.add(p));
+            }
+        }
+
+        // Search
+        document.getElementById('search').addEventListener('input', (e) => {
+            renderGrid(e.target.value);
+        });
+
+        // Initialize
+        loadSelection();
+        loadPunks();
+    </script>
+</body>
+</html>
