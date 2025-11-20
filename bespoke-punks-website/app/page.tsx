@@ -26,9 +26,15 @@ export default function Home() {
   const smoothCursorY = useSpring(cursorY, { stiffness: 300, damping: 30 });
 
   useEffect(() => {
-    const shuffled = [...punkNames].sort(() => Math.random() - 0.5);
-    // Reduce to 6 punks for better performance
-    setSelectedPunks(shuffled.slice(0, 6));
+    // Hero 5 punks for MVP showcase (in specific order for best visual impact)
+    const heroPunks = [
+      'lady_000_lemon',      // Yellow/Red - Factory
+      'lad_002_cash',        // Lime/Gold - Treasury
+      'lady_008_pinksilk',   // Pink/Tiffany - Hollywood
+      'lad_062_devox',       // Rainbow - Web3
+      'lady_006_pepper',     // B&W - Fashion
+    ];
+    setSelectedPunks(heroPunks);
 
     // Detect mobile
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
