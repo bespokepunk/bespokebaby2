@@ -147,12 +147,12 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 9. `lady_066_monalisa-3` — Florentine Atelier
 
 **Prompt:**
-> Stop-motion macro diorama of a Florentine painter's atelier cathedral awash in olive dusk and golden Tuscan sunlight, blending Tale of Three Brothers shadow-play with Coraline whimsy.
-> Walnut easels hold linen canvases and poplar panels, flanked by palettes smeared from burnt umber to mossy green and bowls of egg tempera ready for glazing.
-> Mason jars of lapis pigment, willow charcoal, silverpoint styluses, and silk veils line carved benches beside parchment transfer sheets dusted with pouncing chalk.
-> Kiln-dried beams cradle strings of landscape studies while camera obscura boxes and marble grinding slabs shimmer beneath floating pollen motes.
-> Tilt-shift blur softens the distant arched windows, celebrating each brush hair, pigment crystal, and canvas weave in stop-motion detail.
-> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO portraits ZERO face paintings ZERO people sketches ZERO text ZERO names.
+> Stop-motion macro diorama of a Florentine painter's atelier cathedral viewed from behind the easel where the model sits posing, camera positioned in the model's spot looking back toward the artist's workspace, awash in olive dusk and golden Tuscan sunlight, blending Tale of Three Brothers shadow-play with Coraline whimsy.
+> Multiple walnut easels face toward the camera displaying miniature Tuscan landscape paintings on linen canvases with rolling hills and cypress trees in visible brushstrokes, creating an intimate gallery of works-in-progress.
+> The artist's worktable sprawls with paint-smeared palettes showing umber and olive gradients, mason jars brimming with lapis pigment, willow charcoal sticks, silverpoint styluses, horsehair brushes fanned across surfaces, and ceramic bowls of golden egg tempera.
+> Carved benches hold translucent silk veils for glazing experiments, parchment sheets with pounced carbon dots, grinding slabs with stone mullers, while overhead beams display completed landscape studies on twine and a wooden camera obscura sits ready.
+> Warm arched windows illuminate the workspace from behind, casting golden halos around pigment jars and easels, with tilt-shift bokeh blurring distant studio architecture.
+> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field from where the portrait subject would sit, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO portraits of people ZERO face paintings ZERO artist ZERO hands ZERO text ZERO names.
 
 
 ### 10. `lady_007_alloy` — Collective Regeneration Bay
@@ -173,8 +173,7 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 11. `lad_106_sultan` — Ninja Arsenal Sanctuary
 
 **Prompt:**
-> Stop-motion macro diorama of a feudal Japanese dojo cathedral soaked in electric green moonlight and inky black shadows, marrying Kubo's poetic silhouettes with Fantastic Mr.
-> Fox craft.
+> Stop-motion macro diorama of a feudal Japanese dojo cathedral soaked in electric green moonlight and inky black shadows, marrying Kubo's poetic silhouettes with Fantastic Mr. Fox craft.
 > Tatami grids, bamboo columns, and sliding shoji screens enclose sword stands displaying folded-steel katana blades, shuriken constellations, and lacquered daggers.
 > Rope-wrapped training posts, smoke-shell ceramics, grappling hooks with coiled silk rope, and strategy scrolls rendered as abstract seals occupy the sanded floor alongside meditation cushions dyed in indigo.
 > Incense embers, paper cranes, and tea ceremony vessels hover amid drifting fog while moonbeams carve calligraphic light across polished stone.
@@ -196,8 +195,7 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 13. `lad_055_luke8` — Venice Beach Surf Shack
 
 **Prompt:**
-> Stop-motion macro diorama of a 1960s Venice Beach surf sanctuary illuminated by Pacific blue breeze, golden sunset haze, and bleached white driftwood, weaving Fantastic Mr.
-> Fox craft with James and the Giant Peach nostalgia.
+> Stop-motion macro diorama of a 1960s Venice Beach surf sanctuary illuminated by Pacific blue breeze, golden sunset haze, and bleached white driftwood, weaving Fantastic Mr. Fox craft with James and the Giant Peach nostalgia.
 > Weathered plank walls cradle turquoise longboards with resin tints, while a faded microbus model, palm fronds, and macrame hammocks sway in salty air.
 > Driftwood benches showcase shark-tooth necklaces, wax bars with comb impressions, woven beach blankets, and tiki torches mid-flicker.
 > Strings of sepia surf photos rendered as silhouette mosaics, seashell collections, coconut drinks, and ukuleles trace the interior alongside reef sandals and miniature trophies perched on sand-dusted shelves.
@@ -234,8 +232,7 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 16. `lad_054_sterlingglasses3withcrown5` — Craft Brewery Taproom
 
 **Prompt:**
-> Stop-motion macro diorama of a craft brewery taproom cathedral glowing with electric hot pink neon, amber ale radiance, and gold radial halos, intertwining Fantastic Mr.
-> Fox woodcraft with Polar Express warmth.
+> Stop-motion macro diorama of a craft brewery taproom cathedral glowing with electric hot pink neon, amber ale radiance, and gold radial halos, intertwining Fantastic Mr. Fox woodcraft with Polar Express warmth.
 > Oak barrels with iron hoops tower beside copper brew kettles, tasting paddles, and amber growlers with swing-top clasps.
 > Hop vine garlands, lupulin-rich cones, chalkboard silhouettes, and a velvet jester crown perch above tortoiseshell glasses and string-light garlands.
 > Malt sacks, hydrometers, thermometers, and bottle-cap mosaics populate industrial concrete floors dusted with barley grains.
@@ -294,8 +291,7 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 21. `lad_088_kareem` — Soul Record Sanctuary
 
 **Prompt:**
-> Stop-motion macro diorama of a 1970s soul record store cathedral lit by charcoal shadows, amber glow, and warm brown woodgrain, fusing Fantastic Mr.
-> Fox tactile craft with Polar Express nostalgia.
+> Stop-motion macro diorama of a 1970s soul record store cathedral lit by charcoal shadows, amber glow, and warm brown woodgrain, fusing Fantastic Mr. Fox tactile craft with Polar Express nostalgia.
 > Crate-lined aisles overflow with vinyl bins showcasing color-coded spine patterns, while brushed-aluminum turntables, reel-to-reel decks, and headphone listening posts create shrine-like stations.
 > Incense smoke curls around speaker stacks, afro pick sculptures, trading card displays, and handwoven textiles draped on crate edges.
 > Poster mosaics, cassette walls, and 45 rpm singles glitter under pendant lights, with price sticker guns and receipt books arranged as relics on the counter.
@@ -317,8 +313,7 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 23. `lad_057_hughx` — Rooftop Fine Dining
 
 **Prompt:**
-> Stop-motion macro diorama of a Michelin-star rooftop sanctuary bathed in peach sunset, city-gold glimmer, and night-sky cobalt, blending Polar Express romanticism with Fantastic Mr.
-> Fox elegance.
+> Stop-motion macro diorama of a Michelin-star rooftop sanctuary bathed in peach sunset, city-gold glimmer, and night-sky cobalt, blending Polar Express romanticism with Fantastic Mr. Fox elegance.
 > Linen-clad tables host crystal wine glass forests, sterling candelabras, origami-fold napkins, and polished cloche domes reflecting skyline silhouettes.
 > Champagne towers, dessert carts with sugar-glass domes, vintage guidebooks, and reservation ledgers rendered as iconography perch atop mosaic tiles.
 > String lights and telescope stands frame miniature skyline cutouts, while herb planters, bread baskets, and salt mills create textured layers.
@@ -340,8 +335,7 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 25. `lad_029_famous-9` — Luxury Auto Gallery
 
 **Prompt:**
-> Stop-motion macro diorama of a luxury auto showroom cathedral awash in electric navy glow, chrome reflections, and leather brown warmth, fusing Fantastic Mr.
-> Fox craftsmanship with Polar Express sheen.
+> Stop-motion macro diorama of a luxury auto showroom cathedral awash in electric navy glow, chrome reflections, and leather brown warmth, fusing Fantastic Mr. Fox craftsmanship with Polar Express sheen.
 > A sculpted classic coupe miniature gleams on a rotating dais beside steering-wheel monuments, speedometer clusters, and engine part reliquaries polished to mirror perfection.
 > Chrome trim samples, leather upholstery swatches, tire stacks with precise tread, and hood ornament sculptures populate terrazzo floors with inlaid brass lines.
 > Key fob collections, road maps rendered as abstract routes, racing trophies, and detailing kits rest on walnut consoles beneath panoramic glass walls.
@@ -420,5 +414,6 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ---
 
 **End of Enhanced MVP 25 Punks Document**
+
 
 
