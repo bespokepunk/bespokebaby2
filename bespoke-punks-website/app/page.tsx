@@ -7,6 +7,9 @@ import { useState, useEffect, useRef, useMemo } from 'react';
 import punkNames from '@/public/punk-names.json';
 import PunkWorld from '@/components/PunkWorld';
 import ThemeToggle from '@/components/ThemeToggle';
+import { getRandomPunks } from '@/lib/utils/random';
+import { fourPunkPositions } from '@/lib/layout/positions';
+import { WORLD_COUNT } from '@/lib/constants';
 
 export default function Home() {
   const [selectedPunks, setSelectedPunks] = useState<string[]>([]);
@@ -26,15 +29,9 @@ export default function Home() {
   const smoothCursorY = useSpring(cursorY, { stiffness: 300, damping: 30 });
 
   useEffect(() => {
-    // Hero 5 punks from Rotation 1 ONLY
-    const heroPunks = [
-      'lady_000_lemon',
-      'lad_002_cash',
-      'lady_052_pinksilkabstract',
-      'lad_062_devox2',
-      'lady_053_pepperabstract',
-    ];
-    setSelectedPunks(heroPunks);
+    // Random selection of 4 punks from the 37 with worlds
+    const randomPunks = getRandomPunks(4);
+    setSelectedPunks(randomPunks);
 
     // Detect mobile
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -110,14 +107,8 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // Memoize positions - 5 punks
-  const punkPositions = useMemo(() => [
-    { left: '8%', top: '18%' },
-    { right: '12%', top: '15%' },
-    { left: '10%', bottom: '25%' },
-    { right: '15%', bottom: '20%' },
-    { left: '45%', top: '8%' },
-  ], []);
+  // Memoize positions - 4 punks optimized for 16:9 world showcase
+  const punkPositions = useMemo(() => fourPunkPositions, []);
 
   return (
     <div
@@ -260,8 +251,8 @@ export default function Home() {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.4 }}
                       >
-                        {/* World background - full bleed */}
-                        <div className="absolute inset-0">
+                        {/* World background - with top padding to avoid header cutoff */}
+                        <div className="absolute inset-0 pt-12">
                           <PunkWorld
                             punkIndex={selectedPunks.indexOf(punk)}
                             punkName={punk}
@@ -438,7 +429,7 @@ export default function Home() {
                     {capturedPunk.replace(/_/g, ' ').split(' ').slice(0, 2).join(' ').toUpperCase()}
                   </h2>
                   <p className="font-mono text-sm text-[#c9a96e]/80 mb-8">
-                    One of the 174 Honoraries
+                    One of {WORLD_COUNT} Worlds
                   </p>
 
                   <Link href="/gallery">
@@ -483,7 +474,7 @@ export default function Home() {
                 animate={{ opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                174 HANDCRAFTED
+                {WORLD_COUNT} WORLDS
               </motion.p>
               <p className="font-mono text-[10px] tracking-[0.3em] text-[#c9a96e]/30">
                 PIXEL PERFECT
