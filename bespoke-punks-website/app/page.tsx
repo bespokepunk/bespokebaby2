@@ -26,13 +26,13 @@ export default function Home() {
   const smoothCursorY = useSpring(cursorY, { stiffness: 300, damping: 30 });
 
   useEffect(() => {
-    // Hero 5 punks for MVP showcase (in specific order for best visual impact)
+    // Hero 5 punks from Rotation 1 ONLY
     const heroPunks = [
-      'lady_000_lemon',      // Yellow/Red - Factory
-      'lad_002_cash',        // Lime/Gold - Treasury
-      'lady_008_pinksilk',   // Pink/Tiffany - Hollywood
-      'lad_062_devox',       // Rainbow - Web3
-      'lady_006_pepper',     // B&W - Fashion
+      'lady_000_lemon',
+      'lad_002_cash',
+      'lady_052_pinksilkabstract',
+      'lad_062_devox2',
+      'lady_053_pepperabstract',
     ];
     setSelectedPunks(heroPunks);
 
@@ -110,14 +110,13 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // Memoize positions - 6 punks for better performance
+  // Memoize positions - 5 punks
   const punkPositions = useMemo(() => [
     { left: '8%', top: '18%' },
     { right: '12%', top: '15%' },
     { left: '10%', bottom: '25%' },
     { right: '15%', bottom: '20%' },
     { left: '45%', top: '8%' },
-    { left: '20%', top: '65%' },
   ], []);
 
   return (

@@ -43,8 +43,8 @@ export default function GalleryPage() {
     const punkName = punk.split('_').slice(2).join('_');
     const matchesSearch = punkName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           punk.toLowerCase().includes(searchTerm.toLowerCase());
-    const notFailed = !failedImages.has(punk);
-    return matchesFilter && matchesSearch && notFailed;
+    // Don't filter out failed images - show all
+    return matchesFilter && matchesSearch;
   });
 
   const displayedPunks = filteredPunks.slice(0, visiblePunks);
@@ -262,9 +262,12 @@ export default function GalleryPage() {
                           const shimmer = e.currentTarget.previousSibling as HTMLElement;
                           if (shimmer) shimmer.style.display = 'none';
                         }}
-                        onError={() => {
-                          // Add to failed images set to filter it out
-                          setFailedImages(prev => new Set(prev).add(punk));
+                        onError={(e) => {
+                          // Log error but don't remove from display
+                          console.log(`Failed to load: ${punk}`);
+                          // Hide shimmer on error too
+                          const shimmer = e.currentTarget.previousSibling as HTMLElement;
+                          if (shimmer) shimmer.style.display = 'none';
                         }}
                       />
 

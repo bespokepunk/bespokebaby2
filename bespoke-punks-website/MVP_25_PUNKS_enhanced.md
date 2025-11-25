@@ -147,12 +147,12 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 9. `lady_066_monalisa-3` — Florentine Atelier
 
 **Prompt:**
-> Stop-motion macro diorama of a Florentine painter's atelier cathedral viewed from behind the easel where the model sits posing, camera positioned in the model's spot looking back toward the artist's workspace, awash in olive dusk and golden Tuscan sunlight, blending Tale of Three Brothers shadow-play with Coraline whimsy.
-> Multiple walnut easels face toward the camera displaying miniature Tuscan landscape paintings on linen canvases with rolling hills and cypress trees in visible brushstrokes, creating an intimate gallery of works-in-progress.
-> The artist's worktable sprawls with paint-smeared palettes showing umber and olive gradients, mason jars brimming with lapis pigment, willow charcoal sticks, silverpoint styluses, horsehair brushes fanned across surfaces, and ceramic bowls of golden egg tempera.
-> Carved benches hold translucent silk veils for glazing experiments, parchment sheets with pounced carbon dots, grinding slabs with stone mullers, while overhead beams display completed landscape studies on twine and a wooden camera obscura sits ready.
-> Warm arched windows illuminate the workspace from behind, casting golden halos around pigment jars and easels, with tilt-shift bokeh blurring distant studio architecture.
-> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field from where the portrait subject would sit, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO portraits of people ZERO face paintings ZERO artist ZERO hands ZERO text ZERO names.
+> Stop-motion macro diorama of Florentine painter's material workshop cathedral bathed in olive green glow and golden Tuscan sunlight, blending Tale of Three Brothers shadow-play with Coraline whimsy.
+> Weathered oak worktables sprawl with paint-smeared walnut palettes showing umber-to-olive gradients, lapis lazuli pigment mounds in stone mortars with pestles, delicate gold leaf sheets in tissue layers, horsehair brushes fanned across surfaces with individual bristles visible, Venetian glass oil bottles catching light, terracotta bowls of golden egg tempera, willow charcoal sticks bundled with twine, silverpoint styluses, red chalk pieces, parchment sheets with pounced carbon transfer dots.
+> Mason jars brimming with ground pigments in earth tones line carved benches alongside translucent silk veils for glazing experiments, grinding slabs with stone mullers, brass compass dividers, and a wooden camera obscura box with brass fittings.
+> Arched cathedral windows pour warm golden beams across the aged wood surfaces, dust motes suspended in shafts of Tuscan light.
+> Tilt-shift bokeh blurs distant stone architecture, celebrating every texture—wood grain, pigment powder, canvas weave, hammered brass.
+> Shot on 16:9 tilt-shift macro lens with cinematic depth, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO portraits ZERO paintings ZERO easels ZERO artwork ZERO completed works ZERO text ZERO names.
 
 
 ### 10. `lady_007_alloy` — Collective Regeneration Bay
@@ -181,15 +181,14 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 > Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO text ZERO specific names.
 
 
-### 12. `lady_060_winehouse` — Soul Club Dressing Room
+### 12. `lady_060_winehouse` — Soul Singer's Dressing Room
 
 **Prompt:**
-> Stop-motion macro diorama of a 1960s jazz club dressing cathedral drenched in deep purple velvet, wine-red spotlights, and smoky black shadows, intertwining Coraline backstage secrets with Fantasia glow.
-> Tufted velvet booths cradle chrome microphones, hollow-body guitars, and crystal whiskey tumblers with sculpted ice, while vanity counters gleam with cat-eye eyeliner compacts, perfume atomizers, and rose bouquets.
-> Record stacks, vintage amplifiers, ribboned ballet slippers, satin hair bows, and heart-shaped sunglasses rest on mirrored trays beside cigarette cases and retro jukebox minis.
-> Marquee bulbs wrap a vanity mirror above ribboned parchment, lipstick-marked tissues, and incense captured mid-spiral.
-> Tilt-shift blur turns the stage beyond into dreamy haze, spotlighting each stitched cushion, lacquered instrument, and glass reflection.
-> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO portraits ZERO text ZERO artist names.
+> Tiny kawaii claymation miniature diorama photography of adorable vintage soul lounge cathedral bathed in deep purple velvet glow, wine-red warm lighting, and soft black shadows like precious Coraline meets Fantasia tiny world, dollhouse-scale handcrafted set with itty-bitty intimate stage platform in weathered wood with wine-stained finish, miniature chrome microphone on stand with vintage windscreen mesh, teeny velvet tufted booths with button details, precious spotlight creating magical late-night performance light.
+> Sophisticated tiny surfaces with little vinyl record player with visible tone arm and spinning turntable, adorable vintage amplifier with fabric grille, teeny crystal whiskey tumbler with amber liquid and ice cubes, precious rose bouquet scattered across stage floor with individual wilted petals.
+> Exquisite little vanity corner with marquee mirror bulbs, miniature cat-eye eyeliner compact, itty-bitty perfume atomizer in art deco glass, teeny lipstick tubes in wine red with gold caps, adorable heart-shaped sunglasses in tortoiseshell, precious satin hair bows, little ballet slippers in pink with ribbon ties, miniature beehive hairspray can, scattered tiny love letters with ink flourishes, little cigarette in ashtray with lipstick mark.
+> Atmospheric ultra-kawaii-chic vintage soul where intimate performance meets dollhouse perfection with museum-quality ornate tiny detail, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO portraits ZERO text ZERO artist names environment exclusively.
+> Extreme macro tilt-shift miniature photography with heavy bokeh blur on distant velvet drapes emphasizing tiny handmade scale, dream-logic adorable miniature scale where microphones are monuments, vinyl records are precious artifacts in dollhouse world, liminal soul lounge wonderland, ethereal deep purple velvet with wine-red glow through handcrafted miniature textures, stop-motion perfection with visible velvet nap, chrome reflection like Laika studios precious tiny sets, ultra-sophisticated kawaii vintage soul aesthetic, abstract heavily stylized with exquisite tiny diorama detail, small-scale cute model photography, 16:9
 
 
 ### 13. `lad_055_luke8` — Venice Beach Surf Shack
@@ -206,12 +205,12 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 14. `lady_049_abstractangels` — Celestial Y2K HQ
 
 **Prompt:**
-> Stop-motion macro diorama of a Y2K celestial command cathedral soaked in dark teal twilight, bubblegum pink holograms, and iridescent pastel clouds, merging Little Big Planet playfulness with Fantasia sparkle.
-> Feathered angel wing sculptures shimmer beside heart-crystal monoliths, transformation compacts, and translucent star telephones with coiled cords.
-> Glitter gel pens, holographic scrunchies, butterfly hair clips, manga volumes, and digital pets float on acrylic shelves above cloud-pillowed consoles.
-> Resin wands, celestial stickers, flip phones, and diary lockets scatter across plush carpet mosaics while neon halos orbit overhead.
-> Tilt-shift cinematography magnifies glitter dust, pearlescent plastics, and faux-fur trims in dreamy bokeh.
-> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO cartoon characters ZERO text ZERO logos.
+> Stop-motion macro diorama of a Y2K cyber angel command cathedral bathed in electric bright green glow, vibrant purple holographic light, and neon pink accents, merging Little Big Planet playfulness with Fantasia sparkle.
+> Iridescent white angel wing sculptures with individual feather details tower beside heart-crystal monoliths in faceted gem surfaces, holographic transformation compacts with working mirrors, and translucent star telephones in bubblegum pink with coiled cords.
+> Acrylic shelves hold glitter gel pens in cosmic colors, holographic silver platform sandals, metallic pastel butterfly hair clips, velvet scrunchies, manga volumes showing magical layouts, digital pets with pixel screens, and star-tipped celestial wands.
+> Cloud-shaped platforms display flip phones in sparkly cases, angel diary lockets with tiny keys, rainbow holographic stickers, lip gloss tubes with roller balls, and cyber wing accessories scattered like precious artifacts.
+> Tilt-shift cinematography magnifies glitter particles, iridescent surfaces, and holographic reflections in dreamy bokeh against bright green and purple neon atmosphere.
+> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO cartoon characters ZERO anime girls ZERO text ZERO logos.
 
 
 ### 15. `lady_096_yuri` — Sakura Classroom Sanctuary
@@ -229,14 +228,14 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 
 ## ⚡ Rotation 4
 
-### 16. `lad_054_sterlingglasses3withcrown5` — Craft Brewery Taproom
+### 16. `lad_054_sterlingglasses3withcrown5` — Coder's Party Den
 
 **Prompt:**
-> Stop-motion macro diorama of a craft brewery taproom cathedral glowing with electric hot pink neon, amber ale radiance, and gold radial halos, intertwining Fantastic Mr. Fox woodcraft with Polar Express warmth.
-> Oak barrels with iron hoops tower beside copper brew kettles, tasting paddles, and amber growlers with swing-top clasps.
-> Hop vine garlands, lupulin-rich cones, chalkboard silhouettes, and a velvet jester crown perch above tortoiseshell glasses and string-light garlands.
-> Malt sacks, hydrometers, thermometers, and bottle-cap mosaics populate industrial concrete floors dusted with barley grains.
-> Tilt-shift focus paints the distant tanks in dreamy blur, accentuating foam glassware, burlap textures, and hammered metal surfaces.
+> Stop-motion macro diorama of a coder's party lounge cathedral bathed in electric hot pink neon, vibrant purple LED strips, and lime green accent lights, blending Little Big Planet fun with Polar Express glow.
+> Sleek gaming desk displays mechanical keyboard with RGB backlighting, dual monitors showing abstract code terminals in green phosphor, wireless mouse on extended desk mat, and a velvet jester crown in purple and gold resting on acrylic headset stand.
+> Tortoiseshell glasses perch beside stacks of programming books, craft beer bottles with foil caps, energy drink cans, and LED strip-lit shelves holding figurines, party favor confetti, and tech gadget collections.
+> Neon sign sculptures in hot pink cast glow across concrete floors scattered with ethernet cables, USB drives, sticker collections, and mini disco ball ornaments spinning prismatic light.
+> Tilt-shift focus blurs distant party lights and bass speakers, emphasizing miniature scale of each keycap, cable braid, and metallic desk surface.
 > Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO text ZERO brand names ZERO logos.
 
 
@@ -291,23 +290,21 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 ### 21. `lad_088_kareem` — Soul Record Sanctuary
 
 **Prompt:**
-> Stop-motion macro diorama of a 1970s soul record store cathedral lit by charcoal shadows, amber glow, and warm brown woodgrain, fusing Fantastic Mr. Fox tactile craft with Polar Express nostalgia.
-> Crate-lined aisles overflow with vinyl bins showcasing color-coded spine patterns, while brushed-aluminum turntables, reel-to-reel decks, and headphone listening posts create shrine-like stations.
-> Incense smoke curls around speaker stacks, afro pick sculptures, trading card displays, and handwoven textiles draped on crate edges.
-> Poster mosaics, cassette walls, and 45 rpm singles glitter under pendant lights, with price sticker guns and receipt books arranged as relics on the counter.
-> Tilt-shift focus bathes the distant shelves in hazy bokeh, emphasizing vinyl grooves, woodgrain, and printed sleeve textures.
-> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO portraits ZERO text ZERO artist names ZERO specific titles.
+> Tiny kawaii claymation miniature diorama photography of adorable 1970s soul record store cathedral bathed in charcoal shadows, warm amber lighting, and rich brown woodgrain like precious Fantastic Mr. Fox meets Polar Express tiny world, dollhouse-scale handcrafted set with itty-bitty vinyl record bins displaying alphabetized albums with visible spine labels, miniature brushed-aluminum turntable with tonearm and pitch slider, teeny album cover wall showing abstract vintage label designs and graphic layouts only, creating magical soul music light through dusty storefront windows.
+> Sophisticated tiny surfaces with little wooden crate bins with hand-stenciled genre labels, adorable speaker stacks showing cone details, precious reel-to-reel tape deck, teeny incense stick holder with sandalwood smoke trail frozen in clay, tiny headphone listening station with vintage cans.
+> Exquisite little LP album towers in pristine plastic sleeves, miniature cassette tape wall with hand-written labels, itty-bitty 45 RPM singles with large center holes, teeny African print textiles draped flat in orange and brown geometric patterns, precious basketball trading cards in protective sleeves, scattered tiny soul food recipe cards handwritten, little carved wooden afro pick with decorative handle, adorable poster graphics, miniature liner notes booklets opened showing musician credits, tiny price sticker gun, precious receipt book with carbon copies.
+> Atmospheric ultra-kawaii-chic soul music culture where vinyl collecting meets eclectic cool with dollhouse perfection, museum-quality ornate tiny detail, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO portraits ZERO faces ZERO people ZERO musicians ZERO singers ZERO silhouettes ZERO text ZERO artist names ZERO specific titles ZERO album covers with people environment exclusively.
+> Extreme macro tilt-shift miniature photography with heavy bokeh blur on distant album stacks emphasizing tiny handmade scale, dream-logic adorable miniature scale where vinyl records are sacred sonic monuments, turntables are precious instruments in dollhouse world, liminal record store soul wonderland, ethereal charcoal with warm amber and brown through handcrafted miniature textures, stop-motion perfection with visible vinyl grooves, wood grain like Laika studios precious tiny sets, ultra-sophisticated kawaii soul aesthetic, abstract heavily stylized with exquisite tiny diorama detail, small-scale cute model photography, 16:9
 
 
-### 22. `lad_061_dope10` — Backstage Production Bay
+### 22. `lad_061_dope10` — Gentleman's Poker Lounge
 
 **Prompt:**
-> Stop-motion macro diorama of a concert backstage cathedral drenched in electric crimson spotlights and midnight black stage shadows, channeling Nightmare Before Christmas theatrics with Coraline craftsmanship.
-> Amplifier towers, lighting truss rigs, and rolling road cases form canyon walls, each stamped with weathered hardware, corner guards, and tour-scuffed patina.
-> Microphones with coiled cables, setlists taped as abstract bars, catering tables built from flight cases, and merch bins stacked by size line the scene.
-> Gold record plaques, laminate badge collections, tape rolls, cable snakes, and guitar pick constellations scatter across gaffer-lined floors beside monitor wedges and drum hardware crates.
-> Tilt-shift blur turns the stage door into a spectral glow, spotlighting every textured grille cloth, rivet, and anodized latch.
-> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO text ZERO band names ZERO logos.
+> Tiny kawaii claymation miniature diorama photography of adorable luxury private poker salon cathedral bathed in electric crimson glow, midnight navy velvet, and gold candlelight like precious Fantastic Mr. Fox meets Coraline tiny world, dollhouse-scale handcrafted set with itty-bitty green felt poker table with card suit embroidery, miniature poker chip towers in crimson black white stacked on empty table, teeny playing cards with BACKS VISIBLE showing ornate pattern design NO card faces showing NO suits visible only decorative backs, cute dark top hat OBJECT in felt with red band on empty chair, precious cool sunglasses OBJECT in black frames on table surface.
+> Sophisticated tiny surfaces with little crystal water glasses with ice cubes, adorable leather card holder, precious navy suit jacket OBJECT draped flat on chair showing pinstripe and white pocket square, teeny dealer button, tiny card shuffler.
+> Exquisite little leather chip case with brass clasps, miniature crystal decanter, itty-bitty playing card boxes with ornate designs, teeny velvet rope stanchions, precious chandelier light, scattered tiny tournament plaques, little money clip, adorable cufflinks, miniature ledger, precious casino tokens.
+> Atmospheric ultra-kawaii-chic luxury poker salon where high-class elegance meets dollhouse perfection, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO players ZERO dealers ZERO people ZERO bodies ZERO faces ZERO hands ZERO fingers ZERO arms ZERO limbs ZERO gloves ZERO characters ZERO text ZERO logos, empty table with objects only, clothing FLAT NOT WORN.
+> Extreme macro tilt-shift miniature photography with heavy bokeh blur emphasizing tiny handmade scale, dream-logic adorable miniature scale where chips are monuments, top hat is decorative object in dollhouse world, liminal poker wonderland, ethereal electric crimson with navy velvet and gold through handcrafted textures, stop-motion perfection with visible felt texture like Laika studios precious tiny sets, ultra-sophisticated kawaii gentleman aesthetic, abstract heavily stylized with exquisite tiny diorama detail, small-scale cute model photography, 16:9
 
 
 ### 23. `lad_057_hughx` — Rooftop Fine Dining
@@ -321,26 +318,26 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 > Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO text ZERO restaurant names ZERO logos.
 
 
-### 24. `lad_051_devon-4` — Innovation Lab Studio
+### 24. `lad_051_devon-4` — VJ Light Control Cathedral
 
 **Prompt:**
-> Stop-motion macro diorama of a contemporary design studio cathedral draped in rich purple glow, violet accents, and magenta neon, merging Coraline dream logic with Fantasia modernity.
-> Drafting tables display geometric foam models, parallel rulers, stylus tablets, and concept sketches rendered as abstract linework.
-> Material sample walls layer fabrics, woods, metals, and acrylic swatches, while 3D printers extrude translucent prototypes beside award totems and minimalist eyewear.
-> Shelves of design books with color-blocked spines, neon inspiration signs, and mood boards pinned with typographic grids stripped of letters encircle ergonomic leather chairs and chrome fixtures.
-> Tilt-shift macro frames bathe distant workstations in luminous blur, accentuating each texture chip, laser-cut edge, and glossy resin overlay.
-> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO text ZERO designer names ZERO logos.
+> Tiny kawaii claymation miniature diorama photography of adorable VJ lighting control cathedral bathed in electric purple glow, vibrant magenta beams, and cyan holographic light like precious Fantasia meets Nightmare Before Christmas tiny world, dollhouse-scale handcrafted set with itty-bitty moving head lighting fixtures casting rainbow prisms, miniature DMX lighting console with glowing faders and buttons, teeny laser projectors shooting geometric beams, cute purple pointed hat OBJECT in felt with cyan band and simple gold metallic letter Z stitched flat on purple fabric NO background NO circle NO badge resting on equipment creating magical light show atmosphere.
+> Sophisticated tiny surfaces with little LED par cans in chrome fixtures, adorable fog machine with translucent mist frozen mid-swirl, precious mirror ball fragments scattering disco light, teeny projection mapping screens showing abstract kaleidoscopic patterns, tiny MIDI controller with colorful pads.
+> Exquisite little cable management in DMX and power cables rainbow-coded, miniature light gel collection in magenta cyan purple swatches, itty-bitty strobe lights with flash frozen, teeny color-changing bulbs, precious gobo wheels with pattern cutouts, scattered tiny laser safety goggles, little wireless DMX transmitters, adorable stage smoke creating ethereal purple haze, miniature lighting plot diagrams as abstract geometric art.
+> Atmospheric ultra-kawaii-chic VJ lighting where technical artistry meets dollhouse perfection with museum-quality ornate tiny detail, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO performers ZERO DJs ZERO people ZERO magicians ZERO wizards ZERO characters ZERO faces ZERO hands ZERO bodies ZERO limbs ZERO clothing worn ZERO portraits ZERO text ZERO brand names ZERO logos environment exclusively, equipment and hat object only.
+> Extreme macro tilt-shift miniature photography with heavy bokeh blur on distant light beams emphasizing tiny handmade scale, dream-logic adorable miniature scale where lighting fixtures are monuments, purple hat is decorative object in precious dollhouse world, liminal VJ wonderland, ethereal electric purple with magenta and cyan through handcrafted miniature textures, stop-motion perfection with visible light rays, fog particles like Laika studios precious tiny sets, ultra-sophisticated kawaii VJ aesthetic, abstract heavily stylized with exquisite tiny diorama detail, small-scale cute model photography, 16:9
 
 
-### 25. `lad_029_famous-9` — Luxury Auto Gallery
+### 25. `lad_029_famous-9` — Neon Auto x Streetwear Showroom
 
 **Prompt:**
-> Stop-motion macro diorama of a luxury auto showroom cathedral awash in electric navy glow, chrome reflections, and leather brown warmth, fusing Fantastic Mr. Fox craftsmanship with Polar Express sheen.
-> A sculpted classic coupe miniature gleams on a rotating dais beside steering-wheel monuments, speedometer clusters, and engine part reliquaries polished to mirror perfection.
-> Chrome trim samples, leather upholstery swatches, tire stacks with precise tread, and hood ornament sculptures populate terrazzo floors with inlaid brass lines.
-> Key fob collections, road maps rendered as abstract routes, racing trophies, and detailing kits rest on walnut consoles beneath panoramic glass walls.
-> Tilt-shift cinematography paints the distant showroom in velvety blur, spotlighting every metallic highlight, stitch, and enamel edge.
-> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO drivers ZERO gloves ZERO text ZERO logos ZERO specific brand names.
+> Stop-motion macro diorama of a futuristic auto showroom meets streetwear cathedral bathed in electric blue neon, vibrant fiery orange glow, and rainbow gradient holographic light, blending Little Big Planet urban energy with Fantastic Mr. Fox craftsmanship.
+> Center stage: a miniature sleek sports car in glossy black with custom rainbow underglow LED strips, sitting on a rotating chrome platform surrounded by neon-lit display cases showing bright orange hoodies, rainbow gradient visor sunglasses, lime green and hot pink snapback collections.
+> Chrome wheel displays, custom car key fobs in orange leather, tire stacks with neon sidewalls, hood ornament sculptures, and racing helmets in rainbow gradient finishes populate mirror-polished floors with electric blue racing stripes.
+> Graffiti art panels rendered as abstract geometric color blocks, limited edition sneaker displays on chrome pedestals, holographic sticker sheets, leather steering wheel samples in bright orange, and modern glass shelving with folded streetwear in electric blue and vivid orange.
+> Ambient underglow lighting casts rainbow reflections across polished surfaces while panoramic windows reveal abstract city lights in lime, magenta, and cyan hues.
+> Tilt-shift cinematography blurs distant showroom corners with dreamy bokeh, spotlighting every chrome detail, fabric texture, candy paint finish, and neon edge.
+> Shot on a 16:9 tilt-shift macro lens with cinematic depth of field, ZERO human presence ZERO animals ZERO figures ZERO mannequins ZERO statues ZERO silhouettes ZERO drivers ZERO text ZERO logos ZERO brand names ZERO words ZERO letters.
 
 
 ---
@@ -374,7 +371,7 @@ Every prompt ends with the zero-presence mantra + world-specific restrictions
 | **5** | `lad_061_dope10` | Backstage Production Bay |
 | **5** | `lad_057_hughx` | Rooftop Fine Dining |
 | **5** | `lad_051_devon-4` | Innovation Lab Studio |
-| **5** | `lad_029_famous-9` | Luxury Auto Gallery |
+| **5** | `lad_029_famous-9` | Neon Auto x Streetwear Showroom |
 
 ### 🏆 Homepage Hero 5 (Rotation 1)
 1. **lady_000_lemon** — Factory Glam Salon
