@@ -1042,6 +1042,14 @@ img, video {
   background-color: #0000;
 }
 
+.bg-\[\#0a0806\]\/20 {
+  background-color: #0a080633;
+}
+
+.bg-\[\#c9a96e\]\/20 {
+  background-color: #c9a96e33;
+}
+
 .bg-gradient-to-t {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
@@ -1504,6 +1512,10 @@ img, video {
   opacity: .02;
 }
 
+.opacity-100 {
+  opacity: 1;
+}
+
 .mix-blend-difference {
   mix-blend-mode: difference;
 }
@@ -1596,6 +1608,10 @@ img, video {
 
 .duration-500 {
   transition-duration: .5s;
+}
+
+.ease-in-out {
+  transition-timing-function: cubic-bezier(.4, 0, .2, 1);
 }
 
 .will-change-transform {

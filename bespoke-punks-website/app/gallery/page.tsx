@@ -2,9 +2,8 @@
 
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
-import punkNames from '@/public/punk-names.json';
+import punkNames from '@/public/punk-names-validated.json';
 
 export default function GalleryPage() {
   const [filter, setFilter] = useState<'all' | 'lad' | 'lady'>('all');
@@ -13,7 +12,8 @@ export default function GalleryPage() {
   const [hoveredPunk, setHoveredPunk] = useState<string | null>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [randomizedPunks, setRandomizedPunks] = useState<string[]>([]);
-  const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const [particles, setParticles] = useState<Array<{ left: number; top: number; duration: number; delay: number }>>([]);
   const observerTarget = useRef<HTMLDivElement>(null);
 
   const cursorX = useMotionValue(0);
@@ -26,6 +26,15 @@ export default function GalleryPage() {
   // Randomize on client side only
   useEffect(() => {
     setRandomizedPunks([...punkNames].sort(() => Math.random() - 0.5));
+    // Generate particle positions once on mount
+    setParticles(
+      [...Array(15)].map(() => ({
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        duration: 4 + Math.random() * 2,
+        delay: Math.random() * 2,
+      }))
+    );
   }, []);
 
   useEffect(() => {
@@ -43,7 +52,6 @@ export default function GalleryPage() {
     const punkName = punk.split('_').slice(2).join('_');
     const matchesSearch = punkName.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           punk.toLowerCase().includes(searchTerm.toLowerCase());
-    // Don't filter out failed images - show all
     return matchesFilter && matchesSearch;
   });
 
@@ -57,8 +65,6 @@ export default function GalleryPage() {
 
   useEffect(() => {
     setVisiblePunks(60);
-    // Clear failed images when filter changes to give them another chance
-    setFailedImages(new Set());
   }, [filter, searchTerm]);
 
   // Infinite scroll observer
@@ -237,51 +243,55 @@ export default function GalleryPage() {
                     }}
                   >
                     <motion.div
-                      className="aspect-square relative overflow-hidden bg-[#0a0806] border border-[#c9a96e]/20 cursor-pointer"
+                      className="aspect-square relative overflow-hidden border border-[#c9a96e]/20 cursor-pointer group"
+                      style={{
+                        backgroundColor: '#0a0806'
+                      }}
                       whileHover={{
                         scale: 1.05,
-                        rotate: 0,
                         borderColor: 'rgba(201, 169, 110, 0.6)',
                         zIndex: 50
                       }}
                       transition={{ duration: 0.2 }}
                     >
-                      {/* Loading shimmer effect */}
-                      <div className="absolute inset-0 shimmer" />
+                      {/* Loading placeholder */}
+                      {!loadedImages.has(punk) && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="w-2 h-2 bg-[#c9a96e]/20 rounded-full animate-pulse" />
+                        </div>
+                      )}
 
-                      <Image
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src={`/punks-display/${punk}.png`}
                         alt={punkId}
-                        width={512}
-                        height={512}
-                        className="w-full h-full object-cover pixel-perfect relative z-10"
-                        loading="lazy"
-                        unoptimized
+                        className={`w-full h-full object-cover transition-opacity duration-500 ${
+                          loadedImages.has(punk) ? 'opacity-100' : 'opacity-0'
+                        }`}
+                        style={{
+                          imageRendering: 'pixelated'
+                        }}
+                        loading={i < 30 ? 'eager' : 'lazy'}
                         onLoad={(e) => {
-                          // Hide shimmer once loaded
-                          const shimmer = e.currentTarget.previousSibling as HTMLElement;
-                          if (shimmer) shimmer.style.display = 'none';
+                          setLoadedImages(prev => {
+                            const newSet = new Set(prev);
+                            newSet.add(punk);
+                            return newSet;
+                          });
                         }}
                         onError={(e) => {
-                          // Log error but don't remove from display
-                          console.log(`Failed to load: ${punk}`);
-                          // Hide shimmer on error too
-                          const shimmer = e.currentTarget.previousSibling as HTMLElement;
-                          if (shimmer) shimmer.style.display = 'none';
+                          console.error(`Failed to load: ${punk}`, e);
                         }}
                       />
 
                       {/* Hover overlay with info */}
-                      <motion.div
-                        className="absolute inset-0 bg-gradient-to-t from-[#0a0806] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        initial={false}
-                      >
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0806] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-0 left-0 right-0 p-3">
                           <p className="text-xs tracking-widest text-[#c9a96e] font-medium">
                             {punkId.toUpperCase()}
                           </p>
                         </div>
-                      </motion.div>
+                      </div>
 
                       {/* Glow effect on hover */}
                       {hoveredPunk === punk && (
@@ -319,22 +329,22 @@ export default function GalleryPage() {
 
       {/* Ambient particles */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        {[...Array(15)].map((_, i) => (
+        {particles.map((particle, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-[#c9a96e]/10 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
             }}
             animate={{
               y: [0, -40, 0],
               opacity: [0.1, 0.3, 0.1],
             }}
             transition={{
-              duration: 4 + Math.random() * 2,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 2,
+              delay: particle.delay,
             }}
           />
         ))}
