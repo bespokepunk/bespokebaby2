@@ -1186,6 +1186,11 @@ img, video {
   padding-bottom: 2rem;
 }
 
+.px-2 {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
 .pb-20 {
   padding-bottom: 5rem;
 }
@@ -1348,6 +1353,10 @@ img, video {
 
 .leading-relaxed {
   line-height: 1.625;
+}
+
+.leading-tight {
+  line-height: 1.25;
 }
 
 .tracking-\[0\.3em\] {

@@ -5,6 +5,8 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import punkNames from '@/public/punk-names-validated.json';
 
+type ImageState = 'loading' | 'loaded' | 'error';
+
 export default function GalleryPage() {
   const [filter, setFilter] = useState<'all' | 'lad' | 'lady'>('all');
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,9 +14,12 @@ export default function GalleryPage() {
   const [hoveredPunk, setHoveredPunk] = useState<string | null>(null);
   const [isHovering, setIsHovering] = useState(false);
   const [randomizedPunks, setRandomizedPunks] = useState<string[]>([]);
-  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const [imageStatus, setImageStatus] = useState<Record<string, ImageState>>({});
+  const [imageSources, setImageSources] = useState<Record<string, string>>({});
   const [particles, setParticles] = useState<Array<{ left: number; top: number; duration: number; delay: number }>>([]);
   const observerTarget = useRef<HTMLDivElement>(null);
+  const fallbackAttempts = useRef<Set<string>>(new Set());
+  const imageRefs = useRef<Record<string, HTMLImageElement | null>>({});
 
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
@@ -89,6 +94,33 @@ export default function GalleryPage() {
       }
     };
   }, [loadMore]);
+
+  const handleImageLoad = useCallback((punk: string) => {
+    setImageStatus(prev => ({
+      ...prev,
+      [punk]: 'loaded',
+    }));
+  }, []);
+
+  const handleImageError = useCallback((punk: string) => {
+    if (!fallbackAttempts.current.has(punk)) {
+      fallbackAttempts.current.add(punk);
+      setImageSources(prev => ({
+        ...prev,
+        [punk]: `/punks/${punk}.png`,
+      }));
+      setImageStatus(prev => ({
+        ...prev,
+        [punk]: 'loading',
+      }));
+      return;
+    }
+
+    setImageStatus(prev => ({
+      ...prev,
+      [punk]: 'error',
+    }));
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#0a0806] cursor-none">
@@ -205,13 +237,14 @@ export default function GalleryPage() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {/* Unique scattered grid - varying sizes */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 auto-rows-auto">
+            {/* Responsive grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
               {displayedPunks.map((punk, i) => {
                 const punkId = punk.split('_').slice(0, 2).join(' #').replace('_', ' ');
-                // Random sizing for more organic feel
-                const isLarge = i % 7 === 0;
-                const isMedium = i % 5 === 0 && !isLarge;
+                const status = imageStatus[punk] ?? 'loading';
+                const imageSrc = imageSources[punk] ?? `/punks-display/${punk}.png`;
+                const isLoaded = status === 'loaded';
+                const isError = status === 'error';
 
                 return (
                   <motion.div
@@ -228,11 +261,7 @@ export default function GalleryPage() {
                       type: "spring",
                       stiffness: 100
                     }}
-                    className={`group relative ${
-                      isLarge ? 'col-span-2 row-span-2' :
-                      isMedium ? 'col-span-1 row-span-2' :
-                      'col-span-1 row-span-1'
-                    }`}
+                    className="group relative"
                     onMouseEnter={() => {
                       setHoveredPunk(punk);
                       setIsHovering(true);
@@ -254,34 +283,41 @@ export default function GalleryPage() {
                       }}
                       transition={{ duration: 0.2 }}
                     >
-                      {/* Loading placeholder */}
-                      {!loadedImages.has(punk) && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-2 h-2 bg-[#c9a96e]/20 rounded-full animate-pulse" />
+                      {/* Loading & error placeholder */}
+                      {!isLoaded && (
+                        <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#0a0806]">
+                          {isError ? (
+                            <div className="text-[10px] tracking-widest text-[#c9a96e]/50 text-center leading-tight px-2">
+                              PREVIEW
+                              <br />
+                              UNAVAILABLE
+                            </div>
+                          ) : (
+                            <div className="w-2 h-2 bg-[#c9a96e]/20 rounded-full animate-pulse" />
+                          )}
                         </div>
                       )}
 
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
-                        src={`/punks-display/${punk}.png`}
+                        ref={(el) => {
+                          imageRefs.current[punk] = el;
+                          if (el && el.complete && el.naturalWidth > 0 && !isLoaded) {
+                            handleImageLoad(punk);
+                          }
+                        }}
+                        src={imageSrc}
                         alt={punkId}
                         className={`w-full h-full object-cover transition-opacity duration-500 ${
-                          loadedImages.has(punk) ? 'opacity-100' : 'opacity-0'
+                          isLoaded ? 'opacity-100' : 'opacity-0'
                         }`}
                         style={{
-                          imageRendering: 'pixelated'
+                          imageRendering: 'pixelated',
+                          display: isError ? 'none' : 'block'
                         }}
                         loading={i < 30 ? 'eager' : 'lazy'}
-                        onLoad={(e) => {
-                          setLoadedImages(prev => {
-                            const newSet = new Set(prev);
-                            newSet.add(punk);
-                            return newSet;
-                          });
-                        }}
-                        onError={(e) => {
-                          console.error(`Failed to load: ${punk}`, e);
-                        }}
+                        onLoad={() => handleImageLoad(punk)}
+                        onError={() => handleImageError(punk)}
                       />
 
                       {/* Hover overlay with info */}
