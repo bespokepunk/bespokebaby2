@@ -28,6 +28,10 @@ export default function Home() {
   const smoothCursorX = useSpring(cursorX, { stiffness: 300, damping: 30 });
   const smoothCursorY = useSpring(cursorY, { stiffness: 300, damping: 30 });
 
+  // Trail cursor with more lag for particles
+  const trailCursorX = useSpring(cursorX, { stiffness: 100, damping: 20 });
+  const trailCursorY = useSpring(cursorY, { stiffness: 100, damping: 20 });
+
   useEffect(() => {
     // Random selection of 4 punks from the 37 with worlds
     const randomPunks = getRandomPunks(4);
@@ -65,26 +69,6 @@ export default function Home() {
         const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1920;
         const hue = (e.clientX / windowWidth) * 60 + 20; // 20-80 range (gold to orange)
         setColorShift(hue);
-
-        // Add cursor trail pixel (varied sizes) - only on desktop, reduced count
-        if (window.innerWidth >= 768) {
-          const sizes = [3, 4, 5];
-          const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
-
-          pixelIdCounter.current += 1;
-          const newPixel = {
-            x: e.clientX,
-            y: e.clientY,
-            size: randomSize,
-            id: pixelIdCounter.current,
-          };
-
-          setTrailPixels(prev => {
-            const updated = [...prev, newPixel];
-            // Keep only last 8 pixels for better performance
-            return updated.slice(-8);
-          });
-        }
       });
     };
 
@@ -95,14 +79,44 @@ export default function Home() {
     };
   }, [cursorX, cursorY]);
 
-  // Clean up old trail pixels - increased interval for better performance
+  // Separate effect for trail particles using lagged cursor position
+  useEffect(() => {
+    const unsubscribeX = trailCursorX.on('change', (x) => {
+      const y = trailCursorY.get();
+
+      if (window.innerWidth >= 768) {
+        const sizes = [4, 5, 6, 7];
+        const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+
+        pixelIdCounter.current += 1;
+        const offsetX = (Math.random() - 0.5) * 6;
+        const offsetY = (Math.random() - 0.5) * 6;
+
+        const newPixel = {
+          x: x - randomSize / 2 + offsetX,
+          y: y - randomSize / 2 + offsetY,
+          size: randomSize,
+          id: pixelIdCounter.current,
+        };
+
+        setTrailPixels(prev => {
+          const updated = [...prev, newPixel];
+          return updated.slice(-15);
+        });
+      }
+    });
+
+    return () => unsubscribeX();
+  }, [trailCursorX, trailCursorY]);
+
+  // Clean up old trail pixels - slower fade for better visibility
   useEffect(() => {
     const interval = setInterval(() => {
       setTrailPixels(prev => {
         if (prev.length === 0) return prev;
         return prev.slice(1); // Remove oldest pixel
       });
-    }, 80); // Slower cleanup = better performance
+    }, 120); // Slower cleanup = longer trail visibility
 
     return () => clearInterval(interval);
   }, []);
@@ -118,25 +132,28 @@ export default function Home() {
       }}
     >
       <ThemeToggle />
-      {/* CURSOR TRAIL PIXELS - Better visibility */}
+      {/* CURSOR TRAIL PIXELS - Enhanced visibility and glow */}
       <div className="hidden md:block fixed inset-0 pointer-events-none z-[90]">
         {trailPixels.map((pixel, index) => {
           const age = trailPixels.length - index;
-          const opacity = Math.max(0, 1 - (age / trailPixels.length));
+          const opacity = Math.max(0.3, 1 - (age / trailPixels.length));
+          const hue = colorShift + (index * 5); // More dramatic color shift
 
           return (
             <div
               key={pixel.id}
-              className="absolute"
+              className="absolute transition-opacity duration-200"
               style={{
                 left: pixel.x,
                 top: pixel.y,
                 width: pixel.size,
                 height: pixel.size,
-                opacity: opacity * 0.7,
-                background: `hsl(${colorShift + index * 3}, 80%, 70%)`,
-                boxShadow: `0 0 ${pixel.size * 2}px hsl(${colorShift + index * 3}, 80%, 60%)`,
-                borderRadius: '50%',
+                opacity: opacity,
+                background: `hsl(${hue}, 90%, 65%)`,
+                boxShadow: `
+                  0 0 ${pixel.size * 3}px hsl(${hue}, 95%, 60%),
+                  0 0 ${pixel.size * 6}px hsl(${hue}, 85%, 50%, 0.6)
+                `,
               }}
             />
           );

@@ -268,6 +268,10 @@ img, video {
   pointer-events: auto;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .fixed {
   position: fixed;
 }
@@ -399,6 +403,10 @@ img, video {
 
 .top-8 {
   top: 2rem;
+}
+
+.top-32 {
+  top: 8rem;
 }
 
 .z-0 {
@@ -1340,6 +1348,14 @@ img, video {
 
 .pt-6 {
   padding-top: 1.5rem;
+}
+
+.pt-20 {
+  padding-top: 5rem;
+}
+
+.pt-56 {
+  padding-top: 14rem;
 }
 
 .text-left {

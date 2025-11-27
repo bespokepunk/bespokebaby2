@@ -17,9 +17,12 @@ export default function GalleryPage() {
   const [imageStatus, setImageStatus] = useState<Record<string, ImageState>>({});
   const [imageSources, setImageSources] = useState<Record<string, string>>({});
   const [particles, setParticles] = useState<Array<{ left: number; top: number; duration: number; delay: number }>>([]);
+  const [trailPixels, setTrailPixels] = useState<Array<{ x: number; y: number; size: number; id: number }>>([]);
+  const [colorShift, setColorShift] = useState(40);
   const observerTarget = useRef<HTMLDivElement>(null);
   const fallbackAttempts = useRef<Set<string>>(new Set());
   const imageRefs = useRef<Record<string, HTMLImageElement | null>>({});
+  const pixelIdCounter = useRef(0);
 
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
@@ -43,14 +46,69 @@ export default function GalleryPage() {
   }, []);
 
   useEffect(() => {
+    let rafId: number;
+    let lastUpdate = 0;
+    const throttleMs = 32;
+
     const handleMouseMove = (e: MouseEvent) => {
+      const now = Date.now();
+
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
+
+      if (now - lastUpdate < throttleMs) return;
+      lastUpdate = now;
+
+      if (rafId) cancelAnimationFrame(rafId);
+
+      rafId = requestAnimationFrame(() => {
+        // Color shift based on mouse position
+        const windowWidth = typeof window !== 'undefined' ? window.innerWidth : 1920;
+        const hue = (e.clientX / windowWidth) * 60 + 20;
+        setColorShift(hue);
+
+        // Add cursor trail pixel
+        if (window.innerWidth >= 768) {
+          const sizes = [4, 5, 6, 7];
+          const randomSize = sizes[Math.floor(Math.random() * sizes.length)];
+
+          pixelIdCounter.current += 1;
+          // Add some randomness and offset behind cursor center
+          const offsetX = (Math.random() - 0.5) * 8;
+          const offsetY = (Math.random() - 0.5) * 8;
+          const newPixel = {
+            x: e.clientX - randomSize / 2 + offsetX - 3, // Offset slightly back
+            y: e.clientY - randomSize / 2 + offsetY - 3,
+            size: randomSize,
+            id: pixelIdCounter.current,
+          };
+
+          setTrailPixels(prev => {
+            const updated = [...prev, newPixel];
+            return updated.slice(-15);
+          });
+        }
+      });
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, [cursorX, cursorY]);
+
+  // Clean up old trail pixels
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTrailPixels(prev => {
+        if (prev.length === 0) return prev;
+        return prev.slice(1);
+      });
+    }, 120);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const filteredPunks = randomizedPunks.filter(punk => {
     const matchesFilter = filter === 'all' || punk.startsWith(filter);
@@ -124,6 +182,34 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0806] cursor-none">
+      {/* CURSOR TRAIL PIXELS */}
+      <div className="hidden md:block fixed inset-0 pointer-events-none z-[90]">
+        {trailPixels.map((pixel, index) => {
+          const age = trailPixels.length - index;
+          const opacity = Math.max(0.3, 1 - (age / trailPixels.length));
+          const hue = colorShift + (index * 5); // More dramatic color shift
+
+          return (
+            <div
+              key={pixel.id}
+              className="absolute transition-opacity duration-200"
+              style={{
+                left: pixel.x,
+                top: pixel.y,
+                width: pixel.size,
+                height: pixel.size,
+                opacity: opacity,
+                background: `hsl(${hue}, 90%, 65%)`,
+                boxShadow: `
+                  0 0 ${pixel.size * 3}px hsl(${hue}, 95%, 60%),
+                  0 0 ${pixel.size * 6}px hsl(${hue}, 85%, 50%, 0.6)
+                `,
+              }}
+            />
+          );
+        })}
+      </div>
+
       {/* Custom cursor */}
       <motion.div
         className="fixed w-8 h-8 pointer-events-none z-[100] mix-blend-difference"
@@ -140,30 +226,17 @@ export default function GalleryPage() {
       </motion.div>
 
       {/* Floating header - Ultra Compact */}
-      <div className="fixed top-0 left-0 right-0 z-40 pointer-events-none">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-2">
+      <div className="fixed top-0 left-0 right-0 z-30 pointer-events-none">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="flex items-center justify-between"
           >
-            <div>
-              <h1 className="serif text-2xl sm:text-3xl text-[#c9a96e] mb-0.5">
-                The Collection
-              </h1>
-              <p className="text-[10px] text-[#c9a96e]/60 tracking-wider">
-                174 PIXEL SOULS
-              </p>
-            </div>
-            <Link
-              href="/"
-              className="pointer-events-auto text-[#c9a96e]/60 hover:text-[#c9a96e] transition-colors text-sm tracking-widest"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-            >
-              ← HOME
-            </Link>
+            <h1 className="serif text-2xl sm:text-3xl text-[#c9a96e]">
+              The Collection
+            </h1>
           </motion.div>
         </div>
       </div>
@@ -173,7 +246,7 @@ export default function GalleryPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="fixed top-14 left-0 right-0 z-30 pointer-events-none"
+        className="fixed top-32 left-0 right-0 z-30 pointer-events-none"
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
@@ -230,7 +303,7 @@ export default function GalleryPage() {
       </motion.div>
 
       {/* Gallery - Masonry-style scattered layout */}
-      <div className="pt-36 pb-20 px-6 lg:px-8">
+      <div className="pt-56 pb-20 px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
