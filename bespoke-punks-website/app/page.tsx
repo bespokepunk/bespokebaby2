@@ -202,7 +202,7 @@ export default function Home() {
         }}
       />
 
-      {/* FLOATING PUNKS WITH WORLD VISIONS */}
+      {/* FLOATING PORTRAITS WITH WORLD VISIONS */}
       <div className="fixed inset-0">
         {selectedPunks.map((punk, i) => {
           const basePos = punkPositions[i];
@@ -446,7 +446,7 @@ export default function Home() {
                     {capturedPunk.replace(/_/g, ' ').split(' ').slice(0, 2).join(' ').toUpperCase()}
                   </h2>
                   <p className="font-mono text-sm text-[#c9a96e]/80 mb-8">
-                    One of {TOTAL_PUNKS} Punks
+                    One of {TOTAL_PUNKS} Portraits
                   </p>
 
                   <Link href="/gallery">
@@ -491,7 +491,7 @@ export default function Home() {
                 animate={{ opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                {TOTAL_PUNKS} PUNKS
+                {TOTAL_PUNKS} PORTRAITS
               </motion.p>
               <p className="font-mono text-[10px] tracking-[0.3em] text-[#c9a96e]/30">
                 PIXEL PERFECT

@@ -75,7 +75,7 @@ export default function AllPunksPage() {
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
           <div className="bg-[#c9a96e]/10 border border-[#c9a96e]/30 p-4">
-            <p className="text-xs text-[#c9a96e]/60 mb-1">TOTAL PUNKS</p>
+            <p className="text-xs text-[#c9a96e]/60 mb-1">TOTAL PORTRAITS</p>
             <p className="text-3xl font-bold text-[#c9a96e]">{stats.total}</p>
           </div>
           <div className="bg-red-900/20 border border-red-500/30 p-4">
