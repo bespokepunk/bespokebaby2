@@ -409,6 +409,10 @@ img, video {
   top: 8rem;
 }
 
+.bottom-2 {
+  bottom: .5rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -451,6 +455,10 @@ img, video {
 
 .z-\[9999\] {
   z-index: 9999;
+}
+
+.z-\[150\] {
+  z-index: 150;
 }
 
 .mx-4 {
@@ -617,6 +625,10 @@ img, video {
 
 .h-px {
   height: 1px;
+}
+
+.h-1\/2 {
+  height: 50%;
 }
 
 .max-h-60 {
@@ -1157,6 +1169,12 @@ img, video {
 .from-\[\#c9a96e\] {
   --tw-gradient-from: #c9a96e var(--tw-gradient-from-position);
   --tw-gradient-to: #c9a96e00 var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.from-black\/90 {
+  --tw-gradient-from: #000000e6 var(--tw-gradient-from-position);
+  --tw-gradient-to: #0000 var(--tw-gradient-to-position);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
@@ -2359,6 +2377,15 @@ html {
   .md\:text-xs {
     font-size: .75rem;
     line-height: 1rem;
+  }
+
+  .md\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
+  }
+
+  .md\:text-\[10px\] {
+    font-size: 10px;
   }
 
   .md\:tracking-\[0\.6em\] {

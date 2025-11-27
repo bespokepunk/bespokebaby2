@@ -1,9 +1,11 @@
 'use client';
 
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import punkNames from '@/public/punk-names-validated.json';
+import { PUNKS_WITH_WORLDS } from '@/lib/constants';
 
 type ImageState = 'loading' | 'loaded' | 'error';
 
@@ -225,6 +227,7 @@ export default function GalleryPage() {
         }`} />
       </motion.div>
 
+
       {/* Floating header - Ultra Compact */}
       <div className="fixed top-0 left-0 right-0 z-30 pointer-events-none">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-20">
@@ -393,14 +396,43 @@ export default function GalleryPage() {
                         onError={() => handleImageError(punk)}
                       />
 
-                      {/* Hover overlay with info */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0806] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="absolute bottom-0 left-0 right-0 p-3">
-                          <p className="text-xs tracking-widest text-[#c9a96e] font-medium">
-                            {punkId.toUpperCase()}
-                          </p>
+                      {/* World overlay - only for punks with worlds */}
+                      {hoveredPunk === punk && PUNKS_WITH_WORLDS.includes(punk as any) && (
+                        <motion.div
+                          className="absolute inset-0 z-20"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <Image
+                            src={`/punk-worlds/${punk}W.png`}
+                            alt={`${punk} world`}
+                            fill
+                            className="object-cover"
+                            unoptimized
+                          />
+                          {/* Gradient for name */}
+                          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent" />
+                          {/* Punk name */}
+                          <div className="absolute bottom-2 left-0 right-0 text-center">
+                            <p className="text-[8px] md:text-[10px] tracking-wider text-[#c9a96e] font-bold">
+                              {punkId.toUpperCase()}
+                            </p>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {/* Regular hover overlay with info - for punks without worlds */}
+                      {(!PUNKS_WITH_WORLDS.includes(punk as any)) && (
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0806] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-0 left-0 right-0 p-3">
+                            <p className="text-xs tracking-widest text-[#c9a96e] font-medium">
+                              {punkId.toUpperCase()}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      )}
 
                       {/* Glow effect on hover */}
                       {hoveredPunk === punk && (
