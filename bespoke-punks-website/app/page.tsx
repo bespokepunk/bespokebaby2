@@ -482,15 +482,18 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {/* BOTTOM UI - MOBILE FRIENDLY */}
+      {/* BOTTOM UI - MOBILE FRIENDLY - Hide when scrolled */}
       <div className="fixed bottom-0 left-0 right-0 pb-6 md:pb-12 pointer-events-none z-50">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="flex items-center justify-center">
             {/* Center: ENTER button - responsive sizing */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
+              animate={{
+                opacity: isScrolled ? 0 : 1,
+                y: isScrolled ? 50 : 0
+              }}
+              transition={{ duration: 0.4 }}
               className="pointer-events-auto"
             >
               <Link href="/gallery">
@@ -591,24 +594,6 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Final CTA */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="mt-48 text-center"
-          >
-            <Link href="/gallery">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="inline-block px-24 py-8 border-8 border-[#c9a96e]/30 hover:border-[#c9a96e] transition-all duration-500"
-              >
-                <span className="font-mono text-xl tracking-[0.7em] text-[#c9a96e]">
-                  COLLECTION
-                </span>
-              </motion.div>
-            </Link>
-          </motion.div>
         </div>
       </div>
 
