@@ -19,6 +19,7 @@ export default function Home() {
   const [capturedPunk, setCapturedPunk] = useState<string | null>(null);
   const [trailPixels, setTrailPixels] = useState<Array<{ x: number; y: number; size: number; id: number }>>([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
@@ -41,7 +42,17 @@ export default function Home() {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
     window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+
+    // Detect scroll to hide YOU text
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   useEffect(() => {
@@ -340,16 +351,16 @@ export default function Home() {
         })}
       </div>
 
-      {/* MASSIVE ELEGANT TEXT WITH COLOR SHIFTING - Hide when world portal is open */}
-      <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+      {/* MASSIVE ELEGANT TEXT WITH COLOR SHIFTING - Hide when world portal is open or scrolled */}
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none overflow-hidden" style={{ height: '100vh' }}>
         <motion.div className="relative">
           <motion.h1
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{
-              opacity: hoveredPunk ? 0 : 1,
+              opacity: hoveredPunk || isScrolled ? 0 : 1,
               scale: 1,
             }}
-            transition={{ duration: hoveredPunk ? 0.2 : 1.5, type: 'spring', damping: 20 }}
+            transition={{ duration: hoveredPunk ? 0.2 : 0.6, type: 'spring', damping: 20 }}
             className="font-serif text-[20vw] md:text-[25vw] leading-none select-none relative"
           >
             {/* Soft background glow */}
@@ -474,30 +485,7 @@ export default function Home() {
       {/* BOTTOM UI - MOBILE FRIENDLY */}
       <div className="fixed bottom-0 left-0 right-0 pb-6 md:pb-12 pointer-events-none z-50">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
-          {/* Mobile: Stack vertically */}
-          <div className="flex flex-col md:flex-row items-center md:items-end justify-center md:justify-between gap-6 md:gap-0">
-            {/* Left: Animated info - hidden on mobile */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1 }}
-              className="hidden md:block space-y-2"
-            >
-              <motion.p
-                className="font-mono text-xs tracking-[0.5em]"
-                style={{
-                  color: `hsl(${colorShift}, 60%, 60%)`,
-                }}
-                animate={{ opacity: [0.6, 1, 0.6] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                {TOTAL_PUNKS} PORTRAITS
-              </motion.p>
-              <p className="font-mono text-[10px] tracking-[0.3em] text-[#c9a96e]/30">
-                PIXEL PERFECT
-              </p>
-            </motion.div>
-
+          <div className="flex items-center justify-center">
             {/* Center: ENTER button - responsive sizing */}
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -555,36 +543,6 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            {/* Right: Nav - horizontal on mobile */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1 }}
-              className="flex md:flex-col gap-4 md:gap-3 md:text-right pointer-events-auto"
-            >
-              <Link
-                href="/generate"
-                className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-[#c9a96e]/40 hover:text-[#c9a96e] transition-colors relative group"
-              >
-                <span className="relative z-10">CREATE</span>
-                <motion.span
-                  className="absolute right-0 md:right-0 left-0 md:left-auto bottom-0 md:bottom-auto md:top-1/2 md:-translate-y-1/2 h-px w-0 group-hover:w-full transition-all duration-300"
-                  style={{ backgroundColor: `hsl(${colorShift}, 60%, 60%)` }}
-                />
-              </Link>
-              <button
-                onClick={() => {
-                  document.getElementById('story')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="font-mono text-[10px] md:text-xs tracking-[0.3em] text-[#c9a96e]/40 hover:text-[#c9a96e] transition-colors relative group"
-              >
-                <span className="relative z-10">STORY</span>
-                <motion.span
-                  className="absolute right-0 md:right-0 left-0 md:left-auto bottom-0 md:bottom-auto md:top-1/2 md:-translate-y-1/2 h-px w-0 group-hover:w-full transition-all duration-300"
-                  style={{ backgroundColor: `hsl(${colorShift}, 60%, 60%)` }}
-                />
-              </button>
-            </motion.div>
           </div>
         </div>
       </div>
