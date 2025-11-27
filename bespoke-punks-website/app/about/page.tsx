@@ -367,7 +367,7 @@ export default function AboutPage() {
                 </p>
 
                 <p className="text-xl text-[#c9a96e] italic">
-                  Bespoke Punks is where it all converges.
+                  Pixola Studio is where it all converges.
                 </p>
               </div>
             </motion.section>

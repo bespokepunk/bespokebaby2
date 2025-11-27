@@ -9,7 +9,7 @@ import PunkWorld from '@/components/PunkWorld';
 import ThemeToggle from '@/components/ThemeToggle';
 import { getRandomPunks } from '@/lib/utils/random';
 import { fourPunkPositions } from '@/lib/layout/positions';
-import { WORLD_COUNT } from '@/lib/constants';
+import { WORLD_COUNT, TOTAL_PUNKS } from '@/lib/constants';
 
 export default function Home() {
   const [selectedPunks, setSelectedPunks] = useState<string[]>([]);
@@ -429,7 +429,7 @@ export default function Home() {
                     {capturedPunk.replace(/_/g, ' ').split(' ').slice(0, 2).join(' ').toUpperCase()}
                   </h2>
                   <p className="font-mono text-sm text-[#c9a96e]/80 mb-8">
-                    One of {WORLD_COUNT} Worlds
+                    One of {TOTAL_PUNKS} Punks
                   </p>
 
                   <Link href="/gallery">
@@ -474,7 +474,7 @@ export default function Home() {
                 animate={{ opacity: [0.6, 1, 0.6] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                {WORLD_COUNT} WORLDS
+                {TOTAL_PUNKS} PUNKS
               </motion.p>
               <p className="font-mono text-[10px] tracking-[0.3em] text-[#c9a96e]/30">
                 PIXEL PERFECT
@@ -640,7 +640,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative py-8 border-t border-[#c9a96e]/10" style={{ background: '#000' }}>
         <p className="text-center font-mono text-[8px] tracking-[0.5em] text-[#c9a96e]/20">
-          BESPOKE PUNKS
+          PIXOLA STUDIO
         </p>
       </footer>
     </div>

@@ -39,3 +39,4 @@ export const PUNKS_WITH_WORLDS = [
 ] as const;
 
 export const WORLD_COUNT = PUNKS_WITH_WORLDS.length; // 37
+export const TOTAL_PUNKS = 174;
