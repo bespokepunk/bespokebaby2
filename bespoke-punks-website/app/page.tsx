@@ -575,7 +575,7 @@ export default function Home() {
                     borderColor: `hsl(${40 + i * 10}, 50%, 40%)`,
                   }}
                 >
-                  <p className="font-mono text-xs tracking-[0.5em] text-[#c9a96e]/30 mb-6">
+                  <p className="font-mono text-xs tracking-[0.5em] text-[#c9a96e]/70 mb-6">
                     {section.year}
                   </p>
                   <h2
